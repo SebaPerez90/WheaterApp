@@ -1,0 +1,42 @@
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1.5;
+
+  .light-theme {
+    min-height: 100dvh;
+    font-weight: 400;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #e4e4e4;
+    color: #ff08e6de;
+
+    .header-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .lightThemeBtn {
+        color: #ffff00;
+        background-color: #82c7ff;
+        border-radius: 0.9em 0.9em 0.9em 0.9em;
+        border: none;
+        font-size: 1.2em;
+        line-height: 0.8em;
+      }
+
+      .lenguageBtn {
+        background-color: inherit;
+        border: none;
+        margin-left: 5em;
+        scale: 0.6;
+      }
+    }
+
+    .light-title {
+      font-size: 3.2em;
+      line-height: 1.3;
+    }
+  }
+}

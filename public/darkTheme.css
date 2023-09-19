@@ -1,0 +1,43 @@
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  line-height: 1.5;
+
+  .dark-theme {
+    min-height: 100dvh;
+    font-weight: 400;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #242424;
+    color: #f6f6f6;
+
+    .header-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .darkThemeBtn {
+        color: #d8f33f;
+        background-color: #516677;
+        font-size: 1em;
+        border-radius: 0.7em 0.7em 0.7em 0.7em;
+        border: none;
+        line-height: .8em;
+        border: 1px solid white;
+      }
+
+      .lenguageBtn {
+        background-color: inherit;
+        border: none;
+        margin-left: 5em;
+        scale: 0.6;
+      }
+    }
+
+    .dark-title {
+      font-size: 3.2em;
+      line-height: 1.3;
+    }
+  }
+}
