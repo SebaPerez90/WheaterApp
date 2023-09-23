@@ -2,9 +2,9 @@ import React, { useState, createContext } from 'react';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import esp from './assets/esp.png';
 import eng from './assets/eng.png';
-import Hero from './components/Hero.jsx';
 import '../public/darkTheme.css';
 import '../public/lighTheme.css';
+import Data from './components/Data.jsx';
 
 export const AppContext = createContext(null);
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
             )}
           </button>
         </header>
-        <Hero />
+        <Data />
       </main>
     </AppContext.Provider>
   );
