@@ -4,7 +4,7 @@ import esp from './assets/esp.png';
 import eng from './assets/eng.png';
 import '../public/darkTheme.css';
 import '../public/lighTheme.css';
-import Data from './components/Data.jsx';
+import ForecastData from './components/ForecastData.jsx';
 
 export const AppContext = createContext(null);
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
             )}
           </button>
         </header>
-        <Data />
+        <ForecastData />
       </main>
     </AppContext.Provider>
   );
