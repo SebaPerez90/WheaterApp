@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import PropTypes from 'prop-types';
 
-const Hero = ({ fetchData }) => {
+const Hero = ({ fetchData, searchLocation }) => {
   const { theme, language } = useContext(AppContext);
 
   return (
@@ -11,7 +11,7 @@ const Hero = ({ fetchData }) => {
         {language === 'eng' ? 'Wheatter App' : 'Aplicacion del Clima'}
       </h1>
       <label htmlFor='country'>Enter a location</label>
-      <input type='text' name='country' />
+      <input type='text' name='country' onChange={searchLocation} autoFocus/>
       <button onClick={fetchData}>Search</button>
     </div>
   );
@@ -19,6 +19,7 @@ const Hero = ({ fetchData }) => {
 
 Hero.propTypes = {
   fetchData: PropTypes.func.isRequired,
+  searchLocation: PropTypes.func.isRequired,
 };
 
 export default Hero;
