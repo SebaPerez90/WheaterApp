@@ -12,7 +12,7 @@ const ForecastData = () => {
       `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     //forecast data
     const city = data.city.name;
@@ -28,11 +28,11 @@ const ForecastData = () => {
         // prettier-ignore
         `<div>
         <h3>${city}</h3>
-        <p>Current temperature ${temperature}C</p>
-        <p>Max temperature ${tempMax}C</p>
-        <p>Min temperature ${tempMin}C</p>
-        <p>Humidity ${humidity}%</p>
-        <p>Probability of Precipitation ${pop}%</p>
+        <p>Current temperature: ${temperature.toFixed(1)} °C</p>
+        <p>Max temperature: ${tempMax.toFixed(1)} °C</p>
+        <p>Min temperature: ${tempMin.toFixed(1)} °C</p>
+        <p>Humidity: ${humidity}%</p>
+        <p>Probability of Precipitation: ${pop}%</p>
       </div>`;
     } else {
       const weatherInfo = document.querySelector('.forecastDataEsp');
@@ -40,11 +40,11 @@ const ForecastData = () => {
         // prettier-ignore
         `<div>
         <h3>${city}</h3>
-        <p>Temperatura Actual ${temperature}C</p>
-        <p>Temperatura Maxima ${tempMax}C</p>
-        <p>Temperatura Minima ${tempMin}C</p>
-        <p>Humedad ${humidity}%</p>
-        <p>Probabilidad de Lluvia ${pop}%</p>
+        <p>Temperatura Actual: ${temperature.toFixed(1)} °C</p>
+        <p>Temperatura Maxima: ${tempMax.toFixed(1)} °C</p>
+        <p>Temperatura Minima: ${tempMin.toFixed(1)} °C</p>
+        <p>Humedad: ${humidity}%</p>
+        <p>Probabilidad de Lluvia: ${pop}%</p>
       </div>`;
     }
   };

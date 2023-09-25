@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../App';
 import PropTypes from 'prop-types';
+import { FcSearch } from 'react-icons/fc';
 
 const Hero = ({ fetchData, searchLocation }) => {
   const { theme, language } = useContext(AppContext);
@@ -10,9 +11,9 @@ const Hero = ({ fetchData, searchLocation }) => {
       <h1 className={theme === 'dark' ? 'dark-title' : 'light-title'}>
         {language === 'eng' ? 'Wheatter App' : 'Aplicacion del Clima'}
       </h1>
-      <label htmlFor='country'>Enter a location</label>
-      <input type='text' name='country' onChange={searchLocation} autoFocus/>
-      <button onClick={fetchData}>Search</button>
+      <label htmlFor='country'>{language === 'eng' ? 'Enter a Location' : 'Ingrese una ubicación'}</label>
+      <input type='text' name='country' onChange={searchLocation} autoFocus />
+      <button onClick={fetchData}><FcSearch /></button>
     </div>
   );
 };
