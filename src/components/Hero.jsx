@@ -7,14 +7,18 @@ const Hero = ({ fetchData, searchLocation }) => {
   const { theme, language } = useContext(AppContext);
 
   return (
-    <div>
+    <>
       <h1 className={theme === 'dark' ? 'dark-title' : 'light-title'}>
         {language === 'eng' ? 'Wheatter App' : 'Aplicacion del Clima'}
       </h1>
-      <label htmlFor='country'>{language === 'eng' ? 'Enter a Location' : 'Ingrese una ubicación'}</label>
+      <label htmlFor='country'>
+        {language === 'eng' ? 'Enter a Location' : 'Ingrese una ubicación'}
+      </label>
       <input type='text' name='country' onChange={searchLocation} autoFocus />
-      <button onClick={fetchData}><FcSearch /></button>
-    </div>
+      <button onClick={fetchData}>
+        <FcSearch />
+      </button>
+    </>
   );
 };
 
