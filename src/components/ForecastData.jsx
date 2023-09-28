@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../App';
-import Hero from './Hero';
+import Hero from './Hero.jsx';
+import EngWeatherData from './EngWeatherData.jsx';
+import EspWeatherData from './EspWeatherData.jsx';
 
 const ForecastData = () => {
   const { language } = useContext(AppContext);
@@ -25,48 +27,42 @@ const ForecastData = () => {
       //forecast data state
       setWeatherData({
         city: data.city.name,
+        country: data.city.country,
         pop: data.list[0].pop * 100,
         temperature: data.list[0].main.temp.toFixed(1),
         humidity: data.list[0].main.humidity,
         tempMax: data.list[0].main.temp_max.toFixed(1),
         tempMin: data.list[0].main.temp_min.toFixed(1),
+        iconID: data.list[0].weather[0].icon,
+        main: data.list[0].weather[0].main,
+        main_description: data.list[0].weather[0].description,
+        wind_speed: (data.list[0].wind.speed * 3.6).toFixed(1),
+        date: data.list[0].dt_txt,
+        visibility: data.list[0].visibility / 1000,
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  //this effect run if state language change.
+  //this effect run if the language state change.
   useEffect(() => {
     if (valueCapture) {
       fetchData();
+      console.log(localStorage);
     }
   }, [language]);
 
   return (
     <section>
-      <Hero fetchData={fetchData} searchLocation={(e) => setValueCapture(e.target.value)} />
+      <Hero
+        fetchData={fetchData}
+        searchLocation={(e) => setValueCapture(e.target.value)}
+      />
       {weatherData && language === 'eng' ? (
-        <section>
-          <h3>{weatherData.city}</h3>
-          <p>Current temperature: {weatherData.temperature} °C</p>
-          <p>Max temperature: {weatherData.tempMax} °C</p>
-          <p>Min temperature: {weatherData.tempMin} °C</p>
-          <p>Humidity: {weatherData.humidity}%</p>
-          <p>Probability of Precipitation: {weatherData.pop}%</p>
-        </section>
+        <EngWeatherData weatherData={weatherData}/>
       ) : (
-        weatherData &&
-        language === 'esp' && (
-          <section>
-            <h3>{weatherData.city}</h3>
-            <p>Temperatura Actual: {weatherData.temperature} °C</p>
-            <p>Temperatura Maxima: {weatherData.tempMax} °C</p>
-            <p>Temperatura Minima: {weatherData.tempMin} °C</p>
-            <p>Humedad: {weatherData.humidity}%</p>
-            <p>Probabilidad de Lluvia: {weatherData.pop}%</p>
-          </section>
-        )
+        weatherData && language === 'esp' && <EspWeatherData weatherData={weatherData}/>
       )}
     </section>
   );
