@@ -23,6 +23,8 @@ const ForecastData = () => {
         throw new Error(response.statusText);
       }
       const data = await response.json();
+      console.log(data.list[0].weather[0]);
+      console.log(data.list[0].weather[0].id);
 
       //forecast data state
       setWeatherData({
@@ -59,10 +61,10 @@ const ForecastData = () => {
         fetchData={fetchData}
         searchLocation={(e) => setValueCapture(e.target.value)}
       />
-      {weatherData && language === 'eng' ? (
-        <EngWeatherData weatherData={weatherData}/>
+      {language === 'eng' ? (
+        <EngWeatherData weatherData={weatherData} />
       ) : (
-        weatherData && language === 'esp' && <EspWeatherData weatherData={weatherData}/>
+        <EspWeatherData weatherData={weatherData} />
       )}
     </section>
   );
