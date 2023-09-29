@@ -20,30 +20,30 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ theme, language }}>
-      <main className={theme === 'dark' ? 'dark-theme' : 'light-theme'}>
-        <header className='header-section'>
-          <button
-            onClick={toggleTheme}
-            className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
-          >
-            {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
-          </button>
-          <button onClick={toggleLenguage} className='languageBtn'>
-            {language === 'eng' ? (
-              <img
-                src={eng}
-                alt='EnglishLenguageReferenceImg'
-                className='EngLangRefImg'
-              />
-            ) : (
-              <img
-                src={esp}
-                alt='SpanishLenguageReferenceImg'
-                className='EspLangRefImg'
-              />
-            )}
-          </button>
-        </header>
+      <header className={theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'}>
+        <button
+          onClick={toggleTheme}
+          className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
+        >
+          {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
+        </button>
+        <button onClick={toggleLenguage} className='languageBtn'>
+          {language === 'eng' ? (
+            <img
+              src={eng}
+              alt='EnglishLenguageReferenceImg'
+              className='EngLangRefImg'
+            />
+          ) : (
+            <img
+              src={esp}
+              alt='SpanishLenguageReferenceImg'
+              className='EspLangRefImg'
+            />
+          )}
+        </button>
+      </header>
+      <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
         <ForecastData />
       </main>
     </AppContext.Provider>

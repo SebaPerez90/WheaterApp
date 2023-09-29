@@ -1,39 +1,41 @@
 html,
 body {
   margin: 0;
-  overflow: hidden;
   box-sizing: border-box;
   line-height: 1.5;
+  min-height: 100dvh;
 
-  .light-theme {
-    min-height: 100dvh;
+  .header-light-theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4e4e4;
+
+    .lightThemeBtn {
+      color: #ffff00;
+      background-color: #82c7ff;
+      border-radius: 50%;
+      border: none;
+      font-size: 1em;
+      height: 1.7em;
+      line-height: 0.6em;
+    }
+
+    .languageBtn {
+      background-color: inherit;
+      border: none;
+      scale: 0.6;
+    }
+  }
+
+  /* main "Light Theme" section */
+  .main-light-theme {
     font-weight: 400;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     background-color: #e4e4e4;
     color: #ff08e6de;
-
-    .header-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .lightThemeBtn {
-        color: #ffff00;
-        background-color: #82c7ff;
-        border-radius: 50%;
-        border: none;
-        font-size: 1em;
-        height: 1.7em;
-        line-height: 0.6em;
-      }
-
-      .languageBtn {
-        background-color: inherit;
-        border: none;
-        scale: 0.6;
-      }
-    }
-
+    border: 2px solid #e4e4e4;
+    min-height: 100dvh;
     .light-title {
       font-size: 3.2em;
       line-height: 1.3;
