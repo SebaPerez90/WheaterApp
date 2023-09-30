@@ -12,7 +12,7 @@ const ForecastData = () => {
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
-    if (!valueCapture) return;
+    if (!valueCapture) alert('llena el campo rey');
 
     try {
       const response = await fetch(

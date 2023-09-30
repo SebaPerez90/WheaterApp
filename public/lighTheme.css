@@ -31,7 +31,7 @@ body {
   /* main "Light Theme" section */
   .main-light-theme {
     font-weight: 400;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: var(--roboto-mono);
     background-color: #e4e4e4;
     color: #ff08e6de;
     border: 2px solid #e4e4e4;
