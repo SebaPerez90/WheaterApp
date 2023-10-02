@@ -23,8 +23,9 @@ const ForecastData = () => {
         throw new Error(response.statusText);
       }
       const data = await response.json();
-      console.log(data.list[0].weather[0]);
-      console.log(data.list[0].weather[0].id);
+      console.log(data);
+      // console.log(data.list[0].weather[0]);
+      // console.log(data.list[0].weather[0].id);
 
       //forecast data state
       setWeatherData({

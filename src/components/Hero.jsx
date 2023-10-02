@@ -8,28 +8,29 @@ const Hero = ({ fetchData, searchLocation }) => {
 
   return (
     <>
-      <h1 className={theme === 'dark' ? 'dark-title' : 'light-title'}>
+      <h1 className={theme === 'dark' ? 'dark-hero-title' : 'light-hero-title'}>
         {language === 'eng' ? 'Wheatter App' : 'Aplicacion del Clima'}
       </h1>
 
       <div className='hero-form-section'>
-        <label className='form-section-label' htmlFor='country'>
+        <label className='form-section-label' htmlFor='country-name'>
           {language === 'eng'
             ? 'Enter a Location :'
             : 'Ingrese una ubicación :'}
+          <div className='form-section'>
+            <input
+              id='form-section-input'
+              type='text'
+              name='country'
+              onChange={searchLocation}
+              autoFocus
+              autoComplete='country-name'
+            />
+            <button className='form-section-btn' onClick={fetchData}>
+              <FcSearch />
+            </button>
+          </div>
         </label>
-        <div className='form-section'>
-          <input
-          className='form-section-input'
-            type='text'
-            name='country'
-            onChange={searchLocation}
-            autoFocus
-          />
-          <button className='form-section-btn' onClick={fetchData}>
-            <FcSearch />
-          </button>
-        </div>
       </div>
     </>
   );
