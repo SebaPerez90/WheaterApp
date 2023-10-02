@@ -65,6 +65,7 @@ body {
 
       .form-section {
         display: flex;
+        margin-top: 1em;
 
         #form-section-input {
           border: none;
@@ -95,7 +96,6 @@ body {
     }
 
     .weather-data-section {
-
       .weather-data-location {
         display: flex;
         justify-content: start;
@@ -107,21 +107,82 @@ body {
           font-size: 1.3em;
         }
 
+        :nth-child(2) {
+          font-family: var(--roboto-italic);
+          letter-spacing: 0.1em;
+        }
+
         :nth-child(3) {
           position: relative;
           top: 0.2em;
         }
       }
 
+      /* main container current forecast data */
+      .weather-data-current {
+        border: 2px solid #8080804f;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(4em, 1fr);
+        padding-right: 1em;
+
+        > :first-child {
+          grid-column: 1 / span 2;
+          grid-row: 1;
+
+          margin-left: 1em;
+        }
+
+        > :nth-child(2) {
+          width: max-content;
+          position: relative;
+          left: 5.5em;
+        }
+
+        .data-current-main {
+          grid-column: 1 / span 2;
+          grid-row: 1 / span 3;
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          align-content: center;
+
+          :nth-child(1) {
+          }
+          :last-child {
+            position: relative;
+            right: 3em;
+            font-weight: bolder;
+            scale: 2;
+          }
+        }
+
+        :nth-child(4) {
+          margin-top: -1em;
+          text-align: center;
+        }
+
+        :nth-child(5) {
+          font-weight: bolder;
+          font-size: 1.7em;
+          text-align: center;
+          grid-row: 2;
+        }
+        :nth-child(6) {
+          text-transform: capitalize;
+          grid-column: 1 / 3;
+          text-align: center;
+          grid-row: 3;
+          font-size: 1.4em;
+        }
+      }
 
       /* main container aditional forecast data */
       .weather-aditional-data {
-
-
         /* forecast keys data */
         .aditional-data-keys {
           display: grid;
-          grid-template-columns: repeat(6, minmax(max-content,1fr));
+          grid-template-columns: repeat(6, minmax(max-content, 1fr));
           place-items: center;
         }
 
@@ -130,8 +191,21 @@ body {
           position: relative;
           top: -2em;
           display: grid;
-          grid-template-columns: repeat(6, minmax(max-content,1fr));
-          place-items: end center;
+          grid-template-columns: repeat(6, minmax(max-content, 1fr));
+          place-items: start center;
+
+          :nth-child(3) {
+            position: relative;
+            right: .7em;
+          }
+          :nth-child(5) {
+            position: relative;
+            right: .6em;
+          }
+          :nth-child(6) {
+            position: relative;
+            right: 1em;
+          }
         }
       }
     }

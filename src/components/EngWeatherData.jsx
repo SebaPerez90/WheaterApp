@@ -21,16 +21,20 @@ const EngWeatherData = ({ weatherData }) => {
         <p>{weatherData.country}</p>
       </div>
 
-      <div>
+      <div className='weather-data-current'>
+        <p>Current Weather</p>
+        <p>{weatherData.date}</p>
+        <div className='data-current-main'>
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
+            alt='Weather Icon'
+          />
+          <p>{weatherData.temperature}°C</p>
+        </div>
+        <p>Feels Like: {weatherData.temp_feels_like}°C</p>
         <p>{weatherData.main}</p>
         <p>{weatherData.main_description}</p>
-        <p>temp: {weatherData.temperature} °C</p>
-        <img
-          src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
-          alt='Weather Icon'
-        />
       </div>
-      {/* <p>Date: {weatherData.date}</p> */}
 
       <div className='weather-aditional-data'>
         <div className='aditional-data-keys'>
