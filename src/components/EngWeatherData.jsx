@@ -15,6 +15,7 @@ const EngWeatherData = ({ weatherData }) => {
 
   return (
     <section className='weather-data-section'>
+      <div className='img-background'></div>
       <div className='weather-data-location'>
         <FaLocationDot />
         <h2>{weatherData.city},</h2>
@@ -34,6 +35,7 @@ const EngWeatherData = ({ weatherData }) => {
         <p>Feels Like: {weatherData.temp_feels_like}°C</p>
         <p>{weatherData.main}</p>
         <p>{weatherData.main_description}</p>
+        {/* <button className='weather-data-btn'>nexts days</button> */}
       </div>
 
       <div className='weather-aditional-data'>
