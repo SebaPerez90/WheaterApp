@@ -12,7 +12,7 @@ const ForecastData = () => {
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
-    if (!valueCapture) alert('llena el campo rey');
+    if (!valueCapture) return;
 
     try {
       const response = await fetch(
@@ -23,7 +23,7 @@ const ForecastData = () => {
         throw new Error(response.statusText);
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       //forecast data state
       setWeatherData({

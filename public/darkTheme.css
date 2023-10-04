@@ -97,17 +97,19 @@ body {
 
     .weather-data-section {
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
 
       /* this styles are used to render the background img */
 
       .contenedor-pepe {
-        height: 80dvh;
-        width: 100dvh;
-        background: linear-gradient(to bottom, #000000, #000000);
-        position: absolute;
-        display: grid;
-        place-items: center center;
+        height: 40dvh;
+        width: 60dvh;
+        /* background: linear-gradient(to bottom, #000000, #000000); */
+        /* position: absolute; */
+        /* display: grid; */
+        /* place-items: center center; */
+        display: flex;
+        flex-direction: column;
 
         .pepe {
           position: absolute;

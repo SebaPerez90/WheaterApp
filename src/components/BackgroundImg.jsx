@@ -24,8 +24,8 @@ const BackgroundImg = ({ weatherData }) => {
 
   const imagesObj = data[data.length - 1];
 
-  const renderingImg = (icondID) => {
-    switch (icondID) {
+  const renderingImg = (iconID) => {
+    switch (iconID) {
       case '01d':
         return <img src={imagesObj.d01} alt={weatherData.main} />;
 
@@ -83,7 +83,9 @@ const BackgroundImg = ({ weatherData }) => {
   };
 
   return (
-    <div className='contenedor-pepe'>{renderingImg(weatherData.icondID)}</div>
+    <div className='contenedor-pepe'>
+      {renderingImg(weatherData.iconID)}
+    </div>
   );
 };
 BackgroundImg.propTypes = {
