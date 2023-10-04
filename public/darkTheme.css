@@ -99,14 +99,23 @@ body {
       position: relative;
       overflow: hidden;
 
-      .img-background {
+      /* this styles are used to render the background img */
+
+      .contenedor-pepe {
+        height: 80dvh;
+        width: 100dvh;
+        background: linear-gradient(to bottom, #000000, #000000);
         position: absolute;
-        height: 75dvh;
-        width: 100dvw;
-        background: url('/src/assets/clear-sky-night.png.jpg') no-repeat top
-          center;
-        background-size: cover;
-        opacity: 0.4;
+        display: grid;
+        place-items: center center;
+
+        .pepe {
+          position: absolute;
+          opacity: 0.4;
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
       }
 
       .weather-data-location {

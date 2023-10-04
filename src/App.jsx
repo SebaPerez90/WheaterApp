@@ -5,8 +5,12 @@ import eng from './assets/eng.png';
 import '../public/darkTheme.css';
 import '../public/lighTheme.css';
 import ForecastData from './components/ForecastData.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const client = new QueryClient();
 
 export const AppContext = createContext(null);
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [language, setLenguage] = useState('eng');
@@ -19,40 +23,42 @@ const App = () => {
   };
 
   return (
-    <AppContext.Provider value={{ theme, language }}>
-      <header
-        className={
-          theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
-        }
-      >
-        <button
-          onClick={toggleTheme}
-          className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
+    <QueryClientProvider client={client}>
+      <AppContext.Provider value={{ theme, language }}>
+        <header
+          className={
+            theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
+          }
         >
-          {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
-        </button>
-        <button onClick={toggleLenguage} className='languageBtn'>
-          {language === 'eng' ? (
-            <img
-              src={eng}
-              alt='EnglishLenguageReferenceImg'
-              className='EngLangRefImg'
-            />
-          ) : (
-            <img
-              src={esp}
-              alt='SpanishLenguageReferenceImg'
-              className='EspLangRefImg'
-            />
-          )}
-        </button>
-      </header>
-      <main
-        className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
-      >
-        <ForecastData />
-      </main>
-    </AppContext.Provider>
+          <button
+            onClick={toggleTheme}
+            className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
+          >
+            {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
+          </button>
+          <button onClick={toggleLenguage} className='languageBtn'>
+            {language === 'eng' ? (
+              <img
+                src={eng}
+                alt='EnglishLenguageReferenceImg'
+                className='EngLangRefImg'
+              />
+            ) : (
+              <img
+                src={esp}
+                alt='SpanishLenguageReferenceImg'
+                className='EspLangRefImg'
+              />
+            )}
+          </button>
+        </header>
+        <main
+          className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
+        >
+          <ForecastData />
+        </main>
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 };
 

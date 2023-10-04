@@ -221,6 +221,26 @@
     {
       "id": 804,
       "descriptionEsp": "nubes cubiertas: 85-100%"
+    },
+    {
+      "d01" : "../src/assets/images/clear-sky-day.png",
+      "d02" : "../src/assets/images/few-clouds-day.png",
+      "d03" : "../src/assets/images/scattered-clouds-day.png",
+      "d04" : "../src/assets/images/broken-clouds-day.png",
+      "d09" : "../src/assets/images/shower-rain-day.png",
+      "d10" : "../src/assets/images/rain-day.png",
+      "d11" : "../src/assets/images/thunder-storm-day.png",
+      "d13" : "../src/assets/images/snow-day.png",
+      "d50" : "../src/assets/images/mist-day.png",
+      "n01" : "../src/assets/images/clear-sky-nigth.png",
+      "n02" : "../src/assets/images/few-clouds-night.png",
+      "n03" : "../src/assets/images/scattered-clouds-night.png",
+      "n04" : "../src/assets/images/broken-clouds-night.png",
+      "n09" : "../src/assets/images/shower-rain-night.png",
+      "n10" : "../src/assets/images/rain-night.png",
+      "n11" : "../src/assets/images/thunder-storm-night.png",
+      "n13" : "../src/assets/images/snow-night.png",
+      "n50" : "../src/assets/images/mist-night.png"
     }
   ]
 }

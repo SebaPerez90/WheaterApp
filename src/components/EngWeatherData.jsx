@@ -9,13 +9,16 @@ import { FaWind } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
 import { IoMdEye } from 'react-icons/io';
 import PropTypes from 'prop-types';
+import BackgroundImg from './BackgroundImg.jsx';
 
 const EngWeatherData = ({ weatherData }) => {
   if (!weatherData) return;
 
   return (
     <section className='weather-data-section'>
-      <div className='img-background'></div>
+      
+      {/* this component rendering the background img related with the current weather data info */}
+      <BackgroundImg weatherData={weatherData} />
       <div className='weather-data-location'>
         <FaLocationDot />
         <h2>{weatherData.city},</h2>
@@ -35,7 +38,6 @@ const EngWeatherData = ({ weatherData }) => {
         <p>Feels Like: {weatherData.temp_feels_like}°C</p>
         <p>{weatherData.main}</p>
         <p>{weatherData.main_description}</p>
-        {/* <button className='weather-data-btn'>nexts days</button> */}
       </div>
 
       <div className='weather-aditional-data'>
