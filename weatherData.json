@@ -1,0 +1,226 @@
+{
+  "weatherData": [
+    {
+      "id": 200,
+      "descriptionEsp": "tormenta con lluvia ligera"
+    },
+    {
+      "id": 201,
+      "descriptionEsp": "tormenta con lluvia"
+    },
+    {
+      "id": 202,
+      "descriptionEsp": "tormenta con lluvia intensa"
+    },
+    {
+      "id": 210,
+      "descriptionEsp": "tormenta ligera"
+    },
+    {
+      "id": 211,
+      "descriptionEsp": "tormenta"
+    },
+    {
+      "id": 212,
+      "descriptionEsp": "tormenta intensa"
+    },
+    {
+      "id": 221,
+      "descriptionEsp": "tormenta irregular"
+    },
+    {
+      "id": 230,
+      "descriptionEsp": "tormenta con llovizna ligera"
+    },
+    {
+      "id": 231,
+      "descriptionEsp": "tormenta con llovizna"
+    },
+    {
+      "id": 232,
+      "descriptionEsp": "tormenta con llovizna intensa"
+    },
+    {
+      "id": 300,
+      "descriptionEsp": "llovizna de intensidad ligera"
+    },
+    {
+      "id": 301,
+      "descriptionEsp": "llovizna"
+    },
+    {
+      "id": 302,
+      "descriptionEsp": "llovizna de intensidad fuerte"
+    },
+    {
+      "id": 310,
+      "descriptionEsp": "lluvia ligera de intensidad ligera"
+    },
+    {
+      "id": 311,
+      "descriptionEsp": "lluvia"
+    },
+    {
+      "id": 312,
+      "descriptionEsp": "lluvia de intensidad fuerte"
+    },
+    {
+      "id": 313,
+      "descriptionEsp": "lluvia y llovizna"
+    },
+    {
+      "id": 314,
+      "descriptionEsp": "lluvia fuerte y llovizna"
+    },
+    {
+      "id": 321,
+      "descriptionEsp": "llovizna"
+    },
+    {
+      "id": 500,
+      "descriptionEsp": "lluvia ligera"
+    },
+    {
+      "id": 501,
+      "descriptionEsp": "lluvia moderada"
+    },
+    {
+      "id": 502,
+      "descriptionEsp": "lluvia de intensidad fuerte"
+    },
+    {
+      "id": 503,
+      "descriptionEsp": "lluvia muy intensa"
+    },
+    {
+      "id": 504,
+      "descriptionEsp": "lluvia extrema"
+    },
+    {
+      "id": 511,
+      "descriptionEsp": "lluvia congelante"
+    },
+    {
+      "id": 520,
+      "descriptionEsp": "lluvia ligera de intensidad ligera"
+    },
+    {
+      "id": 521,
+      "descriptionEsp": "lluvia"
+    },
+    {
+      "id": 522,
+      "descriptionEsp": "lluvia de intensidad fuerte"
+    },
+    {
+      "id": 531,
+      "descriptionEsp": "lluvia irregular"
+    },
+    {
+      "id": 600,
+      "descriptionEsp": "nieve ligera"
+    },
+    {
+      "id": 601,
+      "descriptionEsp": "nieve"
+    },
+    {
+      "id": 602,
+      "descriptionEsp": "nieve intensa"
+    },
+    {
+      "id": 611,
+      "descriptionEsp": "aguanieve"
+    },
+    {
+      "id": 612,
+      "descriptionEsp": "aguanieve ligera"
+    },
+    {
+      "id": 613,
+      "descriptionEsp": "aguanieve"
+    },
+    {
+      "id": 615,
+      "descriptionEsp": "lluvia ligera y nieve"
+    },
+    {
+      "id": 616,
+      "descriptionEsp": "lluvia y nieve"
+    },
+    {
+      "id": 620,
+      "descriptionEsp": "nieve ligera"
+    },
+    {
+      "id": 621,
+      "descriptionEsp": "nieve"
+    },
+    {
+      "id": 622,
+      "descriptionEsp": "nieve intensa"
+    },
+    {
+      "id": 701,
+      "descriptionEsp": "neblina"
+    },
+    {
+      "id": 711,
+      "descriptionEsp": "humo"
+    },
+    {
+      "id": 721,
+      "descriptionEsp": "calima"
+    },
+    {
+      "id": 731,
+      "descriptionEsp": "remolinos de arena/polvo"
+    },
+    {
+      "id": 741,
+      "descriptionEsp": "niebla"
+    },
+    {
+      "id": 751,
+      "descriptionEsp": "arena"
+    },
+    {
+      "id": 761,
+      "descriptionEsp": "polvo"
+    },
+    {
+      "id": 762,
+      "descriptionEsp": "ceniza volcánica"
+    },
+    {
+      "id": 771,
+      "descriptionEsp": "rachas de viento"
+    },
+    {
+      "id": 781,
+      "descriptionEsp": "tornado"
+    },
+
+    {
+      "id": 800,
+      "descriptionEsp": "cielo despejado"
+    },
+
+    {
+      "id": 801,
+      "descriptionEsp": "pocas nubes: 11-25%"
+    },
+    {
+      "id": 802,
+      "descriptionEsp": "nubes dispersas: 25-50%"
+    },
+    {
+      "id": 803,
+      "descriptionEsp": "nubes rotas: 51-84%"
+    },
+    {
+      "id": 804,
+      "descriptionEsp": "nubes cubiertas: 85-100%"
+    }
+  ]
+}

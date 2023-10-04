@@ -51,7 +51,6 @@ const ForecastData = () => {
   useEffect(() => {
     if (valueCapture) {
       fetchData();
-      console.log(localStorage);
     }
   }, [language]);
 

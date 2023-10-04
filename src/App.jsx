@@ -2,7 +2,7 @@ import React, { useState, createContext } from 'react';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import esp from './assets/esp.png';
 import eng from './assets/eng.png';
-import '../public/darkTheme.css';   
+import '../public/darkTheme.css';
 import '../public/lighTheme.css';
 import ForecastData from './components/ForecastData.jsx';
 
@@ -20,7 +20,11 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ theme, language }}>
-      <header className={theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'}>
+      <header
+        className={
+          theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
+        }
+      >
         <button
           onClick={toggleTheme}
           className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
@@ -43,7 +47,9 @@ const App = () => {
           )}
         </button>
       </header>
-      <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
+      <main
+        className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
+      >
         <ForecastData />
       </main>
     </AppContext.Provider>
