@@ -20,7 +20,11 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ theme, language }}>
-      <header className={theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'}>
+      <header
+        className={
+          theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
+        }
+      >
         <button
           onClick={toggleTheme}
           className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
@@ -43,7 +47,9 @@ const App = () => {
           )}
         </button>
       </header>
-      <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
+      <main
+        className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
+      >
         <ForecastData />
       </main>
     </AppContext.Provider>

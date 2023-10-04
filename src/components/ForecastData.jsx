@@ -24,8 +24,6 @@ const ForecastData = () => {
       }
       const data = await response.json();
       console.log(data);
-      // console.log(data.list[0].weather[0]);
-      // console.log(data.list[0].weather[0].id);
 
       //forecast data state
       setWeatherData({
@@ -33,6 +31,7 @@ const ForecastData = () => {
         country: data.city.country,
         pop: data.list[0].pop * 100,
         temperature: data.list[0].main.temp.toFixed(1),
+        temp_feels_like: data.list[0].main.feels_like.toFixed(1),
         humidity: data.list[0].main.humidity,
         tempMax: data.list[0].main.temp_max.toFixed(1),
         tempMin: data.list[0].main.temp_min.toFixed(1),
@@ -40,7 +39,7 @@ const ForecastData = () => {
         main: data.list[0].weather[0].main,
         main_description: data.list[0].weather[0].description,
         wind_speed: (data.list[0].wind.speed * 3.6).toFixed(1),
-        date: data.list[0].dt_txt,
+        date: data.list[0].dt_txt.slice(0, 10),
         visibility: data.list[0].visibility / 1000,
       });
     } catch (error) {
@@ -52,7 +51,6 @@ const ForecastData = () => {
   useEffect(() => {
     if (valueCapture) {
       fetchData();
-      console.log(localStorage);
     }
   }, [language]);
 

@@ -13,7 +13,7 @@ const Hero = ({ fetchData, searchLocation }) => {
       </h1>
 
       <div className='hero-form-section'>
-        <label className='form-section-label' htmlFor='country-name'>
+        <label className='form-section-label' htmlFor='form-section-input'>
           {language === 'eng'
             ? 'Enter a Location :'
             : 'Ingrese una ubicación :'}
