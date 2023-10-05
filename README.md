@@ -12,4 +12,8 @@ pendientes:
 
 6) agregar comentarios sobre la app
 
-7)agregar imagenes o advertencias sobre condiciones especiales (ID 700 en adelante )
+7) agregar imagenes o advertencias sobre condiciones especiales ,ID 700 en adelante
+
+8) añadir un chatbot
+
+9) refactorizar implementando zustand
