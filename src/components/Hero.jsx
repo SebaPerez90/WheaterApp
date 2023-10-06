@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../App';
+import React from 'react';
 import { FcSearch } from 'react-icons/fc';
 import PropTypes from 'prop-types';
+import { useStore } from '../../store';
 
 const Hero = ({ fetchData, searchLocation }) => {
-  const { theme, language } = useContext(AppContext);
+  const { theme, language } = useStore();
 
   return (
     <>

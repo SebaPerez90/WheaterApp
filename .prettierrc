@@ -6,7 +6,8 @@
   "objectCurlySpacing": true,
   "useTabs": false,
   "tabWidth": 2,
-  "printWidth": 80,
+  "printWidth": 120,
   "jsxBracketSameLine": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "singleAttributePerLine": true
 }

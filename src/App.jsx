@@ -1,63 +1,33 @@
-import React, { useState, createContext } from 'react';
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
-import esp from './assets/esp.png';
-import eng from './assets/eng.png';
+import React from 'react';
 import '../public/darkTheme.css';
 import '../public/lighTheme.css';
 import ForecastData from './components/ForecastData.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Header from './components/Header';
+import { useStore } from '../store';
+import { Toaster } from 'react-hot-toast';
+import { Route } from 'wouter';
+import NotFound from '../src/routes/NotFound.jsx';
 
 const client = new QueryClient();
 
-export const AppContext = createContext(null);
-
 const App = () => {
-  const [theme, setTheme] = useState('dark');
-  const [language, setLenguage] = useState('eng');
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-  const toggleLenguage = () => {
-    setLenguage(language === 'eng' ? 'esp' : 'eng');
-  };
+  const { theme } = useStore();
 
   return (
     <QueryClientProvider client={client}>
-      <AppContext.Provider value={{ theme, language }}>
-        <header
-          className={
-            theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
-          }
-        >
-          <button
-            onClick={toggleTheme}
-            className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
-          >
-            {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
-          </button>
-          <button onClick={toggleLenguage} className='languageBtn'>
-            {language === 'eng' ? (
-              <img
-                src={eng}
-                alt='EnglishLenguageReferenceImg'
-                className='EngLangRefImg'
-              />
-            ) : (
-              <img
-                src={esp}
-                alt='SpanishLenguageReferenceImg'
-                className='EspLangRefImg'
-              />
-            )}
-          </button>
-        </header>
-        <main
-          className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
-        >
-          <ForecastData />
-        </main>
-      </AppContext.Provider>
+      <Header />
+      <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
+        <Route
+          path='/'
+          component={ForecastData}
+        />
+        <Route
+          path='/notfound'
+          component={NotFound}
+        />
+      </main>
+      <Toaster />
     </QueryClientProvider>
   );
 };

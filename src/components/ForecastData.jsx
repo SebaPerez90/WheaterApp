@@ -1,29 +1,36 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../App';
+import React, { useState, useEffect } from 'react';
+import { useStore } from '../../store';
 import Hero from './Hero.jsx';
 import EngWeatherData from './EngWeatherData.jsx';
 import EspWeatherData from './EspWeatherData.jsx';
+import { toast } from 'react-hot-toast';
+import { Redirect } from 'wouter';
 
 const ForecastData = () => {
-  const { language } = useContext(AppContext);
+  const { language } = useStore();
   const [valueCapture, setValueCapture] = useState(''); //input value state
   const [weatherData, setWeatherData] = useState(null);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
     if (!valueCapture) return;
 
+    const errorInfoToast = () => toast.error('please try again');
+
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`,
       );
 
       if (response.status !== 200) {
-        throw new Error(response.statusText);
+        errorInfoToast();
+        setShouldRedirect(true);
+        return;
       }
+
       const data = await response.json();
-      // console.log(data);
 
       //forecast data state
       setWeatherData({
@@ -54,12 +61,15 @@ const ForecastData = () => {
     }
   }, [language]);
 
-  return (
+  return (z
     <section>
       <Hero
         fetchData={fetchData}
         searchLocation={(e) => setValueCapture(e.target.value)}
       />
+
+      {shouldRedirect && <Redirect to='/notfound' />}
+
       {language === 'eng' ? (
         <EngWeatherData weatherData={weatherData} />
       ) : (
