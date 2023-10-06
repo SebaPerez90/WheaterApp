@@ -13,10 +13,11 @@ const Hero = ({ fetchData, searchLocation }) => {
       </h1>
 
       <div className='hero-form-section'>
-        <label className='form-section-label' htmlFor='form-section-input'>
-          {language === 'eng'
-            ? 'Enter a Location :'
-            : 'Ingrese una ubicación :'}
+        <label
+          className='form-section-label'
+          htmlFor='form-section-input'
+        >
+          {language === 'eng' ? 'Enter a Location :' : 'Ingrese una ubicación :'}
           <div className='form-section'>
             <input
               id='form-section-input'
@@ -26,7 +27,10 @@ const Hero = ({ fetchData, searchLocation }) => {
               autoFocus
               autoComplete='country-name'
             />
-            <button className='form-section-btn' onClick={fetchData}>
+            <button
+              className='form-section-btn'
+              onClick={fetchData}
+            >
               <FcSearch />
             </button>
           </div>

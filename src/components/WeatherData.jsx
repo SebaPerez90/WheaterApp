@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 import { Redirect } from 'wouter';
 
 const WeatherData = () => {
-  const { language } = useStore();
+  // const { language, setValueCapture ,valueCapture } = useStore();
   const [valueCapture, setValueCapture] = useState(''); //input value state
   const [weatherData, setWeatherData] = useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -15,7 +15,7 @@ const WeatherData = () => {
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
-    const errorInfoToast = () => toast.error('Please enter a real location', { position:'bottom-center'});
+    const errorInfoToast = () => toast.error('Please enter a real location', { position: 'bottom-center' });
 
     if (!valueCapture) {
       errorInfoToast();
@@ -70,7 +70,7 @@ const WeatherData = () => {
         searchLocation={(e) => setValueCapture(e.target.value)}
       />
 
-      {shouldRedirect && <Redirect to='/notfound' />}
+      {shouldRedirect ? <Redirect to='/notfound' /> : null}
 
       {language === 'eng' ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
     </section>

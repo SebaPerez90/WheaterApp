@@ -4,6 +4,8 @@ export const useStore = create((set) => ({
   //states
   theme: 'dark',
   language: 'eng',
+  valueCapture: '',
+  shouldRedirect: false,
   weatherData: {},
 
   //actions
@@ -11,18 +13,26 @@ export const useStore = create((set) => ({
 
   toggleLanguage: () => set((state) => ({ language: state.language === 'eng' ? 'esp' : 'eng' })),
 
-  setWeatherData: async () => {
+  setValueCapture: () => set(({valueCapture : event.target.value })),
 
-    const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261'
+  setShouldRedirect: () => set((state) => ({ shouldRedirect: state.shouldRedirect ? true : false })),
+
+  setWeatherData: async () => {
+    const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
     try {
-      const resp = await fetch(
+      const response = await fetch(
         `http://api.openweathermap.org/data/2.5/forecast?q=quilmes&units=metric&appid=${APIkey}`,
       );
 
-      if (!resp.ok) throw new Error('something goes wrong');
+      if (!response.ok) throw new Error('something goes wrong');
 
-      const data = await resp.json();
+      if (response.status !== 200) {
+        set((state) => ({ shouldRedirect: state.true }));
+        return;
+      }
+
+      const data = await response.json();
 
       set({
         weatherData: {
