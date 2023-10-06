@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchImg = async () => {
-  const resp = await fetch('http://localhost:5173/weatherData.json');
+  const resp = await fetch('http://localhost:5173/weatherData-db.json');
 
   if (!resp.ok) throw new Error('something goes wrong');
 
@@ -25,6 +25,7 @@ const BackgroundImg = ({ weatherData }) => {
   const imagesObj = data[data.length - 1];
 
   const renderingImg = (iconID) => {
+    console.log(weatherData);
     switch (iconID) {
       case '01d':
         return (
@@ -190,11 +191,7 @@ const BackgroundImg = ({ weatherData }) => {
     }
   };
 
-  return (
-    <div className='backgroundImg-container'>
-      {renderingImg(weatherData.iconID)}
-    </div>
-  );
+  return <div className='backgroundImg-container'>{renderingImg(weatherData.iconID)}</div>;
 };
 BackgroundImg.propTypes = {
   weatherData: PropTypes.object,

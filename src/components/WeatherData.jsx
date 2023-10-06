@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useStore } from '../../store';
 import Hero from './Hero.jsx';
 import EngWeatherData from './EngWeatherData.jsx';
 import EspWeatherData from './EspWeatherData.jsx';
+import { useStore } from '../../store';
 import { toast } from 'react-hot-toast';
 import { Redirect } from 'wouter';
 
-const ForecastData = () => {
+const WeatherData = () => {
   const { language } = useStore();
   const [valueCapture, setValueCapture] = useState(''); //input value state
   const [weatherData, setWeatherData] = useState(null);
@@ -15,9 +15,12 @@ const ForecastData = () => {
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
-    if (!valueCapture) return;
+    const errorInfoToast = () => toast.error('Please enter a real location', { position:'bottom-center'});
 
-    const errorInfoToast = () => toast.error('please try again');
+    if (!valueCapture) {
+      errorInfoToast();
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -25,14 +28,13 @@ const ForecastData = () => {
       );
 
       if (response.status !== 200) {
-        errorInfoToast();
         setShouldRedirect(true);
         return;
       }
 
       const data = await response.json();
 
-      //forecast data state
+      // weather data state
       setWeatherData({
         city: data.city.name,
         country: data.city.country,
@@ -61,7 +63,7 @@ const ForecastData = () => {
     }
   }, [language]);
 
-  return (z
+  return (
     <section>
       <Hero
         fetchData={fetchData}
@@ -70,13 +72,9 @@ const ForecastData = () => {
 
       {shouldRedirect && <Redirect to='/notfound' />}
 
-      {language === 'eng' ? (
-        <EngWeatherData weatherData={weatherData} />
-      ) : (
-        <EspWeatherData weatherData={weatherData} />
-      )}
+      {language === 'eng' ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
     </section>
   );
 };
 
-export default ForecastData;
+export default WeatherData;

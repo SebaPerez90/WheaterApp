@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  FaLocationDot,
-  FaTemperatureEmpty,
-  FaTemperatureFull,
-} from 'react-icons/fa6';
+import { FaLocationDot, FaTemperatureEmpty, FaTemperatureFull } from 'react-icons/fa6';
 import { BsCloudRainFill } from 'react-icons/bs';
 import { FaWind } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
@@ -16,7 +12,6 @@ const EngWeatherData = ({ weatherData }) => {
 
   return (
     <section className='weather-data-section'>
-      
       {/* this component rendering the background img related with the current weather data info */}
       <BackgroundImg weatherData={weatherData} />
       <div className='weather-data-location'>
