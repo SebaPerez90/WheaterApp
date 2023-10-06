@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useStore } from '../store';
 import { Toaster } from 'react-hot-toast';
 import { Route } from 'wouter';
+import Footer from './components/Footer';
 
 const client = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => {
     <QueryClientProvider client={client}>
       <Header />
       <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
+        <Footer />
         <Route
           path='/'
           component={WeatherData}
