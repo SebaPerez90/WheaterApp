@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 import { Redirect } from 'wouter';
 
 const WeatherData = () => {
-  // const { language, setValueCapture ,valueCapture } = useStore();
+  const { language } = useStore();
   const [valueCapture, setValueCapture] = useState(''); //input value state
   const [weatherData, setWeatherData] = useState(null);
   const [shouldRedirect, setShouldRedirect] = useState(false);
