@@ -1,10 +1,9 @@
-import React from 'react';
 import { useStore } from '../../store';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import esp from '../assets/esp.png';
 import eng from '../assets/eng.png';
 
-const Header = () => {
+export default function Header() {
   const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
 
   return (
@@ -35,6 +34,4 @@ const Header = () => {
       </button>
     </header>
   );
-};
-
-export default Header;
+}
