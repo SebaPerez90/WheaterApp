@@ -1,58 +1,36 @@
-import React, { useState, createContext } from 'react';
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
-import esp from './assets/esp.png';
-import eng from './assets/eng.png';
+import React from 'react';
 import '../public/darkTheme.css';
 import '../public/lighTheme.css';
-import ForecastData from './components/ForecastData.jsx';
+import Header from './components/Header';
+import WeatherData from './components/WeatherData.jsx';
+import NotFound from '../src/routes/NotFound.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useStore } from '../store';
+import { Toaster } from 'react-hot-toast';
+import { Route } from 'wouter';
+import Footer from './components/Footer';
 
-export const AppContext = createContext(null);
+const client = new QueryClient();
+
 const App = () => {
-  const [theme, setTheme] = useState('dark');
-  const [language, setLenguage] = useState('eng');
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-  const toggleLenguage = () => {
-    setLenguage(language === 'eng' ? 'esp' : 'eng');
-  };
+  const { theme } = useStore();
 
   return (
-    <AppContext.Provider value={{ theme, language }}>
-      <header
-        className={
-          theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'
-        }
-      >
-        <button
-          onClick={toggleTheme}
-          className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
-        >
-          {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
-        </button>
-        <button onClick={toggleLenguage} className='languageBtn'>
-          {language === 'eng' ? (
-            <img
-              src={eng}
-              alt='EnglishLenguageReferenceImg'
-              className='EngLangRefImg'
-            />
-          ) : (
-            <img
-              src={esp}
-              alt='SpanishLenguageReferenceImg'
-              className='EspLangRefImg'
-            />
-          )}
-        </button>
-      </header>
-      <main
-        className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}
-      >
-        <ForecastData />
+    <QueryClientProvider client={client}>
+      <Header />
+      <main className={theme === 'dark' ? 'main-dark-theme' : 'main-light-theme'}>
+        <Footer />
+        <Route
+          path='/'
+          component={WeatherData}
+        />
+        <Route
+          path='/notfound'
+          component={NotFound}
+        />
       </main>
-    </AppContext.Provider>
+      <Toaster />
+    </QueryClientProvider>
   );
 };
 

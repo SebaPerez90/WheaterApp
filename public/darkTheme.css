@@ -97,16 +97,21 @@ body {
 
     .weather-data-section {
       position: relative;
-      overflow: hidden;
+      width: 60dvw;
 
-      .img-background {
+      /* this styles are used to render the background img */
+      .backgroundImg-container {
         position: absolute;
-        height: 75dvh;
-        width: 100dvw;
-        background: url('/src/assets/clear-sky-night.png.jpg') no-repeat top
-          center;
-        background-size: cover;
-        opacity: 0.4;
+        height: 100%;
+        width: 100%;
+
+        .backgroundImg {
+          height: 100%;
+          border-radius: 0.6em;
+          width: 100%;
+          object-fit: cover;
+          opacity: 0.7;
+        }
       }
 
       .weather-data-location {

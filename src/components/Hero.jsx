@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../App';
+import React from 'react';
 import { FcSearch } from 'react-icons/fc';
 import PropTypes from 'prop-types';
+import { useStore } from '../../store';
 
 const Hero = ({ fetchData, searchLocation }) => {
-  const { theme, language } = useContext(AppContext);
+  const { theme, language } = useStore();
 
   return (
     <>
@@ -13,10 +13,11 @@ const Hero = ({ fetchData, searchLocation }) => {
       </h1>
 
       <div className='hero-form-section'>
-        <label className='form-section-label' htmlFor='form-section-input'>
-          {language === 'eng'
-            ? 'Enter a Location :'
-            : 'Ingrese una ubicación :'}
+        <label
+          className='form-section-label'
+          htmlFor='form-section-input'
+        >
+          {language === 'eng' ? 'Enter a Location :' : 'Ingrese una ubicación :'}
           <div className='form-section'>
             <input
               id='form-section-input'
@@ -26,7 +27,10 @@ const Hero = ({ fetchData, searchLocation }) => {
               autoFocus
               autoComplete='country-name'
             />
-            <button className='form-section-btn' onClick={fetchData}>
+            <button
+              className='form-section-btn'
+              onClick={fetchData}
+            >
               <FcSearch />
             </button>
           </div>

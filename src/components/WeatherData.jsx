@@ -1,31 +1,40 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../App';
+import React, { useState, useEffect } from 'react';
 import Hero from './Hero.jsx';
 import EngWeatherData from './EngWeatherData.jsx';
 import EspWeatherData from './EspWeatherData.jsx';
+import { useStore } from '../../store';
+import { toast } from 'react-hot-toast';
+import { Redirect } from 'wouter';
 
-const ForecastData = () => {
-  const { language } = useContext(AppContext);
+const WeatherData = () => {
+  const { language } = useStore();
   const [valueCapture, setValueCapture] = useState(''); //input value state
   const [weatherData, setWeatherData] = useState(null);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
 
-    if (!valueCapture) alert('llena el campo rey');
+    const errorInfoToast = () => toast.error('Please enter a real location', { position: 'bottom-center' });
+
+    if (!valueCapture) {
+      errorInfoToast();
+      return;
+    }
 
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`,
       );
 
       if (response.status !== 200) {
-        throw new Error(response.statusText);
+        setShouldRedirect(true);
+        return;
       }
-      const data = await response.json();
-      console.log(data);
 
-      //forecast data state
+      const data = await response.json();
+
+      // weather data state
       setWeatherData({
         city: data.city.name,
         country: data.city.country,
@@ -60,13 +69,12 @@ const ForecastData = () => {
         fetchData={fetchData}
         searchLocation={(e) => setValueCapture(e.target.value)}
       />
-      {language === 'eng' ? (
-        <EngWeatherData weatherData={weatherData} />
-      ) : (
-        <EspWeatherData weatherData={weatherData} />
-      )}
+
+      {shouldRedirect ? <Redirect to='/notfound' /> : null}
+
+      {language === 'eng' ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
     </section>
   );
 };
 
-export default ForecastData;
+export default WeatherData;
