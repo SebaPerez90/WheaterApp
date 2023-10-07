@@ -14,26 +14,70 @@ body {
   line-height: 1.5;
   min-height: 100dvh;
 
-  .header-dark-theme {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .header-container-dt {
+    padding: 1em;
     background-color: var(--bg-dark-theme);
+    border-bottom: 3px solid wheat;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 
-    .darkThemeBtn {
-      color: #d8f33f;
-      background-color: #516677;
-      font-size: 1em;
-      border-radius: 50%;
-      border: none;
-      height: 1.7em;
-      line-height: 1.1em;
+    .header-resourse-dt {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1em;
+      font-family: var(--roboto-italic);
+
+      > :first-child {
+        color: var(--bg-light-theme);
+      }
+
+      .header-url-dt {
+        background-color: var(--bg-light-theme);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0.5em;
+        border-radius: 0.4em;
+        width: 20dvw;
+        height: 2.5em;
+        > :last-child {
+          border: none;
+          background-color: inherit;
+        }
+      }
     }
 
-    .languageBtn {
-      background-color: inherit;
-      border: none;
-      scale: 0.6;
+    > :nth-child(2) {
+      color: var(--bg-light-theme);
+      text-align: center;
+      font-size: 3em;
+      min-width: max-content;
+      grid-column: 2 / 5;
+      font-family: var(--roboto-mono);
+    }
+
+    /* button toggle theme and language styles section */
+    .header-btn-container-dt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-column: 5;
+
+      .header-btn-dt {
+        color: #d8f33f;
+        background-color: #516677;
+        font-size: 1em;
+        border-radius: 50%;
+        border: none;
+        height: 1.7em;
+        line-height: 1.1em;
+      }
+
+      .languageBtn {
+        background-color: inherit;
+        border: none;
+        scale: 0.6;
+      }
     }
   }
 
@@ -45,55 +89,6 @@ body {
     border: 2px solid var(--bg-dark-theme);
     color: var(--bg-light-theme);
     min-height: 100dvh;
-
-    .dark-hero-title {
-      font-size: 3.2em;
-      line-height: 1.3;
-      text-align: center;
-    }
-
-    /* form section label , input field and search button */
-    .hero-form-section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      .form-section-label {
-        font-weight: 400;
-      }
-
-      .form-section {
-        display: flex;
-        margin-top: 1em;
-
-        #form-section-input {
-          border: none;
-          border-radius: 0.2em 0 0 0.2em;
-          line-height: 2em;
-          padding-left: 1em;
-          font-family: var(--roboto-italic);
-          text-transform: capitalize;
-
-          &:focus {
-            outline: none;
-          }
-        }
-
-        .form-section-btn {
-          cursor: pointer;
-          border: none;
-          font-size: 1.2em;
-          background-color: var(--bg-light-theme);
-          border-radius: 0 0.2em 0.2em 0;
-
-          &:hover {
-            background-color: #79797973;
-            transition: all 200ms;
-          }
-        }
-      }
-    }
 
     .weather-data-section {
       position: relative;

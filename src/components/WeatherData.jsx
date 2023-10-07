@@ -31,7 +31,6 @@ export default function WeatherData() {
 
   return (
     <main className={themeDark ? 'main-dark-theme' : 'main-light-theme'}>
-      <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
       <input
         placeholder={languageEng ? 'enter a Location...' : 'ingrese una ubicación...'}
         type='text'
