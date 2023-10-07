@@ -25,7 +25,6 @@ const BackgroundImg = ({ weatherData }) => {
   const imagesObj = data[data.length - 1];
 
   const renderingImg = (iconID) => {
-    console.log(weatherData);
     switch (iconID) {
       case '01d':
         return (

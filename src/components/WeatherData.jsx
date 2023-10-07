@@ -7,10 +7,8 @@ import { toast } from 'react-hot-toast';
 import { Redirect } from 'wouter';
 
 const WeatherData = () => {
-  const { language } = useStore();
-  const [valueCapture, setValueCapture] = useState(''); //input value state
+  const { shouldRedirect, setShouldRedirect, languageEng, valueCapture, setValueCapture } = useStore();
   const [weatherData, setWeatherData] = useState(null);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const fetchData = async () => {
     const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
@@ -28,7 +26,7 @@ const WeatherData = () => {
       );
 
       if (response.status !== 200) {
-        setShouldRedirect(true);
+        setShouldRedirect();
         return;
       }
 
@@ -56,23 +54,23 @@ const WeatherData = () => {
     }
   };
 
-  //this effect run if the language state change.
+  //this effect run if the languageEng state change.
   useEffect(() => {
     if (valueCapture) {
       fetchData();
     }
-  }, [language]);
+  }, [languageEng]);
 
   return (
     <section>
       <Hero
         fetchData={fetchData}
-        searchLocation={(e) => setValueCapture(e.target.value)}
+        searchLocation={setValueCapture}
       />
 
       {shouldRedirect ? <Redirect to='/notfound' /> : null}
 
-      {language === 'eng' ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
+      {languageEng ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
     </section>
   );
 };

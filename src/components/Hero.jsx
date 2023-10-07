@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { useStore } from '../../store';
 
 const Hero = ({ fetchData, searchLocation }) => {
-  const { theme, language } = useStore();
+  const { themeDark, languageEng } = useStore();
 
   return (
     <>
-      <h1 className={theme === 'dark' ? 'dark-hero-title' : 'light-hero-title'}>
-        {language === 'eng' ? 'Wheatter App' : 'Aplicacion del Clima'}
+      <h1 className={themeDark ? 'dark-hero-title' : 'light-hero-title'}>
+        {languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}
       </h1>
 
       <div className='hero-form-section'>
@@ -17,7 +17,7 @@ const Hero = ({ fetchData, searchLocation }) => {
           className='form-section-label'
           htmlFor='form-section-input'
         >
-          {language === 'eng' ? 'Enter a Location :' : 'Ingrese una ubicación :'}
+          {languageEng? 'Enter a Location :' : 'Ingrese una ubicación :'}
           <div className='form-section'>
             <input
               id='form-section-input'

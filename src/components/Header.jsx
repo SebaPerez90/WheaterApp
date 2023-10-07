@@ -5,30 +5,31 @@ import esp from '../assets/esp.png';
 import eng from '../assets/eng.png';
 
 const Header = () => {
-  const { theme, toggleTheme, language, toggleLanguage } = useStore();
+  const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
 
   return (
-    <header
-      className={theme === 'dark' ? 'header-dark-theme' : 'header-light-theme'}
-    >
+    <header className={themeDark ? 'header-dark-theme' : 'header-light-theme'}>
       <button
         onClick={toggleTheme}
-        className={theme === 'dark' ? 'darkThemeBtn' : 'lightThemeBtn'}
+        className={themeDark ? 'darkThemeBtn' : 'lightThemeBtn'}
       >
-        {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
+        {themeDark ? <BsFillMoonFill /> : <BsFillSunFill />}
       </button>
-      <button onClick={toggleLanguage} className='languageBtn'>
-        {language === 'eng' ? (
+      <button
+        onClick={toggleLanguage}
+        className='languageBtn'
+      >
+        {languageEng ? (
           <img
-            src={eng}
-            alt='EnglishLenguageReferenceImg'
-            className='EngLangRefImg'
+            src={esp}
+            alt='icono-referencia-español'
+            className='EspLangRefImg'
           />
         ) : (
           <img
-            src={esp}
-            alt='SpanishLenguageReferenceImg'
-            className='EspLangRefImg'
+            src={eng}
+            alt='reference-icon-english'
+            className='EngLangRefImg'
           />
         )}
       </button>
