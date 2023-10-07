@@ -4,16 +4,18 @@ import { BsCloudRainFill } from 'react-icons/bs';
 import { FaWind } from 'react-icons/fa';
 import { IoWater } from 'react-icons/io5';
 import { IoMdEye } from 'react-icons/io';
-import PropTypes from 'prop-types';
+import { useStore } from '../../store.js';
 import BackgroundImg from './BackgroundImg.jsx';
 
-const EngWeatherData = ({ weatherData }) => {
-  if (!weatherData) return;
+export default function EnglishCardInfo() {
+  const { weatherData } = useStore();
+
+  if (!weatherData.city) return;
 
   return (
     <section className='weather-data-section'>
       {/* this component rendering the background img related with the current weather data info */}
-      <BackgroundImg weatherData={weatherData} />
+      <BackgroundImg />
       <div className='weather-data-location'>
         <FaLocationDot />
         <h2>{weatherData.city},</h2>
@@ -68,10 +70,4 @@ const EngWeatherData = ({ weatherData }) => {
       </div>
     </section>
   );
-};
-
-EngWeatherData.propTypes = {
-  weatherData: PropTypes.object,
-};
-
-export default EngWeatherData;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useQuery } from '@tanstack/react-query';
+import { useStore } from '../../store';
 
 const fetchImg = async () => {
   const resp = await fetch('http://localhost:5173/weatherData-db.json');
@@ -12,7 +12,9 @@ const fetchImg = async () => {
   return data.weatherData;
 };
 
-const BackgroundImg = ({ weatherData }) => {
+export default function BackgroundImg() {
+  const { weatherData } = useStore();
+
   const { isLoading, error, data } = useQuery({
     queryKey: ['weatherData'],
     queryFn: fetchImg,
@@ -191,8 +193,4 @@ const BackgroundImg = ({ weatherData }) => {
   };
 
   return <div className='backgroundImg-container'>{renderingImg(weatherData.iconID)}</div>;
-};
-BackgroundImg.propTypes = {
-  weatherData: PropTypes.object,
-};
-export default BackgroundImg;
+}

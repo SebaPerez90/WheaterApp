@@ -1,78 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import Hero from './Hero.jsx';
-import EngWeatherData from './EngWeatherData.jsx';
-import EspWeatherData from './EspWeatherData.jsx';
-import { useStore } from '../../store';
-import { toast } from 'react-hot-toast';
+import SpanishCardInfo from './SpanishCardInfo.jsx';
+import EnglishCardInfo from './EnglishCardInfo.jsx';
+import React from 'react';
 import { Redirect } from 'wouter';
+import { useStore } from '../../store';
 
-const WeatherData = () => {
-  const { shouldRedirect, setShouldRedirect, languageEng, valueCapture, setValueCapture } = useStore();
-  const [weatherData, setWeatherData] = useState(null);
+export default function WeatherData() {
+  const { shouldRedirect, languageEng, valueCapture, setValueCapture, setWeatherData } = useStore();
 
-  const fetchData = async () => {
-    const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
-
-    const errorInfoToast = () => toast.error('Please enter a real location', { position: 'bottom-center' });
-
-    if (!valueCapture) {
-      errorInfoToast();
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`,
-      );
-
-      if (response.status !== 200) {
-        setShouldRedirect();
-        return;
-      }
-
-      const data = await response.json();
-
-      // weather data state
-      setWeatherData({
-        city: data.city.name,
-        country: data.city.country,
-        pop: data.list[0].pop * 100,
-        temperature: data.list[0].main.temp.toFixed(1),
-        temp_feels_like: data.list[0].main.feels_like.toFixed(1),
-        humidity: data.list[0].main.humidity,
-        tempMax: data.list[0].main.temp_max.toFixed(1),
-        tempMin: data.list[0].main.temp_min.toFixed(1),
-        iconID: data.list[0].weather[0].icon,
-        main: data.list[0].weather[0].main,
-        main_description: data.list[0].weather[0].description,
-        wind_speed: (data.list[0].wind.speed * 3.6).toFixed(1),
-        date: data.list[0].dt_txt.slice(0, 10),
-        visibility: data.list[0].visibility / 1000,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
+  const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`;
 
   //this effect run if the languageEng state change.
-  useEffect(() => {
-    if (valueCapture) {
-      fetchData();
-    }
-  }, [languageEng]);
+  // useEffect(() => {
+  //   if (valueCapture) {
+  //     setweatherData();
+  //   }
+  // }, [languageEng]);
 
   return (
     <section>
-      <Hero
-        fetchData={fetchData}
-        searchLocation={setValueCapture}
+      <button onClick={() => setWeatherData(URLDinamicRequest)}>search</button>
+      <input
+        type='text'
+        name='input'
+        onChange={setValueCapture}
       />
+      <button onClick={() => console.log(shouldRedirect)}>log</button>
+
+      {languageEng ? <EnglishCardInfo /> : <SpanishCardInfo />}
 
       {shouldRedirect ? <Redirect to='/notfound' /> : null}
-
-      {languageEng ? <EngWeatherData weatherData={weatherData} /> : <EspWeatherData weatherData={weatherData} />}
     </section>
   );
-};
-
-export default WeatherData;
+}

@@ -11,7 +11,7 @@ import { Route } from 'wouter';
 
 const client = new QueryClient();
 
-const App = () => {
+export default function App() {
   const { themeDark } = useStore();
 
   return (
@@ -27,6 +27,4 @@ const App = () => {
       <Toaster />
     </QueryClientProvider>
   );
-};
-
-export default App;
+}
