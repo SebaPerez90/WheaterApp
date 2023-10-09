@@ -4,14 +4,19 @@ import { FaCopy } from 'react-icons/fa';
 import esp from '../assets/esp.png';
 import eng from '../assets/eng.png';
 import { useRef } from 'react';
+import { toast } from 'react-hot-toast';
 
 export default function Header() {
   const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
+  const copySucess = () => toast.success('copied', { position: 'top-center' });
   const URLresourse = useRef();
 
   const handleCopyToClipboard = () => {
     const textToCopy = URLresourse.current.innerText;
+
     navigator.clipboard.writeText(textToCopy);
+    copySucess();
+    return;
   };
 
   return (

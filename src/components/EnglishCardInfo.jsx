@@ -13,31 +13,32 @@ export default function EnglishCardInfo() {
   if (!weatherData.city) return;
 
   return (
-    <section className='weather-data-section'>
-      {/* this component rendering the background img related with the current weather data info */}
-      <BackgroundImg />
-      <div className='weather-data-location'>
-        <FaLocationDot />
-        <h2>{weatherData.city},</h2>
-        <p>{weatherData.country}</p>
-      </div>
-
-      <div className='weather-data-current'>
-        <p>Current Weather</p>
-        <p>{weatherData.date}</p>
-        <div className='data-current-main'>
-          <img
-            src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
-            alt='Weather Icon'
-          />
-          <p>{weatherData.temperature}°C</p>
+    <section className='weather-container'>
+      <section className='weather-data-section'>
+        {/* this component rendering the background img related with the current weather data info */}
+        <BackgroundImg />
+        <div className='weather-data-location'>
+          <FaLocationDot />
+          <h2>{weatherData.city},</h2>
+          <p>{weatherData.country}</p>
         </div>
-        <p>Feels Like: {weatherData.temp_feels_like}°C</p>
-        <p>{weatherData.main}</p>
-        <p>{weatherData.main_description}</p>
-      </div>
 
-      <div className='weather-aditional-data'>
+        <div className='weather-data-current'>
+          <p>Current Weather</p>
+          <p>{weatherData.date}</p>
+          <div className='data-current-main'>
+            <img
+              src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
+              alt='Weather Icon'
+            />
+            <p>{weatherData.temperature}°C</p>
+          </div>
+          <p>Feels Like: {weatherData.temp_feels_like}°C</p>
+          <p>{weatherData.main}</p>
+          <p>{weatherData.main_description}</p>
+        </div>
+      </section>
+      <section className='weather-aditional-data'>
         <div className='aditional-data-keys'>
           <p>
             max <FaTemperatureFull />
@@ -67,7 +68,7 @@ export default function EnglishCardInfo() {
           <p>{weatherData.visibility}km</p>
           <p>{weatherData.pop}%</p>
         </div>
-      </div>
+      </section>
     </section>
   );
 }

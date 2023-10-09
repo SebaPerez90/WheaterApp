@@ -30,22 +30,24 @@ export default function WeatherData() {
   // }, [languageEng]);
 
   return (
-    <main className={themeDark ? 'main-dark-theme' : 'main-light-theme'}>
-      <input
-        placeholder={languageEng ? 'enter a Location...' : 'ingrese una ubicación...'}
-        type='text'
-        name='country'
-        id='form-section-input'
-        autoFocus
-        onChange={setValueCapture}
-      />
+    <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
+      <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
+        <input
+          placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
+          type='text'
+          name='country'
+          className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
+          autoFocus
+          onChange={setValueCapture}
+        />
 
-      <button
-        className='form-section-btn'
-        onClick={checkingInput}
-      >
-        <FcSearch />
-      </button>
+        <button
+          className={themeDark ? 'weather-serchBtn-dt' : 'weather-serchBtn-lt'}
+          onClick={checkingInput}
+        >
+          <FcSearch />
+        </button>
+      </div>
 
       {languageEng ? <EnglishCardInfo /> : <SpanishCardInfo />}
 
