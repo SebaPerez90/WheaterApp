@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaLocationDot, FaTemperatureEmpty, FaTemperatureFull } from 'react-icons/fa6';
 import { BsCloudRainFill } from 'react-icons/bs';
 import { FaWind } from 'react-icons/fa';
@@ -14,28 +13,32 @@ export default function EnglishCardInfo() {
 
   return (
     <section className='weather-container'>
-      <section className='weather-data-section'>
+      <section className='weather-main-data'>
         {/* this component rendering the background img related with the current weather data info */}
         <BackgroundImg />
-        <div className='weather-data-location'>
+        <div className='grid-item-2'>
+          <p>Current Weather</p>
+          <p>{weatherData.date}</p>
+        </div>
+
+        <div className='grid-item-3'>
           <FaLocationDot />
           <h2>{weatherData.city},</h2>
           <p>{weatherData.country}</p>
         </div>
 
-        <div className='weather-data-current'>
-          <p>Current Weather</p>
-          <p>{weatherData.date}</p>
-          <div className='data-current-main'>
-            <img
-              src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
-              alt='Weather Icon'
-            />
-            <p>{weatherData.temperature}°C</p>
-          </div>
-          <p>Feels Like: {weatherData.temp_feels_like}°C</p>
-          <p>{weatherData.main}</p>
+        <div className='grid-item-4'>
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
+            alt='Weather Icon'
+          />
+          <p>Temperature {weatherData.temperature} °C</p>
           <p>{weatherData.main_description}</p>
+        </div>
+
+        <div className='grid-item-5'>
+          <p>{weatherData.main}</p>
+          <p>Feels Like: {weatherData.temp_feels_like} °C</p>
         </div>
       </section>
       <section className='weather-aditional-data'>
