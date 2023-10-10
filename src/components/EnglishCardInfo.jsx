@@ -32,7 +32,7 @@ export default function EnglishCardInfo() {
             src={`http://openweathermap.org/img/wn/${weatherData.iconID}.png`}
             alt='Weather Icon'
           />
-          <p>Temperature {weatherData.temperature} °C</p>
+          <p>Temperature: {weatherData.temperature} °C</p>
           <p>{weatherData.main_description}</p>
         </div>
 

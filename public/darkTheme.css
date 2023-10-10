@@ -12,18 +12,21 @@ body {
   margin: 0;
   box-sizing: border-box;
   line-height: 1.5;
-  min-height: 100dvh;
+  background-color: var(--bg-dark-theme);
 
+  /* header section  */
   .header-container-dt {
     background-color: var(--bg-dark-theme);
     display: grid;
     padding: 1em;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(min-content, max-content);
 
     .header-resourse-dt {
       display: flex;
       flex-direction: column;
-      margin-left: 2em;
+      font-size: 0.8em;
+      grid-row: 1;
 
       > :first-child {
         color: var(--bg-light-theme);
@@ -36,9 +39,8 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-around;
-        padding: 0.5em;
+        padding: 0 1em 0 1em;
         border-radius: 0.4em;
-        width: 20dvw;
         height: 2.5em;
         font-family: var(--roboto-italic);
 
@@ -46,6 +48,7 @@ body {
           border: none;
           background-color: inherit;
           cursor: pointer;
+          margin-left: 1em;
         }
       }
     }
@@ -68,7 +71,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      grid-column: 5;
+      grid-column: 6;
 
       .header-btn-dt {
         color: #d8f33f;
@@ -97,10 +100,9 @@ body {
     font-family: var(--roboto-mono);
     background-color: var(--bg-dark-theme);
     color: var(--bg-light-theme);
-    min-height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, minmax(min-content, max-content));
+    /* grid-template-rows: repeat(3, minmax(min-content, max-content)); */
     grid-template-areas:
       'card-info card-info form'
       'card-info card-info aside'
@@ -111,18 +113,15 @@ body {
     .main-weather-form-dt {
       place-self: start end;
       display: flex;
-      width: max-content;
       grid-area: form;
       margin-right: 0.5em;
 
       .weather-input-dt {
-        padding: 0 0 0 1em;
-        width: 11em;
+        padding: 0.7em 0 0.7em 1.5em;
         text-transform: capitalize;
         outline: none;
         border: none;
-        border-radius: 0.3em 0 0 0.3em;
-        font-size: 1.2em;
+        border-radius: 0.5em 0 0 0.5em;
         font-family: var(--roboto-mono);
         font-weight: bolder;
         color: #424d57;
@@ -132,18 +131,16 @@ body {
         }
 
         &::placeholder {
-          opacity: 0.6;
+          opacity: 0.5;
           font-size: 0.8em;
-          font-weight: lighter !important;
         }
       }
 
       .weather-serchBtn-dt {
-        padding: 0.5em;
         border: none;
         cursor: pointer;
-        border-radius: 0 0.3em 0.3em 0;
-        font-size: 1.4em;
+        border-radius: 0 0.5em 0.5em 0;
+        font-size: 1.2em;
         outline: none;
 
         &:focus {
@@ -159,14 +156,13 @@ body {
     /* card info with the current weather data */
     .weather-container {
       grid-area: card-info;
+      padding-left: 7em;
+      padding-right: 7em;
 
       .weather-main-data {
         position: relative;
-        width: 60dvw;
-        /* height: 100vh; */
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
         text-shadow: 2px 2px 2px #000000d2;
 
         /* this styles are used to render the background img */
@@ -194,26 +190,26 @@ body {
           border-radius: 0.4em;
         }
         .grid-item-3 {
-          place-self: end;
+          place-self: center;
           position: relative;
-          top: -1.8em;
           display: flex;
           align-items: center;
-          justify-content: end;
-          margin-right: 0.5em;
+          justify-content: center;
           gap: 0.4em;
-          border: 4px solid #e4e4e425;
+          border-left: 4px solid #e4e4e425;
+          border-bottom: 4px solid #e4e4e425;
           background: linear-gradient(to right, #2424245b, #2424245b);
-          border-radius: 0.4em;
+          border-radius: 0 0 0 0.4em;
           padding: 0 1.5em 0 1.5em;
+          font-size: 0.6em;
         }
 
         .grid-item-4 {
           position: relative;
-          grid-row: 2/6;
+          grid-row: 2/4;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
           place-items: center;
           margin: 0 0 1em 0.5em;
           border: 4px solid #e4e4e425;
@@ -221,27 +217,13 @@ body {
           border-radius: 0.4em;
 
           > :first-child {
-            grid-column: 1;
+            grid-column: 2;
             scale: 1.9;
             filter: brightness(1.3);
           }
           > :nth-child(2) {
-            grid-column: 2/3;
-            margin-left: 2em;
-            font-size: 1.2em;
-            position: relative;
-            left: 3em;
-            text-align: center;
-
-            &::after {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              left: -3em;
-              height: 130%;
-              border-left: 5px solid #e4e4e43d;
-              border-radius: 1em;
-            }
+            grid-column: 2;
+            min-width: max-content;
           }
 
           > :last-child {
@@ -252,17 +234,6 @@ body {
             text-transform: capitalize;
             font-size: 1.3em;
             min-width: max-content;
-
-            &::after {
-              content: '';
-              position: absolute;
-              bottom: 4em;
-              right: -2em;
-              height: 5px;
-              width: 170%;
-              background-color: #e4e4e43d;
-              border-radius: 1em;
-            }
           }
         }
 
@@ -281,7 +252,6 @@ body {
 
       /* main container aditional weather data */
       .weather-aditional-data {
-        width: 60dvw;
         display: flex;
         flex-direction: column;
         background-color: #e2909079;
@@ -303,8 +273,9 @@ body {
     /* aside section */
     .aside-container {
       position: absolute;
-      border: 2px solid red;
       grid-area: aside;
+      border: 2px solid red;
+      height: 100%;
 
       > :first-child {
         text-align: center;
@@ -312,20 +283,23 @@ body {
 
       .aside-weather-next-days {
         display: grid;
-        grid-template-rows: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         grid-template-columns: repeat(3, 1fr);
 
         .aside-grid-item-1 {
-          grid-row: 2;
+          grid-row: 1;
           grid-column: 2;
+          border: 2px solid red;
         }
         .aside-grid-item-2 {
-          grid-row: 4;
+          grid-row: 2;
           grid-column: 2;
+          border: 2px solid blue;
         }
         .aside-grid-item-3 {
-          grid-row: 6;
+          grid-row: 3;
           grid-column: 2;
+          border: 2px solid yellow;
         }
       }
     }
