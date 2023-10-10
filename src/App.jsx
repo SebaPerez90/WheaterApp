@@ -2,7 +2,7 @@ import '../public/darkTheme.css';
 import '../public/lighTheme.css';
 import Header from './components/Header';
 import WeatherData from './components/WeatherData.jsx';
-import NotFound from '../src/routes/NotFound.jsx';
+import NotFound from './routes/NotFound.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { Route } from 'wouter';

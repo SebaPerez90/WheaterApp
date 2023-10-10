@@ -18,7 +18,7 @@ export default function EnglishCardInfo() {
         <BackgroundImg />
         <div className='grid-item-2'>
           <p>Current Weather</p>
-          <p>{weatherData.date}</p>
+          <time>{weatherData.date}</time>
         </div>
 
         <div className='grid-item-3'>

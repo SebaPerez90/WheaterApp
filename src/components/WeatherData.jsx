@@ -1,5 +1,6 @@
 import SpanishCardInfo from './SpanishCardInfo.jsx';
 import EnglishCardInfo from './EnglishCardInfo.jsx';
+import Footer from './Footer.jsx';
 import { FcSearch } from 'react-icons/fc';
 import { Redirect } from 'wouter';
 import { useStore } from '../../store';
@@ -22,6 +23,7 @@ export default function WeatherData() {
       return;
     } else setWeatherData(URLDinamicRequest);
   };
+
   //this effect run if the languageEng state change.
   // useEffect(() => {
   //   if (valueCapture) {
@@ -38,6 +40,7 @@ export default function WeatherData() {
           name='country'
           className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
           autoFocus
+          autoComplete='country-name'
           onChange={setValueCapture}
         />
 
@@ -48,7 +51,7 @@ export default function WeatherData() {
           <FcSearch />
         </button>
       </div>
-
+      <Footer />
       {languageEng ? <EnglishCardInfo /> : <SpanishCardInfo />}
 
       {shouldRedirect ? <Redirect to='/notfound' /> : null}

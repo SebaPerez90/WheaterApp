@@ -23,10 +23,12 @@ export const useStore = create((set) => ({
 
       if (response.status === 404) {
         set({ shouldRedirect: true });
-        throw new Error('the input value must be a valid location',response.message);
+        throw new Error('the input value must be a valid location', response.message);
       }
-      
+
       const data = await response.json();
+      console.log(data);
+
       set({
         weatherData: {
           city: data.city.name,
@@ -43,6 +45,25 @@ export const useStore = create((set) => ({
           wind_speed: (data.list[0].wind.speed * 3.6).toFixed(1),
           date: data.list[0].dt_txt.slice(0, 10),
           visibility: data.list[0].visibility / 1000,
+
+          // //this data is to represent the next 3 days
+          date_first_day: data.list[6].dt_txt.slice(5, 10),
+          tempMax_first_day: Math.ceil(data.list[6].main.temp_max),
+          tempMin_first_day: Math.floor(data.list[6].main.temp_min),
+          temperature_first_day: data.list[6].main.temp.toFixed(1),
+          iconID_first_day: data.list[6].weather[0].icon,
+
+          date_second_day: data.list[14].dt_txt.slice(5, 10),
+          tempMax_second_day: Math.ceil(data.list[14].main.temp_max),
+          tempMin_second_day: Math.floor(data.list[14].main.temp_min),
+          temperature_second_day: data.list[14].main.temp.toFixed(1),
+          iconID_second_day: data.list[14].weather[0].icon,
+
+          date_third_day: data.list[22].dt_txt.slice(5, 10),
+          tempMax_third_day: Math.ceil(data.list[22].main.temp_max),
+          tempMin_third_day: Math.floor(data.list[22].main.temp_min),
+          temperature_third_day: data.list[22].main.temp.toFixed(1),
+          iconID_third_day: data.list[22].weather[0].icon,
         },
       });
     } catch (error) {

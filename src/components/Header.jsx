@@ -8,8 +8,16 @@ import { toast } from 'react-hot-toast';
 
 export default function Header() {
   const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
-  const copySucess = () => toast.success('copied', { position: 'top-center' });
   const URLresourse = useRef();
+
+  // const languageInfo = toast.success(`you change the theme to english}`);
+
+  // if (toggleLanguage()) {
+  //   languageInfo();
+  //   return;
+  // }
+
+  const copySucess = () => toast.success('copied', { position: 'top-center' });
 
   const handleCopyToClipboard = () => {
     const textToCopy = URLresourse.current.innerText;
@@ -32,8 +40,14 @@ export default function Header() {
         </div>
       </div>
 
-      <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
-
+      <div className='header-title-container'>
+        <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
+        <p>
+          {languageEng
+            ? 'An interactive and dynamic application to stay updated on weather conditions.'
+            : 'Una aplicación interactiva y dinámica para mantenerse actualizado sobre las condiciones climáticas.'}
+        </p>
+      </div>
       <div className={themeDark ? 'header-btn-container-dt' : 'header-btn-container-lt'}>
         <button
           onClick={toggleTheme}
