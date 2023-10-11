@@ -73,6 +73,7 @@ body {
 
     /* button toggle theme and language styles section */
     .header-btn-container-dt {
+      place-self: start end;
       display: flex;
       justify-content: center;
       align-items: center;

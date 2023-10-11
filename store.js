@@ -27,7 +27,6 @@ export const useStore = create((set) => ({
       }
 
       const data = await response.json();
-      console.log(data);
 
       set({
         weatherData: {

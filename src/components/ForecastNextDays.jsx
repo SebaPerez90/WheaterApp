@@ -1,6 +1,6 @@
 import { useStore } from '../../store';
 
-export default function Footer() {
+export default function ForecastNextDays() {
   const { weatherData, languageEng } = useStore();
 
   if (!weatherData.date_first_day) return;

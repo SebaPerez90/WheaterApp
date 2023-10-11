@@ -1,10 +1,11 @@
 import SpanishCardInfo from './SpanishCardInfo.jsx';
 import EnglishCardInfo from './EnglishCardInfo.jsx';
-import Footer from './Footer.jsx';
+import ForecastNextDays from './ForecastNextDays.jsx';
 import { FcSearch } from 'react-icons/fc';
 import { Redirect } from 'wouter';
 import { useStore } from '../../store';
 import { toast } from 'react-hot-toast';
+import { useState, useEffect } from 'react';
 
 export default function WeatherData() {
   const { shouldRedirect, languageEng, valueCapture, setValueCapture, setWeatherData, themeDark } = useStore();
@@ -17,23 +18,52 @@ export default function WeatherData() {
       position: 'top-center',
     });
 
+  //test
+  const input = document.querySelector('.weather-input-dt');
+
   const checkingInput = () => {
     if (!valueCapture) {
       errorMessage();
       return;
-    } else setWeatherData(URLDinamicRequest);
+    } else {
+      setWeatherData(URLDinamicRequest);
+      setStorage();
+    }
   };
 
   //this effect run if the languageEng state change.
   // useEffect(() => {
-  //   if (valueCapture) {
-  //     setweatherData();
-  //   }
+  //   // if (valueCapture) {
+  //   // setweatherData();
+  //   // }
   // }, [languageEng]);
+
+  //test
+  // useEffect(() => {
+  //   const storedHistory = JSON.parse(localStorage.getItem('history')) || [];
+  //   setHistory(storedHistory);
+  // }, []);
+
+  //test
+  const [history, setHistory] = useState([]);
+
+  const setStorage = () => {
+    localStorage.setItem('history', JSON.stringify(valueCapture));
+
+    setHistory([...history, valueCapture]);
+
+    input.value = '';
+  };
 
   return (
     <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
       <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
+        <ul>
+          {history.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+
         <input
           placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
           type='text'
@@ -51,7 +81,9 @@ export default function WeatherData() {
           <FcSearch />
         </button>
       </div>
-      <Footer />
+
+      <ForecastNextDays />
+
       {languageEng ? <EnglishCardInfo /> : <SpanishCardInfo />}
 
       {shouldRedirect ? <Redirect to='/notfound' /> : null}
