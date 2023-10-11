@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
 
 :root {
   --roboto-italic: 'Roboto Condensed', sans-serif;
   --roboto-mono: 'Roboto Mono', monospace;
+  --roboto: 'Roboto', sans-serif;
+  --oswald: 'Oswald', sans-serif;
   --bg-dark-theme: #242424;
   --bg-light-theme: #e4e4e4;
 }
@@ -55,14 +57,17 @@ body {
 
     .header-title-container {
       color: var(--bg-light-theme);
-      text-align: center;
       grid-column: 2 / 5;
-      font-family: var(--roboto-mono);
+      text-align: center;
+      margin-left: 2em;
 
+      > :first-child {
+        font-family: var(--roboto);
+        min-width: max-content;
+      }
       > :nth-child(2) {
-        color: #c0c0c0;
-        font-size: 0.9em;
-        font-style: italic;
+        font-family: var(--roboto-italic);
+        text-align: center;
       }
     }
 
@@ -93,7 +98,7 @@ body {
     }
   }
 
-  /* main "Dark Theme" section */
+  /* main section */
   .main-weather-container-dt {
     position: relative;
     font-weight: 400;
@@ -102,9 +107,8 @@ body {
     color: var(--bg-light-theme);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: repeat(3, minmax(min-content, max-content)); */
     grid-template-areas:
-      'card-info card-info form'
+      'form form form'
       'card-info card-info aside'
       'card-info card-info aside'
       'card-info card-info aside';
@@ -114,7 +118,7 @@ body {
       place-self: start end;
       display: flex;
       grid-area: form;
-      margin-right: 0.5em;
+      margin-right: 0.4em;
 
       .weather-input-dt {
         padding: 0.7em 0 0.7em 1.5em;
@@ -155,11 +159,14 @@ body {
 
     /* card info with the current weather data */
     .weather-container {
+      height: 100%;
       grid-area: card-info;
-      padding-left: 7em;
-      padding-right: 7em;
+      padding: 0 3em 0 3em;
 
       .weather-main-data {
+        border: 4px solid #e4e4e425;
+        border-bottom: none;
+        border-radius: 0.5em 0.5em 0 0;
         position: relative;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -172,6 +179,7 @@ body {
           width: 100%;
 
           .backgroundImg {
+            border-radius: 0.5em 0.5em 0 0;
             height: 100%;
             width: 100%;
           }
@@ -197,9 +205,9 @@ body {
           justify-content: center;
           gap: 0.4em;
           border-left: 4px solid #e4e4e425;
-          border-bottom: 4px solid #e4e4e425;
+          border: 4px solid #e4e4e425;
           background: linear-gradient(to right, #2424245b, #2424245b);
-          border-radius: 0 0 0 0.4em;
+          border-radius: 0.4em;
           padding: 0 1.5em 0 1.5em;
           font-size: 0.6em;
         }
@@ -252,6 +260,9 @@ body {
 
       /* main container aditional weather data */
       .weather-aditional-data {
+        border-radius: 0 0 0.5em 0.5em;
+        border: 4px solid #e4e4e425;
+        border-top: none;
         display: flex;
         flex-direction: column;
         background-color: #e2909079;
@@ -272,34 +283,151 @@ body {
 
     /* aside section */
     .aside-container {
-      position: absolute;
+      position: relative;
       grid-area: aside;
-      border: 2px solid red;
-      height: 100%;
+      padding: 0 1em 0 1em;
+      text-shadow: 2px 2px 2px #000;
+      border-radius: 0.7em 0 0 0.7em;
+      overflow: hidden;
+
+      > ::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url('../src/assets/images/city.png') no-repeat center top;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+      }
 
       > :first-child {
         text-align: center;
+        font-family: var(--oswald);
+        position: relative;
       }
 
       .aside-weather-next-days {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;
+        z-index: 1000;
+        font-weight: bolder;
 
         .aside-grid-item-1 {
-          grid-row: 1;
-          grid-column: 2;
-          border: 2px solid red;
+          position: relative;
+          z-index: 1000;
+          padding: 0.4em;
+          padding-bottom: 1em;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, minmax(min-content, max-content));
+
+          > :first-child {
+            grid-row: 1;
+            grid-column: 3;
+            font-size: 0.7em;
+            font-weight: bolder;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            grid-column: 1;
+            font-size: 0.9em;
+          }
+          > :nth-child(3) {
+            grid-column: 2;
+            grid-row: 3;
+            font-size: 1.5em;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            grid-column: 3;
+            font-size: 0.9em;
+            text-align: end;
+          }
+          > :last-child {
+            scale: 2;
+            position: absolute;
+            z-index: 1000;
+          }
         }
         .aside-grid-item-2 {
-          grid-row: 2;
-          grid-column: 2;
-          border: 2px solid blue;
+          position: relative;
+          border-bottom: 2px solid var(--bg-light-theme);
+          border-top: 2px solid var(--bg-light-theme);
+          gap: 1em;
+          padding: 0.4em;
+          z-index: 1000;
+          padding-bottom: 1em;
+
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, minmax(min-content, max-content));
+
+          > :first-child {
+            grid-row: 1;
+            grid-column: 3;
+            font-size: 0.7em;
+            font-weight: bolder;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            font-size: 0.9em;
+            grid-column: 1;
+          }
+          > :nth-child(3) {
+            grid-column: 2;
+            font-size: 1.5em;
+            grid-row: 3;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            font-size: 0.9em;
+            grid-column: 3;
+            text-align: end;
+          }
+          > :last-child {
+            scale: 2;
+            position: absolute;
+            z-index: 1000;
+          }
         }
         .aside-grid-item-3 {
-          grid-row: 3;
-          grid-column: 2;
-          border: 2px solid yellow;
+          gap: 1em;
+          padding: 0.4em;
+          position: relative;
+          z-index: 1000;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, minmax(min-content, max-content));
+
+          > :first-child {
+            grid-row: 1;
+            grid-column: 3;
+            font-size: 0.7em;
+            font-weight: bolder;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            font-size: 0.9em;
+            grid-column: 1;
+          }
+          > :nth-child(3) {
+            grid-column: 2;
+            font-size: 1.5em;
+            grid-row: 3;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            font-size: 0.9em;
+            grid-column: 3;
+            text-align: end;
+          }
+          > :last-child {
+            position: absolute;
+            scale: 2;
+            z-index: 1000;
+          }
         }
       }
     }
