@@ -25,6 +25,7 @@ export default function WeatherData() {
     }
     historyRef.current.handleSetStorage();
     historyRef.current.handleSetIcon();
+    historyRef.current.handleSetTemp();
   }, [weatherData]);
 
   // alert message in the case the input it is empty

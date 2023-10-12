@@ -15,27 +15,42 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
     localStorage.getItem('iconSearchHistory') ? JSON.parse(localStorage.getItem('iconSearchHistory')) : [],
   );
 
+  // local storage set state
+  const [tempSearchHistory, setTempSearchHistory] = useState(
+    localStorage.getItem('tempSearchHistory') ? JSON.parse(localStorage.getItem('tempSearchHistory')) : [],
+  );
+
   // this efect preserve the current search history location before the page refresh
   useEffect(() => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
     localStorage.setItem('iconSearchHistory', JSON.stringify(iconSearchHistory));
   }, [searchHistory, iconSearchHistory]);
 
+  // temperature set storage
   const handleSetIcon = () => {
     localStorage.setItem('iconSearchHistory', JSON.stringify(iconSearchHistory));
 
     setIconSearchHistory([...iconSearchHistory, weatherData.iconID]);
   };
 
+  // history set storage
   const handleSetStorage = () => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
     setSearchHistory([...searchHistory, valueCapture]);
   };
 
+  // temperature set storage
+  const handleSetTemp = () => {
+    localStorage.setItem('tempSearchHistory', JSON.stringify(searchHistory));
+
+    setTempSearchHistory([...tempSearchHistory, weatherData.temperature]);
+  };
+
   useImperativeHandle(ref, () => ({
     handleSetStorage,
     handleSetIcon,
+    handleSetTemp,
   }));
 
   return (
@@ -52,6 +67,11 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
             src={`http://openweathermap.org/img/wn/${item}.png`}
             alt='reference icon location'
           />
+        ))}
+      </div>
+      <div>
+        {tempSearchHistory.map((item, index) => (
+          <span key={index}>{item}</span>
         ))}
       </div>
     </div>
