@@ -45,7 +45,7 @@ export const useStore = create((set) => ({
           date: data.list[0].dt_txt.slice(0, 10),
           visibility: data.list[0].visibility / 1000,
 
-          // //this data is to represent the next 3 days
+          // this data is to represent the next fordward days in the 'ForecastNextDays.jsx'
           date_first_day: data.list[6].dt_txt.slice(5, 10),
           tempMax_first_day: Math.ceil(data.list[6].main.temp_max),
           tempMin_first_day: Math.floor(data.list[6].main.temp_min),

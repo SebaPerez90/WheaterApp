@@ -1,21 +1,31 @@
 import SpanishCardInfo from './SpanishCardInfo.jsx';
 import EnglishCardInfo from './EnglishCardInfo.jsx';
 import ForecastNextDays from './ForecastNextDays.jsx';
-import History from './History.jsx';
+import SearchHistory from './SearchHistory.jsx';
 import { FcSearch } from 'react-icons/fc';
 import { Redirect } from 'wouter';
 import { useStore } from '../../store';
 import { toast } from 'react-hot-toast';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function WeatherData() {
-  const { shouldRedirect, languageEng, valueCapture, setValueCapture, setWeatherData, themeDark } = useStore();
+  const { shouldRedirect, languageEng, valueCapture, setValueCapture, setWeatherData, themeDark, weatherData } =
+    useStore();
 
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
   const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`;
 
   //this is the ref child component which contains the method 'handleSetStorage' previously config
   const historyRef = useRef();
+  const myInput = useRef();
+
+  useEffect(() => {
+    if (!weatherData.city) {
+      return;
+    }
+    historyRef.current.handleSetStorage();
+    historyRef.current.handleSetIcon();
+  }, [weatherData]);
 
   // alert message in the case the input it is empty
   const errorMessage = () =>
@@ -31,35 +41,36 @@ export default function WeatherData() {
       return;
     } else {
       setWeatherData(URLDinamicRequest);
-      historyRef.current.handleSetStorage();
+      myInput.current.value = '';
     }
   };
 
   return (
     <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
-      <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
-        <History
+      <section className={themeDark ? 'grid-form-area-container-dt' : 'main-weather-form-lt'}>
+        <SearchHistory
           valueCapture={valueCapture}
           ref={historyRef}
         />
-
-        <input
-          placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
-          type='text'
-          name='country'
-          className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
-          autoFocus
-          autoComplete='country-name'
-          onChange={setValueCapture}
-        />
-
-        <button
-          className={themeDark ? 'weather-serchBtn-dt' : 'weather-serchBtn-lt'}
-          onClick={checkingInput}
-        >
-          <FcSearch />
-        </button>
-      </div>
+        <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
+          <input
+            placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
+            type='text'
+            name='country'
+            className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
+            autoFocus
+            autoComplete='country-name'
+            ref={myInput}
+            onChange={setValueCapture}
+          />
+          <button
+            className={themeDark ? 'weather-serchBtn-dt' : 'weather-serchBtn-lt'}
+            onClick={checkingInput}
+          >
+            <FcSearch />
+          </button>
+        </div>
+      </section>
 
       <ForecastNextDays />
 

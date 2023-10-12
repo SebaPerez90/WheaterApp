@@ -10,13 +10,6 @@ export default function Header() {
   const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
   const URLresourse = useRef();
 
-  // const languageInfo = toast.success(`you change the theme to english}`);
-
-  // if (toggleLanguage()) {
-  //   languageInfo();
-  //   return;
-  // }
-
   const copySucess = () => toast.success('copied', { position: 'top-center' });
 
   const handleCopyToClipboard = () => {
@@ -73,6 +66,7 @@ export default function Header() {
             />
           )}
         </button>
+        <button onClick={() => localStorage.clear()}>clear</button>
       </div>
     </header>
   );

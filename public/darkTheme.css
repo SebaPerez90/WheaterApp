@@ -115,45 +115,67 @@ body {
       'card-info card-info aside';
 
     /* main feature app : find the current weather depends on text input value */
-    .main-weather-form-dt {
+    .grid-form-area-container-dt {
       place-self: start end;
       display: flex;
       grid-area: form;
       margin-right: 0.4em;
 
-      .weather-input-dt {
-        padding: 0.7em 0 0.7em 1.5em;
-        text-transform: capitalize;
-        outline: none;
-        border: none;
-        border-radius: 0.5em 0 0 0.5em;
-        font-family: var(--roboto-mono);
-        font-weight: bolder;
-        color: #424d57;
+      .main-weather-form-dt {
+        display: flex;
+        height: fit-content;
 
-        &:focus {
-          background-color: #d8d5d5;
+        .weather-input-dt {
+          padding: 0.7em 0 0.7em 1.5em;
+          text-transform: capitalize;
+          outline: none;
+          border: none;
+          border-radius: 0.5em 0 0 0.5em;
+          font-family: var(--roboto-mono);
+          font-weight: bolder;
+          color: #424d57;
+          z-index: 1000;
+
+          &:focus {
+            background-color: #d8d5d5;
+          }
+
+          &::placeholder {
+            opacity: 0.5;
+            font-size: 0.8em;
+          }
         }
 
-        &::placeholder {
-          opacity: 0.5;
-          font-size: 0.8em;
+        .weather-serchBtn-dt {
+          border: none;
+          cursor: pointer;
+          border-radius: 0 0.5em 0.5em 0;
+          outline: none;
+          z-index: 1000;
+
+          &:focus {
+            background-color: #516677;
+          }
+          &:hover {
+            background-color: #516677;
+            transition: all 300ms;
+          }
         }
       }
+      /* this section make reference to the researched locations */
+      .search-history-dt {
+        display: flex;
 
-      .weather-serchBtn-dt {
-        border: none;
-        cursor: pointer;
-        border-radius: 0 0.5em 0.5em 0;
-        font-size: 1.2em;
-        outline: none;
-
-        &:focus {
-          background-color: #516677;
+        >:first-child {
+          display: flex;
+          flex-direction: column;
+          border: 2px solid yellow;
         }
-        &:hover {
-          background-color: #516677;
-          transition: all 300ms;
+        >:last-child {
+          border: 2px solid red;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
         }
       }
     }
