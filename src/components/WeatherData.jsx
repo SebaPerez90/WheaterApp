@@ -15,7 +15,7 @@ export default function WeatherData() {
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
   const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`;
 
-  //this is the ref child component which contains the method 'handleSetStorage' previously config
+  //this is the ref child component which contains the method 'handleSetHistory' previously config
   const historyRef = useRef();
   const myInput = useRef();
 
@@ -23,7 +23,7 @@ export default function WeatherData() {
     if (!weatherData.city) {
       return;
     }
-    historyRef.current.handleSetStorage();
+    historyRef.current.handleSetHistory();
     historyRef.current.handleSetIcon();
     historyRef.current.handleSetTemp();
   }, [weatherData]);

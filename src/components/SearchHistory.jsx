@@ -5,17 +5,17 @@ import { useStore } from '../../store';
 const SearchHistory = forwardRef(({ valueCapture }, ref) => {
   const { weatherData } = useStore();
 
-  // local storage set state
+  // history state
   const [searchHistory, setSearchHistory] = useState(
     localStorage.getItem('searchHistory') ? JSON.parse(localStorage.getItem('searchHistory')) : [],
   );
 
-  // local storage set state
+  // icon state
   const [iconSearchHistory, setIconSearchHistory] = useState(
     localStorage.getItem('iconSearchHistory') ? JSON.parse(localStorage.getItem('iconSearchHistory')) : [],
   );
 
-  // local storage set state
+  // temperature state
   const [tempSearchHistory, setTempSearchHistory] = useState(
     localStorage.getItem('tempSearchHistory') ? JSON.parse(localStorage.getItem('tempSearchHistory')) : [],
   );
@@ -26,21 +26,21 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
     localStorage.setItem('iconSearchHistory', JSON.stringify(iconSearchHistory));
   }, [searchHistory, iconSearchHistory]);
 
-  // temperature set storage
+  // temperature set storage fn
   const handleSetIcon = () => {
     localStorage.setItem('iconSearchHistory', JSON.stringify(iconSearchHistory));
 
     setIconSearchHistory([...iconSearchHistory, weatherData.iconID]);
   };
 
-  // history set storage
-  const handleSetStorage = () => {
+  // history set storage fn
+  const handleSetHistory = () => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
     setSearchHistory([...searchHistory, valueCapture]);
   };
 
-  // temperature set storage
+  // temperature set storage fn
   const handleSetTemp = () => {
     localStorage.setItem('tempSearchHistory', JSON.stringify(searchHistory));
 
@@ -48,7 +48,7 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
   };
 
   useImperativeHandle(ref, () => ({
-    handleSetStorage,
+    handleSetHistory,
     handleSetIcon,
     handleSetTemp,
   }));
