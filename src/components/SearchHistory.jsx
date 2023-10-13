@@ -2,7 +2,7 @@ import { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useStore } from '../../store';
 
-const SearchHistory = forwardRef(({ valueCapture }, ref) => {
+const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
   const { weatherData } = useStore();
 
   // history state
@@ -54,7 +54,10 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
   }));
 
   return (
-    <div className='search-history-dt'>
+    <div
+      className='search-history-dt'
+      style={styles}
+    >
       <div>
         {searchHistory.map((item, index) => (
           <p key={index}>{item}</p>
@@ -74,12 +77,14 @@ const SearchHistory = forwardRef(({ valueCapture }, ref) => {
           <span key={index}>{item}</span>
         ))}
       </div>
+      <button>x</button>
     </div>
   );
 });
 
 SearchHistory.propTypes = {
   valueCapture: PropTypes.any,
+  styles: PropTypes.any,
 };
 
 SearchHistory.displayName = 'SearchHistory';

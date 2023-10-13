@@ -3,14 +3,24 @@ import EnglishCardInfo from './EnglishCardInfo.jsx';
 import ForecastNextDays from './ForecastNextDays.jsx';
 import SearchHistory from './SearchHistory.jsx';
 import { FcSearch } from 'react-icons/fc';
+import { FaHistory } from 'react-icons/fa';
 import { Redirect } from 'wouter';
 import { useStore } from '../../store';
 import { toast } from 'react-hot-toast';
 import { useEffect, useRef } from 'react';
 
 export default function WeatherData() {
-  const { shouldRedirect, languageEng, valueCapture, setValueCapture, setWeatherData, themeDark, weatherData } =
-    useStore();
+  const {
+    shouldRedirect,
+    languageEng,
+    valueCapture,
+    setValueCapture,
+    setWeatherData,
+    themeDark,
+    weatherData,
+    hiddenHistory,
+    setHiddenHistory,
+  } = useStore();
 
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
   const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`;
@@ -46,13 +56,32 @@ export default function WeatherData() {
     }
   };
 
+  // these styles are applied when the state that renders "Search History" is changed.
+  const conditionalStyles = {
+    scale: '1',
+    position: 'absolute',
+    zIndex: 1000,
+    backgroundColor: 'red',
+    transform: ' translate(-1em , -5em)',
+  };
+
   return (
     <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
       <section className={themeDark ? 'grid-form-area-container-dt' : 'main-weather-form-lt'}>
-        <SearchHistory
-          valueCapture={valueCapture}
-          ref={historyRef}
-        />
+        {hiddenHistory ? (
+          <SearchHistory
+            valueCapture={valueCapture}
+            ref={historyRef}
+            styles={conditionalStyles}
+          />
+        ) : (
+          <SearchHistory
+            valueCapture={valueCapture}
+            ref={historyRef}
+            styles={{}}
+          />
+        )}
+
         <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
           <input
             placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
@@ -71,6 +100,10 @@ export default function WeatherData() {
             <FcSearch />
           </button>
         </div>
+
+        <button onClick={setHiddenHistory}>
+          <FaHistory />
+        </button>
       </section>
 
       <ForecastNextDays />

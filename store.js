@@ -6,6 +6,7 @@ export const useStore = create((set) => ({
   languageEng: true,
   valueCapture: '',
   shouldRedirect: false,
+  hiddenHistory: true,
   weatherData: {},
 
   //actions
@@ -16,6 +17,8 @@ export const useStore = create((set) => ({
   setValueCapture: (e) => set({ valueCapture: e.target.value }),
 
   setShouldRedirect: () => set((state) => ({ shouldRedirect: state.shouldRedirect ? false : true })),
+
+  setHiddenHistory: () => set((state) => ({ hiddenHistory: state.hiddenHistory === true ? false : true })),
 
   setWeatherData: async (URLDinamicRequest) => {
     try {
