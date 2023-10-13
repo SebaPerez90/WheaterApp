@@ -28,6 +28,7 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
 
   useEffect(() => {
     if (!weatherData.city) return;
+
     localStorage.setItem('historyFlag', JSON.stringify(isEmpty));
     setIsEmpty(false);
   }, [weatherData]);
@@ -64,6 +65,7 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
   // clean all search history and localStorage
   const cleanUpHistory = () => {
     localStorage.clear();
+    location.reload();
   };
 
   useImperativeHandle(ref, () => ({

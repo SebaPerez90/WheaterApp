@@ -178,14 +178,6 @@ body {
           flex-direction: column;
           border-bottom: 2px solid #d8d5d5;
           border-top: 2px solid #d8d5d5;
-
-          > ::after {
-            content: '';
-            /* position: absolute; */
-            width: 100px;
-            height: 5px;
-            background-color: red;
-          }
         }
         > :nth-child(2) {
           display: flex;
@@ -485,4 +477,5 @@ body {
       }
     }
   }
+
 }
