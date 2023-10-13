@@ -66,7 +66,6 @@ export default function Header() {
             />
           )}
         </button>
-        <button onClick={() => localStorage.clear()}>clear</button>
       </div>
     </header>
   );

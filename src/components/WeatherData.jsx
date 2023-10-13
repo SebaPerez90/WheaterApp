@@ -43,6 +43,10 @@ export default function WeatherData() {
     toast.error('text input can not be empty', {
       position: 'top-center',
     });
+  const searchHistoryEmpty = () =>
+    toast.error('search history is empty', {
+      position: 'top-center',
+    });
 
   // this function is trigger to the button 'search' to control the content in input type text
   // and if it is all ok , trigger the fetch fn() and history search fn()
@@ -55,13 +59,24 @@ export default function WeatherData() {
       myInput.current.value = '';
     }
   };
+  /////////////////////////////////////////////////////////////////////////////////////
+  //////////////          revisar esto para mañana   /////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
+  const showHistorySearch = () => {
+    if (weatherData.country) {
+      setHiddenHistory();
+    } else {
+      searchHistoryEmpty();
+      return;
+    }
+  };
 
   // these styles are applied when the state that renders "Search History" is changed.
   const conditionalStyles = {
     scale: '1',
     position: 'absolute',
     zIndex: 1000,
-    backgroundColor: 'red',
+    backgroundColor: '#2a557a',
     transform: ' translate(-1em , -5em)',
   };
 
@@ -101,7 +116,7 @@ export default function WeatherData() {
           </button>
         </div>
 
-        <button onClick={setHiddenHistory}>
+        <button onClick={showHistorySearch}>
           <FaHistory />
         </button>
       </section>
