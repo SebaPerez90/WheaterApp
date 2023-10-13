@@ -70,11 +70,11 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
     handleSetHistory,
     handleSetIcon,
     handleSetTemp,
+    isEmpty,
   }));
 
   return (
     <div>
-
       {isEmpty ? null : (
         <div
           className='search-history-dt'

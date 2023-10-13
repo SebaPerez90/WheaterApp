@@ -63,7 +63,7 @@ export default function WeatherData() {
   //////////////          revisar esto para mañana   /////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////
   const showHistorySearch = () => {
-    if (weatherData.country) {
+    if (!historyRef.current.isEmpty) {
       setHiddenHistory();
     } else {
       searchHistoryEmpty();
@@ -83,17 +83,18 @@ export default function WeatherData() {
   return (
     <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
       <section className={themeDark ? 'grid-form-area-container-dt' : 'main-weather-form-lt'}>
+        {/* this state control show/hide search history if the localStorage is not empty*/}
         {hiddenHistory ? (
           <SearchHistory
             valueCapture={valueCapture}
             ref={historyRef}
-            styles={conditionalStyles}
+            styles={{}}
           />
         ) : (
           <SearchHistory
             valueCapture={valueCapture}
             ref={historyRef}
-            styles={{}}
+            styles={conditionalStyles}
           />
         )}
 
