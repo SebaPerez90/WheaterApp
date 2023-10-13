@@ -21,22 +21,24 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
     localStorage.getItem('tempSearchHistory') ? JSON.parse(localStorage.getItem('tempSearchHistory')) : [],
   );
 
-  ///////////////////////////////////////////////////////////////////////////////
-  // estamos probando guardar la ciudad en una variable y guardarla en el storage
-  ///////////////////////////////////////////////////////////////////////////////
-  let isEmpty = weatherData.country ?? null;
+  // error handling "state" if search history is empty
+  const [isEmpty, setIsEmpty] = useState(
+    localStorage.getItem('historyFlag') ? JSON.parse(localStorage.getItem('historyFlag')) : true,
+  );
+
+  useEffect(() => {
+    if (!weatherData.city) return;
+    localStorage.setItem('historyFlag', JSON.stringify(isEmpty));
+    setIsEmpty(false);
+  }, [weatherData]);
 
   // this efect preserve the current search history location before the page refresh
   useEffect(() => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
     localStorage.setItem('iconSearchHistory', JSON.stringify(iconSearchHistory));
-    localStorage.setItem('renderFlag', JSON.stringify(isEmpty));
-  }, [searchHistory, iconSearchHistory]);
-
-  useEffect(() => {
-    localStorage.setItem('renderFlag', JSON.stringify(isEmpty));
-    console.log('pepe');
-  }, [weatherData]);
+    localStorage.setItem('tempSearchHistory', JSON.stringify(tempSearchHistory));
+    localStorage.setItem('historyFlag', JSON.stringify(isEmpty));
+  }, [searchHistory, iconSearchHistory, tempSearchHistory, isEmpty]);
 
   // temperature set storage fn
   const handleSetIcon = () => {
@@ -54,7 +56,7 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
 
   // temperature set storage fn
   const handleSetTemp = () => {
-    localStorage.setItem('tempSearchHistory', JSON.stringify(searchHistory));
+    localStorage.setItem('tempSearchHistory', JSON.stringify(tempSearchHistory));
 
     setTempSearchHistory([...tempSearchHistory, weatherData.temperature]);
   };
@@ -64,8 +66,6 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
     localStorage.clear();
   };
 
-  const getFlag = localStorage.getItem('renderFlag') ?? JSON.parse(localStorage.getItem('renderFlag'));
-
   useImperativeHandle(ref, () => ({
     handleSetHistory,
     handleSetIcon,
@@ -74,7 +74,8 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
 
   return (
     <div>
-      {getFlag ? (
+
+      {isEmpty ? null : (
         <div
           className='search-history-dt'
           style={styles}
@@ -102,8 +103,7 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
             <MdDeleteForever />
           </button>
         </div>
-      ) : null}
-      <button onClick={() => console.log(getFlag)}>log</button>
+      )}
     </div>
   );
 });
