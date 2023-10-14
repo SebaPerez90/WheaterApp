@@ -43,6 +43,7 @@ export default function WeatherData() {
     toast.error('text input can not be empty', {
       position: 'top-center',
     });
+
   const searchHistoryEmpty = () =>
     toast.error('search history is empty', {
       position: 'top-center',
@@ -57,6 +58,7 @@ export default function WeatherData() {
     } else {
       setWeatherData(URLDinamicRequest);
       myInput.current.value = '';
+      console.log(URLDinamicRequest);
     }
   };
   /////////////////////////////////////////////////////////////////////////////////////
