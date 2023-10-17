@@ -14,11 +14,9 @@ export default function App() {
   return (
     <QueryClientProvider client={client}>
       <Switch>
-        {/* <Header /> */}
-        <Route
-          path='/'
-          component={WeatherData}
-        />
+        <Route path='/'>
+          <Header /> <WeatherData />
+        </Route>
         <Route
           path='/favorites'
           component={Favorites}

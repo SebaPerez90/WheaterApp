@@ -1,24 +1,27 @@
 import { toast } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { Redirect } from 'wouter';
+import { useStore } from '../../store';
 
 const NotFound = () => {
+
+  // global state trigger the redirection to home route "/"
+  const { setShouldRedirect, shouldRedirect } = useStore();
+
   useEffect(() => {
     errorInfoMessage();
   }, []);
 
-  const [redirect, setRedirect] = useState(false);
-
   const errorInfoMessage = () =>
-    toast.custom(<div className='errorInfoMessage'>current location not found</div>, {
+    toast.custom(<div className='errorInfoMessage'>current location not found <span style={{textShadow: 'none'}}>❗</span></div>, {
       duration: 2000,
     });
 
   return (
     <section className='not-found-container'>
       <div className='not-found-content'>
-        <div className='pepe'>ERROR</div>
+        <div className='pepe'>ERROR !</div>
         <p>
           4
           <span className='not-found-span'>
@@ -30,13 +33,13 @@ const NotFound = () => {
           <p>it looks like you are lost</p>
           <button
             className='not-found-redirect-btn'
-            onClick={() => setRedirect(true)}
+            onClick={() => setShouldRedirect()}
           >
             go back home
           </button>
         </div>
       </div>
-      {redirect === true ? <Redirect to='/' /> : null}
+      {shouldRedirect ? null : <Redirect to='/' />}
     </section>
   );
 };

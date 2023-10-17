@@ -60,7 +60,6 @@ export default function WeatherData() {
     } else {
       setWeatherData(URLDinamicRequest);
       myInput.current.value = '';
-      console.log(URLDinamicRequest);
     }
   };
 
