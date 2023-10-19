@@ -629,11 +629,13 @@ body {
           color: red;
           border-left: 1px solid red;
           padding-left: 0.5em;
-          margin: 0 0 1em 0.5em;
+          margin: 0 0 1em 0.2em;
           height: 3em;
         }
       }
     }
+
+    /* README section */
     .readme-section-container-dt {
       border: 2px solid cyan;
       grid-column: 3 / span 2;
