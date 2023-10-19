@@ -626,11 +626,21 @@ body {
         }
 
         .expand-content {
-          color: red;
-          border-left: 1px solid red;
           padding-left: 0.5em;
           margin: 0 0 1em 0.2em;
           height: 3em;
+
+          > ::after {
+            content: '';
+            display: block;
+            position: relative;
+            width: 5em;
+            left: -3em;
+            top: -1em;
+            height: 0.2em;
+            background-color: red;
+            transform: rotate(90deg);
+          }
         }
       }
     }

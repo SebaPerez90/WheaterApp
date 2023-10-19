@@ -76,7 +76,6 @@ const FAQ = () => {
     }
   };
 
-  // se puece hacer con estados, cuando el estado esta en true renderiza una cosa y cuando esta false no renderiza nada , deberia tener 5 estados
 
   return (
     <section className={themeDark ? 'faq-section-container-dt' : 'faq-section-container-lt'}>
