@@ -1,16 +1,15 @@
 import { useState, useRef } from 'react';
 import { useStore } from '../../store';
-// import { FcExpand, FcCollapse } from 'react-icons/fc';
-import {AiOutlinePlus} from 'react-icons/ai'
+import { FcExpand, FcCollapse } from 'react-icons/fc';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
 
-  // const [expandIcon1, setExpandIcon1] = useState(false);
-  // const [expandIcon2, setExpandIcon2] = useState(false);
-  // const [expandIcon3, setExpandIcon3] = useState(false);
-  // const [expandIcon4, setExpandIcon4] = useState(false);
-  // const [expandIcon5, setExpandIcon5] = useState(false);
+  const [refIcon1, setRefIcon1] = useState(true);
+  const [refIcon2, setRefIcon2] = useState(true);
+  const [refIcon3, setRefIcon3] = useState(true);
+  const [refIcon4, setRefIcon4] = useState(true);
+  const [refIcon5, setRefIcon5] = useState(true);
 
   const ref1 = useRef();
   const ref2 = useRef();
@@ -21,41 +20,63 @@ const FAQ = () => {
   const test2 = (ref) => {
     switch (ref) {
       case ref1:
-        languageEng ? (ref.current.innerHTML = '<p> pepe </p>') : (ref.current.innerHTML = '<p> laura </p>');
-        // setExpandIcon1(!expandIcon1);
+        ref.current.classList.toggle('expand-content');
 
-        ref.current.classList.toggle('hideen');
+        ref.current.classList[1] === undefined
+          ? (ref.current.className = 'faq-answer-dt')
+          : (ref.current.className = ref.current.classList[1]);
+
+        setRefIcon1(!refIcon1);
+
         break;
 
       case ref2:
-        languageEng ? (ref.current.innerHTML = '<p> pepe </p>') : (ref.current.innerHTML = '<p> laura </p>');
-        // setExpandIcon2(!expandIcon2);
+        ref.current.classList.toggle('expand-content');
 
-        ref.current.classList.toggle('hideen');
+        ref.current.classList[1] === undefined
+          ? (ref.current.className = 'faq-answer-dt')
+          : (ref.current.className = ref.current.classList[1]);
+
+        setRefIcon2(!refIcon2);
+
         break;
 
       case ref3:
-        languageEng ? (ref.current.innerHTML = '<p> pepe </p>') : (ref.current.innerHTML = '<p> laura </p>');
-        // setExpandIcon3(!expandIcon3);
+        ref.current.classList.toggle('expand-content');
 
-        ref.current.classList.toggle('hideen');
+        ref.current.classList[1] === undefined
+          ? (ref.current.className = 'faq-answer-dt')
+          : (ref.current.className = ref.current.classList[1]);
+
+        setRefIcon3(!refIcon3);
+
         break;
 
       case ref4:
-        languageEng ? (ref.current.innerHTML = '<p> pepe </p>') : (ref.current.innerHTML = '<p> laura </p>');
-        // setExpandIcon4(!expandIcon4);
+        ref.current.classList.toggle('expand-content');
 
-        ref.current.classList.toggle('hideen');
+        ref.current.classList[1] === undefined
+          ? (ref.current.className = 'faq-answer-dt')
+          : (ref.current.className = ref.current.classList[1]);
+
+        setRefIcon4(!refIcon4);
+
         break;
 
       case ref5:
-        languageEng ? (ref.current.innerHTML = '<p> pepe </p>') : (ref.current.innerHTML = '<p> laura </p>');
-        // setExpandIcon5(!expandIcon5);
+        ref.current.classList.toggle('expand-content');
 
-        ref.current.classList.toggle('hideen');
+        ref.current.classList[1] === undefined
+          ? (ref.current.className = 'faq-answer-dt')
+          : (ref.current.className = ref.current.classList[1]);
+
+        setRefIcon5(!refIcon5);
+
         break;
     }
   };
+
+  // se puece hacer con estados, cuando el estado esta en true renderiza una cosa y cuando esta false no renderiza nada , deberia tener 5 estados
 
   return (
     <section className={themeDark ? 'faq-section-container-dt' : 'faq-section-container-lt'}>
@@ -64,67 +85,66 @@ const FAQ = () => {
       <div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
-          <p onClick={()=>test2(ref1)}>Which time format and timezone are used?
-            {/* <span style={{marginLeft: '1em'}}>{expandIcon1 ? <FcCollapse /> : <FcExpand />}</span> */}
-          </p>
-          <button><AiOutlinePlus /></button>
+          <div className='first-container'>
+            <p onClick={()=>test2(ref1)}>Which time format and timezone are used?</p>
+            <span>{refIcon1 ? <FcExpand /> : <FcCollapse />}</span>
+          </div>
           <div
             ref={ref1}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
+              <p>respuesta 1</p>
           </div>
         </div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
-          <p onClick={()=>test2(ref2)}>How can I specify locations in API calls?
-            {/* <span style={{marginLeft: '1em'}}>{expandIcon2 ? <FcCollapse /> : <FcExpand />}</span> */}
-          </p>
-          <button><AiOutlinePlus /></button>
+          <div className='first-container'>
+            <p onClick={()=>test2(ref2)}>How can I specify locations in API calls?</p>
+            <span>{refIcon2 ? <FcExpand /> : <FcCollapse />}</span>
+          </div>
           <div
             ref={ref2}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
+              <p>respuesta 2</p>
           </div>
         </div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
-          <p onClick={()=>test2(ref3)}>API calls return an error 404?
-            {/* <span style={{marginLeft: '1em'}}>{expandIcon3 ? <FcCollapse />: <FcExpand />}</span> */}
-          </p>
-          <button><AiOutlinePlus /></button>
+          <div className='first-container'>
+            <p onClick={()=>test2(ref3)}>API calls return an error 404?</p>
+            <span>{refIcon3 ? <FcExpand /> : <FcCollapse />}</span>
+          </div>
           <div
             ref={ref3}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
+              <p>respuesta 3</p>
           </div>
         </div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
-          <p onClick={()=>test2(ref4)}>How can I a request in the app?
-            {/* <span style={{marginLeft: '1em'}}>{expandIcon4 ? <FcCollapse />: <FcExpand />}</span> */}
-          </p>
-          <button><AiOutlinePlus /></button>
+          <div className='first-container'>
+            <p onClick={()=>test2(ref4)}>How can I a request in the app?</p>
+            <span>{refIcon4 ? <FcExpand /> : <FcCollapse />}</span>
+          </div>
           <div
             ref={ref4}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
+              <p>respuesta 4</p>
           </div>
         </div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
-          <p onClick={()=>test2(ref5)}>How works the searchs history?
-            {/* <span style={{marginLeft: '1em'}}>{expandIcon5 ? <FcCollapse />: <FcExpand />}</span> */}
-          </p>
-          <button><AiOutlinePlus /></button>
+          <div className='first-container'>
+            <p onClick={()=>test2(ref5)}>How works the searchs history?</p>
+            <span>{refIcon5 ? <FcExpand /> : <FcCollapse />}</span>
+          </div>
           <div
             ref={ref5}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
+              <p>respuesta 5</p>
           </div>
         </div>
 
       </div>
-      {/* <div>
-        <p>
-          {languageEng ? 'if you want more info visit this ' : 'si quieres más información visita esta '}
-          <a href=''>{languageEng ? 'source' : 'fuente'}</a>
-        </p>
-      </div> */}
     </section>
   );
 };

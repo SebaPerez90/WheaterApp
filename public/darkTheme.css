@@ -605,7 +605,7 @@ body {
       border: 2px solid orange;
       grid-column: 1 / span 2;
       grid-row: 1 / span 8;
-      padding: 0 0.5em 0 0.5em;
+      padding: 0 1.5em 0 1.5em;
 
       > :first-child {
         text-align: center;
@@ -615,15 +615,23 @@ body {
         border-bottom: 2px solid #5f75da;
         cursor: pointer;
 
-        .faq-answer-dt {
-          border-left: 1px solid red;
-          padding-left: 1em;
-          margin-left: 1.5em;
+        .first-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
-        /* .hideen {
+        .faq-answer-dt {
           display: none;
-        } */
+        }
+
+        .expand-content {
+          color: red;
+          border-left: 1px solid red;
+          padding-left: 0.5em;
+          margin: 0 0 1em 0.5em;
+          height: 3em;
+        }
       }
     }
     .readme-section-container-dt {
