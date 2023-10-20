@@ -1,18 +1,15 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useStore } from '../../store';
-import { FcExpand, FcCollapse } from 'react-icons/fc';
+import { FcExpand } from 'react-icons/fc';
 import inputImg from '../assets/images/FAQ/input-text.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
-  const refff = useRef();
-  const refff2 = useRef();
-
-  const [refIcon1, setRefIcon1] = useState(true);
-  const [refIcon2, setRefIcon2] = useState(true);
-  const [refIcon3, setRefIcon3] = useState(true);
-  const [refIcon4, setRefIcon4] = useState(true);
-  const [refIcon5, setRefIcon5] = useState(true);
+  const refIcon1 = useRef();
+  const refIcon2 = useRef();
+  const refIcon3 = useRef();
+  const refIcon4 = useRef();
+  const refIcon5 = useRef();
 
   const firstQuestion = useRef();
   const secondQuestion = useRef();
@@ -20,74 +17,15 @@ const FAQ = () => {
   const fifthQuestion = useRef();
   const sixthQuestion = useRef();
 
-  const expandCollapseContent = (ref) => {
-    switch (ref) {
-      case firstQuestion:
-        ref.current.classList.toggle('expand-content-first');
+  const expandCollapseContent = (refQuestion, refIcon) => {
+    refQuestion.current.classList.toggle('expand-content');
 
-        ref.current.classList[1] === undefined
-          ? (ref.current.className = 'faq-answer-dt')
-          : (ref.current.className = ref.current.classList[1]);
-
-        setRefIcon1(!refIcon1);
-
-        if (refIcon1 === true) {
-          refff.current.style.animation = 'rotation 600ms forwards';
-        } else {
-          refff.current.style.animation = 'rotation2 600ms forwards';
-        }
-
-        break;
-
-      case secondQuestion:
-        ref.current.classList.toggle('expand-content-second');
-
-        ref.current.classList[1] === undefined
-          ? (ref.current.className = 'faq-answer-dt')
-          : (ref.current.className = ref.current.classList[1]);
-
-        setRefIcon1(!refIcon1);
-
-        if (refIcon1 === true) {
-          refff2.current.style.animation = 'rotation 600ms forwards';
-        } else {
-          refff2.current.style.animation = 'rotation2 600ms forwards';
-        }
-
-        break;
-
-      case fourthQuestion:
-        ref.current.classList.toggle('expand-content-third');
-
-        ref.current.classList[1] === undefined
-          ? (ref.current.className = 'faq-answer-dt')
-          : (ref.current.className = ref.current.classList[1]);
-
-        setRefIcon3(!refIcon3);
-
-        break;
-
-      case fifthQuestion:
-        ref.current.classList.toggle('expand-content-fourth');
-
-        ref.current.classList[1] === undefined
-          ? (ref.current.className = 'faq-answer-dt')
-          : (ref.current.className = ref.current.classList[1]);
-
-        setRefIcon4(!refIcon4);
-
-        break;
-
-      case sixthQuestion:
-        ref.current.classList.toggle('expand-content-fifth');
-
-        ref.current.classList[1] === undefined
-          ? (ref.current.className = 'faq-answer-dt')
-          : (ref.current.className = ref.current.classList[1]);
-
-        setRefIcon5(!refIcon5);
-
-        break;
+    if (refQuestion.current.classList[1] === undefined) {
+      refQuestion.current.className = 'faq-answer-dt';
+      refIcon.current.style.animation = 'rotation2 600ms forwards';
+    } else {
+      refQuestion.current.className = refQuestion.current.classList[1];
+      refIcon.current.style.animation = 'rotation 600ms forwards';
     }
   };
 
@@ -99,14 +37,14 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>expandCollapseContent(firstQuestion)}>
+            <p onClick={()=>expandCollapseContent(firstQuestion, refIcon1)}>
               {languageEng ?
               'How can I a request in the app?'
               :
               '¿Cómo puedo realizar una solicitud en la aplicación?'
               }
             </p>
-            <span ref={refff}><FcExpand /></span>
+            <span ref={refIcon1}><FcExpand /></span>
           </div>
           <div
             ref={firstQuestion}
@@ -131,14 +69,14 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>expandCollapseContent(secondQuestion)}>
+            <p onClick={()=>expandCollapseContent(secondQuestion, refIcon2)}>
               {languageEng ? 
               'How works the searchs history?'
               :
               '¿Cómo funciona el historial de búsquedas?'
               }
             </p>
-            <span ref={refff2}><FcExpand /></span>
+            <span ref={refIcon2}><FcExpand /></span>
           </div>
           <div
             ref={secondQuestion}
@@ -155,14 +93,14 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>expandCollapseContent(fourthQuestion)}>
+            <p onClick={()=>expandCollapseContent(fourthQuestion, refIcon3)}>
               {languageEng ?
               'API calls return an error 404?'
               :
               '¿Las llamadas API devuelven un error 404?'
               }  
             </p>
-            <span>{refIcon3 ? <FcExpand /> : <FcCollapse />}</span>
+            <span ref={refIcon3}><FcExpand /></span>
           </div>
           <div
             ref={fourthQuestion}
@@ -179,14 +117,14 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>expandCollapseContent(fifthQuestion)}>
+            <p onClick={()=>expandCollapseContent(fifthQuestion, refIcon4)}>
               {languageEng ?
               'Can I choose the unit of temperature measurement in celcius or fahrenheit?'
               :
               '¿Puedo elegir la unidad de medida de la temperatura en celcius o fahrenheit?'
               }
             </p>
-            <span>{refIcon4 ? <FcExpand /> : <FcCollapse />}</span>
+            <span ref={refIcon4}><FcExpand /></span>
           </div>
           <div
             ref={fifthQuestion}
@@ -197,14 +135,14 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>expandCollapseContent(sixthQuestion)}>
+            <p onClick={()=>expandCollapseContent(sixthQuestion, refIcon5)}>
               {languageEng ?
               'Where can I get more information to explore with the API?'
               :
               '¿Donde puedo obtener mas informacion para explorar con la API?'
               }
               </p>
-            <span>{refIcon5 ? <FcExpand /> : <FcCollapse />}</span>
+              <span ref={refIcon5}><FcExpand /></span>
           </div>
           <div
             ref={sixthQuestion}

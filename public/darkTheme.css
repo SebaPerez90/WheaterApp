@@ -634,10 +634,7 @@ body {
           display: none;
         }
 
-        .expand-content-first,
-        .expand-content-third,
-        .expand-content-second,
-        .expand-content-fifth {
+        .expand-content {
           border-left: 2px solid #ff000083;
 
           > :first-child,
