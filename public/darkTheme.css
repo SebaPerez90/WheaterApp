@@ -17,7 +17,7 @@ body {
   line-height: 1.5;
   background-color: var(--bg-dark-theme);
   scroll-behavior: smooth;
-  cursor: url('/src/assets/nube-a.png'), auto;
+  cursor: url('/src/assets/cloud.png'), auto;
 
   /* header section  */
   .header-container-dt {
@@ -51,7 +51,7 @@ body {
           border: none;
           background-color: inherit;
           margin-left: 1em;
-          cursor: url('/src/assets/nube-b.png'), auto;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
         }
       }
     }
@@ -85,7 +85,7 @@ body {
         font-size: 1em;
         border-radius: 50%;
         border: none;
-        cursor: url('/src/assets/nube-b.png'), auto;
+        cursor: url('/src/assets/cloud-hover.png'), auto;
         height: 1.7em;
         line-height: 1.1em;
       }
@@ -93,7 +93,7 @@ body {
       .languageBtn {
         background-color: inherit;
         border: none;
-        cursor: url('/src/assets/nube-b.png'), auto;
+        cursor: url('/src/assets/cloud-hover.png'), auto;
         scale: 0.6;
       }
     }
@@ -148,7 +148,7 @@ body {
 
         .weather-serchBtn-dt {
           border: none;
-          cursor: url('/src/assets/nube-b.png'), auto;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
           border-radius: 0 0.5em 0.5em 0;
           outline: none;
 
@@ -196,7 +196,7 @@ body {
         > :last-child {
           right: 0.1em;
           top: 0.1em;
-          cursor: url('/src/assets/nube-b.png'), auto;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
           position: absolute;
         }
       }
@@ -570,7 +570,7 @@ body {
           transition: all 300ms;
 
           &:hover {
-            cursor: url('/src/assets/nube-b.png'), auto;
+            cursor: url('/src/assets/cloud-hover.png'), auto;
             background: #424d57;
             border: 1px solid #000000;
             color: #000000;
@@ -622,9 +622,12 @@ body {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          cursor: url('/src/assets/nube-b.png'), auto;
           font-family: var(--roboto-italic);
           gap: 1em;
+
+          > :first-child {
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+          }
         }
 
         .faq-answer-dt {
@@ -712,12 +715,19 @@ body {
   }
 }
 
-
 @keyframes rotation {
   0% {
-    transform: rotateX(1deg);
+    transform: rotateX(0deg);
   }
   100% {
     transform: rotateX(180deg);
+  }
+}
+@keyframes rotation2 {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
   }
 }

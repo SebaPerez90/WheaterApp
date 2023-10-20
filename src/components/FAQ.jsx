@@ -5,8 +5,10 @@ import inputImg from '../assets/images/FAQ/input-text.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
-  const refff = useRef()
-  // const [refIcon1, setRefIcon1] = useState(true);
+  const refff = useRef();
+  const refff2 = useRef();
+
+  const [refIcon1, setRefIcon1] = useState(true);
   const [refIcon2, setRefIcon2] = useState(true);
   const [refIcon3, setRefIcon3] = useState(true);
   const [refIcon4, setRefIcon4] = useState(true);
@@ -27,9 +29,13 @@ const FAQ = () => {
           ? (ref.current.className = 'faq-answer-dt')
           : (ref.current.className = ref.current.classList[1]);
 
-        // setRefIcon1(!refIcon1);
-        refff.current.style.animation = 'rotation 600ms forwards';
-        refff.current.style.animation = 'rotation 600ms forwards';
+        setRefIcon1(!refIcon1);
+
+        if (refIcon1 === true) {
+          refff.current.style.animation = 'rotation 600ms forwards';
+        } else {
+          refff.current.style.animation = 'rotation2 600ms forwards';
+        }
 
         break;
 
@@ -40,7 +46,13 @@ const FAQ = () => {
           ? (ref.current.className = 'faq-answer-dt')
           : (ref.current.className = ref.current.classList[1]);
 
-        setRefIcon2(!refIcon2);
+        setRefIcon1(!refIcon1);
+
+        if (refIcon1 === true) {
+          refff2.current.style.animation = 'rotation 600ms forwards';
+        } else {
+          refff2.current.style.animation = 'rotation2 600ms forwards';
+        }
 
         break;
 
@@ -94,7 +106,6 @@ const FAQ = () => {
               '¿Cómo puedo realizar una solicitud en la aplicación?'
               }
             </p>
-            {/* <span ref={refff}>{refIcon1 ? <FcExpand /> : <FcCollapse />}</span> */}
             <span ref={refff}><FcExpand /></span>
           </div>
           <div
@@ -127,7 +138,7 @@ const FAQ = () => {
               '¿Cómo funciona el historial de búsquedas?'
               }
             </p>
-            <span>{refIcon2 ? <FcExpand /> : <FcCollapse />}</span>
+            <span ref={refff2}><FcExpand /></span>
           </div>
           <div
             ref={secondQuestion}
