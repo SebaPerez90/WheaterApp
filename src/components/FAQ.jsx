@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useStore } from '../../store';
 import { FcExpand, FcCollapse } from 'react-icons/fc';
+import inputImg from '../assets/images/FAQ/input-text.png'
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
@@ -11,16 +12,16 @@ const FAQ = () => {
   const [refIcon4, setRefIcon4] = useState(true);
   const [refIcon5, setRefIcon5] = useState(true);
 
-  const ref1 = useRef();
-  const ref2 = useRef();
-  const ref3 = useRef();
-  const ref4 = useRef();
-  const ref5 = useRef();
+  const firstQuestion = useRef();
+  const secondQuestion = useRef();
+  const fourthQuestion = useRef();
+  const fifthQuestion = useRef();
+  const sixthQuestion = useRef();
 
-  const test2 = (ref) => {
+  const expandCollapseContent = (ref) => {
     switch (ref) {
-      case ref1:
-        ref.current.classList.toggle('expand-content');
+      case firstQuestion:
+        ref.current.classList.toggle('expand-content-first');
 
         ref.current.classList[1] === undefined
           ? (ref.current.className = 'faq-answer-dt')
@@ -30,7 +31,7 @@ const FAQ = () => {
 
         break;
 
-      case ref2:
+      case secondQuestion:
         ref.current.classList.toggle('expand-content');
 
         ref.current.classList[1] === undefined
@@ -41,7 +42,7 @@ const FAQ = () => {
 
         break;
 
-      case ref3:
+      case fourthQuestion:
         ref.current.classList.toggle('expand-content');
 
         ref.current.classList[1] === undefined
@@ -52,7 +53,7 @@ const FAQ = () => {
 
         break;
 
-      case ref4:
+      case fifthQuestion:
         ref.current.classList.toggle('expand-content');
 
         ref.current.classList[1] === undefined
@@ -63,7 +64,7 @@ const FAQ = () => {
 
         break;
 
-      case ref5:
+      case sixthQuestion:
         ref.current.classList.toggle('expand-content');
 
         ref.current.classList[1] === undefined
@@ -76,7 +77,6 @@ const FAQ = () => {
     }
   };
 
-
   return (
     <section className={themeDark ? 'faq-section-container-dt' : 'faq-section-container-lt'}>
       <h3>{languageEng ? 'Frequently Asked Questions' : 'Preguntas Comunes'}</h3>
@@ -85,23 +85,49 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>test2(ref1)}>Which time format and timezone are used?</p>
+            <p onClick={()=>expandCollapseContent(firstQuestion)}>
+              {languageEng ?
+              'How can I a request in the app?'
+              :
+              '¿Cómo puedo realizar una solicitud en la aplicación?'
+              }
+            </p>
             <span>{refIcon1 ? <FcExpand /> : <FcCollapse />}</span>
           </div>
           <div
-            ref={ref1}
+            ref={firstQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>respuesta 1</p>
+              <p>
+                {languageEng ?
+                'Fill in the text input and click on the search button with the magnifying glass icon to its right.'
+                :
+                'Complete la entrada de texto y haga clic en el botón con el icono de búsqueda , a su derecha.'
+                }
+              </p>
+              <img src={inputImg} alt='input-text-img' />
+              <p>
+                {languageEng ?
+                'You only need to enter the city name without the country name'
+                :
+                'Solo necesitas poner el nombre de la ciudad sin el nombre del país'
+                }
+              </p>
           </div>
         </div>
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>test2(ref2)}>How can I specify locations in API calls?</p>
+            <p onClick={()=>expandCollapseContent(secondQuestion)}>
+              {languageEng ? 
+              'How works the searchs history?'
+              :
+              '¿Cómo funciona el historial de búsquedas?'
+              }
+            </p>
             <span>{refIcon2 ? <FcExpand /> : <FcCollapse />}</span>
           </div>
           <div
-            ref={ref2}
+            ref={secondQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
               <p>respuesta 2</p>
           </div>
@@ -109,11 +135,17 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>test2(ref3)}>API calls return an error 404?</p>
+            <p onClick={()=>expandCollapseContent(fourthQuestion)}>
+              {languageEng ?
+              'API calls return an error 404?'
+              :
+              '¿Las llamadas API devuelven un error 404?'
+              }  
+            </p>
             <span>{refIcon3 ? <FcExpand /> : <FcCollapse />}</span>
           </div>
           <div
-            ref={ref3}
+            ref={fourthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
               <p>respuesta 3</p>
           </div>
@@ -121,11 +153,17 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>test2(ref4)}>How can I a request in the app?</p>
+            <p onClick={()=>expandCollapseContent(fifthQuestion)}>
+              {languageEng ?
+              'Can I choose the unit of temperature measurement in celcius or fahrenheit?'
+              :
+              '¿Puedo elegir la unidad de medida de la temperatura en celcius o fahrenheit?'
+              }
+            </p>
             <span>{refIcon4 ? <FcExpand /> : <FcCollapse />}</span>
           </div>
           <div
-            ref={ref4}
+            ref={fifthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
               <p>respuesta 4</p>
           </div>
@@ -133,11 +171,17 @@ const FAQ = () => {
 
         <div className={themeDark ? 'faq-question-dt' : 'faq-question-lt'}>
           <div className='first-container'>
-            <p onClick={()=>test2(ref5)}>How works the searchs history?</p>
+            <p onClick={()=>expandCollapseContent(sixthQuestion)}>
+              {languageEng ?
+              'Where can I get more information to explore with the API?'
+              :
+              '¿Donde puedo obtener mas informacion para explorar con la API?'
+              }
+              </p>
             <span>{refIcon5 ? <FcExpand /> : <FcCollapse />}</span>
           </div>
           <div
-            ref={ref5}
+            ref={sixthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
               <p>respuesta 5</p>
           </div>
