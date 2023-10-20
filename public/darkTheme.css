@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
 
 :root {
   --roboto-italic: 'Roboto Condensed', sans-serif;
   --roboto-mono: 'Roboto Mono', monospace;
   --roboto: 'Roboto', sans-serif;
   --oswald: 'Oswald', sans-serif;
+  --josefin: 'Josefin Sans', sans-serif;
   --bg-dark-theme: #242424;
   --bg-light-theme: #e4e4e4;
 }
@@ -15,7 +16,8 @@ body {
   box-sizing: border-box;
   line-height: 1.5;
   background-color: var(--bg-dark-theme);
-  /* cursor: url('/src/assets/nube-a.png'), auto; */
+  scroll-behavior: smooth;
+  cursor: url('/src/assets/nube-a.png'), auto;
 
   /* header section  */
   .header-container-dt {
@@ -609,39 +611,44 @@ body {
 
       > :first-child {
         text-align: center;
+        text-transform: uppercase;
       }
 
       .faq-question-dt {
         border-bottom: 2px solid #5f75da;
-        /* cursor: pointer; */
 
+        /* this container wrap all question and expand/collapse icon */
         .first-container {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          cursor: pointer;
+          cursor: url('/src/assets/nube-b.png'), auto;
+          font-family: var(--roboto-italic);
+          gap: 1em;
         }
 
         .faq-answer-dt {
           display: none;
         }
 
-        .expand-content {
-          margin: 0 0 1em 0.2em;
-          height: 3em;
+        .expand-content-first,
+        .expand-content-third,
+        .expand-content-second,
+        .expand-content-fifth {
+          border-left: 2px solid #ff000083;
 
-          > :first-child {
+          > :first-child,
+          > :last-child {
             margin-left: 1em;
+            color: #8d9de5;
+            font-size: 0.85em;
+            font-family: var(--josefin);
           }
-          &::after {
-            content: '';
-            display: block;
-            position: relative;
-            inline-size: 5em;
-            block-size: 0.1em;
-            writing-mode: vertical-rl;
-            bottom: 4em;
-            background-color: red;
+          > :nth-child(2) {
+            scale: 0.7;
+            border: 1px solid #ffffff62;
+            border-radius: 0.4em;
+            padding: 1em;
           }
         }
       }
@@ -652,10 +659,12 @@ body {
       border: 2px solid cyan;
       grid-column: 3 / span 2;
       grid-row: 1 / span 4;
+      text-align: center;
     }
 
     .footer-aside-container-dt {
       border: 2px solid blueviolet;
+      overflow: hidden;
       grid-column: 5;
       grid-row: 1 / 6;
 
@@ -691,7 +700,6 @@ body {
 
         .list-item-dt {
           color: var(--bg-light-theme);
-
         }
       }
 
@@ -701,5 +709,15 @@ body {
         gap: 1em;
       }
     }
+  }
+}
+
+
+@keyframes rotation {
+  0% {
+    transform: rotateX(1deg);
+  }
+  100% {
+    transform: rotateX(180deg);
   }
 }

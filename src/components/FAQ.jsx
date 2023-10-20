@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
 import { useStore } from '../../store';
 import { FcExpand, FcCollapse } from 'react-icons/fc';
-import inputImg from '../assets/images/FAQ/input-text.png'
+import inputImg from '../assets/images/FAQ/input-text.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
-
-  const [refIcon1, setRefIcon1] = useState(true);
+  const refff = useRef()
+  // const [refIcon1, setRefIcon1] = useState(true);
   const [refIcon2, setRefIcon2] = useState(true);
   const [refIcon3, setRefIcon3] = useState(true);
   const [refIcon4, setRefIcon4] = useState(true);
@@ -27,12 +27,14 @@ const FAQ = () => {
           ? (ref.current.className = 'faq-answer-dt')
           : (ref.current.className = ref.current.classList[1]);
 
-        setRefIcon1(!refIcon1);
+        // setRefIcon1(!refIcon1);
+        refff.current.style.animation = 'rotation 600ms forwards';
+        refff.current.style.animation = 'rotation 600ms forwards';
 
         break;
 
       case secondQuestion:
-        ref.current.classList.toggle('expand-content');
+        ref.current.classList.toggle('expand-content-second');
 
         ref.current.classList[1] === undefined
           ? (ref.current.className = 'faq-answer-dt')
@@ -43,7 +45,7 @@ const FAQ = () => {
         break;
 
       case fourthQuestion:
-        ref.current.classList.toggle('expand-content');
+        ref.current.classList.toggle('expand-content-third');
 
         ref.current.classList[1] === undefined
           ? (ref.current.className = 'faq-answer-dt')
@@ -54,7 +56,7 @@ const FAQ = () => {
         break;
 
       case fifthQuestion:
-        ref.current.classList.toggle('expand-content');
+        ref.current.classList.toggle('expand-content-fourth');
 
         ref.current.classList[1] === undefined
           ? (ref.current.className = 'faq-answer-dt')
@@ -65,7 +67,7 @@ const FAQ = () => {
         break;
 
       case sixthQuestion:
-        ref.current.classList.toggle('expand-content');
+        ref.current.classList.toggle('expand-content-fifth');
 
         ref.current.classList[1] === undefined
           ? (ref.current.className = 'faq-answer-dt')
@@ -92,7 +94,8 @@ const FAQ = () => {
               '¿Cómo puedo realizar una solicitud en la aplicación?'
               }
             </p>
-            <span>{refIcon1 ? <FcExpand /> : <FcCollapse />}</span>
+            {/* <span ref={refff}>{refIcon1 ? <FcExpand /> : <FcCollapse />}</span> */}
+            <span ref={refff}><FcExpand /></span>
           </div>
           <div
             ref={firstQuestion}
@@ -129,7 +132,13 @@ const FAQ = () => {
           <div
             ref={secondQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>respuesta 2</p>
+               <p>
+                {languageEng ?
+                `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                :
+                'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                }
+              </p>
           </div>
         </div>
 
@@ -147,7 +156,13 @@ const FAQ = () => {
           <div
             ref={fourthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>respuesta 3</p>
+              <p>
+                {languageEng ?
+                `If you enter an invalid location name or if it's not grammatically correct, the request may not yield results. Instead, you will be redirected to another page with more information about what happened with your request`
+                :
+                'Si ingresas un nombre de ubicación inválido o si no es gramaticalmente correcto, es posible que la solicitud no arroje resultados. En su lugar, serás redirigido a otra página con más información sobre lo que sucedió con tu solicitud.'
+                }
+              </p>
           </div>
         </div>
 
@@ -183,7 +198,13 @@ const FAQ = () => {
           <div
             ref={sixthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>respuesta 5</p>
+              <p>
+                {languageEng ? 
+                'if you want more information to explore more alternatives and work with this API, check this source' 
+                : 
+                'Si desea obtener más información para explorar más alternativas y trabajar con esta API, consulte esta fuente'}
+                <a href='#resourse'>{languageEng ? 'source' : 'fuente'}</a>
+              </p>
           </div>
         </div>
 

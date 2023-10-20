@@ -29,7 +29,10 @@ export default function Header() {
 
   return (
     <header className={themeDark ? 'header-container-dt' : 'header-container-lt'}>
-      <div className={themeDark ? 'header-resourse-dt' : 'header-resourse-lt'}>
+      <div
+        id='resourse'
+        className={themeDark ? 'header-resourse-dt' : 'header-resourse-lt'}
+      >
         <p>{languageEng ? 'Resource:' : 'Recurso:'}</p>
         <div className={themeDark ? 'header-url-dt' : 'header-url-lt'}>
           <p ref={URLresourse}>https://home.openweathermap.org/</p>
