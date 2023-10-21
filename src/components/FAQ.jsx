@@ -22,10 +22,10 @@ const FAQ = () => {
 
     if (refQuestion.current.classList[1] === undefined) {
       refQuestion.current.className = 'faq-answer-dt';
-      refIcon.current.style.animation = 'rotation2 600ms forwards';
+      refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
     } else {
       refQuestion.current.className = refQuestion.current.classList[1];
-      refIcon.current.style.animation = 'rotation 600ms forwards';
+      refIcon.current.style.animation = 'toggleExpand 600ms forwards';
     }
   };
 
@@ -149,10 +149,15 @@ const FAQ = () => {
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
               <p>
                 {languageEng ? 
-                'if you want more information to explore more alternatives and work with this API, check this source' 
+                'if you want more information to explore more alternatives and work with this API, check this ' 
                 : 
-                'Si desea obtener más información para explorar más alternativas y trabajar con esta API, consulte esta fuente'}
-                <a href='#resourse'>{languageEng ? 'source' : 'fuente'}</a>
+                'Si desea obtener más información para explorar más alternativas y trabajar con esta API, consulte esta '}
+                <a 
+                  className='source-link' 
+                  href='#resourse'
+                  >
+                    {languageEng ? 'source.' : 'fuente.'}
+                </a>
               </p>
           </div>
         </div>

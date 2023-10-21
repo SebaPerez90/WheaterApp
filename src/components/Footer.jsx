@@ -1,5 +1,6 @@
 import { PiGithubLogoFill } from 'react-icons/pi';
-import { FaLinkedinIn } from 'react-icons/fa';
+// import { FaLinkedinIn } from 'react-icons/fa';
+import { RiLinkedinFill } from 'react-icons/ri';
 import { SiMinutemailer } from 'react-icons/si';
 import { useStore } from '../../store';
 import IconApp from '../assets/icon.png';
@@ -26,17 +27,17 @@ export default function Footer() {
         <ul className={themeDark ? 'footer-list-dt' : 'footer-list-lt'}>
           <li>
             <a
-              className={themeDark ? 'list-item-dt' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt linkedin' : 'list-item-lt'}
               href='https://www.linkedin.com/in/sebaperez90/'
               rel='noreferrer'
               target='_blank'
             >
-              <FaLinkedinIn />
+              <RiLinkedinFill />
             </a>
           </li>
           <li>
             <a
-              className={themeDark ? 'list-item-dt' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt github' : 'list-item-lt'}
               href='https://github.com/SebaPerez90'
               rel='noreferrer'
               target='_blank'
@@ -46,7 +47,7 @@ export default function Footer() {
           </li>
           <li>
             <a
-              className={themeDark ? 'list-item-dt' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt email' : 'list-item-lt'}
               href='/form'
               rel='noreferrer'
             >
