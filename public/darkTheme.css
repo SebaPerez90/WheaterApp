@@ -597,20 +597,25 @@ body {
   }
 
   .footer-container-dt {
-    border: 2px solid rgba(255, 255, 255, 0.288);
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(7, 4.5em);
 
     /* frecuently asked question section */
     .faq-section-container-dt {
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 8;
+      grid-column: 1 / span 4;
+      grid-row: 1 / span 7;
       padding: 0 1.5em 0 1.5em;
+      background-color: #3b3b3b;
+      margin: 0.5em 0 0.5em 0.5em;
+      border-radius: 0.5em;
+      box-shadow: 4px 4px 4px #131313;
 
       > :first-child {
         text-align: center;
         text-transform: uppercase;
+        color: #388cd5;
+        text-shadow: 2px 2px 1px #13131356;
       }
 
       > :last-child {
@@ -619,8 +624,8 @@ body {
       }
 
       .faq-question-dt {
-        border-bottom: 2px solid #5f75da;
-        margin-top: 1em;
+        border-bottom: 2px solid #388cd5;
+        margin-top: 0.5em;
 
         /* this container wrap all question and expand/collapse icon */
         .first-container {
@@ -648,7 +653,7 @@ body {
           background-color: #2d2d2d;
           padding-right: 1em;
           border-radius: 0 0.4em 0.4em 0;
-          width: 50%;
+          width: 45%;
           z-index: 100;
 
           > :first-child,
@@ -676,24 +681,52 @@ body {
 
     /* README section */
     .readme-section-container-dt {
-      grid-column: 4 / span 2;
-      grid-row: 1 / span 4;
-      padding: 0 3em 0 3em;
+      grid-column: 5 / span 2;
+      grid-row: 1 / span 6;
+      padding: 0 1.5em 0 1.5em;
+      padding-top: 2em;
 
       .readme-card-container-dt {
-        background-color: #2d2d2d;
-        border-radius: 0.3em;
+        background-color: #3b3b3b;
+        border-radius: 0.5em;
         height: 100%;
         text-align: center;
-        margin: 3em auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        box-shadow: 4px 4px 4px #131313;
+
+        > :first-child {
+          color: #388cd5;
+          text-shadow: 2px 2px 1px #13131356;
+        }
+        > :nth-child(2),
+        > :nth-child(3) {
+          padding: 0 0.7em 0 0.7em;
+          text-wrap: balance;
+          line-height: 1.7em;
+          font-size: 0.9em;
+          font-family: var(--roboto-italic);
+        }
+        > :last-child {
+          padding: 0.5em;
+          border-radius: 0.5em;
+          font-family: var(--josefin);
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+        }
       }
     }
 
     /* ASIDE section */
     .footer-aside-container-dt {
+      grid-column: 7 / span 2;
+      grid-row: 1 / 7;
       overflow: hidden;
-      grid-column: 6;
-      grid-row: 1 / 6;
+      background-color: #3b3b3b;
+      margin: 0.5em;
+      border-radius: 0.5em;
+      box-shadow: 4px 4px 4px #131313;
 
       display: flex;
       flex-direction: column;
@@ -705,7 +738,8 @@ body {
           font-weight: 700;
           text-align: center;
           font-family: var(--roboto-mono);
-          text-shadow: 2px 2px 2px #000000d2;
+          color: #388cd5;
+          text-shadow: 2px 2px 1px #13131356;
         }
         > :last-child {
           scale: 0.3;
@@ -718,7 +752,6 @@ body {
         display: flex;
         align-self: stretch;
         justify-content: space-around;
-        gap: 1.5em;
         position: relative;
         right: 2em;
         bottom: 2em;
@@ -726,33 +759,37 @@ body {
         .list-item-dt {
           position: absolute;
           color: var(--bg-light-theme);
-          font-size: 1.8em;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          font-size: 1.2em;
+
+          > :hover {
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+            transform: translate(-1em, -1em);
+            padding: 1.4em;
+            scale: 1.5;
+            transition: all 500ms;
+          }
         }
         .linkedin {
+          line-height: 1em;
+
           > :hover {
-            color: #4274e7;
-            padding: 0.7em;
-            transform: translate(-1em, -1.2em);
             animation: shiningLinkedin 700ms alternate;
-            transition: all 400ms;
+            color: #10edb5;
           }
         }
         .github {
+          line-height: 1em;
+
           > :hover {
-            padding: 0.7em;
-            transform: translate(-1em, -1.2em);
             animation: shiningGitHub 700ms alternate;
-            transition: all 400ms;
             color: #7e7d7d;
           }
         }
         .email {
+          line-height: 1em;
+
           > :hover {
-            padding: 0.7em;
-            transform: translate(-1em, -1.2em);
             animation: shiningEmail 700ms alternate;
-            transition: all 400ms;
             color: #c97878;
           }
         }
@@ -774,6 +811,33 @@ body {
           padding: 0.5em;
           border-radius: 0.5em;
           font-family: var(--josefin);
+        }
+      }
+    }
+
+    .developed-dt {
+      grid-row: 7;
+      grid-column: 5 / span 3;
+      display: flex;
+      align-items: end;
+
+      > :first-child {
+        text-align: center;
+        position: relative;
+        left: 2em;
+        /* top: 1em; */
+        font-size: 0.8em;
+        font-family: var(--josefin);
+        min-width: max-content;
+      }
+      > :last-child {
+        position: fixed;
+        bottom: 0.2em;
+        right: 0.7em;
+        font-size: 1.5em;
+
+        :hover {
+          cursor: url('/src/assets/cloud-hover.png'), auto;
         }
       }
     }
@@ -808,7 +872,6 @@ body {
       1px 2px 30px 6px #004af7,
       1px 2px 30px 6px #004af7;
     border-radius: 50%;
-    transform: rotateY(180deg);
   }
   25% {
     border-left: 2px solid #004af7;
@@ -836,7 +899,6 @@ body {
       inset 1px 2px 10px 3px #7e7d7d,
       1px 2px 10px 3px #7e7d7d,
       1px 2px 10px 3px #7e7d7d;
-    transform: rotateY(180deg);
   }
   25% {
     border-left: 2px solid #7e7d7d;
@@ -864,7 +926,6 @@ body {
       inset 1px 2px 10px 3px #ff0000,
       1px 2px 10px 3px #ff0000,
       1px 2px 10px 3px #ff0000;
-    transform: rotateY(180deg);
   }
   25% {
     border-left: 2px solid #ff0000;

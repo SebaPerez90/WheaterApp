@@ -1,6 +1,7 @@
 import { PiGithubLogoFill } from 'react-icons/pi';
 import { RiLinkedinFill } from 'react-icons/ri';
 import { SiMinutemailer } from 'react-icons/si';
+import { FaArrowUpLong } from 'react-icons/fa6';
 import { useStore } from '../../store';
 import IconApp from '../assets/icon.png';
 import FAQ from './FAQ';
@@ -22,6 +23,7 @@ export default function Footer() {
               ? 'If you wish to collaborate on this project or clone it to your local machine to explore further alternatives, I invite you to go to the "README" for more explanations on how to do this.'
               : 'Si desea colaborar en este proyecto o clonarlo en su máquina local para explorar más alternativas, lo invito a ir al "README" para obtener más explicaciones sobre cómo hacerlo'}
           </p>
+          <button>redirect</button>
         </div>
       </section>
       <aside className={themeDark ? 'footer-aside-container-dt' : 'footer-aside-container-lt'}>
@@ -68,6 +70,14 @@ export default function Footer() {
           <button>{languageEng ? 'sign up' : 'registrate'}</button>
         </div>
       </aside>
+      <div className={themeDark ? 'developed-dt' : 'developed-lt'}>
+        <p>
+          {languageEng
+            ? 'Sebastian Perez © 2023 | made with ❤️ thank you very much for your visit.'
+            : 'Sebastian Perez © 2023 | Echo con ❤️ Muchas Gracias por tu visita.'}
+        </p>
+        <span><FaArrowUpLong /></span>
+      </div>
     </footer>
   );
 }
