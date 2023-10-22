@@ -31,7 +31,7 @@ const FAQ = () => {
 
   return (
     <section className={themeDark ? 'faq-section-container-dt' : 'faq-section-container-lt'}>
-      <h3>{languageEng ? 'Frequently Asked Questions' : 'Preguntas Comunes'}</h3>
+      <h1>{languageEng ? 'F A Q' : 'Preguntas Comunes'}</h1>
       {/* prettier-ignore */}
       <div>
 
