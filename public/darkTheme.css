@@ -684,7 +684,7 @@ body {
       grid-column: 5 / span 2;
       grid-row: 1 / span 6;
       padding: 0 1.5em 0 1.5em;
-      padding-top: 2em;
+      margin: 0.5em;
 
       .readme-card-container-dt {
         background-color: #3b3b3b;
@@ -696,6 +696,7 @@ body {
         justify-content: space-evenly;
         align-items: center;
         box-shadow: 4px 4px 4px #131313;
+        
 
         > :first-child {
           color: #388cd5;
@@ -774,7 +775,7 @@ body {
 
           > :hover {
             animation: shiningLinkedin 700ms alternate;
-            color: #10edb5;
+            color: #3d8aff;
           }
         }
         .github {

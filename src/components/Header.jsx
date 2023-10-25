@@ -55,6 +55,7 @@ export default function Header() {
             : 'Una aplicación interactiva y dinámica para mantenerse actualizado sobre las condiciones climáticas.'}
         </p>
       </div>
+
       <div className={themeDark ? 'header-btn-container-dt' : 'header-btn-container-lt'}>
         <button
           onClick={toggleTheme}
@@ -81,6 +82,7 @@ export default function Header() {
           )}
         </button>
       </div>
+      
     </header>
   );
 }

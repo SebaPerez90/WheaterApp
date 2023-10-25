@@ -8,6 +8,7 @@ export const useStore = create((set) => ({
   shouldRedirect: false,
   hiddenHistory: true,
   weatherData: {},
+  temperatureUnit: 'metric',
 
   //actions
   toggleTheme: () => set((state) => ({ themeDark: state.themeDark ? false : true })),
@@ -72,4 +73,7 @@ export const useStore = create((set) => ({
       console.error(error);
     }
   },
+
+  setTemperatureUnit: () =>
+    set((state) => ({ temperatureUnit: state.temperatureUnit === 'metric' ? 'imperial' : 'metric' })),
 }));

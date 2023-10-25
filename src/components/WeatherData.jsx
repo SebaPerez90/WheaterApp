@@ -22,19 +22,20 @@ export default function WeatherData() {
     weatherData,
     hiddenHistory,
     setHiddenHistory,
+    temperatureUnit,
+    setTemperatureUnit,
   } = useStore();
 
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
-  const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=metric&appid=${APIkey}`;
+  const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=${temperatureUnit}&appid=${APIkey}`
 
   // references
   const historyRef = useRef();
   const myInput = useRef();
 
   useEffect(() => {
-    if (!weatherData.city) {
-      return;
-    }
+    if (!weatherData.city) return;
+
     historyRef.current.handleSetHistory();
     historyRef.current.handleSetIcon();
     historyRef.current.handleSetTemp();
@@ -124,6 +125,8 @@ export default function WeatherData() {
         <button onClick={showHistorySearch}>
           <FaHistory />
         </button>
+        <button onClick={() => setTemperatureUnit()}>set</button>
+        <button onClick={() => console.log(temperatureUnit)}>log</button>
       </section>
 
       <ForecastNextDays />
