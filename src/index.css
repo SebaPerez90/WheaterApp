@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  box-sizing: content-box;
+  background-color: #303030;
+
+}
+#btn:hover {
+  cursor: pointer;
+  animation: efect 200ms linear 1 alternate-reverse forwards;
+}
+@keyframes efect1 {
+  to {
+    transform: translate(-3em);
+  }
+}
+@keyframes efect2 {
+  to {
+    transform: translate(3em);
+  }
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  50% {
+    transform: translateY(-3.5em);
+  }
+  85% {
+    transform: translateY(-2em);
+  }
+  100% {
+    transform: translateY(-3em);
+  }
+}

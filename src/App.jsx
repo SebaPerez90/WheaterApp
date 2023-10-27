@@ -37,13 +37,12 @@
 //   );
 // }
 
-
+import '../src/index.css';
 
 import Buttons from "./components/Buttons";
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
+    <div className='mx-8 my-8'>
       <Buttons />
     </div>
   );

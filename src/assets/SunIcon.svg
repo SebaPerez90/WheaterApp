@@ -5,7 +5,7 @@
   xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="21" cy="20" r="9" fill="#ffa500" />
-    <circle cx="21" cy="20" r="6" fill="#ffa500" />
+    <circle cx="21" cy="20" r="7" fill="#dcccae" />
     <path d="M21 6 L21 8" stroke="#ffa500" stroke-width="3" stroke-linecap="round" />
     <path d="M21 32 L21 34" stroke="#ffa500" stroke-width="3" stroke-linecap="round" />
     <path d="M7 20 L9 20" stroke="#ffa500" stroke-width="3" stroke-linecap="round" />
