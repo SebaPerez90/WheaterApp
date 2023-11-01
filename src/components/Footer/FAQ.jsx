@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { useStore } from '../../store';
+import { useStore } from '../../../store';
 import { FcExpand } from 'react-icons/fc';
-import inputImg from '../assets/images/FAQ/input-text.png';
+import inputImg from '../../assets/images/FAQ/input-text.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();

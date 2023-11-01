@@ -1,4 +1,3 @@
-import SpanishCardInfo from './SpanishCardInfo.jsx';
 import EnglishCardInfo from './EnglishCardInfo.jsx';
 import ForecastNextDays from './ForecastNextDays.jsx';
 import SearchHistory from './SearchHistory.jsx';
@@ -23,7 +22,6 @@ export default function WeatherData() {
     hiddenHistory,
     setHiddenHistory,
     temperatureUnit,
-    setTemperatureUnit,
   } = useStore();
 
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
@@ -122,16 +120,14 @@ export default function WeatherData() {
           </button>
         </div>
 
-        <button onClick={showHistorySearch}>
+        {/* <button onClick={showHistorySearch}>
           <FaHistory />
-        </button>
-        <button onClick={() => setTemperatureUnit()}>set</button>
-        <button onClick={() => console.log(temperatureUnit)}>log</button>
+        </button> */}
       </section>
 
       <ForecastNextDays />
 
-      {languageEng ? <EnglishCardInfo /> : <SpanishCardInfo />}
+      {languageEng ? <EnglishCardInfo /> : 'componente en español'}
 
       {/* if fetch fn response code status is equal to '404' , redirect to URL path that contains more info about this type error in fetching data */}
       {shouldRedirect ? <Redirect to='/notfound' /> : null}

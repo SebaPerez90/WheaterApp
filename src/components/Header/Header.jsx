@@ -1,13 +1,16 @@
-import { useStore } from '../../store';
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import { useStore } from '../../../store';
 import { FaCopy } from 'react-icons/fa';
-import esp from '../assets/esp.png';
-import eng from '../assets/eng.png';
+// import { TbTemperatureCelsius } from 'react-icons/tb';
+// import { TbTemperatureFahrenheit } from 'react-icons/tb';
+// import espIcon from '../assets/espIcon.png';
+// import engIcon from '../assets/engIcon.png';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
+import HambuerguerMenu from './HambuerguerMenu';
+// import ThemeButton from './ThemeButton';
 
 export default function Header() {
-  const { themeDark, toggleTheme, languageEng, toggleLanguage } = useStore();
+  const { themeDark, languageEng, toggleLanguage, temperatureUnit, setTemperatureUnit } = useStore();
   const URLresourse = useRef();
   const btnRef = useRef();
 
@@ -29,7 +32,7 @@ export default function Header() {
 
   return (
     <header className={themeDark ? 'header-container-dt' : 'header-container-lt'}>
-      <div
+      {/* <div
         id='resourse'
         className={themeDark ? 'header-resourse-dt' : 'header-resourse-lt'}
       >
@@ -45,7 +48,7 @@ export default function Header() {
             <FaCopy />
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className='header-title-container'>
         <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
@@ -56,33 +59,7 @@ export default function Header() {
         </p>
       </div>
 
-      <div className={themeDark ? 'header-btn-container-dt' : 'header-btn-container-lt'}>
-        <button
-          onClick={toggleTheme}
-          className={themeDark ? 'header-btn-dt' : 'header-btn-lt'}
-        >
-          {themeDark ? <BsFillMoonFill /> : <BsFillSunFill />}
-        </button>
-        <button
-          onClick={toggleLanguage}
-          className='languageBtn'
-        >
-          {languageEng ? (
-            <img
-              src={esp}
-              alt='icono-referencia-español'
-              className='EspLangRefImg'
-            />
-          ) : (
-            <img
-              src={eng}
-              alt='reference-icon-english'
-              className='EngLangRefImg'
-            />
-          )}
-        </button>
-      </div>
-      
+      <HambuerguerMenu />
     </header>
   );
 }

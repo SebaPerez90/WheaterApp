@@ -2,8 +2,8 @@ import { PiGithubLogoFill } from 'react-icons/pi';
 import { RiLinkedinFill } from 'react-icons/ri';
 import { SiMinutemailer } from 'react-icons/si';
 import { FaArrowUpLong } from 'react-icons/fa6';
-import { useStore } from '../../store';
-import IconApp from '../assets/icon.png';
+import { useStore } from '../../../store';
+import IconApp from '../../assets/icon.png';
 import FAQ from './FAQ';
 
 export default function Footer() {
@@ -76,7 +76,9 @@ export default function Footer() {
             ? 'Sebastian Perez © 2023 | made with ❤️ thank you very much for your visit.'
             : 'Sebastian Perez © 2023 | Echo con ❤️ Muchas Gracias por tu visita.'}
         </p>
-        <span><FaArrowUpLong /></span>
+        <span>
+          <FaArrowUpLong />
+        </span>
       </div>
     </footer>
   );

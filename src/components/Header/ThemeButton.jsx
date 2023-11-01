@@ -1,9 +1,9 @@
-import SunIcon from '../assets/SunIcon.svg';
-import MoonIcon from '../assets/MoonIcon.svg';
-import { useStore } from '../../store';
+import SunIcon from '../../assets/SunIcon.svg';
+import MoonIcon from '../../assets/MoonIcon.svg';
+import { useStore } from '../../../store';
 import { useRef, useEffect } from 'react';
 
-const Buttons = () => {
+const ThemeButton = () => {
   const { themeDark, toggleTheme } = useStore();
   const btnRef = useRef();
   const svgRef = useRef();
@@ -63,4 +63,4 @@ const Buttons = () => {
   );
 };
 
-export default Buttons;
+export default ThemeButton;
