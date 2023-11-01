@@ -1,16 +1,11 @@
 import { useStore } from '../../../store';
-import { FaCopy } from 'react-icons/fa';
-// import { TbTemperatureCelsius } from 'react-icons/tb';
-// import { TbTemperatureFahrenheit } from 'react-icons/tb';
-// import espIcon from '../assets/espIcon.png';
-// import engIcon from '../assets/engIcon.png';
+// import { FaCopy } from 'react-icons/fa';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import HambuerguerMenu from './HambuerguerMenu';
-// import ThemeButton from './ThemeButton';
 
 export default function Header() {
-  const { themeDark, languageEng, toggleLanguage, temperatureUnit, setTemperatureUnit } = useStore();
+  const { themeDark, languageEng} = useStore();
   const URLresourse = useRef();
   const btnRef = useRef();
 

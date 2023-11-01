@@ -8,7 +8,7 @@ const LanguageButton = () => {
   const { languageEng, toggleLanguage } = useStore();
   const btnRef = useRef();
 
-  const infoMsj = languageEng
+  const infoMsjLanguage = languageEng
     ? () =>
         toast('El idioma actual es el español!', {
           icon: '💡',
@@ -35,13 +35,13 @@ const LanguageButton = () => {
       btnRef.current.style.animation = 'iconEnglish 700ms linear';
       setTimeout(() => {
         toggleLanguage();
-        infoMsj();
+        infoMsjLanguage();
       }, 700);
     } else {
       btnRef.current.style.animation = 'iconSpanish 1.2s linear reverse';
       setTimeout(() => {
         toggleLanguage();
-        infoMsj();
+        infoMsjLanguage();
       }, 500);
     }
   };

@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useStore } from '../../../store';
 import ThemeButton from './ThemeButton';
 import LanguageButton from './LanguageButton';
+import { TbTemperatureCelsius } from 'react-icons/tb';
+import { TbTemperatureFahrenheit } from 'react-icons/tb';
+import { toast } from 'react-hot-toast';
 
 const HambuerguerMenu = () => {
-  const { themeDark } = useStore();
+  const { themeDark, languageEng, temperatureUnit, setTemperatureUnit } = useStore();
 
   const container_bars = useRef();
   const first_bar = useRef();
@@ -12,6 +15,32 @@ const HambuerguerMenu = () => {
   const third_bar = useRef();
 
   const [active, setActive] = useState(false);
+
+  const infoMsjUnits = (text) =>
+    toast(text, {
+      icon: '💡',
+      style: {
+        borderRadius: '10px',
+        background: '#443e66',
+        color: '#fff',
+        minWidth:'max-content',
+      },
+      duration: 2500,
+    });
+
+  useEffect(() => {
+    if (languageEng) {
+      temperatureUnit === 'metric'
+        ? infoMsjUnits('Current measurement unit: degrees Celsius')
+        : infoMsjUnits('Current measurement unit: degrees Fahrenheit');
+      return;
+    } else {
+      temperatureUnit === 'metric'
+        ? infoMsjUnits('Unidad de medición actual : grados Celsius')
+        : infoMsjUnits('Unidad de medición actual : grados Fahrenheit');
+      return;
+    }
+  }, [temperatureUnit]);
 
   const openMenu = () => {
     if (active) {
@@ -67,12 +96,30 @@ const HambuerguerMenu = () => {
       </div>
       {active ? (
         <div className={themeDark ? 'header-menu-dt' : 'header-menu-lt'}>
-          <p>Preferences</p>
+          <p>{languageEng ? 'Preferences' : 'Preferencias'}</p>
           <ul className={themeDark ? 'menu-list-dt' : 'menu-list-t'}>
             <li>
               <ThemeButton />
             </li>
-            <li><LanguageButton /></li>
+            <li className='flex items-center justify-between'>
+              <LanguageButton />
+
+              {temperatureUnit === 'metric' ? (
+                <button
+                  className='border-2 border-[#b1adcc] rounded-full h-10 w-10 flex justify-center items-center text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200'
+                  onClick={() => setTemperatureUnit()}
+                >
+                  <TbTemperatureCelsius className='scale-150 ' />
+                </button>
+              ) : (
+                <button
+                  className='border-2 border-[#b1adcc] rounded-full h-10 w-10 flex justify-center items-center text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200'
+                  onClick={() => setTemperatureUnit()}
+                >
+                  <TbTemperatureFahrenheit className='scale-150' />
+                </button>
+              )}
+            </li>
           </ul>
         </div>
       ) : null}

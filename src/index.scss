@@ -119,10 +119,10 @@ body {
       transform: translateX(-40em);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: start;
       justify-content: start;
       height: 100%;
-      padding-top: 2em;
+      padding: 3em 0 0 1em;
       z-index: 10;
       transition: all 400ms;
       width: 30%;
@@ -138,6 +138,12 @@ body {
         display: flex;
         flex-direction: column;
         gap: 1em;
+
+        li {
+          button {
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+          }
+        }
       }
     }
   }
