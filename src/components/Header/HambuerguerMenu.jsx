@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useStore } from '../../../store';
 import ThemeButton from './ThemeButton';
+import LanguageButton from './LanguageButton';
 
 const HambuerguerMenu = () => {
   const { themeDark } = useStore();
@@ -66,12 +67,12 @@ const HambuerguerMenu = () => {
       </div>
       {active ? (
         <div className={themeDark ? 'header-menu-dt' : 'header-menu-lt'}>
-          <p>preferences</p>
+          <p>Preferences</p>
           <ul className={themeDark ? 'menu-list-dt' : 'menu-list-t'}>
             <li>
               <ThemeButton />
             </li>
-            <li></li>
+            <li><LanguageButton /></li>
           </ul>
         </div>
       ) : null}
