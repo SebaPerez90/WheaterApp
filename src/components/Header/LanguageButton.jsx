@@ -32,7 +32,7 @@ const LanguageButton = () => {
 
   const toggleEfect = () => {
     if (languageEng) {
-      btnRef.current.style.animation = 'iconEnglish 700ms linear';
+      btnRef.current.style.animation = 'iconEnglish 800ms linear';
       setTimeout(() => {
         toggleLanguage();
         infoMsjLanguage();
