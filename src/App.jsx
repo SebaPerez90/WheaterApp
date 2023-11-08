@@ -1,6 +1,6 @@
-import '../src/index.scss';
+import '../src/styles/index.scss';
 import Header from './components/Header/Header.jsx';
-import WeatherData from './components/WeatherData.jsx';
+import Main from './components/Main.jsx';
 import NotFound from './routes/NotFound.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
@@ -14,7 +14,7 @@ export default function App() {
     <QueryClientProvider client={client}>
       <Switch>
         <Route path='/'>
-          <Header /> <WeatherData /> <Footer />
+          <Header /> <Main />
         </Route>
         <Route component={NotFound} />
       </Switch>

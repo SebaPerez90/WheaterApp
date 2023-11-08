@@ -14,7 +14,6 @@ const HambuerguerMenu = () => {
   const first_bar = useRef();
   const second_bar = useRef();
   const third_bar = useRef();
-
   const refIcon = useRef();
 
   const [active, setActive] = useState(false);

@@ -1,12 +1,12 @@
-import EnglishCardInfo from './EnglishCardInfo.jsx';
+import CardInfo from './CardInfo.jsx';
 import ForecastNextDays from './ForecastNextDays.jsx';
-import SearchHistory from './SearchHistory.jsx';
+import History from './History.jsx';
 
 import { FcSearch } from 'react-icons/fc';
 import { FaHistory } from 'react-icons/fa';
 
 import { Redirect } from 'wouter';
-import { useStore } from '../../store';
+import { useStore } from '../../store.js';
 import { toast } from 'react-hot-toast';
 import { useEffect, useRef } from 'react';
 
@@ -25,7 +25,7 @@ export default function WeatherData() {
   } = useStore();
 
   const APIkey = '3d9cbbaa2c744ad8b91912d8c0979261';
-  const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=${temperatureUnit}&appid=${APIkey}`
+  const URLDinamicRequest = `http://api.openweathermap.org/data/2.5/forecast?q=${valueCapture}&units=${temperatureUnit}&appid=${APIkey}`;
 
   // references
   const historyRef = useRef();
@@ -88,13 +88,13 @@ export default function WeatherData() {
       <section className={themeDark ? 'grid-form-area-container-dt' : 'main-weather-form-lt'}>
         {/* this state control show/hide search history if the localStorage is not empty*/}
         {hiddenHistory ? (
-          <SearchHistory
+          <History
             valueCapture={valueCapture}
             ref={historyRef}
             styles={{}}
           />
         ) : (
-          <SearchHistory
+          <History
             valueCapture={valueCapture}
             ref={historyRef}
             styles={conditionalStyles}
@@ -127,7 +127,7 @@ export default function WeatherData() {
 
       <ForecastNextDays />
 
-      {languageEng ? <EnglishCardInfo /> : 'componente en español'}
+      {languageEng ? <CardInfo /> : 'componente en español'}
 
       {/* if fetch fn response code status is equal to '404' , redirect to URL path that contains more info about this type error in fetching data */}
       {shouldRedirect ? <Redirect to='/notfound' /> : null}

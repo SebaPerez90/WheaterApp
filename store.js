@@ -37,7 +37,7 @@ export const useStore = create((set) => ({
           city: data.city.name,
           country: data.city.country,
           pop: data.list[0].pop * 100,
-          temperature: data.list[0].main.temp.toFixed(1),
+          temperature: data.list[0].main.temp.toFixed(0),
           temp_feels_like: data.list[0].main.feels_like.toFixed(1),
           humidity: data.list[0].main.humidity,
           tempMax: data.list[0].main.temp_max.toFixed(1),
@@ -46,7 +46,7 @@ export const useStore = create((set) => ({
           main: data.list[0].weather[0].main,
           main_description: data.list[0].weather[0].description,
           wind_speed: (data.list[0].wind.speed * 3.6).toFixed(1),
-          date: data.list[0].dt_txt.slice(0, 10),
+          date: data.list[0].dt_txt.slice(5, 10),
           visibility: data.list[0].visibility / 1000,
 
           // this data is to represent the next fordward days in the 'ForecastNextDays.jsx'
