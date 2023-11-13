@@ -46,7 +46,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className='header-title-container'>
+      <div className={themeDark ? 'header-title-container-dt' : 'header-title-container-lt'}>
         <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
         <p>
           {languageEng

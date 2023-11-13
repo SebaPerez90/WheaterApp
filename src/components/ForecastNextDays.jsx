@@ -10,7 +10,7 @@ export default function ForecastNextDays() {
       <p>
         {languageEng
           ? `Forecast next days in ${weatherData.city}`
-          : `Pronóstico dias siguientes en ${weatherData.city}`}
+          : `Pronóstico siguientes días en ${weatherData.city}`}
       </p>
       <div className='aside-weather-next-days'>
         <div className='aside-grid-item-1'>

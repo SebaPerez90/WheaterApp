@@ -1,6 +1,6 @@
 const RainNight = () => {
   return (
-      <div className='svg-container row-span-4 bg-slate-800 flex flex-col justify-between relative rounded-[.5em_.5em_0_0] border-[1px] border-b-0'>
+      <div className='svg-container row-span-4 bg-slate-800 flex flex-col justify-between relative rounded-[.5em_.5em_0_0]'>
         <div className='rain-containter absolute h-full w-full flex flex-col'>
           <div className='flex justify-evenly relative bottom-4 left-10'>
             <div className='big-drop h-[0.5em] w-[0.5em] rounded-[50%] bg-[#56bcfc] relative z-50 rotate-[15deg] animate-[raining_800ms_linear_infinite]'></div>

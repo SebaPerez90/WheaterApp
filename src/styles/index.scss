@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
-@import url('./weatherCards.scss');
+@import url('./weather_cards.scss');
 
 $roboto-italic: 'Roboto Condensed', sans-serif;
 $roboto-mono: 'Roboto Mono', monospace;
@@ -12,10 +12,10 @@ $oswald: 'Oswald', sans-serif;
 $josefin: 'Josefin Sans', sans-serif;
 
 //palet color light theme
-$light: #e4e4e4;
+$light: #f7f7f7;
 
 //palet color dark theme
-$dark: #303030;
+$dark: #3a3a3a;
 $woodsmoke-50: #f6f6f9;
 $woodsmoke-100: #ecebf3;
 $woodsmoke-200: #d6d3e4;
@@ -52,7 +52,7 @@ $woodsmoke-950: #0b0a0f;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  background-color: $woodsmoke-500;
+  background-color: $woodsmoke-600;
   border-radius: 0.5em;
   font-family: $roboto-italic;
 }
@@ -61,9 +61,9 @@ $woodsmoke-950: #0b0a0f;
   grid-row: 1;
   grid-column: 3;
   text-align: center;
-  border-left: 1px solid $woodsmoke-900;
-  border-bottom: 1px solid $woodsmoke-900;
-  background-color: $woodsmoke-600;
+  border-left: 1px solid $woodsmoke-300;
+  border-bottom: 1px solid $woodsmoke-300;
+  background-color: $woodsmoke-700;
   border-radius: 0 0.5em 0 0.5em;
 }
 
@@ -74,6 +74,13 @@ $woodsmoke-950: #0b0a0f;
   place-self: center;
   position: relative;
   bottom: 1em;
+}
+
+%h1_footers {
+  font-weight: 700;
+  font-family: $roboto-mono;
+  color: #388cd5;
+  text-shadow: 2px 2px 1px #13131356;
 }
 
 html,
@@ -114,10 +121,10 @@ body {
         gap: 1em;
         height: 2.5em;
         padding: 0 0.5em 0 0.5em;
+        box-shadow: 5px 5px 5px #13131376;
 
         p {
           color: $dark;
-          letter-spacing: -1px;
           font-size: 0.8em;
         }
 
@@ -129,7 +136,7 @@ body {
       }
     }
 
-    .header-title-container {
+    .header-title-container-dt {
       color: $light;
       grid-column: 2;
       grid-row: 2/3;
@@ -139,8 +146,10 @@ body {
       h1 {
         font-family: $roboto;
         font-size: 3em;
+        border-bottom: 3px solid $woodsmoke-400;
       }
       p {
+        padding-top: .7em;
         font-family: $roboto-italic;
         text-align: center;
       }
@@ -152,7 +161,8 @@ body {
       gap: 0.4em;
       position: absolute;
       right: 1em;
-      top: 0.5em;
+      top: 1em;
+
       &:hover {
         cursor: url('/src/assets/cloud-hover.png'), auto;
       }
@@ -187,22 +197,32 @@ body {
         top: 1em;
       }
 
-      p {
-        color: $light;
-        padding-bottom: 0.3em;
-        cursor: url('/src/assets/cloud-hover.png'), auto;
-        z-index: 100;
+      .preference-container-dt {
+        @extend %flex-row-center;
+        justify-content: space-between;
+        border-bottom: 2px solid $woodsmoke-400;
+        width: 50%;
+        transition: all 200ms;
+
+        p {
+          color: $light;
+          padding-bottom: 0.3em;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+          z-index: 100;
+        }
       }
 
       .hidden-preference-options {
-        padding: 0.5em 0 1em 1em;
-        transform: translateY(-6em);
+        padding: 0 0 0 1em;
+        transform: translateY(-4em);
         opacity: 0;
+        pointer-events: none;
       }
       .preferences-dt {
+        pointer-events: all;
         border-left: 1px solid $woodsmoke-400;
         transform: translateY(0.5em);
-        transition: all 500ms;
+        transition: all 700ms;
         opacity: 1;
 
         .menu-list-dt {
@@ -227,6 +247,7 @@ body {
 
   .main-weather-container-dt {
     row-gap: 2em;
+    margin-top: 4em;
     height: 100dvh;
     position: relative;
     font-weight: 400;
@@ -239,16 +260,24 @@ body {
 
     // feature : find the current weather depends on text input value when the user click on the search button
     .grid-form-area-container-dt {
-      place-self: center;
       grid-row: 1;
       grid-column: 4;
       display: flex;
+
+      &:hover {
+        box-shadow: none;
+      }
 
       .main-weather-form-dt {
         display: flex;
         height: fit-content;
         border-radius: 0.5em;
-        box-shadow: 4px 4px 4px #1313139d;
+        box-shadow: 5px 5px 5px #13131376;
+
+        &:focus-within {
+          box-shadow: none;
+          transition: all 400ms;
+        }
 
         .weather-input-dt {
           padding: 0.5em 0 0.5em 1.5em;
@@ -258,14 +287,14 @@ body {
           border-radius: 0.5em 0 0 0.5em;
           font-family: $roboto-mono;
           font-weight: bolder;
-          color: #424d57;
+          color: $woodsmoke-500;
           background-color: $light;
 
           &:focus {
-            background-color: #ffffff;
+            background-color: $woodsmoke-300;
           }
           &::placeholder {
-            opacity: 0.5;
+            opacity: 0.8;
             font-size: 0.7em;
             font-weight: 400;
           }
@@ -278,11 +307,9 @@ body {
           border-left: 2px solid #536b7f;
           outline: none;
 
+          &:hover,
           &:focus {
-            background-color: #536b7f;
-          }
-          &:hover {
-            background-color: #536b7f;
+            background-color: $woodsmoke-300;
             transition: all 200ms;
             cursor: url('/src/assets/cloud-hover.png'), auto;
           }
@@ -336,6 +363,8 @@ body {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(6, 0.6fr);
+      box-shadow: 5px 5px 5px #13131336;
+      border-radius: 0 0 0.6em 0.6em;
 
       > :first-child {
         grid-column: 1 / span 3;
@@ -348,13 +377,13 @@ body {
       }
 
       .weather-info-section-dt {
-        border: 1px solid $light;
-        border-radius: 0 0 0.4em 0.4em;
-        background-color: $woodsmoke-300;
+        border-top: 1px solid $woodsmoke-300;
+        border-radius: 0 0 0.6em 0.6em;
+        background-color: $woodsmoke-700;
         display: grid;
         grid-template-columns: repeat(3, 0.5fr);
         grid-template-rows: repeat(3, 2.5em);
-        color: $dark;
+        color: $light;
         font-family: $roboto-italic;
 
         .item-1-dt {
@@ -371,7 +400,6 @@ body {
           grid-column: 1;
           grid-row: 2 / 3;
           font-size: 3em;
-          color: $dark;
           place-self: start center;
         }
 
@@ -414,7 +442,7 @@ body {
 
         .aside-grid-item-1 {
           @extend %aside_item;
-
+          box-shadow: 5px 5px 5px #13131336;
           > :first-child {
             @extend %aside_date;
           }
@@ -438,6 +466,7 @@ body {
 
         .aside-grid-item-2 {
           @extend %aside_item;
+          box-shadow: 5px 5px 5px #13131336;
 
           > :first-child {
             @extend %aside_date;
@@ -461,6 +490,7 @@ body {
         }
         .aside-grid-item-3 {
           @extend %aside_item;
+          box-shadow: 5px 5px 5px #13131336;
 
           > :first-child {
             @extend %aside_date;
@@ -485,7 +515,10 @@ body {
       }
     }
   }
-  /* not found setion */
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      NOT FOUND section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   .not-found-container {
     display: flex;
     flex-direction: column;
@@ -609,9 +642,11 @@ body {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   .footer-container-dt {
+    margin-top: 5em;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(7, 4.5em);
+    scroll-behavior: smooth;
 
     /* frecuently asked question section */
     .faq-section-container-dt {
@@ -620,16 +655,17 @@ body {
       display: flex;
       flex-direction: column;
       padding: 0 1.5em 0 1.5em;
-      background-color: #3b3b3b;
+      background-color: $woodsmoke-700;
       margin: 0.5em 0 0.5em 0.5em;
       border-radius: 0.5em;
-      box-shadow: 4px 4px 4px #131313;
+      box-shadow: 5px 5px 5px #13131376;
+      gap: 1.5em;
 
-      > :first-child {
+      h1 {
         text-align: center;
-        text-transform: uppercase;
-        color: #388cd5;
-        text-shadow: 2px 2px 1px #13131356;
+        @extend %h1_footers;
+        margin-top: 1em;
+        font-size: 1.4em;
       }
 
       > :last-child {
@@ -639,9 +675,8 @@ body {
 
       .faq-question-dt {
         border-bottom: 2px solid #388cd5;
-        margin-top: 0.5em;
 
-        /* this container wrap all question and expand/collapse icon */
+        // this container wrap all question and expand/collapse icon
         .first-container {
           display: flex;
           justify-content: space-between;
@@ -652,7 +687,7 @@ body {
           > :first-child {
             cursor: url('/src/assets/cloud-hover.png'), auto;
           }
-          > :last-child {
+          span {
             font-size: 1.4em;
           }
         }
@@ -665,17 +700,16 @@ body {
           border-left: 2px solid #ff000083;
           position: absolute;
           background-color: #2d2d2d;
-          padding-right: 1em;
+          padding: 1em;
           border-radius: 0 0.4em 0.4em 0;
-          width: 45%;
+          width: 45vw;
           z-index: 100;
 
           > :first-child,
           > :last-child {
             margin-left: 1em;
-            color: #8d9de5;
+            color: $woodsmoke-300;
             font-size: 0.85em;
-            font-family: $josefin;
             text-wrap: balance;
           }
 
@@ -693,37 +727,32 @@ body {
       }
     }
 
-    /* README section */
+    // README section
     .readme-section-container-dt {
-      grid-column: 5 / span 2;
-      grid-row: 1 / span 6;
-      padding: 0 1.5em 0 1.5em;
-      margin: 0.5em;
+      grid-column: 5 / span 4;
+      grid-row: 1 / span 4;
+      margin: 0.5em 1em;
 
       .readme-card-container-dt {
-        background-color: #3b3b3b;
+        background-color: $woodsmoke-700;
         border-radius: 0.5em;
         height: 100%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
+        @extend %flex-col-center;
         justify-content: space-evenly;
-        align-items: center;
-        box-shadow: 4px 4px 4px #131313;
+        box-shadow: 5px 5px 5px #1313136e;
 
-        > :first-child {
-          color: #388cd5;
-          text-shadow: 2px 2px 1px #13131356;
+        h1 {
+          font-size: 1.5em;
+          @extend %h1_footers;
         }
         > :nth-child(2),
         > :nth-child(3) {
-          padding: 0 0.7em 0 0.7em;
           text-wrap: balance;
           line-height: 1.7em;
           font-size: 0.9em;
           font-family: $roboto-italic;
         }
-        > :last-child {
+        button {
           padding: 0.5em;
           border-radius: 0.5em;
           font-family: $josefin;
@@ -733,128 +762,72 @@ body {
       }
     }
 
-    /* ASIDE section */
+    // ASIDE section
     .footer-aside-container-dt {
-      grid-column: 7 / span 2;
-      grid-row: 1 / 7;
-      overflow: hidden;
-      background-color: #3b3b3b;
-      margin: 0.5em;
-      border-radius: 0.5em;
-      box-shadow: 4px 4px 4px #131313;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
+      grid-column: 5 / span 4;
+      grid-row: 5 / 8;
+      @extend %flex-col-center;
+      justify-content: space-between;
 
       .title-aside-dt {
-        > :first-child {
-          font-weight: 700;
-          text-align: center;
-          font-family: $roboto-mono;
-          color: #388cd5;
-          text-shadow: 2px 2px 1px #13131356;
+        @extend %flex-row-center;
+
+        h1 {
+          font-size: 1.7em;
+          @extend %h1_footers;
         }
-        > :last-child {
-          scale: 0.3;
-          margin: auto;
+        img {
+          scale: 0.7;
         }
       }
 
       .footer-list-dt {
-        list-style: none;
         display: flex;
-        align-self: stretch;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        width: 40%;
+        margin: auto;
         position: relative;
-        right: 2em;
-        bottom: 2em;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 65%;
+          height: 2px;
+          background-color: $woodsmoke-400;
+          left: -8em;
+          top: 0.5em;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          width: 65%;
+          height: 2px;
+          background-color: $woodsmoke-400;
+          right: -8em;
+          top: 0.5em;
+        }
 
         .list-item-dt {
-          position: absolute;
-          color: $light;
           font-size: 1.2em;
-
-          > :hover {
-            cursor: url('/src/assets/cloud-hover.png'), auto;
-            transform: translate(-1em, -1em);
-            padding: 1.4em;
-            scale: 1.5;
-            transition: all 500ms;
-          }
-        }
-        .linkedin {
-          line-height: 1em;
-
-          > :hover {
-            animation: shiningLinkedin 700ms alternate;
-            color: #3d8aff;
-          }
-        }
-        .github {
-          line-height: 1em;
-
-          > :hover {
-            animation: shiningGitHub 700ms alternate;
-            color: #7e7d7d;
-          }
-        }
-        .email {
-          line-height: 1em;
-
-          > :hover {
-            animation: shiningEmail 700ms alternate;
-            color: #c97878;
-          }
-        }
-      }
-
-      .btns-aside-dt {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-
-        > :hover {
-          background-color: #ff0000;
           cursor: url('/src/assets/cloud-hover.png'), auto;
-          transition: all 500ms;
-        }
-
-        > :first-child,
-        > :last-child {
-          padding: 0.5em;
-          border-radius: 0.5em;
-          font-family: $josefin;
         }
       }
     }
 
     .developed-dt {
-      grid-row: 7;
-      grid-column: 5 / span 3;
-      display: flex;
-      align-items: flex-end;
-
-      > :first-child {
-        text-align: center;
-        position: relative;
-        left: 2em;
-        font-size: 0.8em;
+      p {
         font-family: $josefin;
         min-width: max-content;
       }
-      > :last-child {
-        position: fixed;
-        bottom: 0.2em;
-        right: 0.7em;
-        font-size: 1.5em;
-
-        :hover {
-          cursor: url('/src/assets/cloud-hover.png'), auto;
-        }
-      }
     }
+  }
+  .up-arrow {
+    position: fixed;
+    bottom: 0.2em;
+    right: 0.7em;
+    font-size: 1.5em;
+    cursor: url('/src/assets/cloud-hover.png'), auto;
+    animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
   }
 }
 
@@ -897,60 +870,6 @@ body {
   }
   75% {
     border-right: 1px solid #004af7;
-    border-radius: 50%;
-  }
-  100% {
-    border-bottom: none;
-    border-radius: 50%;
-  }
-}
-
-@keyframes shiningGitHub {
-  0% {
-    border-bottom: 1px solid #7e7d7d;
-    border-radius: 50%;
-    box-shadow:
-      inset 1px 2px 10px 3px #7e7d7d,
-      1px 2px 10px 3px #7e7d7d,
-      1px 2px 10px 3px #7e7d7d;
-  }
-  25% {
-    border-left: 2px solid #7e7d7d;
-    border-radius: 50%;
-  }
-  50% {
-    border-top: 3px solid #7e7d7d;
-    border-radius: 50%;
-  }
-  75% {
-    border-right: 1px solid #7e7d7d;
-    border-radius: 50%;
-  }
-  100% {
-    border-bottom: none;
-    border-radius: 50%;
-  }
-}
-
-@keyframes shiningEmail {
-  0% {
-    border-bottom: 1px solid #ff0000;
-    border-radius: 50%;
-    box-shadow:
-      inset 1px 2px 10px 3px #ff0000,
-      1px 2px 10px 3px #ff0000,
-      1px 2px 10px 3px #ff0000;
-  }
-  25% {
-    border-left: 2px solid #ff0000;
-    border-radius: 50%;
-  }
-  50% {
-    border-top: 3px solid #ff0000;
-    border-radius: 50%;
-  }
-  75% {
-    border-right: 1px solid #ff0000;
     border-radius: 50%;
   }
   100% {
@@ -1016,5 +935,11 @@ body {
 @keyframes iconSpanish {
   60% {
     transform: rotateY(180deg);
+  }
+}
+
+@keyframes up-arrow {
+  to {
+    translate: 0 -0.5em;
   }
 }

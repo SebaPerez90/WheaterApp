@@ -6,6 +6,8 @@ import { TbTemperatureCelsius } from 'react-icons/tb';
 import { TbTemperatureFahrenheit } from 'react-icons/tb';
 import { toast } from 'react-hot-toast';
 import { FcExpand } from 'react-icons/fc';
+import { Link } from 'wouter';
+import Readme from '../../routes/Readme.jsx';
 
 const HambuerguerMenu = () => {
   const { themeDark, languageEng, temperatureUnit, setTemperatureUnit } = useStore();
@@ -84,14 +86,17 @@ const HambuerguerMenu = () => {
 
   // this feature controls the expand/collapse preference menu option.
   const expandPreferences = () => {
-    let div = document.querySelector('.hidden-preference-options');
+    let preference = document.querySelector('.hidden-preference-options');
+    let preference_container = document.querySelector('.preference-container-dt');
 
-    div.classList.toggle('preferences-dt');
+    preference.classList.toggle('preferences-dt');
 
-    if (div.classList.contains('preferences-dt')) {
+    if (preference.classList.contains('preferences-dt')) {
       refIcon.current.style.animation = 'toggleExpand 600ms forwards';
+      preference_container.style.border = 'none';
     } else {
       refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
+      preference_container.style.borderBottom = '2px solid #8580b0';
     }
   };
 
@@ -100,7 +105,7 @@ const HambuerguerMenu = () => {
       <div
         ref={container_bars}
         onClick={openMenu}
-        className='ham-menu-container mt-2'
+        className='ham-menu-container'
       >
         <span
           ref={first_bar}
@@ -118,10 +123,20 @@ const HambuerguerMenu = () => {
       {active ? (
         <div className={themeDark ? 'header-menu-dt' : 'header-menu-lt'}>
           <h1>Menu</h1>
-          <div className='flex w-2/4 justify-between items-center border-[#8580b0] mt-8'>
+
+          <nav className='flex flex-col'>
+            <Link to='/readme'>
+              readme
+            </Link>
+            <Link to='/contact'>
+              contact
+            </Link>
+          </nav>
+          
+          <div className={themeDark ? 'preference-container-dt' : 'preference-container-lt'}>
             <p onClick={expandPreferences}>{languageEng ? 'Preferences' : 'Preferencias'}</p>
             <span ref={refIcon}>
-              <FcExpand className='scale-125' />
+              <FcExpand className='scale-150' />
             </span>
           </div>
 

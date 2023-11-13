@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { Route, Switch } from 'wouter';
 import Footer from './components/Footer/Footer.jsx';
+import Readme from './routes/Readme.jsx';
+import Contact from './routes/Contact';
 
 const client = new QueryClient();
 
@@ -14,8 +16,16 @@ export default function App() {
     <QueryClientProvider client={client}>
       <Switch>
         <Route path='/'>
-          <Header /> <Main />
+          <Header /> <Main /> <Footer />
         </Route>
+        <Route
+          path='/readme'
+          component={Readme}
+        />
+        <Route
+          path='/contact'
+          component={Contact}
+        />
         <Route component={NotFound} />
       </Switch>
       <Toaster />

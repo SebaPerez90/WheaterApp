@@ -118,6 +118,7 @@ export default function WeatherData() {
           >
             <FcSearch />
           </button>
+          <p className='absolute top-8 text-rose-50'>este texto debemos mostrarlo si el input esta vacio</p>
         </div>
 
         {/* <button onClick={showHistorySearch}>

@@ -18,17 +18,25 @@ export default function Footer() {
       <section className={themeDark ? 'readme-section-container-dt' : 'readme-section-container-lt'}>
         <div className={themeDark ? 'readme-card-container-dt' : 'readme-card-container-dt'}>
           <h1>README</h1>
-          <p>
-            {languageEng
-              ? 'If you wish to collaborate on this project or clone it to your local machine to explore further alternatives, I invite you to go to the "README" for more explanations on how to do this.'
-              : 'Si desea colaborar en este proyecto o clonarlo en su máquina local para explorar más alternativas, lo invito a ir al "README" para obtener más explicaciones sobre cómo hacerlo'}
-          </p>
+          {languageEng ? (
+            <p>
+              Do you want collaborate on this project ? <br></br>
+              Do you want clone it to your local machine to explore further alternatives ?<br></br>I invite you go README
+              for more explanations on how to do this.
+            </p>
+          ) : (
+            <p>
+              Si desea colaborar en este proyecto o clonarlo en su máquina local para explorar más alternativas, lo
+              invito a ir al README para obtener más explicaciones sobre cómo hacerlo
+            </p>
+          )}
           <button>redirect</button>
         </div>
       </section>
+
       <aside className={themeDark ? 'footer-aside-container-dt' : 'footer-aside-container-lt'}>
         <div className={themeDark ? 'title-aside-dt' : 'title-aside-lt'}>
-          <p>{languageEng ? 'Weather App' : 'Aplicacion del Clima'}</p>
+          <h1>{languageEng ? 'Weather App' : 'Aplicacion del Clima'}</h1>
           <img
             src={IconApp}
             alt='Icon-App'
@@ -65,21 +73,11 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-        <div className={themeDark ? 'btns-aside-dt' : 'btns-aside-lt'}>
-          <button>{languageEng ? 'log in' : 'inicia sesión'}</button>
-          <button>{languageEng ? 'sign up' : 'registrate'}</button>
+        <div className={themeDark ? 'developed-dt' : 'developed-lt'}>
+          <p>{languageEng ? 'Sebastian Perez © 2023 | made with ❤️' : 'Sebastian Perez © 2023 | Echo con ❤️'}</p>
         </div>
       </aside>
-      <div className={themeDark ? 'developed-dt' : 'developed-lt'}>
-        <p>
-          {languageEng
-            ? 'Sebastian Perez © 2023 | made with ❤️ thank you very much for your visit.'
-            : 'Sebastian Perez © 2023 | Echo con ❤️ Muchas Gracias por tu visita.'}
-        </p>
-        <span>
-          <FaArrowUpLong />
-        </span>
-      </div>
+      <FaArrowUpLong className='up-arrow' onClick={()=> console.log('aaaaaaaaa')} />
     </footer>
   );
 }
