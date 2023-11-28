@@ -3,6 +3,8 @@ import { FaCopy } from 'react-icons/fa';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import HambuerguerMenu from './HambuerguerMenu';
+import moonIcon from '../../assets/svg/moonIcon.svg';
+import sunIcon from '../../assets/svg/sunIcon.svg';
 
 export default function Header() {
   const { themeDark, languageEng } = useStore();
@@ -47,7 +49,20 @@ export default function Header() {
       </div>
 
       <div className={themeDark ? 'header-title-container-dt' : 'header-title-container-lt'}>
-        <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
+        <div>
+          <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
+          {themeDark ? (
+            <img
+              src={moonIcon}
+              alt='moon-icon-reference'
+            />
+          ) : (
+            <img
+              src={sunIcon}
+              alt='sun-icon-reference'
+            />
+          )}
+        </div>
         <p>
           {languageEng
             ? 'An interactive and dynamic application to stay updated on weather conditions.'

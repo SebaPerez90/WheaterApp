@@ -5,9 +5,8 @@ import LanguageButton from './LanguageButton';
 import { TbTemperatureCelsius } from 'react-icons/tb';
 import { TbTemperatureFahrenheit } from 'react-icons/tb';
 import { toast } from 'react-hot-toast';
-import { FcExpand } from 'react-icons/fc';
+import { MdExpandMore } from 'react-icons/md';
 import { Link } from 'wouter';
-import Readme from '../../routes/Readme.jsx';
 
 const HambuerguerMenu = () => {
   const { themeDark, languageEng, temperatureUnit, setTemperatureUnit } = useStore();
@@ -87,16 +86,26 @@ const HambuerguerMenu = () => {
   // this feature controls the expand/collapse preference menu option.
   const expandPreferences = () => {
     let preference = document.querySelector('.hidden-preference-options');
-    let preference_container = document.querySelector('.preference-container-dt');
+    let pref_cont_dt = document.querySelector('.preference-container-dt');
+    let pref_cont_lt = document.querySelector('.preference-container-lt');
 
     preference.classList.toggle('preferences-dt');
+    preference.classList.toggle('preferences-lt');
 
     if (preference.classList.contains('preferences-dt')) {
       refIcon.current.style.animation = 'toggleExpand 600ms forwards';
-      preference_container.style.border = 'none';
+      pref_cont_dt.style.border = 'none';
     } else {
       refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
-      preference_container.style.borderBottom = '2px solid #8580b0';
+      pref_cont_dt.style.borderBottom = '2px solid #8580b0';
+    }
+
+    if (preference.classList.contains('preferences-lt')) {
+      refIcon.current.style.animation = 'toggleExpand 600ms forwards';
+      pref_cont_lt.style.border = 'none';
+    } else {
+      refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
+      pref_cont_lt.style.borderBottom = '2px solid blue';
     }
   };
 
@@ -124,24 +133,20 @@ const HambuerguerMenu = () => {
         <div className={themeDark ? 'header-menu-dt' : 'header-menu-lt'}>
           <h1>Menu</h1>
 
-          <nav className='flex flex-col'>
-            <Link to='/readme'>
-              readme
-            </Link>
-            <Link to='/contact'>
-              contact
-            </Link>
+          <nav className='flex flex-col text-rose-50'>
+            <Link to='/readme'>readme</Link>
+            <Link to='/contact'>contact</Link>
           </nav>
-          
+
           <div className={themeDark ? 'preference-container-dt' : 'preference-container-lt'}>
-            <p onClick={expandPreferences}>{languageEng ? 'Preferences' : 'Preferencias'}</p>
+            <p onClick={expandPreferences}>{languageEng ? 'preferences' : 'preferencias'}</p>
             <span ref={refIcon}>
-              <FcExpand className='scale-150' />
+              <MdExpandMore />
             </span>
           </div>
 
           <div className='hidden-preference-options'>
-            <ul className={themeDark ? 'menu-list-dt' : 'menu-list-t'}>
+            <ul className={themeDark ? 'menu-list-dt' : 'menu-list-lt'}>
               <li>
                 <ThemeButton />
               </li>
@@ -150,14 +155,14 @@ const HambuerguerMenu = () => {
 
                 {temperatureUnit === 'metric' ? (
                   <button
-                    className='border-2 border-[#b1adcc] rounded-full h-10 w-10 flex justify-center items-center text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200'
+                    className='border-2 border-[inherit] rounded-full h-10 w-10 flex justify-center items-center text-s text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200 scale-110'
                     onClick={() => setTemperatureUnit()}
                   >
                     <TbTemperatureCelsius className='scale-150 ' />
                   </button>
                 ) : (
                   <button
-                    className='border-2 border-[#b1adcc] rounded-full h-10 w-10 flex justify-center items-center text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200'
+                    className='border-2 border-[inherit] rounded-full h-10 w-10 flex justify-center items-center text-s text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200 scale-110'
                     onClick={() => setTemperatureUnit()}
                   >
                     <TbTemperatureFahrenheit className='scale-150' />

@@ -3,7 +3,8 @@ import { RiLinkedinFill } from 'react-icons/ri';
 import { SiMinutemailer } from 'react-icons/si';
 import { FaArrowUpLong } from 'react-icons/fa6';
 import { useStore } from '../../../store';
-import IconApp from '../../assets/icon.png';
+import moonIcon from '../../assets/svg/moonIcon.svg';
+import sunIcon from '../../assets/svg/sunIcon.svg';
 import FAQ from './FAQ';
 
 export default function Footer() {
@@ -16,13 +17,13 @@ export default function Footer() {
     >
       <FAQ />
       <section className={themeDark ? 'readme-section-container-dt' : 'readme-section-container-lt'}>
-        <div className={themeDark ? 'readme-card-container-dt' : 'readme-card-container-dt'}>
+        <div className={themeDark ? 'readme-card-container-dt' : 'readme-card-container-lt'}>
           <h1>README</h1>
           {languageEng ? (
             <p>
               Do you want collaborate on this project ? <br></br>
-              Do you want clone it to your local machine to explore further alternatives ?<br></br>I invite you go README
-              for more explanations on how to do this.
+              Do you want clone it to your local machine to explore further alternatives ?<br></br>I invite you go
+              README for more explanations on how to do this.
             </p>
           ) : (
             <p>
@@ -37,15 +38,22 @@ export default function Footer() {
       <aside className={themeDark ? 'footer-aside-container-dt' : 'footer-aside-container-lt'}>
         <div className={themeDark ? 'title-aside-dt' : 'title-aside-lt'}>
           <h1>{languageEng ? 'Weather App' : 'Aplicacion del Clima'}</h1>
-          <img
-            src={IconApp}
-            alt='Icon-App'
-          />
+          {themeDark ? (
+            <img
+              src={moonIcon}
+              alt='moon-icon-reference'
+            />
+          ) : (
+            <img
+              src={sunIcon}
+              alt='sun-icon-reference'
+            />
+          )}
         </div>
         <ul className={themeDark ? 'footer-list-dt' : 'footer-list-lt'}>
           <li>
             <a
-              className={themeDark ? 'list-item-dt linkedin' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt linkedin' : 'list-item-lt linkedin'}
               href='https://www.linkedin.com/in/sebaperez90/'
               rel='noreferrer'
               target='_blank'
@@ -55,7 +63,7 @@ export default function Footer() {
           </li>
           <li>
             <a
-              className={themeDark ? 'list-item-dt github' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt github' : 'list-item-lt github'}
               href='https://github.com/SebaPerez90'
               rel='noreferrer'
               target='_blank'
@@ -65,7 +73,7 @@ export default function Footer() {
           </li>
           <li>
             <a
-              className={themeDark ? 'list-item-dt email' : 'list-item-lt'}
+              className={themeDark ? 'list-item-dt email' : 'list-item-lt email'}
               href='/form'
               rel='noreferrer'
             >
@@ -77,7 +85,10 @@ export default function Footer() {
           <p>{languageEng ? 'Sebastian Perez © 2023 | made with ❤️' : 'Sebastian Perez © 2023 | Echo con ❤️'}</p>
         </div>
       </aside>
-      <FaArrowUpLong className='up-arrow' onClick={()=> console.log('aaaaaaaaa')} />
+      <FaArrowUpLong
+        className='up-arrow'
+        onClick={() => console.log('aaaaaaaaa')}
+      />
     </footer>
   );
 }

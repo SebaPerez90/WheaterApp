@@ -40,13 +40,18 @@ export default function WeatherData() {
   }, [weatherData]);
 
   // alert message in the case the input it is empty
-  const errorMessage = () =>
-    toast.error('text input can not be empty', {
-      position: 'top-center',
-    });
+  const errorMessage = () => {
+    document.querySelector('.message').classList.toggle('error-message');
+    document.querySelector('.weather-input-dt').classList.toggle('error-container');
 
-  const searchHistoryEmptymessage = () =>
-    toast.error('search history is empty', {
+    setTimeout(() => {
+      document.querySelector('.message').classList.remove('error-message');
+      document.querySelector('.weather-input-dt').classList.remove('error-container');
+    }, 1500);
+  };
+
+  const searchHistoryEmptymessage = (message) =>
+    toast.error(message, {
       position: 'top-center',
     });
 
@@ -62,14 +67,13 @@ export default function WeatherData() {
     }
   };
 
-  /////////////////////////////////////////////////////////////////////////////////////
-  //////////////          revisar esto para mañana   /////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////
   const showHistorySearch = () => {
     if (!historyRef.current.isEmpty) {
       setHiddenHistory();
     } else {
-      searchHistoryEmptymessage();
+      languageEng
+        ? searchHistoryEmptymessage('search history is empty')
+        : searchHistoryEmptymessage('el historial de busqueda está vacio');
       return;
     }
   };
@@ -84,8 +88,8 @@ export default function WeatherData() {
   };
 
   return (
-    <main className={themeDark ? 'main-weather-container-dt' : 'main-light-main-weather-container-lt'}>
-      <section className={themeDark ? 'grid-form-area-container-dt' : 'main-weather-form-lt'}>
+    <main className={themeDark ? 'main-weather-container-dt' : 'main-weather-container-lt'}>
+      <section className={themeDark ? 'form-container-dt' : 'form-container-lt'}>
         {/* this state control show/hide search history if the localStorage is not empty*/}
         {hiddenHistory ? (
           <History
@@ -101,34 +105,39 @@ export default function WeatherData() {
           />
         )}
 
-        <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
-          <input
-            placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
-            type='text'
-            name='country'
-            className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
-            autoFocus
-            autoComplete='country-name'
-            ref={myInput}
-            onChange={setValueCapture}
-          />
-          <button
-            className={themeDark ? 'weather-serchBtn-dt' : 'weather-serchBtn-lt'}
-            onClick={checkingInput}
-          >
-            <FcSearch />
-          </button>
-          <p className='absolute top-8 text-rose-50'>este texto debemos mostrarlo si el input esta vacio</p>
+        <div className='flex flex-col items-center'>
+          <div className={themeDark ? 'main-weather-form-dt' : 'main-weather-form-lt'}>
+            <input
+              placeholder={languageEng ? 'enter a Location ...' : 'ingrese una ubicación ...'}
+              type='text'
+              name='country'
+              className={themeDark ? 'weather-input-dt' : 'weather-input-lt'}
+              autoFocus
+              autoComplete='country-name'
+              ref={myInput}
+              onChange={setValueCapture}
+            />
+            <button
+              className={themeDark ? 'weather-serchBtn-dt' : 'weather-serchBtn-lt'}
+              onClick={checkingInput}
+            >
+              <FcSearch />
+            </button>
+          </div>
+          <p className='message hidden'>{languageEng ? 'fiel is required' : 'campo obligatorio'}</p>
         </div>
 
-        {/* <button onClick={showHistorySearch}>
+        <button
+          className='history'
+          onClick={showHistorySearch}
+        >
           <FaHistory />
-        </button> */}
+        </button>
       </section>
 
       <ForecastNextDays />
 
-      {languageEng ? <CardInfo /> : 'componente en español'}
+      <CardInfo />
 
       {/* if fetch fn response code status is equal to '404' , redirect to URL path that contains more info about this type error in fetching data */}
       {shouldRedirect ? <Redirect to='/notfound' /> : null}

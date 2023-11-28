@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
 
 const LanguageButton = () => {
-  const { languageEng, toggleLanguage } = useStore();
+  const { languageEng, toggleLanguage, darkTheme } = useStore();
   const btnRef = useRef();
 
   const infoMsjLanguage = languageEng
@@ -52,7 +52,7 @@ const LanguageButton = () => {
         <button
           ref={btnRef}
           onClick={toggleEfect}
-          className='border-2 rounded-full border-[#b1adcc] scale-75'
+          className='border-2 rounded-full border-[inherit] scale-90'
         >
           <img
             src={englishIcon}
@@ -63,12 +63,12 @@ const LanguageButton = () => {
         <button
           ref={btnRef}
           onClick={toggleEfect}
-          className='border-2 rounded-full border-[#b1adcc] scale-75'
+          className='border-2 rounded-full border-[inherit] scale-90'
         >
           <img
             src={spanishIcon}
             alt='spanish-icon-reference'
-          />
+            />
         </button>
       )}
     </>

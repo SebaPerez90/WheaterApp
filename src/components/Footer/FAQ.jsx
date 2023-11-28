@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useStore } from '../../../store';
-import { FcExpand } from 'react-icons/fc';
-import inputImg from '../../assets/images/FAQ/input-text.png';
+import { MdExpandMore } from 'react-icons/md';
+import inputImg from '../../assets/svg/cloud.svg';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
@@ -22,6 +22,7 @@ const FAQ = () => {
 
     if (refQuestion.current.classList[1] === undefined) {
       refQuestion.current.className = 'faq-answer-dt';
+      refQuestion.current.className = 'faq-answer-lt';
       refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
     } else {
       refQuestion.current.className = refQuestion.current.classList[1];
@@ -44,7 +45,7 @@ const FAQ = () => {
               '¿Cómo puedo realizar una solicitud en la aplicación?'
               }
             </p>
-            <span ref={refIcon1}><FcExpand /></span>
+            <span ref={refIcon1}><MdExpandMore className='scale-150' /></span>
           </div>
           <div
             ref={firstQuestion}
@@ -76,7 +77,7 @@ const FAQ = () => {
               '¿Cómo funciona el historial de búsquedas?'
               }
             </p>
-            <span ref={refIcon2}><FcExpand /></span>
+            <span ref={refIcon2}><MdExpandMore className='scale-150' /></span>
           </div>
           <div
             ref={secondQuestion}
@@ -100,7 +101,7 @@ const FAQ = () => {
               '¿Las llamadas API devuelven un error 404?'
               }  
             </p>
-            <span ref={refIcon3}><FcExpand /></span>
+            <span ref={refIcon3}><MdExpandMore className='scale-150' /></span>
           </div>
           <div
             ref={fourthQuestion}
@@ -124,7 +125,7 @@ const FAQ = () => {
               '¿Puedo elegir la unidad de medida de la temperatura en celcius o fahrenheit?'
               }
             </p>
-            <span ref={refIcon4}><FcExpand /></span>
+            <span ref={refIcon4}><MdExpandMore className='scale-150'/></span>
           </div>
           <div
             ref={fifthQuestion}
@@ -142,7 +143,7 @@ const FAQ = () => {
               '¿Donde puedo obtener mas informacion para explorar con la API?'
               }
               </p>
-              <span ref={refIcon5}><FcExpand /></span>
+              <span ref={refIcon5}><MdExpandMore className='scale-150' /></span>
           </div>
           <div
             ref={sixthQuestion}

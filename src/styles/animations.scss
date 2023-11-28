@@ -1,0 +1,96 @@
+@keyframes toggleExpand {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+@keyframes toggleCollapse {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+
+@keyframes efect1 {
+  to {
+    transform: translate(-3em);
+  }
+}
+@keyframes efect2 {
+  to {
+    transform: translate(3em);
+  }
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  50% {
+    transform: translateY(-3.5em);
+  }
+  85% {
+    transform: translateY(-2em);
+  }
+  100% {
+    transform: translateY(-3em);
+  }
+}
+
+@keyframes rotation {
+  to {
+    rotate: 90deg;
+    transition: all 200ms;
+  }
+}
+
+@keyframes lateral-menu-appear {
+  to {
+    transform: translateX(0em);
+    filter: blur(0px) !important;
+  }
+}
+
+@keyframes iconEnglish {
+  60% {
+    transform: translateY(-0.2em);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(2em);
+    opacity: 0.4;
+  }
+}
+
+@keyframes iconSpanish {
+  60% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes up-arrow {
+  to {
+    translate: 0 -0.5em;
+  }
+}
+
+//animations used in header section
+
+@keyframes clouds {
+  to {
+    transform: scaleX(1.4);
+  }
+}
+@keyframes solar-ray {
+  to {
+    opacity: 0;
+  }
+}

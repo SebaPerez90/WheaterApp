@@ -1,5 +1,5 @@
-import SunIcon from '../../assets/SunIcon.svg';
-import MoonIcon from '../../assets/MoonIcon.svg';
+import sunIcon from '../../assets/svg/sunIcon.svg';
+import moonIcon from '../../assets/svg/moonIcon.svg';
 import { useStore } from '../../../store';
 import { useRef, useEffect } from 'react';
 
@@ -30,31 +30,31 @@ const ThemeButton = () => {
   return (
     <>
       {themeDark ? (
-        <div className='flex justify-between items-center w-24 rounded-full bg-[#222222] shadow-[2px_2px_6px_#050505] overflow-hidden'>
+        <div className='border-[2px] border-[#b1adcc] flex justify-between items-center w-24 rounded-full bg-[#3a3a3a] shadow-[2px_2px_6px_#050505] overflow-hidden'>
           <button
             ref={btnRef}
             onClick={toggleEfect}
-            className='bg-[#222222] rounded-full border-4 h-7 w-7 ml-2 z-20'
+            className='bg-[#534c7d] rounded-full border-4 h-7 w-7 ml-2 z-20'
           ></button>
           <img
             ref={svgRef}
             className='rounded-full mr-2 scale-125 z-10 relative top-12'
-            src={MoonIcon}
+            src={moonIcon}
             alt='dark-theme-icon'
           />
         </div>
       ) : (
-        <div className='border-[1px] flex justify-between items-center w-24 rounded-full bg-[#e4e4e4] shadow-[2px_2px_6px_#050505]'>
+        <div className='border-[2px] border-[#ffe5a6] flex justify-between items-center w-24 rounded-full bg-[#ffa500] shadow-[2px_2px_6px_#3a3a3a]'>
           <img
             ref={svgRef}
             className='rounded-full ml-1 z-10'
-            src={SunIcon}
+            src={sunIcon}
             alt='sun-theme-icon'
           />
           <button
             ref={btnRef}
             onClick={toggleEfect}
-            className='bg-[#dcccae] rounded-full border-4 border-[#ffa500] h-7 w-7 mr-2 z-20'
+            className='bg-[#ffa500] rounded-full border-4 border-[#ffe5a6] h-7 w-7 mr-2 z-20'
             id='btn'
           ></button>
         </div>

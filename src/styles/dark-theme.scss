@@ -1,0 +1,866 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
+@import url('./weather_cards.scss');
+@import url('./light-theme.scss');
+@import url('./animations.scss');
+
+$roboto-italic: 'Roboto Condensed', sans-serif;
+$roboto-mono: 'Roboto Mono', monospace;
+$roboto: 'Roboto', sans-serif;
+$oswald: 'Oswald', sans-serif;
+$josefin: 'Josefin Sans', sans-serif;
+
+//palet color light theme
+$light: #f7f7f7;
+
+//palet color dark theme
+$dark: #3a3a3a;
+$woodsmoke-50: #f6f6f9;
+$woodsmoke-100: #ecebf3;
+$woodsmoke-200: #d6d3e4;
+$woodsmoke-300: #b1adcc;
+$woodsmoke-400: #8580b0;
+$woodsmoke-500: #666097;
+$woodsmoke-600: #534c7d;
+$woodsmoke-700: #443e66;
+$woodsmoke-800: #3b3656;
+$woodsmoke-900: #353149;
+$woodsmoke-950: #0b0a0f;
+
+%ham-menu-bar {
+  width: 2.3em;
+  height: 0.2em;
+  background: #fff;
+  border-radius: 0.4em;
+}
+
+%flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+%aside_item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: $woodsmoke-600;
+  border-radius: 0.5em;
+  font-family: $roboto-italic;
+}
+
+%aside_date {
+  grid-row: 1;
+  grid-column: 3;
+  text-align: center;
+  border-left: 1px solid $woodsmoke-300;
+  border-bottom: 1px solid $woodsmoke-300;
+  background-color: $woodsmoke-700;
+  border-radius: 0 0.5em 0 0.5em;
+}
+
+%aside_main_temp {
+  grid-column: 2;
+  grid-row: 3;
+  font-size: 1.5em;
+  place-self: center;
+  position: relative;
+  bottom: 1em;
+}
+
+%h1_footers {
+  font-weight: 700;
+  font-family: $roboto-mono;
+  color: #388cd5;
+  text-shadow: 2px 2px 1px #13131356;
+}
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: $dark;
+  scroll-behavior: smooth;
+  font-weight: 500;
+  cursor: url('/src/assets/cloud.png'), auto;
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      header section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  .header-container-dt {
+    background-color: $dark;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 3em);
+
+    .header-resourse-dt {
+      grid-column: 1;
+      font-family: $roboto-italic;
+      margin: 1em 0 0 2em;
+
+      p {
+        color: $light;
+        font-size: 0.8em;
+      }
+
+      .header-url-dt {
+        background-color: $light;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 0.4em;
+        width: fit-content;
+        gap: 1em;
+        height: 2.5em;
+        padding: 0 0.5em 0 0.5em;
+        box-shadow: 5px 5px 5px #13131376;
+
+        p {
+          color: $dark;
+          font-size: 0.8em;
+        }
+
+        button {
+          border: none;
+          background-color: inherit;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+        }
+      }
+    }
+
+    .header-title-container-dt {
+      color: $light;
+      grid-column: 2;
+      grid-row: 2/3;
+      text-align: center;
+      min-width: max-content;
+
+      > :first-child {
+        display: flex;
+        justify-content: space-evenly;
+        border-bottom: 3px solid $woodsmoke-400;
+
+        h1 {
+          font-family: $roboto;
+          font-size: 3em;
+        }
+        img {
+          object-fit: contain;
+          scale: 2;
+        }
+      }
+
+      p {
+        padding-top: 0.7em;
+        font-family: $roboto-italic;
+        text-align: center;
+      }
+    }
+
+    .ham-menu-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4em;
+      position: absolute;
+      right: 1em;
+      top: 1em;
+
+      &:hover {
+        cursor: url('/src/assets/cloud-hover.png'), auto;
+      }
+      :first-child,
+      :nth-child(2),
+      :last-child {
+        @extend %ham-menu-bar;
+      }
+    }
+
+    .header-menu-dt {
+      background-color: $woodsmoke-700;
+      position: absolute;
+      transform: translateX(-40em);
+      border-right: 1px solid $woodsmoke-500;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: 100%;
+      padding: 3em 0 0 2em;
+      z-index: 200;
+      transition: all 400ms;
+      width: 30%;
+      animation: lateral-menu-appear 300ms linear 1 forwards;
+
+      h1 {
+        color: $light;
+        font-weight: 700;
+        align-self: center;
+        position: absolute;
+        top: 1em;
+      }
+
+      .preference-container-dt {
+        @extend %flex-row-center;
+        justify-content: space-between;
+        border-bottom: 2px solid $woodsmoke-400;
+        width: 50%;
+        transition: all 200ms;
+
+        p {
+          color: $light;
+          padding-bottom: 0.3em;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+          z-index: 100;
+        }
+      }
+
+      .hidden-preference-options {
+        padding: 0 0 0 1em;
+        transform: translateY(-4em);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .preferences-dt {
+        pointer-events: all;
+        border-left: 1px solid $woodsmoke-400;
+        transform: translateY(0.5em);
+        transition: all 700ms;
+        opacity: 1;
+
+        .menu-list-dt {
+          margin-top: 1em;
+          display: flex;
+          flex-direction: column;
+          gap: 2em;
+
+          li {
+            button {
+              cursor: url('/src/assets/cloud-hover.png'), auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      main section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  .main-weather-container-dt {
+    row-gap: 2em;
+    margin-top: 4em;
+    height: 100vh;
+    position: relative;
+    font-weight: 400;
+    font-family: $roboto-mono;
+    background-color: $dark;
+    color: $light;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    // feature : find the current weather depends on text input value when the user click on the search button
+    .form-container-dt {
+      grid-row: 1;
+      grid-column: 4;
+      display: flex;
+
+      &:hover {
+        box-shadow: none;
+      }
+
+      .main-weather-form-dt {
+        display: flex;
+        height: fit-content;
+        border-radius: 0.5em;
+        box-shadow: 5px 5px 5px #13131376;
+
+        &:focus-within {
+          box-shadow: none;
+          transition: all 400ms;
+        }
+
+        .weather-input-dt {
+          padding: 0.5em 0 0.5em 1.5em;
+          text-transform: capitalize;
+          outline: none;
+          border: none;
+          border-radius: 0.5em 0 0 0.5em;
+          font-family: $roboto-mono;
+          font-weight: bolder;
+          color: $woodsmoke-500;
+          background-color: $light;
+
+          &:focus {
+            background-color: $woodsmoke-300;
+          }
+          &::placeholder {
+            opacity: 0.8;
+            font-size: 0.7em;
+            font-weight: 400;
+          }
+        }
+
+        .weather-serchBtn-dt {
+          border-radius: 0 0.5em 0.5em 0;
+          padding: 0.4em;
+          background-color: $light;
+          border-left: 2px solid #536b7f;
+          outline: none;
+
+          &:hover,
+          &:focus {
+            background-color: $woodsmoke-300;
+            transition: all 200ms;
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+          }
+        }
+      }
+
+      .error-message {
+        display: block;
+        color: #ff6666;
+        font-family: $josefin;
+        margin-top: 0.5em;
+      }
+
+      .error-container {
+        border: 1px solid #ff0000 !important;
+        background-color: #ff000022 !important;
+        transition: all 300ms !important;
+      }
+
+      /* this section make reference to the researched locations */
+      .search-history-dt {
+        display: flex;
+        position: absolute;
+        padding: 2em;
+        text-align: center;
+        text-transform: capitalize;
+        left: 0;
+        transform: translate(-20em, -5em) scale(0.5);
+        z-index: 1000;
+        transition: all 300ms;
+
+        > :first-child {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 2px solid #d8d5d5;
+          border-top: 2px solid #d8d5d5;
+        }
+        > :nth-child(2) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          border-bottom: 2px solid #d8d5d5;
+          border-top: 2px solid #d8d5d5;
+        }
+        > :nth-child(3) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          border-bottom: 2px solid #d8d5d5;
+          border-top: 2px solid #d8d5d5;
+        }
+        > :last-child {
+          right: 0.1em;
+          top: 0.1em;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+          position: absolute;
+        }
+      }
+
+      .history {
+        position: absolute;
+        right: 0.5em;
+        top: 0.7em;
+      }
+    }
+
+    /* card info with the current weather data */
+    .weather-container-dt {
+      grid-column: 2 / span 3;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(6, 0.6fr);
+      box-shadow: 5px 5px 5px #13131336;
+      border-radius: 0 0 0.6em 0.6em;
+
+      > :first-child {
+        grid-column: 1 / span 3;
+        grid-row: 1 / span 5;
+        // overflow: hidden;
+      }
+      > :last-child {
+        grid-column: 1 / span 3;
+        grid-row: 6;
+      }
+
+      .weather-info-section-dt {
+        border-top: 1px solid $woodsmoke-300;
+        border-radius: 0 0 0.6em 0.6em;
+        background-color: $woodsmoke-700;
+        display: grid;
+        grid-template-columns: repeat(3, 0.5fr);
+        grid-template-rows: repeat(3, 2.5em);
+        color: $light;
+        font-family: $roboto-italic;
+
+        .item-1-dt {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5em;
+        }
+        > :nth-child(2) {
+          grid-column: 2;
+          place-self: center end;
+        }
+        > :nth-child(3) {
+          grid-column: 1;
+          grid-row: 2 / 3;
+          font-size: 3em;
+          place-self: start center;
+        }
+
+        .item-4-dt {
+          grid-column: 2;
+          grid-row: 2 / 3;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 1em 3em 0 0;
+        }
+
+        .item-5-dt {
+          grid-column: 3;
+          grid-row: 2 / 3;
+        }
+      }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////      aside section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    .aside-container {
+      margin-left: 2em;
+      grid-column: 5 / span 2;
+      grid-row: 2;
+
+      p {
+        text-align: center;
+        font-family: $josefin;
+        border-bottom: 2px solid $woodsmoke-400;
+      }
+
+      .aside-weather-next-days {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        .aside-grid-item-1 {
+          @extend %aside_item;
+          box-shadow: 5px 5px 5px #13131336;
+          > :first-child {
+            @extend %aside_date;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            grid-column: 1;
+            text-align: end;
+          }
+          > :nth-child(3) {
+            @extend %aside_main_temp;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            grid-column: 3;
+            text-align: start;
+          }
+          > :last-child {
+            position: absolute;
+          }
+        }
+
+        .aside-grid-item-2 {
+          @extend %aside_item;
+          box-shadow: 5px 5px 5px #13131336;
+
+          > :first-child {
+            @extend %aside_date;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            grid-column: 1;
+            text-align: end;
+          }
+          > :nth-child(3) {
+            @extend %aside_main_temp;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            grid-column: 3;
+            text-align: start;
+          }
+          > :last-child {
+            position: absolute;
+          }
+        }
+        .aside-grid-item-3 {
+          @extend %aside_item;
+          box-shadow: 5px 5px 5px #13131336;
+
+          > :first-child {
+            @extend %aside_date;
+          }
+          > :nth-child(2) {
+            grid-row: 4;
+            grid-column: 1;
+            text-align: end;
+          }
+          > :nth-child(3) {
+            @extend %aside_main_temp;
+          }
+          > :nth-child(4) {
+            grid-row: 4;
+            grid-column: 3;
+            text-align: start;
+          }
+          > :last-child {
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      NOT FOUND section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  .not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    color: $light;
+    font-family: $roboto;
+
+    > ::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100dvh;
+      background: url('/src/assets/images/not-found.png') no-repeat center center;
+      background-size: cover;
+      width: 100%;
+      opacity: 0.6;
+    }
+
+    .not-found-content {
+      border: 4px solid #85848481;
+      border-radius: 0.6em;
+      padding: 0 15em;
+      margin: auto;
+      color: $light;
+      text-shadow: 2px 2px 2px #000000b9;
+      width: max-content;
+      background: linear-gradient(to top, #0c0c0c, #f8bf03);
+
+      > :first-child {
+        z-index: 10000;
+        position: relative;
+        bottom: -2em;
+        font-size: 3em;
+        font-family: $roboto-italic;
+        font-weight: 900;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 1.4em;
+          height: 0.15em;
+          background-color: $light;
+          z-index: 100000;
+          transform: translate(1.1em, 1.4em) rotate(130deg);
+        }
+      }
+
+      > :nth-child(2) {
+        font-size: 6em;
+        position: relative;
+        z-index: 1000;
+      }
+      > :nth-child(3) {
+        position: relative;
+        z-index: 10000;
+      }
+
+      .not-found-span {
+        position: relative;
+        border: 5px solid $light;
+        box-shadow: 2px 2px 2px #000000b9;
+        border-radius: 50%;
+        color: #ff0000;
+        font-size: 0.6em;
+        top: -0.3em;
+      }
+      .btn-message-container {
+        bottom: 3em;
+
+        > :first-child {
+          font-family: $roboto-italic;
+          font-size: 1.2em;
+        }
+
+        .not-found-redirect-btn {
+          position: relative;
+          cursor: pointer;
+          background-color: #000000;
+          color: $light;
+          z-index: 1000;
+          padding: 1em;
+          border-radius: 0.4em;
+          border: 1px solid $light;
+          font-weight: 700;
+          transition: all 300ms;
+
+          &:hover {
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+            background: #424d57;
+            border: 1px solid #000000;
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+
+  /* taost errorInfoMessage */
+  .errorInfoMessage {
+    color: $light;
+    font-family: $oswald;
+    border-radius: 0.4em;
+    position: absolute;
+    top: -0.7em;
+    text-align: center;
+    text-shadow: 2px 2px 2px #000000b9;
+    z-index: 1000;
+    padding: 0.7em 4em;
+    font-size: 1.5em;
+    background-color: #b81818;
+    border: 2px solid $light;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      footer section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  .footer-container-dt {
+    margin-top: 5em;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 4.5em);
+    scroll-behavior: smooth;
+
+    /* frecuently asked question section */
+    .faq-section-container-dt {
+      grid-column: 1 / span 4;
+      grid-row: 1 / span 7;
+      display: flex;
+      flex-direction: column;
+      padding: 0 1.5em 0 1.5em;
+      background-color: $woodsmoke-700;
+      margin: 0.5em 0 0.5em 0.5em;
+      border-radius: 0.5em;
+      box-shadow: 5px 5px 5px #13131376;
+      gap: 1.5em;
+
+      h1 {
+        text-align: center;
+        @extend %h1_footers;
+        margin-top: 1em;
+        font-size: 1.4em;
+      }
+
+      > :last-child {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .faq-question-dt {
+        border-bottom: 2px solid #388cd5;
+
+        // this container wrap all question and expand/collapse icon
+        .first-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: $roboto-italic;
+          height: 4em;
+
+          > :first-child {
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+          }
+          span {
+            font-size: 1.4em;
+          }
+        }
+
+        .faq-answer-dt {
+          display: none;
+        }
+
+        .expand-content {
+          border-left: 2px solid #ff000083;
+          position: absolute;
+          background-color: #2d2d2d;
+          padding: 1em;
+          border-radius: 0 0.4em 0.4em 0;
+          width: 45vw;
+          z-index: 100;
+
+          > :first-child,
+          > :last-child {
+            margin-left: 1em;
+            color: $woodsmoke-300;
+            font-size: 0.85em;
+            text-wrap: balance;
+          }
+
+          > :nth-child(2) {
+            scale: 0.7;
+            border: 1px solid #ffffff62;
+            border-radius: 0.4em;
+          }
+          .source-link {
+            text-wrap: balance;
+            color: $light;
+            cursor: url('/src/assets/cloud-hover.png'), auto;
+          }
+        }
+      }
+    }
+
+    // README section
+    .readme-section-container-dt {
+      grid-column: 5 / span 4;
+      grid-row: 1 / span 4;
+      margin: 0.5em 1em;
+
+      .readme-card-container-dt {
+        background-color: $woodsmoke-700;
+        border-radius: 0.5em;
+        height: 100%;
+        @extend %flex-col-center;
+        justify-content: space-evenly;
+        box-shadow: 5px 5px 5px #1313136e;
+
+        h1 {
+          font-size: 1.5em;
+          @extend %h1_footers;
+        }
+        > :nth-child(2),
+        > :nth-child(3) {
+          text-wrap: balance;
+          line-height: 1.7em;
+          font-size: 0.9em;
+          font-family: $roboto-italic;
+        }
+        button {
+          padding: 0.5em;
+          border-radius: 0.5em;
+          font-family: $josefin;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+          border: 2px solid;
+        }
+      }
+    }
+
+    // ASIDE section
+    .footer-aside-container-dt {
+      grid-column: 5 / span 4;
+      grid-row: 5 / 8;
+      @extend %flex-col-center;
+      justify-content: space-between;
+
+      .title-aside-dt {
+        margin-top: 1em;
+        @extend %flex-row-center;
+        gap: 1em;
+
+        h1 {
+          font-size: 1.7em;
+          @extend %h1_footers;
+        }
+        img {
+          scale: 1.2;
+        }
+      }
+
+      .footer-list-dt {
+        display: flex;
+        justify-content: space-evenly;
+        width: 40%;
+        margin: auto;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 65%;
+          height: 2px;
+          background-color: $woodsmoke-400;
+          left: -8em;
+          top: 0.5em;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          width: 65%;
+          height: 2px;
+          background-color: $woodsmoke-400;
+          right: -8em;
+          top: 0.5em;
+        }
+
+        .list-item-dt {
+          font-size: 1.2em;
+          cursor: url('/src/assets/cloud-hover.png'), auto;
+        }
+      }
+    }
+
+    .developed-dt {
+      p {
+        font-family: $josefin;
+        min-width: max-content;
+      }
+    }
+  }
+  .up-arrow {
+    position: fixed;
+    bottom: 0.2em;
+    right: 0.7em;
+    font-size: 1.5em;
+    cursor: url('/src/assets/cloud-hover.png'), auto;
+    animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
+  }
+}

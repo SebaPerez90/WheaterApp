@@ -1,4 +1,4 @@
-import '../src/styles/index.scss';
+import '../src/styles/dark-theme.scss';
 import Header from './components/Header/Header.jsx';
 import Main from './components/Main.jsx';
 import NotFound from './routes/NotFound.jsx';
@@ -8,6 +8,7 @@ import { Route, Switch } from 'wouter';
 import Footer from './components/Footer/Footer.jsx';
 import Readme from './routes/Readme.jsx';
 import Contact from './routes/Contact';
+import ClearDay from './components/Weather Cards/ClearDay.jsx';
 
 const client = new QueryClient();
 
@@ -30,5 +31,6 @@ export default function App() {
       </Switch>
       <Toaster />
     </QueryClientProvider>
+    // <ClearDay />
   );
 }

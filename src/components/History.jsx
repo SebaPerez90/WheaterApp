@@ -4,7 +4,7 @@ import { useStore } from '../../store';
 import { MdDeleteForever } from 'react-icons/md';
 
 const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
-  const { weatherData } = useStore();
+  const { weatherData, themeDark } = useStore();
 
   // history state
   const [searchHistory, setSearchHistory] = useState(
@@ -79,7 +79,7 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
     <div>
       {isEmpty ? null : (
         <div
-          className='search-history-dt'
+          className={themeDark ? 'search-history-dt' : 'search-history-lt'}
           style={styles}
         >
           <div>
