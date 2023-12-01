@@ -8,7 +8,7 @@ import { Route, Switch } from 'wouter';
 import Footer from './components/Footer/Footer.jsx';
 import Readme from './routes/Readme.jsx';
 import Contact from './routes/Contact';
-import ClearDay from './components/Weather Cards/ClearDay.jsx';
+import ClearNight from './components/Weather Cards/ClearNight.jsx';
 
 const client = new QueryClient();
 
@@ -31,6 +31,6 @@ export default function App() {
       </Switch>
       <Toaster />
     </QueryClientProvider>
-    // <ClearDay />
+    // <ClearNight />
   );
 }

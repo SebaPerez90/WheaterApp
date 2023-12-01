@@ -33,7 +33,7 @@ $woodsmoke-950: #0b0a0f;
 %ham-menu-bar {
   width: 2.3em;
   height: 0.2em;
-  background: #fff;
+  background: $woodsmoke-300;
   border-radius: 0.4em;
 }
 
@@ -222,6 +222,10 @@ body {
           cursor: url('/src/assets/cloud-hover.png'), auto;
           z-index: 100;
         }
+        span {
+          color: $woodsmoke-400;
+          scale: 1.5;
+        }
       }
 
       .hidden-preference-options {
@@ -261,7 +265,6 @@ body {
     row-gap: 2em;
     margin-top: 4em;
     height: 100vh;
-    position: relative;
     font-weight: 400;
     font-family: $roboto-mono;
     background-color: $dark;
@@ -383,8 +386,8 @@ body {
 
       .history {
         position: absolute;
-        right: 0.5em;
-        top: 0.7em;
+        right: 1em;
+        transform: translateY(1em);
       }
     }
 
@@ -394,14 +397,13 @@ body {
       grid-row: 2;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(6, 0.6fr);
+      grid-template-rows: repeat(6, 0.5fr);
       box-shadow: 5px 5px 5px #13131336;
       border-radius: 0 0 0.6em 0.6em;
 
       > :first-child {
         grid-column: 1 / span 3;
         grid-row: 1 / span 5;
-        // overflow: hidden;
       }
       > :last-child {
         grid-column: 1 / span 3;
@@ -674,7 +676,7 @@ body {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   .footer-container-dt {
-    margin-top: 5em;
+    margin-top: 10em;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(7, 4.5em);

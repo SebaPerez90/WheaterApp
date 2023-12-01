@@ -1,10 +1,9 @@
 import sun from '../../assets/svg/sunIcon.svg';
-import clouds from '../../assets/svg/cloud.svg';
 import hills from '../../assets/svg/hills-day.svg';
 
 const RainDay = () => {
   return (
-    <div className='flex flex-col relative overflow-hidden'>
+    <div className='flex flex-col relative overflow-hidden rounded-[0.6em_0.6em_0_0]'>
       <div className='flex justify-center items-center bg-[#7392c8] h-[25em]'>
         <div className='flex flex-col animate-[rayShining_5s_linear_alternate-reverse_infinite] transition-all'>
           <div className='translate-y-6 translate-x-6'>
@@ -43,8 +42,9 @@ const RainDay = () => {
           style={{
             boxShadow: '0px 0px 1px #fcff333b',
             background: 'radial-gradient(circle, #fcff33e5 ,#fcff3317, transparent)',
+            animation: 'sunShining 5s linear alternate-reverse infinite, SunRise 500ms linear forwards',
           }}
-          className='scale-[3] translate-y-[-5em] rounded-full border-[#fcff3316] absolute animate-[sunShining_5s_linear_alternate-reverse_infinite]'
+          className='translate-y-[13em] rounded-full border-[#fcff3316] absolute'
         />
       </div>
       <div className='absolute bottom-[-8em]'>

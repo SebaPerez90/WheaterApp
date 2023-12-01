@@ -338,7 +338,6 @@ body {
     background: linear-gradient(to left, $red-stage-300, $red-stage-800, transparent);
     row-gap: 2em;
     height: 100dvh;
-    position: relative;
     font-weight: 400;
     font-family: $roboto-mono;
     background-color: $dark;
@@ -346,7 +345,6 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    // overflow: hidden;
 
     // feature : find the current weather depends on text input value when the user click on the search button
     .form-container-lt {
@@ -463,8 +461,8 @@ body {
 
       .history {
         position: absolute;
-        right: 0.5em;
-        top: 5em;
+        right: 1em;
+        transform: translateY(4em);
         z-index: 30;
       }
     }
@@ -642,7 +640,7 @@ body {
     grid-template-rows: repeat(7, 4.5em);
     scroll-behavior: smooth;
     background: linear-gradient(to left, $red-stage-300, $red-stage-800, transparent);
-    padding-top: 1em;
+    padding-top: 12em;
 
     /* frecuently asked question section */
     .faq-section-container-lt {
