@@ -92,13 +92,14 @@
     width: 200px;
     left: 18em;
     bottom: 2em;
+    background-color: #77befc69;
     z-index: 20;
     transform: scaleX(0.7) scaleY(0.2);
-    background-color: #77befc69;
     clip-path: ellipse(49% 13% at 49% 48%);
     animation: puddle 9s linear forwards;
   }
 }
+
 
 .thunder {
   -webkit-mask-image: linear-gradient(to top, #fff, #ffffff09 90%);
@@ -118,6 +119,19 @@
   }
   100% {
     transform: translate(-4em, 23.5em) rotate(0deg) scaleX(3) scaleY(0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes snowing {
+  0% {
+    transform: translate(0em, 0em) rotate(10deg);
+  }
+  85% {
+    transform: translate(-3em, 24em) rotate(5deg);
+  }
+  100% {
+    transform: translate(-4em, 24em) rotate(0deg) scaleX(3) scaleY(0);
     opacity: 0.6;
   }
 }
