@@ -36,7 +36,7 @@ const RainDay = () => {
         <img
           src={clouds}
           alt='clouds'
-          className='scale-50 scale-x-150 translate-x-28 translate-y-[-6em]'
+          className='blur-sm scale-50 scale-x-150 translate-x-28 translate-y-[-6em]'
         />
         <img
           src={sun}
@@ -46,17 +46,17 @@ const RainDay = () => {
         <img
           src={clouds}
           alt='clouds'
-          className='scale-75 scale-x-110 translate-x-[-4em] '
+          className='blur-sm scale-75 scale-x-110 translate-x-[-4em] '
         />
         <img
           src={clouds}
           alt='clouds'
-          className='scale-50 scale-x-110 translate-y-[-7em]'
+          className='blur-sm scale-50 scale-x-110 translate-y-[-7em]'
         />
         <img
           src={clouds}
           alt='clouds'
-          className='scale-50 scale-x-110 translate-y-[-6em] translate-x-[11em] absolute'
+          className='blur-sm scale-50 scale-x-110 translate-y-[-6em] translate-x-[11em] absolute'
         />
       </div>
       <div className='absolute bottom-[-8em] '>

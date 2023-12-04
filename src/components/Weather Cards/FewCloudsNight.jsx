@@ -1,4 +1,5 @@
 import hills from '../../assets/svg/hills-day.svg';
+import clouds from '../../assets/svg/cloud-grey.svg';
 
 const RainDay = () => {
   return (
@@ -34,10 +35,21 @@ const RainDay = () => {
           <div className='stars w-[7px] h-[.5px] block relative right-[1em] bottom-[11em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_1.3s_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] h-[.5px] block relative right-[18.3em] bottom-[5.4em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_1.66s_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] h-[.5px] block relative right-[13em] bottom-[10.3em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
-
           <div className='stars w-[7px] h-[.5px] block relative right-[-5.7em] bottom-[8.2em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_1.1s_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] h-[.5px] block relative right-[-8em] bottom-[6em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_1.7s_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] h-[.5px] block relative right-[-9.6em] bottom-[4.2em] bg-yellow-100 blur-[.7px] opacity-40 animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+        </div>
+        <div className='absolute flex'>
+          <img
+            className='blur-lg relative right-[17em] animate-[cloudsss_300ms_linear_forwards]'
+            src={clouds}
+            alt='clouds'
+          />
+          <img
+            className='blur-lg relative right-[-6em] animate-[cloudsss_300ms_linear_forwards]'
+            src={clouds}
+            alt='clouds'
+          />
         </div>
       </div>
       <div className='absolute bottom-[-8em]'>

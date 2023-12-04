@@ -55,7 +55,7 @@
     z-index: 20;
     clip-path: ellipse(8% 49% at 50% 50%);
     animation: pouringRain 300ms linear infinite;
-    opacity: .6;
+    opacity: 0.6;
   }
   &::before {
     content: '';
@@ -68,7 +68,7 @@
     z-index: 20;
     clip-path: ellipse(8% 49% at 50% 50%);
     animation: pouringRain 200ms linear infinite;
-    opacity: .6;
+    opacity: 0.6;
   }
 }
 
@@ -98,6 +98,11 @@
     clip-path: ellipse(49% 13% at 49% 48%);
     animation: puddle 9s linear forwards;
   }
+}
+
+.thunder {
+  -webkit-mask-image: linear-gradient(to top, #fff, #ffffff09 90%);
+  mask-image: inherit;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,5 +189,27 @@
 @keyframes cloudsss {
   to {
     right: 5em;
+  }
+}
+
+@keyframes thunderStorm {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 1;
+    transform: scaleY(0.9) scaleX(0.8) translateY(-2em);
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.9) scaleX(0.8);
+    -webkit-mask-image: linear-gradient(to top, #fff, #ffffff00 90%);
   }
 }

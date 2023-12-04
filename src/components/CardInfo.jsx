@@ -1,7 +1,7 @@
 import { FaLocationDot } from 'react-icons/fa6';
 import { useStore } from '../../store.js';
 
-import PouringDay from './Weather Cards/PouringDay.jsx';
+import MistNight from './Weather Cards/MistNight.jsx';
 
 export default function EnglishCardInfo() {
   const { weatherData, languageEng, themeDark, temperatureUnit } = useStore();
@@ -10,7 +10,9 @@ export default function EnglishCardInfo() {
 
   return (
     <section className={themeDark ? 'weather-container-dt' : 'weather-container-lt'}>
-      <PouringDay />
+
+      <MistNight />
+      
       <section className={themeDark ? 'weather-info-section-dt' : 'weather-info-section-lt'}>
         <div className={themeDark ? 'item-1-dt' : 'item-1-lt'}>
           <FaLocationDot className='text-rose-600' />

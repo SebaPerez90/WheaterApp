@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer.jsx';
 import Readme from './routes/Readme.jsx';
 import Contact from './routes/Contact';
 
-import PouringDay from './components/Weather Cards/PouringDay.jsx';
+import MistDay from './components/Weather Cards/MistDay.jsx';
 
 const client = new QueryClient();
 
@@ -32,6 +32,7 @@ export default function App() {
       </Switch>
       <Toaster />
     </QueryClientProvider>
-    // <PouringDay />
+
+    // <MistDay />
   );
 }

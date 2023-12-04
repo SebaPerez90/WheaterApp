@@ -1,5 +1,5 @@
-import englishIcon from '../../assets/englishIcon.png';
-import spanishIcon from '../../assets/spanishIcon.png';
+import englishIcon from '../../assets/images/englishIcon.png';
+import spanishIcon from '../../assets/images/spanishIcon.png';
 import { useStore } from '../../../store';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';

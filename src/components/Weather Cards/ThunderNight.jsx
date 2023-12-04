@@ -5,6 +5,20 @@ const RainDay = () => {
   return (
     <div className='flex flex-col relative overflow-hidden rounded-[0.6em_0.6em_0_0]'>
       <div className='flex justify-center items-center bg-slate-800  h-[25em]'>
+        <div className='thunder-container absolute flex justify-between'>
+          <div
+            className='thunder bg-amber-300 w-[200px] h-[200px] relative bottom-[-1.5em] z-40 scale-y-[1.3] animate-[thunderStorm_2s_steps(3)_infinite]'
+            style={{ clipPath: 'polygon(25% 0, 64% 0, 35% 25%, 51% 44%, 27% 69%, 32% 100%, 14% 68%, 30% 43%, 9% 29%)' }}
+          ></div>
+          <div
+            className='thunder bg-amber-300 w-[200px] h-[200px] relative bottom-[-1.5em] z-40 scale-y-[1.3] animate-[thunderStorm_5s_steps(3)_infinite]'
+            style={{ clipPath: 'polygon(25% 0, 64% 0, 35% 25%, 51% 44%, 27% 69%, 32% 100%, 14% 68%, 30% 43%, 9% 29%)' }}
+          ></div>
+          <div
+            className='thunder bg-amber-300 w-[200px] h-[200px] relative bottom-[-1.5em] z-40 scale-y-[1.3] animate-[thunderStorm_3.5s_steps(3)_infinite]'
+            style={{ clipPath: 'polygon(25% 0, 64% 0, 35% 25%, 51% 44%, 27% 69%, 32% 100%, 14% 68%, 30% 43%, 9% 29%)' }}
+          ></div>
+        </div>
         <div className='rain absolute top-2 flex justify-around w-full z-10'>
           <div className='drop h-4 w-[4px] bg-sky-400 animate-[pouringRain_200ms_linear_infinite;]'></div>
           <div className='drop h-4 w-[4px] bg-sky-400 animate-[pouringRain_300ms_linear_infinite;]'></div>
