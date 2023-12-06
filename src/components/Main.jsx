@@ -82,9 +82,9 @@ export default function WeatherData() {
   const conditionalStyles = {
     scale: '1',
     position: 'absolute',
-    zIndex: 1000,
-    backgroundColor: '#2a557a',
-    transform: ' translate(-1em , -5em)',
+    zIndex: 60,
+    // backgroundColor: '#534c7d',
+    transform: ' translate(-1em , 0em)',
   };
 
   return (

@@ -32,13 +32,13 @@ $dark: #3a3a3a;
 
 @mixin clouds($time) {
   content: '';
-  scale: 0.8;
   position: absolute;
   width: 50%;
   height: 250px;
-  background: url('/src/assets/cloud.svg') no-repeat bottom center;
+  background: url('/src/assets/svg/cloud.svg') no-repeat bottom center;
   background-size: contain;
   z-index: 10;
+  filter: blur(1.5px);
   animation: clouds $time linear infinite alternate-reverse;
 }
 
@@ -58,11 +58,11 @@ $dark: #3a3a3a;
   rotate: $rotate;
   position: absolute;
   display: block;
-  background-color: $red-stage-700;
-  -webkit-mask-image: linear-gradient(to bottom, #ff00004e, #ff000000 90%);
+  background: linear-gradient(to top, red, $valencia-500, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #ffffff53, #ffffff00 100%);
   mask-image: inherit;
   clip-path: polygon(37% 0, 66% 0, 100% 100%, 0 100%);
-  animation: solar-ray 2s linear infinite alternate-reverse;
+  animation: solar-ray 3s linear infinite alternate-reverse;
   pointer-events: none;
 }
 
@@ -120,7 +120,7 @@ body {
   scroll-behavior: smooth;
   font-weight: 500;
   overflow-x: hidden;
-  cursor: url('/src/assets/cloud.png'), auto;
+  cursor: url('/src/assets/images/cloud.png'), auto;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////      header section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,13 +133,13 @@ body {
     padding-bottom: 1em;
 
     &::before {
-      @include clouds(20s);
+      @include clouds(12s);
       top: 4em;
       left: -1em;
     }
 
     &::after {
-      @include clouds(16s);
+      @include clouds(9s);
       right: -2em;
     }
 
@@ -175,7 +175,7 @@ body {
           border: none;
           background-color: inherit;
           color: $red-stage-400;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
         }
       }
     }
@@ -232,7 +232,7 @@ body {
       }
 
       &:hover {
-        cursor: url('/src/assets/cloud-hover.png'), auto;
+        cursor: url('/src/assets/images/cloud-hover.png'), auto;
       }
       :first-child {
         @extend %ham-menu-bar;
@@ -263,16 +263,21 @@ body {
       background-color: $valencia-300;
       position: absolute;
       transform: translateX(-40em);
+      border-right: 2px solid $red-stage-700;
+      border-bottom: 2px solid $red-stage-700;
+      border-radius: 0 0 0.4em 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-start;
-      height: 100%;
+      height: 95%;
       padding: 3em 0 0 2em;
       z-index: 200;
       transition: all 400ms;
       width: 30%;
       animation: lateral-menu-appear 300ms linear 1 forwards;
+      // -webkit-mask-image: linear-gradient(to bottom, #ffffffff, #ffffff, #ffffff, #ffffff0b 100%);
+      // mask-image: inherit;
 
       h1 {
         color: $dark;
@@ -293,7 +298,7 @@ body {
         p {
           color: $light;
           padding-bottom: 0.3em;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
           z-index: 100;
         }
         span {
@@ -323,7 +328,7 @@ body {
 
           li {
             button {
-              cursor: url('/src/assets/cloud-hover.png'), auto;
+              cursor: url('/src/assets/images/cloud-hover.png'), auto;
             }
           }
         }
@@ -351,6 +356,7 @@ body {
       grid-row: 1;
       grid-column: 4;
       display: flex;
+      z-index: 20;
 
       &:hover {
         box-shadow: none;
@@ -401,7 +407,7 @@ body {
           &:focus {
             background-color: $red-stage-600;
             transition: all 200ms;
-            cursor: url('/src/assets/cloud-hover.png'), auto;
+            cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
         }
       }
@@ -421,49 +427,73 @@ body {
 
       /* this section make reference to the researched locations */
       .search-history-lt {
+        transform: translate(-20em, 0em) scale(0.5);
+        text-transform: capitalize;
+        transition: all 300ms;
+        padding: 2.5em;
         display: flex;
         position: absolute;
-        padding: 2em;
-        text-align: center;
-        text-transform: capitalize;
         left: 0;
-        transform: translate(-20em, -5em) scale(0.5);
-        z-index: 1000;
-        transition: all 300ms;
+        border-radius: 0.5em;
+        border-top: 2px solid $red-stage-700;
+        border-right: 2px solid $red-stage-700;
+        border-bottom: 2px solid $red-stage-700;
+        background-color: $valencia-300;
 
         > :first-child {
           display: flex;
           flex-direction: column;
-          border-bottom: 2px solid #d8d5d5;
-          border-top: 2px solid #d8d5d5;
+          justify-content: space-around;
+          border-bottom: 2px solid $red-stage-700;
+          border-top: 2px solid $red-stage-700;
         }
         > :nth-child(2) {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          border-bottom: 2px solid #d8d5d5;
-          border-top: 2px solid #d8d5d5;
+          border-bottom: 2px solid $red-stage-700;
+          border-top: 2px solid $red-stage-700;
+          padding: 0 1em 0 2em;
         }
         > :nth-child(3) {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          border-bottom: 2px solid #d8d5d5;
-          border-top: 2px solid #d8d5d5;
+          border-bottom: 2px solid $red-stage-700;
+          border-top: 2px solid $red-stage-700;
+          padding: 0 1em;
         }
         > :last-child {
           right: 0.1em;
           top: 0.1em;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
           position: absolute;
         }
       }
 
       .history {
         position: absolute;
-        right: 1em;
-        transform: translateY(4em);
-        z-index: 30;
+        right: 0;
+        transform: translateY(2.5em);
+        cursor: url('/src/assets/images/cloud-hover.png'), auto;
+        border: 2px solid $red-stage-500;
+        border-right: none;
+        border-radius: 0.3em 0 0 0.3em;
+        padding: 0.4em 0.2em 0.4em 0.4em;
+        font-size: 1.2em;
+        color: $red-stage-500;
+        background-color: #ffffffce;
+        transition: all 300ms;
+        z-index: 10;
+
+        &:hover {
+          transition: all 300ms;
+          border-radius: 3em 0 0 3em;
+          padding: 0.4em 0.8em 0.4em 1.5em;
+          color: $light;
+          background-color: $valencia-300;
+          border: 2px solid $light;
+        }
       }
     }
 
@@ -545,7 +575,7 @@ body {
       text-align: center;
       width: max-content;
       font-family: $josefin;
-      border-bottom: 2px solid $red-stage-600;
+      border-bottom: 2px solid $red-stage-700;
       text-shadow: 1px 1px 1px #00000058;
     }
 
@@ -680,7 +710,7 @@ body {
           text-shadow: 1px 1px 1px #00000058;
 
           > :first-child {
-            cursor: url('/src/assets/cloud-hover.png'), auto;
+            cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
           span {
             font-size: 1.4em;
@@ -716,7 +746,7 @@ body {
           .source-link {
             text-wrap: balance;
             color: $light;
-            cursor: url('/src/assets/cloud-hover.png'), auto;
+            cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
         }
       }
@@ -752,7 +782,7 @@ body {
           padding: 0.5em;
           border-radius: 0.5em;
           font-family: $josefin;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
           border: 2px solid;
         }
       }
@@ -818,7 +848,7 @@ body {
 
         .list-item-lt {
           font-size: 1.2em;
-          cursor: url('/src/assets/cloud-hover.png'), auto;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
         }
       }
     }
@@ -837,7 +867,7 @@ body {
     bottom: 0.2em;
     right: 0.7em;
     font-size: 1.5em;
-    cursor: url('/src/assets/cloud-hover.png'), auto;
+    cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
   }
 }

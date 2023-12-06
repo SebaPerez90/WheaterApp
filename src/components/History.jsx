@@ -4,7 +4,7 @@ import { useStore } from '../../store';
 import { MdDeleteForever } from 'react-icons/md';
 
 const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
-  const { weatherData, themeDark } = useStore();
+  const { weatherData, themeDark, temperatureUnit } = useStore();
 
   // history state
   const [searchHistory, setSearchHistory] = useState(
@@ -98,7 +98,10 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
           </div>
           <div>
             {tempSearchHistory.map((item, index) => (
-              <span key={index}>{item}</span>
+              <span key={index}>
+                {item}
+                {temperatureUnit === 'metric' ? '°C' : '°F'}
+              </span>
             ))}
           </div>
           <button onClick={cleanUpHistory}>

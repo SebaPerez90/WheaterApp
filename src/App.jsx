@@ -9,7 +9,6 @@ import Footer from './components/Footer/Footer.jsx';
 import Readme from './routes/Readme.jsx';
 import Contact from './routes/Contact';
 
-
 const client = new QueryClient();
 
 export default function App() {
@@ -31,6 +30,5 @@ export default function App() {
       </Switch>
       <Toaster />
     </QueryClientProvider>
-
   );
 }

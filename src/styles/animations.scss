@@ -15,7 +15,6 @@
   }
 }
 
-
 @keyframes efect1 {
   to {
     transform: translate(-3em);
@@ -82,15 +81,26 @@
   }
 }
 
-//animations used in header section
-
 @keyframes clouds {
-  to {
-    transform: scaleX(1.4);
+  50% {
+    transform: translateY(0.5em) scaleX(1.2);
+  }
+  100% {
+    transform: translateY(-0.5em) scaleX(1.4);
   }
 }
 @keyframes solar-ray {
-  to {
+  50% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.5;
+  }
+  85% {
     opacity: 0;
   }
+  100% {
+    opacity: 0.7;
+  }
 }
+

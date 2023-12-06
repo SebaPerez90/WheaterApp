@@ -30,6 +30,37 @@ export default function Header() {
 
   return (
     <header className={themeDark ? 'header-container-dt' : 'header-container-lt'}>
+      {themeDark ? (
+        <div className='absolute  top-[12em] left-[60%] scale-[1.3]'>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-9 bg-yellow-100 blur-[.7px] animate-[stars_900ms_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[22em] bottom-[2em] bg-yellow-100 blur-[.8px] animate-[stars_1s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[12em] bottom-[4.7em] bg-yellow-100 blur-[.8px] animate-[stars_1.8s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[14.5em] bottom-[7em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-6em] bottom-[11em] bg-yellow-100 blur-[.8px] animate-[stars_1s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[9.2em] bottom-[9em] bg-yellow-100 blur-[.8px] animate-[stars_1.5s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-4.2em] bottom-[5em] bg-yellow-100 blur-[.8px] animate-[stars_1.9s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[16.9em] bottom-[10em] bg-yellow-100 blur-[.8px] animate-[stars_1.2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-10em] bottom-[8.8em] bg-yellow-100 blur-[.8px] animate-[stars_1s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-1em] bottom-[7.6em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[7em] bottom-[1.8em] bg-yellow-100 blur-[.8px] animate-[stars_1.3s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[14.4em] bottom-[1.5em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-7em] bottom-[1.8em] bg-yellow-100 blur-[.8px] animate-[stars_1s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-1.2em] bottom-[3em] bg-yellow-100 blur-[.8px] animate-[stars_1.8s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[1em] bottom-[11em] bg-yellow-100 blur-[.8px] animate-[stars_1.3s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[18.3em] bottom-[5.4em] bg-yellow-100 blur-[.8px] animate-[stars_1.66s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[13em] bottom-[10.3em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-5.7em] bottom-[8.2em] bg-yellow-100 blur-[.8px] animate-[stars_1.1s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-8em] bottom-[6em] bg-yellow-100 blur-[.8px] animate-[stars_1.7s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[29.6em] bottom-[4.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[27em] bottom-[2.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-16em] bottom-[2.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-18.6em] bottom-[6.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-11em] bottom-[4.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[-19.9em] bottom-[4.2em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[18em] bottom-[9em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+          <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[4em] bottom-[7.8em] bg-yellow-100 blur-[.8px] animate-[stars_2s_linear_alternate-reverse_infinite]'></div>
+        </div>
+      ) : null}
       <div
         id='resourse'
         className={themeDark ? 'header-resourse-dt' : 'header-resourse-lt'}
