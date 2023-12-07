@@ -52,23 +52,23 @@ const LanguageButton = () => {
         <button
           ref={btnRef}
           onClick={toggleEfect}
-          className='border-2 rounded-full border-[inherit] scale-90'
         >
           <img
             src={englishIcon}
             alt='english-icon-reference'
+            className='scale-[1.18]'
           />
         </button>
       ) : (
         <button
           ref={btnRef}
           onClick={toggleEfect}
-          className='border-2 rounded-full border-[inherit] scale-90'
         >
           <img
             src={spanishIcon}
             alt='spanish-icon-reference'
-            />
+            className='scale-[1.18]'
+          />
         </button>
       )}
     </>

@@ -76,7 +76,7 @@ const HambuerguerMenu = () => {
           'height:0.3; transition: 300ms; transform: rotate(-40deg); position:relative;';
         second_bar.current.style.opacity = '0';
         third_bar.current.style.cssText =
-          'height:0.3; transition: 300ms; transform: rotate(40deg); position:relative;top:-0.4em';
+          'height:0.3; transition: 300ms; transform: rotate(40deg); position:relative;top:-0.6em';
       }, 500);
 
       setActive(!active);
@@ -133,44 +133,56 @@ const HambuerguerMenu = () => {
         <div className={themeDark ? 'header-menu-dt' : 'header-menu-lt'}>
           <h1>Menu</h1>
 
-          <nav className='flex flex-col text-rose-50'>
-            <Link to='/readme'>readme</Link>
-            <Link to='/contact'>contact</Link>
+          <nav className='nav-bar'>
+            <Link
+              className='text-rose-50'
+              to='/'
+            >
+              {languageEng ? 'Home' : 'Inicio'}
+            </Link>
+            <Link
+              className='text-rose-50'
+              to='/readme'
+            >
+              readme
+            </Link>
+            <Link
+              className='text-rose-50'
+              to='/contact'
+            >
+              {languageEng ? 'contact' : 'contacto'}
+            </Link>
+
+            <div>
+              <div className={themeDark ? 'preference-container-dt' : 'preference-container-lt'}>
+                <p onClick={expandPreferences}>{languageEng ? 'preferences' : 'preferencias'}</p>
+                <span ref={refIcon}>
+                  <MdExpandMore />
+                </span>
+              </div>
+
+              <div className='hidden-preference-options'>
+                <ul className={themeDark ? 'menu-list-dt' : 'menu-list-lt'}>
+                  <li>
+                    <ThemeButton />
+                  </li>
+                  <li className='asado flex items-center justify-between'>
+                    <LanguageButton />
+
+                    {temperatureUnit === 'metric' ? (
+                      <button onClick={() => setTemperatureUnit()}>
+                        <TbTemperatureCelsius className='scale-[2]' />
+                      </button>
+                    ) : (
+                      <button onClick={() => setTemperatureUnit()}>
+                        <TbTemperatureFahrenheit className='scale-[2]' />
+                      </button>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
-
-          <div className={themeDark ? 'preference-container-dt' : 'preference-container-lt'}>
-            <p onClick={expandPreferences}>{languageEng ? 'preferences' : 'preferencias'}</p>
-            <span ref={refIcon}>
-              <MdExpandMore />
-            </span>
-          </div>
-
-          <div className='hidden-preference-options'>
-            <ul className={themeDark ? 'menu-list-dt' : 'menu-list-lt'}>
-              <li>
-                <ThemeButton />
-              </li>
-              <li className='flex items-center justify-between'>
-                <LanguageButton />
-
-                {temperatureUnit === 'metric' ? (
-                  <button
-                    className='border-2 border-[inherit] rounded-full h-10 w-10 flex justify-center items-center text-s text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200 scale-110'
-                    onClick={() => setTemperatureUnit()}
-                  >
-                    <TbTemperatureCelsius className='scale-150 ' />
-                  </button>
-                ) : (
-                  <button
-                    className='border-2 border-[inherit] rounded-full h-10 w-10 flex justify-center items-center text-s text-rose-100 hover:bg-[#8580b0] hover:text-[#3b3656] duration-200 scale-110'
-                    onClick={() => setTemperatureUnit()}
-                  >
-                    <TbTemperatureFahrenheit className='scale-150' />
-                  </button>
-                )}
-              </li>
-            </ul>
-          </div>
         </div>
       ) : null}
     </>

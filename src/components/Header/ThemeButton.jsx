@@ -20,7 +20,7 @@ const ThemeButton = () => {
       }, 220);
     } else {
       btnRef.current.style.animation = 'efect1 200ms linear 1 forwards';
-      svgRef.current.style.animation = 'rotation 600ms linear infinite';
+      svgRef.current.style.animation = 'rotation 300ms linear infinite';
       setTimeout(() => {
         toggleTheme();
       }, 220);
@@ -30,7 +30,7 @@ const ThemeButton = () => {
   return (
     <>
       {themeDark ? (
-        <div className='border-[2px] border-[#b1adcc] flex justify-between items-center w-24 rounded-full bg-[#3a3a3a] shadow-[2px_2px_6px_#050505] overflow-hidden'>
+        <div className='scale-125 border-[3px] border-[#b1adcc] flex justify-between items-center w-24 rounded-full bg-[#3a3a3a] shadow-[2px_2px_6px_#050505] overflow-hidden'>
           <button
             ref={btnRef}
             onClick={toggleEfect}
@@ -44,7 +44,7 @@ const ThemeButton = () => {
           />
         </div>
       ) : (
-        <div className='border-[2px] border-[#ffe5a6] flex justify-between items-center w-24 rounded-full bg-[#ffa500] shadow-[2px_2px_6px_#3a3a3a]'>
+        <div className='scale-125 border-[3px] border-[#ffe5a6] flex justify-between items-center w-24 rounded-full bg-[#ffa500] shadow-[2px_2px_6px_#3a3a3a] duration-200 hover:border-[#d36103]'>
           <img
             ref={svgRef}
             className='rounded-full ml-1 z-10'
