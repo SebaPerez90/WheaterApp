@@ -13,11 +13,13 @@ $roboto: 'Roboto', sans-serif;
 $oswald: 'Oswald', sans-serif;
 $josefin: 'Josefin Sans', sans-serif;
 
-//palet color light theme
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////         palet color     ///////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$dark: #3a3a3a;
 $light: #f7f7f7;
 
-//palet color dark theme
-$dark: #3a3a3a;
 $woodsmoke-50: #f6f6f9;
 $woodsmoke-100: #ecebf3;
 $woodsmoke-200: #d6d3e4;
@@ -30,13 +32,9 @@ $woodsmoke-800: #3b3656;
 $woodsmoke-900: #353149;
 $woodsmoke-950: #0b0a0f;
 
-%ham-menu-bar {
-  width: 3em;
-  height: 0.3em;
-  background: $woodsmoke-300;
-  border-radius: 0.4em;
-  box-shadow: 2px 2px 3px #1313138e;
-}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////       placeholders selectors / mixins      /////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 %flex-row-center {
   display: flex;
@@ -49,25 +47,6 @@ $woodsmoke-950: #0b0a0f;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-%aside_item {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  background-color: $woodsmoke-600;
-  border-radius: 0.5em;
-  font-family: $roboto-italic;
-}
-
-%aside_date {
-  grid-row: 1;
-  grid-column: 3;
-  text-align: center;
-  border-left: 1px solid $woodsmoke-300;
-  border-bottom: 1px solid $woodsmoke-300;
-  background-color: $woodsmoke-700;
-  border-radius: 0 0.5em 0 0.5em;
 }
 
 %aside_main_temp {
@@ -86,6 +65,34 @@ $woodsmoke-950: #0b0a0f;
   text-shadow: 2px 2px 1px #13131356;
 }
 
+@mixin aside_item($bg-color) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  background-color: $bg-color;
+  border-radius: 0.5em;
+  font-family: $roboto-italic;
+  text-shadow: 2px 1px 1px #13131331;
+}
+
+@mixin aside_date($bg-color, $border-l, $border-r) {
+  grid-row: 1;
+  grid-column: 3;
+  text-align: center;
+  border-left: 1px solid $border-l;
+  border-bottom: 1px solid $border-r;
+  background-color: $bg-color;
+  border-radius: 0 0.5em 0 0.5em;
+}
+
+@mixin ham-menu-bar($bg-color) {
+  width: 3em;
+  height: 0.3em;
+  background: $bg-color;
+  border-radius: 0.4em;
+  box-shadow: 2px 2px 3px #13131357;
+}
+
 @mixin clouds($time) {
   content: '';
   position: absolute;
@@ -97,6 +104,10 @@ $woodsmoke-950: #0b0a0f;
   filter: blur(7px);
   animation: clouds $time linear infinite alternate-reverse;
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 html,
 body {
@@ -110,6 +121,7 @@ body {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////      header section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   .header-container-dt {
     background-color: $dark;
     display: grid;
@@ -207,7 +219,7 @@ body {
       :first-child,
       :nth-child(2),
       :last-child {
-        @extend %ham-menu-bar;
+        @include ham-menu-bar($woodsmoke-300);
       }
     }
 
@@ -308,20 +320,32 @@ body {
               gap: 1em;
 
               > :first-child {
-                border: 3px solid $woodsmoke-300;
+                border: 2px solid $woodsmoke-900;
                 border-radius: 50%;
                 box-shadow: 5px 5px 5px #13131376;
+
+                &:hover {
+                  transition: all 300ms;
+                  border: 2px solid $woodsmoke-300;
+                }
               }
               > :last-child {
-                border: 3px solid $woodsmoke-300;
+                border: 2px solid $woodsmoke-900;
                 border-radius: 50%;
                 padding: 1em;
-                color: $woodsmoke-300;
+                color: $woodsmoke-900;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: $woodsmoke-900;
+                background-color: $woodsmoke-400;
                 box-shadow: 5px 5px 5px #13131376;
+
+                &:hover {
+                  transition: all 300ms;
+                  background-color: $woodsmoke-400;
+                  border: 2px solid $woodsmoke-300;
+                  color: $woodsmoke-600;
+                }
               }
             }
 
@@ -398,13 +422,13 @@ body {
         .weather-serchBtn-dt {
           border-radius: 0 0.5em 0.5em 0;
           padding: 0.4em;
-          background-color: $light;
-          border-left: 2px solid #536b7f;
+          background-color: $woodsmoke-400;
+          border-left: 2px solid $woodsmoke-600;
           outline: none;
 
           &:hover,
           &:focus {
-            background-color: $woodsmoke-300;
+            background-color: $light;
             transition: all 200ms;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
@@ -426,72 +450,76 @@ body {
 
       /* this section make reference to the researched locations */
       .search-history-dt {
-        transform: translate(-20em, 0em) scale(0.5);
+        transform: translate(-20em, 3em) scale(0.5);
         text-transform: capitalize;
         transition: all 300ms;
-        padding: 2.5em;
+        padding: 3.5em 2em;
         display: flex;
         position: absolute;
         left: 0;
         border-radius: 0.5em;
-        border-top: 1px solid $woodsmoke-300;
-        border-right: 1px solid $woodsmoke-300;
-        border-bottom: 1px solid $woodsmoke-300;
-        background-color: $woodsmoke-600;
+        border: 2px solid $woodsmoke-400;
+        background-color: $woodsmoke-500;
 
-        > :first-child {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          border-bottom: 2px solid $woodsmoke-400;
-          border-top: 2px solid $woodsmoke-400;
-        }
-        > :nth-child(2) {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          border-bottom: 2px solid $woodsmoke-400;
-          border-top: 2px solid $woodsmoke-400;
-          padding: 0 1em 0 2em;
-        }
+        > :first-child,
+        > :nth-child(2),
         > :nth-child(3) {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          border-bottom: 2px solid $woodsmoke-400;
-          border-top: 2px solid $woodsmoke-400;
+          border-bottom: 2px solid $woodsmoke-700;
+          border-top: 2px solid $woodsmoke-700;
+          transform: translateY(0.9em);
           padding: 0 1em;
+          text-shadow: 2px 2px 2px #0000007e;
         }
+
         > :last-child {
-          right: 0.1em;
-          top: 0.1em;
-          cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          @extend %flex-row-center;
+          right: 40%;
+          gap: 0.5em;
+          top: 0.7em;
           position: absolute;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          font-weight: 700;
+          border: 2px solid $woodsmoke-400;
+          background-color: $dark;
+          padding: 0.5em;
+          border-radius: 0.5em;
+          scale: 0.8;
+
+          &:hover {
+            color: $woodsmoke-800;
+            border: 2px solid $woodsmoke-800;
+            background: $woodsmoke-400;
+            transition: all 300ms;
+          }
         }
       }
 
       .history {
+        @extend %flex-row-center;
         position: absolute;
-        right: -0.3em;
+        left: -.8em;
         cursor: url('/src/assets/images/cloud-hover.png'), auto;
-        border: 2px solid $woodsmoke-400;
-        border-right: none;
-        border-radius: 0.3em 0 0 0.3em;
-        padding: 0.4em 0.2em 0.4em 0.4em;
-        font-size: 1.2em;
+        border: 3px solid $woodsmoke-400;
+        border-left: none;
+        border-radius: 0 0.3em 0.3em 0;
+        padding: 0.5em 1em;
         color: $woodsmoke-200;
         background-color: #8580b049;
         box-shadow: 5px 5px 5px #13131336;
         transition: all 300ms;
         z-index: 10;
+        gap: 0.5em;
+        scale: 0.8;
 
         &:hover {
           transition: all 300ms;
-          border-radius: 3em 0 0 3em;
-          padding: 0.4em 0.8em 0.4em 1.5em;
           color: $woodsmoke-600;
           background-color: $woodsmoke-400;
           border: 2px solid $woodsmoke-600;
+          border-left: none;
         }
       }
     }
@@ -580,10 +608,10 @@ body {
         gap: 0.5em;
 
         .aside-grid-item-1 {
-          @extend %aside_item;
+          @include aside_item($woodsmoke-600);
           box-shadow: 5px 5px 5px #13131336;
           > :first-child {
-            @extend %aside_date;
+            @include aside_date($woodsmoke-800, $woodsmoke-300, $woodsmoke-300);
           }
           > :nth-child(2) {
             grid-row: 4;
@@ -604,11 +632,11 @@ body {
         }
 
         .aside-grid-item-2 {
-          @extend %aside_item;
+          @include aside_item($woodsmoke-600);
           box-shadow: 5px 5px 5px #13131336;
 
           > :first-child {
-            @extend %aside_date;
+            @include aside_date($woodsmoke-800, $woodsmoke-300, $woodsmoke-300);
           }
           > :nth-child(2) {
             grid-row: 4;
@@ -628,11 +656,11 @@ body {
           }
         }
         .aside-grid-item-3 {
-          @extend %aside_item;
+          @include aside_item($woodsmoke-600);
           box-shadow: 5px 5px 5px #13131336;
 
           > :first-child {
-            @extend %aside_date;
+            @include aside_date($woodsmoke-800, $woodsmoke-300, $woodsmoke-300);
           }
           > :nth-child(2) {
             grid-row: 4;
@@ -962,12 +990,18 @@ body {
       }
     }
   }
-  .up-arrow {
+  .up-arrow-dt {
     position: fixed;
     bottom: 0.2em;
     right: 0.7em;
     font-size: 1.5em;
     cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
+
+    &:hover {
+      color: $woodsmoke-300;
+      scale: 1.5;
+      transition: all 400ms;
+    }
   }
 }

@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <header className={themeDark ? 'header-container-dt' : 'header-container-lt'}>
       {themeDark ? (
-        <div className='absolute  top-[12em] left-[60%] scale-[1.3]'>
+        <div className='absolute top-[12em] left-[60%] scale-[1.3]'>
           <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-9 bg-yellow-100 blur-[.7px] animate-[stars_900ms_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[22em] bottom-[2em] bg-yellow-100 blur-[.8px] animate-[stars_1s_linear_alternate-reverse_infinite]'></div>
           <div className='stars w-[7px] opacity-40 h-[.5px] block relative right-[12em] bottom-[4.7em] bg-yellow-100 blur-[.8px] animate-[stars_1.8s_linear_alternate-reverse_infinite]'></div>

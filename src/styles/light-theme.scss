@@ -1,10 +1,9 @@
+@use './dark-theme.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Oswald&family=Roboto&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
-@import url('./weather-cards.scss');
-@import url('./light-theme.scss');
 
 $roboto-italic: 'Roboto Condensed', sans-serif;
 $roboto-mono: 'Roboto Mono', monospace;
@@ -12,8 +11,12 @@ $roboto: 'Roboto', sans-serif;
 $oswald: 'Oswald', sans-serif;
 $josefin: 'Josefin Sans', sans-serif;
 
-//palet color light theme
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////         palet color        /////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $light: #f7f7f7;
+$dark: #3a3a3a;
 
 $red-stage-100: #fff4d3;
 $red-stage-200: #ffe5a6;
@@ -28,8 +31,9 @@ $valencia-300: #f7afaa;
 $valencia-400: #f08179;
 $valencia-500: #e25d54;
 
-//palet color dark theme
-$dark: #3a3a3a;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////             mixins           ////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @mixin clouds($time) {
   content: '';
@@ -43,11 +47,11 @@ $dark: #3a3a3a;
   animation: clouds $time linear infinite alternate-reverse;
 }
 
-%ham-menu-bar {
+@mixin ham-menu-bar($bg-color) {
   width: 3em;
   height: 0.3em;
+  background: $bg-color;
   border-radius: 0.4em;
-  background-color: $red-stage-700;
   box-shadow: 2px 2px 3px #13131357;
 }
 
@@ -68,52 +72,7 @@ $dark: #3a3a3a;
   pointer-events: none;
 }
 
-%flex-row-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-%flex-col-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-%aside_item {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  background-color: $valencia-200;
-  border-radius: 0.5em;
-  font-family: $roboto-italic;
-  text-shadow: 2px 1px 1px #13131331;
-}
-
-%aside_date {
-  grid-row: 1;
-  grid-column: 3;
-  text-align: center;
-  background-color: $valencia-400;
-  border-radius: 0 0.5em 0 0.5em;
-}
-
-%aside_main_temp {
-  grid-column: 2;
-  grid-row: 3;
-  font-size: 1.5em;
-  place-self: center;
-  position: relative;
-  bottom: 1em;
-}
-
-%h1_footers {
-  font-weight: 700;
-  font-family: $roboto-mono;
-  color: $light;
-  text-shadow: 2px 2px 1px #13131356;
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 html,
 body {
@@ -238,7 +197,7 @@ body {
         cursor: url('/src/assets/images/cloud-hover.png'), auto;
       }
       :first-child {
-        @extend %ham-menu-bar;
+        @include ham-menu-bar($red-stage-700);
 
         &::after {
           @include solar-ray(-25em, -1.5em, -3deg);
@@ -246,7 +205,7 @@ body {
       }
 
       :nth-child(2) {
-        @extend %ham-menu-bar;
+        @include ham-menu-bar($red-stage-700);
 
         &::after {
           @include solar-ray(-8em, -16.5em, 94deg);
@@ -254,7 +213,7 @@ body {
       }
 
       :last-child {
-        @extend %ham-menu-bar;
+        @include ham-menu-bar($red-stage-700);
 
         &::after {
           @include solar-ray(-19em, -13em, 48deg);
@@ -272,7 +231,7 @@ body {
       height: 99%;
       padding: 3em 0 0 2em;
       z-index: 200;
-      transition: all 400ms;
+      transition: all 300ms;
       width: 30%;
       animation: lateral-menu-appear 300ms linear 1 forwards;
       display: flex;
@@ -360,17 +319,17 @@ body {
               gap: 1em;
 
               > :first-child {
-                border: 3px solid $red-stage-200;
+                border: 2px solid $red-stage-200;
                 border-radius: 50%;
                 box-shadow: 5px 5px 5px #13131376;
 
                 &:hover {
                   transition: all 300ms;
-                  border: 3px solid $red-stage-700;
+                  border: 2px solid $red-stage-700;
                 }
               }
               > :last-child {
-                border: 3px solid $red-stage-200;
+                border: 2px solid $red-stage-200;
                 border-radius: 50%;
                 padding: 1em;
                 color: $light;
@@ -383,7 +342,7 @@ body {
                 &:hover {
                   transition: all 300ms;
                   background-color: $valencia-200;
-                  border: 3px solid $red-stage-700;
+                  border: 2px solid $red-stage-700;
                   color: $red-stage-700;
                 }
               }
@@ -463,14 +422,15 @@ body {
         .weather-serchBtn-lt {
           border-radius: 0 0.5em 0.5em 0;
           padding: 0.4em;
-          background-color: $light;
-          border-left: 2px solid $red-stage-600;
+          background-color: $red-stage-600;
+          border-left: 2px solid $red-stage-300;
           outline: none;
 
           &:hover,
           &:focus {
-            background-color: $red-stage-600;
-            transition: all 200ms;
+            background-color: $red-stage-300;
+            border-left: 2px solid $red-stage-600;
+            transition: all 300ms;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
         }
@@ -491,11 +451,12 @@ body {
 
       /* this section make reference to the researched locations */
       .search-history-lt {
-        text-shadow: 1px 2px 1px #1313135d;
-        transform: translate(-20em, 0em) scale(0.5);
+        text-shadow: 1px 1px 1px #13131397;
+        transform: translate(-20em, 3em) scale(0.5);
+        bottom: 5.5em;
         text-transform: capitalize;
         transition: all 300ms;
-        padding: 2.5em;
+        padding: 3.5em 2em;
         display: flex;
         position: absolute;
         left: 0;
@@ -505,61 +466,65 @@ body {
         border-bottom: 2px solid $red-stage-700;
         background-color: $valencia-200;
 
-        > :first-child {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          border-bottom: 2px solid $red-stage-700;
-          border-top: 2px solid $red-stage-700;
-        }
-        > :nth-child(2) {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          border-bottom: 2px solid $red-stage-700;
-          border-top: 2px solid $red-stage-700;
-          padding: 0 1em 0 2em;
-        }
+        > :first-child,
+        > :nth-child(2),
         > :nth-child(3) {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
           border-bottom: 2px solid $red-stage-700;
           border-top: 2px solid $red-stage-700;
+          transform: translateY(0.9em);
           padding: 0 1em;
         }
+
         > :last-child {
-          right: 0.1em;
-          top: 0.1em;
-          cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          @extend %flex-row-center;
+          right: 40%;
+          gap: 0.5em;
+          top: 0.7em;
           position: absolute;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          font-weight: 700;
+          border: 2px solid $red-stage-200;
+          background-color: $red-stage-600;
+          padding: 0.5em;
+          border-radius: 0.5em;
+          scale: 0.8;
+
+          &:hover {
+            color: $red-stage-800;
+            background: $red-stage-400;
+            border: 2px solid $red-stage-800;
+            transition: all 300ms;
+          }
         }
       }
 
       .history {
+        @extend %flex-row-center;
         position: absolute;
-        right: 0;
-        transform: translateY(2.5em);
+        left: -0.8em;
+        transform: translateY(3.8em);
         cursor: url('/src/assets/images/cloud-hover.png'), auto;
-        border: 2px solid $red-stage-700;
+        border: 2.5px solid $red-stage-200;
+        border-left: none;
+        border-radius: 0 0.5em 0.5em 0;
+        padding: 0.5em 1em;
+        background-color: $red-stage-600;
         box-shadow: 5px 5px 5px #13131336;
-        border-right: none;
-        border-radius: 0.3em 0 0 0.3em;
-        padding: 0.4em 0.2em 0.4em 0.4em;
-        font-size: 1.2em;
-        background-color: $valencia-200;
-        color: $red-stage-700;
-        transition: all 500ms;
+        transition: all 300ms;
         z-index: 10;
+        gap: 0.5em;
+        scale: 0.8;
+        font-weight: 700;
 
         &:hover {
           transition: all 300ms;
-          border-radius: 3em 0 0 3em;
-          padding: 0.4em 0.8em 0.4em 1.5em;
-          color: $light;
-          background-color: $valencia-200;
-          border: 2px solid $light;
-          border-right: none;
+          color: $red-stage-800;
+          background: $red-stage-400;
+          border: 2.5px solid $red-stage-800;
+          border-left: none;
         }
       }
     }
@@ -653,10 +618,10 @@ body {
       gap: 0.5em;
 
       .aside-grid-item-1 {
-        @extend %aside_item;
+        @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
         > :first-child {
-          @extend %aside_date;
+          @include dark-theme.aside_date($valencia-400, $light, $light);
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -677,11 +642,11 @@ body {
       }
 
       .aside-grid-item-2 {
-        @extend %aside_item;
+        @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
 
         > :first-child {
-          @extend %aside_date;
+          @include dark-theme.aside_date($valencia-400, $light, $light);
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -701,11 +666,11 @@ body {
         }
       }
       .aside-grid-item-3 {
-        @extend %aside_item;
+        @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
 
         > :first-child {
-          @extend %aside_date;
+          @include dark-theme.aside_date($valencia-400, $light, $light);
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -755,6 +720,7 @@ body {
       h1 {
         text-align: center;
         @extend %h1_footers;
+        color: $light;
         margin-top: 1em;
         font-size: 1.4em;
       }
@@ -837,6 +803,7 @@ body {
         h1 {
           font-size: 1.5em;
           @extend %h1_footers;
+          color: $light;
         }
         > :nth-child(2),
         > :nth-child(3) {
@@ -871,6 +838,7 @@ body {
         h1 {
           font-size: 1.7em;
           @extend %h1_footers;
+          color: $light;
         }
         img {
           scale: 1.2;
@@ -929,12 +897,19 @@ body {
       }
     }
   }
-  .up-arrow {
+  .up-arrow-lt {
     position: fixed;
     bottom: 0.2em;
     right: 0.7em;
     font-size: 1.5em;
+    color: $valencia-500;
     cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
+
+    &:hover {
+      color: $red-stage-800;
+      scale: 1.5;
+      transition: all 400ms;
+    }
   }
 }

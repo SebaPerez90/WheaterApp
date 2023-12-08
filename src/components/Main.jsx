@@ -83,8 +83,7 @@ export default function WeatherData() {
     scale: '1',
     position: 'absolute',
     zIndex: 60,
-    // backgroundColor: '#534c7d',
-    transform: ' translate(-1em , 0em)',
+    transform: ' translate(-1em , 3em)',
   };
 
   return (
@@ -132,6 +131,7 @@ export default function WeatherData() {
           onClick={showHistorySearch}
         >
           <FaHistory />
+          {languageEng ? 'history' : 'historial'}
         </button>
       </section>
 

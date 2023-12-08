@@ -1,10 +1,10 @@
 import { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useStore } from '../../store';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 
 const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
-  const { weatherData, themeDark, temperatureUnit } = useStore();
+  const { weatherData, themeDark, temperatureUnit, languageEng } = useStore();
 
   // history state
   const [searchHistory, setSearchHistory] = useState(
@@ -105,7 +105,8 @@ const SearchHistory = forwardRef(({ valueCapture, styles }, ref) => {
             ))}
           </div>
           <button onClick={cleanUpHistory}>
-            <MdDeleteForever />
+            <MdDelete className='scale-125' />
+            {languageEng ? 'clear' : 'limpiar'}
           </button>
         </div>
       )}

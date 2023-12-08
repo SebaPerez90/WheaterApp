@@ -30,7 +30,7 @@ const ThemeButton = () => {
   return (
     <>
       {themeDark ? (
-        <div className='scale-125 border-[3px] border-[#b1adcc] flex justify-between items-center w-24 rounded-full bg-[#3a3a3a] shadow-[2px_2px_6px_#050505] overflow-hidden'>
+        <div className='scale-[1.1] border-[2px] border-[#353149] flex justify-between items-center w-24 rounded-full bg-[#3a3a3a] shadow-[2px_2px_6px_#050505] overflow-hidden duration-200 hover:border-[#b1adcc]'>
           <button
             ref={btnRef}
             onClick={toggleEfect}
@@ -44,7 +44,7 @@ const ThemeButton = () => {
           />
         </div>
       ) : (
-        <div className='scale-125 border-[3px] border-[#ffe5a6] flex justify-between items-center w-24 rounded-full bg-[#ffa500] shadow-[2px_2px_6px_#3a3a3a] duration-200 hover:border-[#d36103]'>
+        <div className='scale-[1.1] border-[2px] border-[#ff980b] flex justify-between items-center w-24 rounded-full bg-[#ffa500] shadow-[2px_2px_6px_#3a3a3a] duration-200 hover:border-[#ffe5a6]'>
           <img
             ref={svgRef}
             className='rounded-full ml-1 z-10'

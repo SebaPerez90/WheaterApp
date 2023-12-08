@@ -85,10 +85,9 @@ export default function Footer() {
           <p>{languageEng ? 'Sebastian Perez © 2023 | made with ❤️' : 'Sebastian Perez © 2023 | Echo con ❤️'}</p>
         </div>
       </aside>
-      <FaArrowUpLong
-        className='up-arrow'
-        onClick={() => console.log('aaaaaaaaa')}
-      />
+      <a href='#resourse'>
+        <FaArrowUpLong className={themeDark ? 'up-arrow-dt' : 'up-arrow-lt'} />
+      </a>
     </footer>
   );
 }
