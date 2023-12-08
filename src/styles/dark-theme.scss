@@ -240,6 +240,8 @@ body {
       flex-direction: column;
       align-items: flex-start;
       text-transform: capitalize;
+      transition-property: background-color;
+      transition-duration: 1s;
 
       h1 {
         color: $light;
@@ -247,7 +249,18 @@ body {
         font-size: 1.5em;
         align-self: center;
         position: absolute;
-        top: 0.5em;
+        top: 1em;
+
+        &::before {
+          content: '';
+          position: absolute;
+          right: 3em;
+          top: 0em;
+          width: 2em;
+          min-height: 2em;
+          background: url('../assets//images/icon.png') no-repeat center center;
+          background-size: cover;
+        }
       }
 
       .nav-bar {
@@ -255,8 +268,14 @@ body {
         flex-direction: column;
         justify-content: space-around;
         position: relative;
-        gap: 1em;
-        top: 4em;
+        padding-left: 1em;
+        padding-top: 3em;
+        // gap: 1.5em;
+        top: 3em;
+        right: 2em;
+        border: 2px solid red;
+        width: 110%;
+        height: 90%;
 
         > :first-child,
         > :nth-child(2),
@@ -267,7 +286,7 @@ body {
 
           &:hover {
             border-bottom: 2px solid $woodsmoke-400;
-            width: 120%;
+            width: 60%;
             transition: all 500ms;
             text-align: center;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
@@ -278,7 +297,7 @@ body {
           @extend %flex-row-center;
           justify-content: space-between;
           border-bottom: 2px solid $woodsmoke-400;
-          width: 140%;
+          width: 60%;
           transition: all 200ms;
 
           p {
@@ -422,13 +441,13 @@ body {
         .weather-serchBtn-dt {
           border-radius: 0 0.5em 0.5em 0;
           padding: 0.4em;
-          background-color: $woodsmoke-400;
+          background-color: $woodsmoke-500;
           border-left: 2px solid $woodsmoke-600;
           outline: none;
 
           &:hover,
           &:focus {
-            background-color: $light;
+            background-color: $woodsmoke-300;
             transition: all 200ms;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
           }
@@ -438,12 +457,11 @@ body {
       .error-message {
         display: block;
         color: #ff6666;
-        font-family: $josefin;
+        font-family: $roboto;
         margin-top: 0.5em;
       }
 
       .error-container {
-        border: 1px solid #ff0000 !important;
         background-color: #ff000022 !important;
         transition: all 300ms !important;
       }
@@ -500,25 +518,26 @@ body {
       .history {
         @extend %flex-row-center;
         position: absolute;
-        left: -.8em;
+        left: -0.8em;
         cursor: url('/src/assets/images/cloud-hover.png'), auto;
-        border: 3px solid $woodsmoke-400;
+        background-color: $woodsmoke-400;
+        border: 2px solid $woodsmoke-600;
         border-left: none;
-        border-radius: 0 0.3em 0.3em 0;
+        border-radius: 0 0.5em 0.5em 0;
         padding: 0.5em 1em;
-        color: $woodsmoke-200;
-        background-color: #8580b049;
+        color: $woodsmoke-600;
         box-shadow: 5px 5px 5px #13131336;
         transition: all 300ms;
         z-index: 10;
         gap: 0.5em;
         scale: 0.8;
+        font-weight: 700;
 
         &:hover {
           transition: all 300ms;
-          color: $woodsmoke-600;
-          background-color: $woodsmoke-400;
-          border: 2px solid $woodsmoke-600;
+          color: $woodsmoke-200;
+          background-color: #8580b049;
+          border: 3px solid $woodsmoke-400;
           border-left: none;
         }
       }
@@ -992,16 +1011,18 @@ body {
   }
   .up-arrow-dt {
     position: fixed;
-    bottom: 0.2em;
+    bottom: 0.5em;
     right: 0.7em;
-    font-size: 1.5em;
+    font-size: 1.3em;
     cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
 
     &:hover {
       color: $woodsmoke-300;
-      scale: 1.5;
+      scale: 1.7;
+      bottom: 0.7em;
       transition: all 400ms;
+      animation: none;
     }
   }
 }

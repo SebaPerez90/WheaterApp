@@ -42,12 +42,25 @@ export default function WeatherData() {
   // alert message in the case the input it is empty
   const errorMessage = () => {
     document.querySelector('.message').classList.toggle('error-message');
-    document.querySelector('.weather-input-dt').classList.toggle('error-container');
+    if (themeDark) {
+      document.querySelector('.weather-input-dt').classList.toggle('error-container');
+      document.querySelector('.main-weather-form-dt').style.animation = 'error-efect 300ms linear infinite';
 
-    setTimeout(() => {
-      document.querySelector('.message').classList.remove('error-message');
-      document.querySelector('.weather-input-dt').classList.remove('error-container');
-    }, 1500);
+      setTimeout(() => {
+        document.querySelector('.message').classList.remove('error-message');
+        document.querySelector('.weather-input-dt').classList.remove('error-container');
+        document.querySelector('.main-weather-form-dt').style.animation = 'none';
+      }, 1500);
+    } else {
+      document.querySelector('.weather-input-lt').classList.toggle('error-container');
+      document.querySelector('.main-weather-form-lt').style.animation = 'error-efect 300ms linear infinite';
+
+      setTimeout(() => {
+        document.querySelector('.message').classList.remove('error-message');
+        document.querySelector('.weather-input-lt').classList.remove('error-container');
+        document.querySelector('.main-weather-form-lt').style.animation = 'none';
+      }, 1500);
+    }
   };
 
   const searchHistoryEmptymessage = (message) =>
@@ -130,7 +143,7 @@ export default function WeatherData() {
           className='history'
           onClick={showHistorySearch}
         >
-          <FaHistory />
+          <FaHistory className='scale-110' />
           {languageEng ? 'history' : 'historial'}
         </button>
       </section>

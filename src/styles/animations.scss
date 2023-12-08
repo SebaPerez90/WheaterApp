@@ -104,3 +104,34 @@
   }
 }
 
+@keyframes error-efect {
+  0%,
+  20% {
+    transform: rotate(3deg);
+    border: 1px solid #ff6666;
+  }
+
+  20%,
+  40% {
+    transform: rotate(-3deg);
+    border: 1px solid #ff6666;
+  }
+
+  40%,
+  60% {
+    transform: rotate(0);
+    border: 1px solid #ff6666;
+  }
+
+  60%,
+  80% {
+    transform: rotate(3deg);
+    border: 1px solid #ff6666;
+  }
+
+  80%,
+  100% {
+    transform: rotate(-3deg);
+    border: 1px solid #ff6666;
+  }
+}
