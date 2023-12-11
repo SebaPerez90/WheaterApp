@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useStore } from '../../../store';
 import { MdExpandMore } from 'react-icons/md';
-import inputImg from '../../assets/svg/cloud.svg';
+import inputImg from '../../assets/images/input.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
@@ -20,13 +20,27 @@ const FAQ = () => {
   const expandCollapseContent = (refQuestion, refIcon) => {
     refQuestion.current.classList.toggle('expand-content');
 
-    if (refQuestion.current.classList[1] === undefined) {
-      refQuestion.current.className = 'faq-answer-dt';
-      refQuestion.current.className = 'faq-answer-lt';
-      refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
-    } else {
-      refQuestion.current.className = refQuestion.current.classList[1];
-      refIcon.current.style.animation = 'toggleExpand 600ms forwards';
+    switch (themeDark) {
+      case true:
+        if (refQuestion.current.classList[1] === undefined) {
+          refQuestion.current.className = 'faq-answer-dt';
+          refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
+        } else {
+          refQuestion.current.className = refQuestion.current.classList[1];
+          refIcon.current.style.animation = 'toggleExpand 600ms forwards';
+        }
+
+        break;
+      case false:
+        if (refQuestion.current.classList[1] === undefined) {
+          refQuestion.current.className = 'faq-answer-lt';
+          refIcon.current.style.animation = 'toggleCollapse 600ms forwards';
+        } else {
+          refQuestion.current.className = refQuestion.current.classList[1];
+          refIcon.current.style.animation = 'toggleExpand 600ms forwards';
+        }
+
+        break;
     }
   };
 
@@ -130,7 +144,17 @@ const FAQ = () => {
           <div
             ref={fifthQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>respuesta 4</p>
+             <div className='answer-4'>
+                <p>{languageEng ? 'You need follow the nexts steps :' : 'Necesitas seguir los siguientes pasos :'}</p>
+
+                <ul>
+                  <li>{languageEng ? 'go to the right on top and click on the hamburguer menu icon.' : 've a la derecha en la parte superior y haz clic en el ícono del menú de hamburguesa.'}</li>
+                  <li>{languageEng ? 'go to preferences settings and click on them.' : 'vaya a la configuración de preferencias y haga clic en ellas.'}</li>
+                  <li>{languageEng ? 'click on your preference unit temperature icon ( °C or °F ).' : 'haga clic en el icono de temperatura de la unidad de preferencia (°C o °F).'}</li>
+                  <li>{languageEng ? 'if you already make a success request, you must refresh the app.' : 'si ya realizó una solicitud exitosa, debe actualizar la aplicación.'}</li>
+                </ul>
+
+             </div>
           </div>
         </div>
 

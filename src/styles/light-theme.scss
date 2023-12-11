@@ -233,7 +233,7 @@ body {
       padding: 3em 0 0 2em;
       z-index: 200;
       transition: all 300ms;
-      width: 30%;
+      width: 25%;
       animation: lateral-menu-appear 300ms linear 1 forwards;
       display: flex;
       flex-direction: column;
@@ -243,22 +243,49 @@ body {
       font-weight: 700;
       transition-property: background-color;
       transition-duration: 1s;
+      overflow: hidden;
 
       h1 {
         color: $light;
         font-weight: 700;
-        font-size: 1.5em;
+        letter-spacing: 1px;
+        font-size: 1.7em;
         align-self: center;
         position: absolute;
-        top: 0.5em;
+        top: 1em;
+        text-shadow: 2px 2px 2px #0000007e;
+        z-index: 40;
+
+        &::before {
+          content: '';
+          position: absolute;
+          right: 3em;
+          top: 0em;
+          width: 2em;
+          min-height: 2em;
+          background: url('../assets//images/icon.png') no-repeat center center;
+          background-size: cover;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          left: -6em;
+          top: -1em;
+          width: 500%;
+          height: 300%;
+          background-color: #f57b017c;
+          z-index: -1;
+        }
       }
       .nav-bar {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         position: relative;
-        gap: 1em;
-        top: 4em;
+        gap: 1.5em;
+        top: 6em;
 
         > :first-child,
         > :nth-child(2),
@@ -269,6 +296,8 @@ body {
 
           &:hover {
             border-bottom: 2px solid $red-stage-700;
+            color: $red-stage-700;
+            text-shadow: none;
             width: 120%;
             transition: all 500ms;
             text-align: center;
@@ -288,6 +317,12 @@ body {
             padding-bottom: 0.5em;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
             z-index: 100;
+
+            &:hover {
+              color: $red-stage-700;
+              transition: all 500ms;
+              text-shadow: none;
+            }
           }
           span {
             color: $red-stage-700;
@@ -713,19 +748,22 @@ body {
       grid-row: 1 / span 7;
       display: flex;
       flex-direction: column;
-      padding: 0 1.5em 0 1.5em;
-      background-color: $valencia-200;
+      justify-content: center;
+      padding: 0 1.5em;
+      background-color: $valencia-300;
       margin: 0.5em 0 0.5em 0.5em;
       border-radius: 0.5em;
       box-shadow: 5px 5px 5px #13131376;
-      gap: 1.5em;
+      position: relative;
 
       h1 {
         text-align: center;
         @extend %h1_footers;
         color: $light;
-        margin-top: 1em;
         font-size: 1.4em;
+        position: absolute;
+        top: 0.5em;
+        left: 40%;
       }
 
       > :last-child {
@@ -734,7 +772,7 @@ body {
       }
 
       .faq-question-lt {
-        border-bottom: 2px solid $red-stage-700;
+        border-bottom: 2px solid $red-stage-200;
 
         // this container wrap all question and expand/collapse icon
         .first-container {
@@ -747,6 +785,13 @@ body {
 
           > :first-child {
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
+
+            &:hover {
+              color: $red-stage-600;
+              transition: all 300ms;
+              cursor: url('/src/assets/images/cloud-hover.png'), auto;
+              text-shadow: 1px 1px 1px #1313137f;
+            }
           }
           span {
             font-size: 1.4em;
@@ -758,31 +803,51 @@ body {
         }
 
         .expand-content {
-          border-left: 4px solid $red-stage-700;
-          border-bottom: 1px solid $red-stage-700;
+          border-left: 2px solid $red-stage-700;
           position: absolute;
-          background-color: blueviolet;
-          padding: 1em;
-          border-radius: 0 0.6em 0.6em 0;
+          background-color: #f6e4e4;
+          padding: 1em 0.5em;
+          border-radius: 0 0.4em 0.4em 0;
+          transform: translate(-2em, -1em);
+          scale: 0.9;
           width: 45vw;
           z-index: 100;
 
-          > :first-child,
-          > :last-child {
+          > :first-child {
             margin-left: 1em;
-            color: #3a3a3a9f;
+            color: #3a3a3a6c;
             font-size: 0.85em;
           }
 
-          > :nth-child(2) {
+          > :last-child {
+            margin-left: 1em;
+            color: #3a3a3a86;
+            font-size: 0.85em;
+            padding: 1em 0;
+          }
+
+          img {
             scale: 0.7;
+            right: 4em;
+            position: relative;
             border: 1px solid #ffffff62;
             border-radius: 0.4em;
           }
           .source-link {
             text-wrap: balance;
-            color: $light;
+            color: $red-stage-700;
+            font-weight: 900;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          }
+
+          .answer-4 {
+            > :nth-child(2) {
+              margin-top: 1em;
+              margin-left: 2em;
+              list-style: square;
+              display: flex;
+              flex-direction: column;
+            }
           }
         }
       }
@@ -795,7 +860,7 @@ body {
       margin: 0.5em 1em;
 
       .readme-card-container-lt {
-        background-color: $valencia-200;
+        background-color: $valencia-300;
         border-radius: 0.5em;
         height: 100%;
         @extend %flex-col-center;

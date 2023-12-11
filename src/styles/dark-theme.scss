@@ -234,7 +234,7 @@ body {
       padding: 3em 0 0 2em;
       z-index: 200;
       transition: all 400ms;
-      width: 30%;
+      width: 25%;
       animation: lateral-menu-appear 300ms linear 1 forwards;
       display: flex;
       flex-direction: column;
@@ -242,14 +242,17 @@ body {
       text-transform: capitalize;
       transition-property: background-color;
       transition-duration: 1s;
+      overflow: hidden;
 
       h1 {
         color: $light;
         font-weight: 700;
-        font-size: 1.5em;
+        letter-spacing: 1px;
+        font-size: 1.7em;
         align-self: center;
         position: absolute;
         top: 1em;
+        text-shadow: 2px 2px 2px #0000007e;
 
         &::before {
           content: '';
@@ -261,6 +264,18 @@ body {
           background: url('../assets//images/icon.png') no-repeat center center;
           background-size: cover;
         }
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          left: -6em;
+          top: -1em;
+          width: 500%;
+          height: 300%;
+          background-color: #8580b05e;
+          z-index: -1;
+        }
       }
 
       .nav-bar {
@@ -268,14 +283,8 @@ body {
         flex-direction: column;
         justify-content: space-around;
         position: relative;
-        padding-left: 1em;
-        padding-top: 3em;
-        // gap: 1.5em;
-        top: 3em;
-        right: 2em;
-        border: 2px solid red;
-        width: 110%;
-        height: 90%;
+        gap: 1.5em;
+        top: 6em;
 
         > :first-child,
         > :nth-child(2),
@@ -286,7 +295,8 @@ body {
 
           &:hover {
             border-bottom: 2px solid $woodsmoke-400;
-            width: 60%;
+            color: $woodsmoke-300;
+            width: 120%;
             transition: all 500ms;
             text-align: center;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
@@ -297,7 +307,7 @@ body {
           @extend %flex-row-center;
           justify-content: space-between;
           border-bottom: 2px solid $woodsmoke-400;
-          width: 60%;
+          width: 140%;
           transition: all 200ms;
 
           p {
@@ -305,6 +315,11 @@ body {
             padding-bottom: 0.5em;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
             z-index: 100;
+
+            &:hover {
+              color: $woodsmoke-300;
+              transition: all 500ms;
+            }
           }
           span {
             color: $woodsmoke-400;
@@ -840,18 +855,21 @@ body {
       grid-row: 1 / span 7;
       display: flex;
       flex-direction: column;
-      padding: 0 1.5em 0 1.5em;
+      justify-content: center;
+      padding: 0 1.5em;
       background-color: $woodsmoke-700;
       margin: 0.5em 0 0.5em 0.5em;
       border-radius: 0.5em;
       box-shadow: 5px 5px 5px #13131376;
-      gap: 1.5em;
+      position: relative;
 
       h1 {
         text-align: center;
         @extend %h1_footers;
-        margin-top: 1em;
         font-size: 1.4em;
+        position: absolute;
+        top: 0.5em;
+        left: 40%;
       }
 
       > :last-child {
@@ -860,7 +878,7 @@ body {
       }
 
       .faq-question-dt {
-        border-bottom: 2px solid #388cd5;
+        border-bottom: 2px solid $woodsmoke-500;
 
         // this container wrap all question and expand/collapse icon
         .first-container {
@@ -871,7 +889,12 @@ body {
           height: 4em;
 
           > :first-child {
-            cursor: url('/src/assets/images/cloud-hover.png'), auto;
+            &:hover {
+              color: $woodsmoke-400;
+              transition: all 300ms;
+              cursor: url('/src/assets/images/cloud-hover.png'), auto;
+              text-shadow: 2px 2px 1px #13131356;
+            }
           }
           span {
             font-size: 1.4em;
@@ -883,24 +906,34 @@ body {
         }
 
         .expand-content {
-          border-left: 2px solid #ff000083;
+          border-left: 2px solid $woodsmoke-300;
           position: absolute;
-          background-color: #2d2d2d;
-          padding: 1em;
+          background-color: $woodsmoke-500;
+          padding: 1em 0.5em;
           border-radius: 0 0.4em 0.4em 0;
+          text-shadow: 2px 2px 1px #13131356;
+          transform: translate(-2em, -1em);
+          scale: 0.9;
           width: 45vw;
           z-index: 100;
 
-          > :first-child,
+          > :first-child {
+            margin-left: 1em;
+            color: $woodsmoke-300;
+            font-size: 0.85em;
+          }
+
           > :last-child {
             margin-left: 1em;
             color: $woodsmoke-300;
             font-size: 0.85em;
-            text-wrap: balance;
+            padding: 1em 0;
           }
 
-          > :nth-child(2) {
+          img {
             scale: 0.7;
+            right: 4em;
+            position: relative;
             border: 1px solid #ffffff62;
             border-radius: 0.4em;
           }
@@ -908,6 +941,16 @@ body {
             text-wrap: balance;
             color: $light;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          }
+
+          .answer-4 {
+            > :nth-child(2) {
+              margin-top: 1em;
+              margin-left: 2em;
+              list-style: square;
+              display: flex;
+              flex-direction: column;
+            }
           }
         }
       }
