@@ -61,7 +61,7 @@ $woodsmoke-950: #0b0a0f;
 %h1_footers {
   font-weight: 700;
   font-family: $roboto-mono;
-  color: #388cd5;
+  color: $light;
   text-shadow: 2px 2px 1px #13131356;
 }
 
@@ -862,6 +862,7 @@ body {
       border-radius: 0.5em;
       box-shadow: 5px 5px 5px #13131376;
       position: relative;
+      overflow: hidden;
 
       h1 {
         text-align: center;
@@ -870,6 +871,19 @@ body {
         position: absolute;
         top: 0.5em;
         left: 40%;
+        z-index: 50;
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          right: -13em;
+          bottom: -1.5em;
+          width: 900%;
+          height: 300%;
+          background-color: #8580b05e;
+          z-index: -1;
+        }
       }
 
       > :last-child {
@@ -912,7 +926,7 @@ body {
           padding: 1em 0.5em;
           border-radius: 0 0.4em 0.4em 0;
           text-shadow: 2px 2px 1px #13131356;
-          transform: translate(-2em, -1em);
+          transform: translate(-2em, -0.5em);
           scale: 0.9;
           width: 45vw;
           z-index: 100;

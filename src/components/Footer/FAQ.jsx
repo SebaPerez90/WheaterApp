@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useStore } from '../../../store';
 import { MdExpandMore } from 'react-icons/md';
-import inputImg from '../../assets/images/input.png';
+import inputImgDT from '../../assets/images/input-img-dt.png';
+import inputImgLT from '../../assets/images/input-img-lt.png';
 
 const FAQ = () => {
   const { languageEng, themeDark } = useStore();
@@ -71,7 +72,11 @@ const FAQ = () => {
                 'Complete la entrada de texto y haga clic en el botón con el icono de búsqueda , a su derecha.'
                 }
               </p>
-              <img src={inputImg} alt='input-text-img' />
+              {themeDark ? 
+                <img src={inputImgDT} alt='input-text-img' /> 
+                :
+                <img src={inputImgLT} alt='input-text-img' /> 
+              }
               <p>
                 {languageEng ?
                 'You only need to enter the city name without the country name'

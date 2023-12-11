@@ -755,6 +755,7 @@ body {
       border-radius: 0.5em;
       box-shadow: 5px 5px 5px #13131376;
       position: relative;
+      overflow: hidden;
 
       h1 {
         text-align: center;
@@ -764,6 +765,19 @@ body {
         position: absolute;
         top: 0.5em;
         left: 40%;
+        z-index: 50;
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          right: -13em;
+          bottom: -1.5em;
+          width: 900%;
+          height: 300%;
+          background-color: #f57b017c;
+          z-index: -1;
+        }
       }
 
       > :last-child {
@@ -772,7 +786,7 @@ body {
       }
 
       .faq-question-lt {
-        border-bottom: 2px solid $red-stage-200;
+        border-bottom: 2px solid $red-stage-600;
 
         // this container wrap all question and expand/collapse icon
         .first-container {
