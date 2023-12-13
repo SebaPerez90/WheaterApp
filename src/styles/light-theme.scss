@@ -43,6 +43,7 @@ $valencia-500: #e25d54;
   background: url('/src/assets/svg/cloud.svg') no-repeat bottom center;
   background-size: contain;
   z-index: 10;
+  scale:1.5;
   filter: blur(5px);
   animation: clouds $time linear infinite alternate-reverse;
 }
@@ -96,12 +97,13 @@ body {
 
     &::before {
       @include clouds(12s);
-      top: 4em;
+      top: 7em;
       left: -1em;
     }
 
     &::after {
       @include clouds(9s);
+      top: 2em;
       right: -2em;
     }
 
@@ -762,9 +764,8 @@ body {
         @extend %h1_footers;
         color: $light;
         font-size: 1.4em;
-        position: absolute;
-        top: 0.5em;
-        left: 40%;
+        position: relative;
+        top: -2em;
         z-index: 50;
 
         &::after {
@@ -872,34 +873,64 @@ body {
       grid-column: 5 / span 4;
       grid-row: 1 / span 4;
       margin: 0.5em 1em;
+      text-align: center;
+      background-color: $valencia-300;
+      border-radius: 0.5em;
+      box-shadow: 5px 5px 5px #1313136e;
+      overflow: hidden;
+      text-shadow: 1px 1px 1px #00000058;
 
-      .readme-card-container-lt {
-        background-color: $valencia-300;
+      h1 {
+        position: relative;
+        top: 0.5em;
+        font-size: 1.5em;
+        @extend %h1_footers;
+        z-index: 50;
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          right: -13em;
+          bottom: -0.5em;
+          width: 900%;
+          height: 200%;
+          background-color: #f57b017c;
+          z-index: -1;
+          
+        }
+      }
+      swiper-container::part(bullet-active) {
+        background-color: $red-stage-200;
+      }
+
+      .swiper-pagination {
+        position: relative;
+        top: 6em;
+        height: 50%;
+      }
+
+      .readme-btn {
+        display: flex;
+        justify-content: center;
+        gap: 0.5em;
+        margin: 0 12em;
+        scale: .6;
+        padding: 0.8em 1em 0.5em 1em;
         border-radius: 0.5em;
-        height: 100%;
-        @extend %flex-col-center;
-        justify-content: space-evenly;
-        box-shadow: 5px 5px 5px #1313136e;
-        text-shadow: 1px 1px 1px #00000058;
+        font-family: $josefin;
+        background-color: $red-stage-400;
+        border: 2px solid $red-stage-200;
+        cursor: url('/src/assets/images/cloud-hover.png'), auto;
+        position: relative;
+        top: 1em;
+        text-shadow: none;
 
-        h1 {
-          font-size: 1.5em;
-          @extend %h1_footers;
-          color: $light;
-        }
-        > :nth-child(2),
-        > :nth-child(3) {
-          text-wrap: balance;
-          line-height: 1.7em;
-          font-size: 0.9em;
-          font-family: $roboto-italic;
-        }
-        button {
-          padding: 0.5em;
-          border-radius: 0.5em;
-          font-family: $josefin;
-          cursor: url('/src/assets/images/cloud-hover.png'), auto;
-          border: 2px solid;
+        &:hover {
+          transition: all 300ms;
+          color: $red-stage-800;
+          background: $red-stage-300;
+          border: 2px solid $red-stage-800;
         }
       }
     }

@@ -6,6 +6,10 @@ import { useStore } from '../../../store';
 import moonIcon from '../../assets/svg/moonIcon.svg';
 import sunIcon from '../../assets/svg/sunIcon.svg';
 import FAQ from './FAQ';
+import { Link } from 'wouter';
+import { HiExternalLink } from 'react-icons/hi';
+import { register } from 'swiper/element/bundle';
+register();
 
 export default function Footer() {
   const { languageEng, themeDark } = useStore();
@@ -17,22 +21,38 @@ export default function Footer() {
     >
       <FAQ />
       <section className={themeDark ? 'readme-section-container-dt' : 'readme-section-container-lt'}>
-        <div className={themeDark ? 'readme-card-container-dt' : 'readme-card-container-lt'}>
-          <h1>README</h1>
-          {languageEng ? (
+        <h1>README</h1>
+        <swiper-container
+          pagination='true'
+          class='swiper-pagination'
+        >
+          <swiper-slide>
+            <p>{languageEng ? 'Do you want collaborate on this project ?' : '¿Quieres colaborar en este proyecto?'}</p>
+          </swiper-slide>
+          <swiper-slide>
             <p>
-              Do you want collaborate on this project ? <br></br>
-              Do you want clone it to your local machine to explore further alternatives ?<br></br>I invite you go
-              README for more explanations on how to do this.
+              {languageEng ? 'Do you want clone it to your local machine ?' : '¿Quieres clonarlo en tu máquina local?'}
             </p>
-          ) : (
-            <p>
-              Si desea colaborar en este proyecto o clonarlo en su máquina local para explorar más alternativas, lo
-              invito a ir al README para obtener más explicaciones sobre cómo hacerlo
-            </p>
-          )}
-          <button>redirect</button>
-        </div>
+          </swiper-slide>
+          <swiper-slide>
+            <p>{languageEng ? 'Do you want explore further alternatives ?' : '¿Quieres explorar más alternativas?'}</p>
+          </swiper-slide>
+          <swiper-slide>
+            <div>
+              <p className='mx-8'>
+                {languageEng
+                  ? 'Click on button for more explanations on how to do this.'
+                  : 'Haga clic en el botón para obtener más explicaciones sobre cómo hacer esto.'}
+              </p>
+              <Link
+                className='readme-btn'
+                to='/readme'
+              >
+                README <HiExternalLink className='scale-125'/>
+              </Link>
+            </div>
+          </swiper-slide>
+        </swiper-container>
       </section>
 
       <aside className={themeDark ? 'footer-aside-container-dt' : 'footer-aside-container-lt'}>
