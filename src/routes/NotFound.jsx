@@ -1,11 +1,10 @@
 import { toast } from 'react-hot-toast';
 import { useEffect } from 'react';
-import { FaLocationDot } from 'react-icons/fa6';
 import { Redirect } from 'wouter';
 import { useStore } from '../../store';
+import wrongLocation from '../assets/svg/wrong-location.svg';
 
 const NotFound = () => {
-
   // global state trigger the redirection to home route "/"
   const { setShouldRedirect, shouldRedirect } = useStore();
 
@@ -14,23 +13,26 @@ const NotFound = () => {
   }, []);
 
   const errorInfoMessage = () =>
-    toast.custom(<div className='errorInfoMessage'>current location not found <span style={{textShadow: 'none'}}>❗</span></div>, {
-      duration: 2000,
+    toast.custom(<div className='errorInfoMessage'>current location not found</div>, {
+      duration: 5000,
     });
 
   return (
     <section className='not-found-container'>
       <div className='not-found-content'>
-        <div className='pepe'>ERROR !</div>
-        <p>
-          4
-          <span className='not-found-span'>
-            <FaLocationDot />
-          </span>
-          4
-        </p>
+        <div className='wrong-location'>
+          <h1>ERROR !</h1>
+          <div>
+            <p className='scale-125'>4</p>
+            <img
+              src={wrongLocation}
+              alt='NotFoundLocation-icon'
+            />
+            <p className='scale-125'>4</p>
+          </div>
+        </div>
         <div className='btn-message-container'>
-          <p>it looks like you are lost</p>
+          <p>it looks like you are lost ...</p>
           <button
             className='not-found-redirect-btn'
             onClick={() => setShouldRedirect()}

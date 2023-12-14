@@ -21,6 +21,4 @@ xmlns="http://www.w3.org/2000/svg"
     <circle cx="295" cy="20" r="16" fill="#b6ddfa" />
     <circle cx="309" cy="28" r="11" fill="#b6ddfa" />
     <circle cx="285" cy="25" r="14" fill="#b6ddfa" />
-    stroke="#6ab5ef" 
-    stroke-width="25"/>
 </svg>
