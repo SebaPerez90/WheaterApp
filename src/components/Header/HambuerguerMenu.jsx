@@ -25,7 +25,7 @@ const HambuerguerMenu = () => {
       icon: '💡',
       style: {
         borderRadius: '10px',
-        background: '#443e66',
+        background: '#8580b0',
         color: '#fff',
         minWidth: 'max-content',
       },

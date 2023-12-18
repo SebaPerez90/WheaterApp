@@ -14,7 +14,7 @@ const LanguageButton = () => {
           icon: '💡',
           style: {
             borderRadius: '10px',
-            background: '#443e66',
+            background: '#8580b0',
             color: '#fff',
           },
           duration: 2500,
@@ -24,7 +24,7 @@ const LanguageButton = () => {
           icon: '💡',
           style: {
             borderRadius: '10px',
-            background: '#443e66',
+            background: '#8580b0',
             color: '#fff',
           },
           duration: 2500,

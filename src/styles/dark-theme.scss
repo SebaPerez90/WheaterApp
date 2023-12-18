@@ -109,8 +109,9 @@ $woodsmoke-950: #0b0a0f;
   @extend %flex-col-center;
   background-color: $color;
   box-shadow: 5px 5px 5px #13131376;
-  border-radius: 0.3em;
-  height: 14em;
+  border-radius: 0.5em;
+  height: 16em;
+  margin-top: 2em;
   width: 25em;
   position: relative;
   overflow: hidden;
@@ -460,7 +461,7 @@ body {
               display: block;
               right: -13em;
               bottom: -1em;
-              width: 900%;
+              width: 3000%;
               height: 250%;
               background-color: #8580b05e;
               z-index: -1;
@@ -469,6 +470,29 @@ body {
           > :last-child {
             padding: 0 3em;
             text-align: center;
+            font-family: $josefin;
+          }
+        }
+
+        .hint-dt {
+          transform: translateY(2em);
+          text-align: start !important;
+          scale: 0.95;
+          align-self: flex-start;
+          font-size: 0.9em;
+
+          p {
+            position: relative;
+            right: 2.3em;
+            font-size: 1.1em;
+            min-width: max-content;
+          }
+          > :last-child {
+            margin-top: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            list-style: circle;
           }
         }
       }

@@ -106,23 +106,23 @@ const FAQ = () => {
                <div>
                  <p>
                   {languageEng ?
-                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory.`
                   :
-                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria.'
                   }
-                </p>
+                </p><br></br>
                  <p>
                   {languageEng ?
-                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  `You can view the search history by clicking on the icon that refers to the search history.`
                   :
-                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  'Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda.'
                   }
-                </p>
+                </p><br></br>
                  <p>
                   {languageEng ?
-                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  ` If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
                   :
-                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  'Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
                   }
                 </p>
                </div>
