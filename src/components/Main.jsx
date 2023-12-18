@@ -9,6 +9,7 @@ import { Redirect } from 'wouter';
 import { useStore } from '../../store.js';
 import { toast } from 'react-hot-toast';
 import { useEffect, useRef } from 'react';
+import OverViewApp from './OverViewApp.jsx';
 
 export default function WeatherData() {
   const {
@@ -147,10 +148,15 @@ export default function WeatherData() {
           {languageEng ? 'history' : 'historial'}
         </button>
       </section>
-
-      <ForecastNextDays />
-
-      <CardInfo />
+      {/* if 'weatherData.city' does not have data yet, the application only displays an app overview  */}
+      {weatherData.city ? (
+        <>
+          <ForecastNextDays />
+          <CardInfo />
+        </>
+      ) : (
+        <OverViewApp />
+      )}
 
       {/* if fetch fn response code status is equal to '404' , redirect to URL path that contains more info about this type error in fetching data */}
       {shouldRedirect ? <Redirect to='/notfound' /> : null}

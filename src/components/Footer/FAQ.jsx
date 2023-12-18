@@ -65,25 +65,27 @@ const FAQ = () => {
           <div
             ref={firstQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-              <p>
-                {languageEng ?
-                'Fill in the text input and click on the search button with the magnifying glass icon to its right.'
-                :
-                'Complete la entrada de texto y haga clic en el botón con el icono de búsqueda , a su derecha.'
-                }
-              </p>
-              {themeDark ? 
-                <img src={inputImgDT} alt='input-text-img' /> 
-                :
-                <img src={inputImgLT} alt='input-text-img' /> 
-              }
-              <p>
-                {languageEng ?
-                'You only need to enter the city name without the country name'
-                :
-                'Solo necesitas poner el nombre de la ciudad sin el nombre del país'
-                }
-              </p>
+              <div>
+                <p>
+                  {languageEng ?
+                  'Fill in the text input and click on the search button with the magnifying glass icon to its right.'
+                  :
+                  'Complete la entrada de texto y haga clic en el botón con el icono de búsqueda , a su derecha.'
+                  }
+                </p>
+                {themeDark ? 
+                  <img src={inputImgDT} alt='input-text-img' /> 
+                  :
+                  <img src={inputImgLT} alt='input-text-img' /> 
+                  }
+                <p>
+                  {languageEng ?
+                  'You only need to enter the city name without the country name'
+                  :
+                  'Solo necesitas poner el nombre de la ciudad sin el nombre del país'
+                  }
+                </p>
+              </div>
           </div>
         </div>
 
@@ -101,13 +103,29 @@ const FAQ = () => {
           <div
             ref={secondQuestion}
             className={ themeDark ? 'faq-answer-dt' : 'faq-answer-lt'}>
-               <p>
-                {languageEng ?
-                `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
-                :
-                'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
-                }
-              </p>
+               <div>
+                 <p>
+                  {languageEng ?
+                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  :
+                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  }
+                </p>
+                 <p>
+                  {languageEng ?
+                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  :
+                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  }
+                </p>
+                 <p>
+                  {languageEng ?
+                  `When you make a successful request, the data from this search (temperature, city name, and main weather condition) is saved in memory. You can view the search history by clicking on the icon that refers to the search history. If you want to clear the search history, you can click on the icon that refers to delete within the search history.`
+                  :
+                  'Cuando realiza una solicitud exitosa, los datos de esta búsqueda (temperatura, nombre de la ciudad y clima principal) se guardan en la memoria. Puede ver el historial de búsqueda haciendo clic en el icono que referencia al  historial de búsqueda. Si desea limpiar el historial de búsqueda, puede hacer clic que referencia a eliminar dentro de historial de busqueda'
+                  }
+                </p>
+               </div>
           </div>
         </div>
 

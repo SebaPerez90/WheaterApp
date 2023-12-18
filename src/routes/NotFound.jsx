@@ -6,16 +6,22 @@ import wrongLocation from '../assets/svg/wrong-location.svg';
 
 const NotFound = () => {
   // global state trigger the redirection to home route "/"
-  const { setShouldRedirect, shouldRedirect } = useStore();
+  const { setShouldRedirect, shouldRedirect, languageEng } = useStore();
 
   useEffect(() => {
     errorInfoMessage();
+    console.log(languageEng);
   }, []);
 
   const errorInfoMessage = () =>
-    toast.custom(<div className='errorInfoMessage'>current location not found</div>, {
-      duration: 5000,
-    });
+    toast.custom(
+      <div className='errorInfoMessage'>
+        {languageEng ? 'the location was not found' : 'la ubicación no fue encontrada'}
+      </div>,
+      {
+        duration: 5000,
+      },
+    );
 
   return (
     <section className='not-found-container'>
@@ -32,12 +38,12 @@ const NotFound = () => {
           </div>
         </div>
         <div className='btn-message-container'>
-          <p>it looks like you are lost ...</p>
+          <p>{languageEng ? 'Seems like you are a bit lost...' : 'parece que estas algo perdido...'}</p>
           <button
             className='not-found-redirect-btn'
             onClick={() => setShouldRedirect()}
           >
-            go back home
+            {languageEng ? 'go back home' : 'regresa'}
           </button>
         </div>
       </div>

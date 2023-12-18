@@ -56,7 +56,7 @@ const LanguageButton = () => {
           <img
             src={englishIcon}
             alt='english-icon-reference'
-            className='scale-[1.18]'
+            className='scale-[1.1]'
           />
         </button>
       ) : (
@@ -67,7 +67,7 @@ const LanguageButton = () => {
           <img
             src={spanishIcon}
             alt='spanish-icon-reference'
-            className='scale-[1.18]'
+            className='scale-[1.1]'
           />
         </button>
       )}

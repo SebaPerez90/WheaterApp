@@ -33,12 +33,17 @@
 //     </div>
 //   );
 // }
-import Header from '../components/Header/Header'
+
+
+
+
+
+// import Header from '../components/Header/Header'
 
 const Readme = () => {
   return (
-    <div>
-      <Header />
+    <div className="border-2  my-auto mx-auto  absolute">
+      {/* <Header /> */}
       <h1>readme</h1>
       <p>soy el puto readme</p>
     </div>

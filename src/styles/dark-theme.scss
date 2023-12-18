@@ -105,6 +105,17 @@ $woodsmoke-950: #0b0a0f;
   animation: clouds $time linear infinite alternate-reverse;
 }
 
+@mixin overViewElement($color) {
+  @extend %flex-col-center;
+  background-color: $color;
+  box-shadow: 5px 5px 5px #13131376;
+  border-radius: 0.3em;
+  height: 14em;
+  width: 25em;
+  position: relative;
+  overflow: hidden;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,6 +128,14 @@ body {
   scroll-behavior: smooth;
   font-weight: 500;
   cursor: url('/src/assets/images/cloud.png'), auto;
+
+  ::-webkit-scrollbar {
+    background-color: #ffffff6e;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $light;
+  }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////      header section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -169,7 +188,6 @@ body {
         button {
           color: $woodsmoke-400;
           border: none;
-          background-color: inherit;
           cursor: url('/src/assets/images/cloud-hover.png'), auto;
         }
       }
@@ -413,6 +431,49 @@ body {
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
+    // if 'weatherData.city' does not have data yet, the application only displays an app overview
+    .overview-app-dt {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      transform: translate(0, 5em);
+      grid-column: 2 / span 5;
+      grid-row: 1 / span 2;
+
+      .first-container,
+      .second-container {
+        display: flex;
+        justify-content: space-around;
+
+        > :first-child,
+        > :last-child {
+          @include overViewElement($woodsmoke-700);
+
+          > :first-child {
+            position: absolute;
+            top: 1em;
+            z-index: 50;
+
+            &::after {
+              content: '';
+              position: absolute;
+              display: block;
+              right: -13em;
+              bottom: -1em;
+              width: 900%;
+              height: 250%;
+              background-color: #8580b05e;
+              z-index: -1;
+            }
+          }
+          > :last-child {
+            padding: 0 3em;
+            text-align: center;
+          }
+        }
+      }
+    }
+
     // feature : find the current weather depends on text input value when the user click on the search button
     .form-container-dt {
       grid-row: 1;
@@ -496,6 +557,7 @@ body {
         border-radius: 0.5em;
         border: 2px solid $woodsmoke-400;
         background-color: $woodsmoke-500;
+        z-index: 1000;
 
         > :first-child,
         > :nth-child(2),
@@ -837,6 +899,7 @@ body {
       box-shadow: 5px 5px 5px #13131376;
       position: relative;
       overflow: hidden;
+      z-index: 10;
 
       h1 {
         text-align: center;
@@ -896,10 +959,10 @@ body {
           border-left: 2px solid $woodsmoke-300;
           position: absolute;
           background-color: $woodsmoke-500;
-          padding: 1em 0.5em;
+          padding: 0.5em;
           border-radius: 0 0.4em 0.4em 0;
           text-shadow: 2px 2px 1px #13131356;
-          transform: translate(-2em, -0.5em);
+          transform: translate(-2em, -0.7em);
           scale: 0.9;
           width: 45vw;
           z-index: 100;
@@ -918,9 +981,8 @@ body {
           }
 
           img {
-            scale: 0.7;
-            right: 4em;
-            position: relative;
+            margin: 0.5em 0;
+            height: 4em;
             border: 1px solid #ffffff62;
             border-radius: 0.4em;
           }
@@ -931,8 +993,11 @@ body {
           }
 
           .answer-4 {
+            > :first-child {
+              margin-top: -1em;
+            }
             > :nth-child(2) {
-              margin-top: 1em;
+              margin-top: 0.5em;
               margin-left: 2em;
               list-style: square;
               display: flex;
@@ -1035,6 +1100,25 @@ body {
         margin: auto;
         position: relative;
 
+        .list-item-dt {
+          font-size: 1.2em;
+          cursor: url('/src/assets/images/cloud-hover.png'), auto;
+          transition: all 1s;
+        }
+
+        .linkedin:hover {
+          transition: all 200ms;
+          color: #3c63ff;
+        }
+        .github:hover {
+          transition: all 200ms;
+          color: #000000;
+        }
+        .email:hover {
+          transition: all 200ms;
+          color: #ff5757;
+        }
+
         &::after {
           content: '';
           position: absolute;
@@ -1052,11 +1136,6 @@ body {
           background-color: $woodsmoke-400;
           right: -8em;
           top: 0.5em;
-        }
-
-        .list-item-dt {
-          font-size: 1.2em;
-          cursor: url('/src/assets/images/cloud-hover.png'), auto;
         }
       }
     }
