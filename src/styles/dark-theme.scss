@@ -449,6 +449,12 @@ body {
         > :first-child,
         > :last-child {
           @include overViewElement($woodsmoke-700);
+          font-family: $josefin;
+
+          img {
+            scale: 0.6;
+            transform: translateY(3em);
+          }
 
           > :first-child {
             position: absolute;
@@ -470,7 +476,6 @@ body {
           > :last-child {
             padding: 0 3em;
             text-align: center;
-            font-family: $josefin;
           }
         }
 
@@ -482,10 +487,7 @@ body {
           font-size: 0.9em;
 
           p {
-            position: relative;
-            right: 2.3em;
             font-size: 1.1em;
-            min-width: max-content;
           }
           > :last-child {
             margin-top: 1em;
