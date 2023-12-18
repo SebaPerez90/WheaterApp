@@ -412,6 +412,7 @@ body {
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
+    // if 'weatherData.city' does not have data yet, the application only displays an app overview
     .overview-app-lt {
       display: flex;
       flex-direction: column;
@@ -419,6 +420,7 @@ body {
       transform: translate(0, 7em);
       grid-column: 2 / span 5;
       grid-row: 1 / span 2;
+      text-shadow: 2px 2px 1px #1313135d;
 
       .first-container,
       .second-container {

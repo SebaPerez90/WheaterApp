@@ -5,11 +5,11 @@ const OverViewApp = () => {
   return (
     <section className={themeDark ? 'overview-app-dt' : 'overview-app-lt'}>
       <div className='first-container'>
-        <div>
+        <div className='animate-[overviewApp_1.3s_linear_forwards]'>
           <h1>{languageEng ? 'Step 1' : 'Paso 1'}</h1>
           <p className='top-8 relative'>{languageEng ? 'Fill the input field' : 'Llenar el input'}</p>
         </div>
-        <div>
+        <div className='animate-[overviewApp_1.6s_linear_forwards]'>
           <h1>{languageEng ? 'Step 2' : 'Paso 2'}</h1>
           <p className='top-8 relative'>
             {languageEng ? 'Click the search button.' : 'Haz click el boton de busqueda'}
@@ -17,7 +17,7 @@ const OverViewApp = () => {
         </div>
       </div>
       <div className='second-container'>
-        <div>
+        <div className='animate-[overviewApp_1.9s_linear_forwards]'>
           <h1>{languageEng ? 'Step 3' : 'Paso 3'}</h1>
           <p className='top-7 relative'>
             {languageEng
@@ -25,7 +25,7 @@ const OverViewApp = () => {
               : 'Haz click en el icono en la parte izquierda para ver el historial de busquedas.'}
           </p>
         </div>
-        <div>
+        <div className='animate-[overviewApp_2.2s_linear_forwards]'>
           <h1>💡</h1>
           <div className={themeDark ? 'hint-dt' : 'hint-lt'}>
             <p>
