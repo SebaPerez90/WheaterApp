@@ -417,7 +417,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      transform: translate(0, 7em);
+      transform: translate(0, 8em);
       grid-column: 2 / span 5;
       grid-row: 1 / span 2;
       text-shadow: 2px 2px 1px #1313135d;
@@ -1096,6 +1096,207 @@ body {
       bottom: 0.7em;
       transition: all 400ms;
       animation: none;
+    }
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      CONTACT ROUTE    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  .contact-main-lt {
+    height: 100vh;
+    @extend %flex-col-center;
+    background: linear-gradient(to left, $red-stage-300, $red-stage-800, transparent);
+
+    .contact-section-lt {
+      display: flex;
+      overflow: hidden;
+      z-index: 60;
+
+      // form section container
+      .form-container-lt {
+        @extend %flex-col-center;
+        align-items: flex-start;
+        gap: 2em;
+        padding: 4em 4em 3em 4em;
+        background: $light;
+        caret-color: $red-stage-400;
+        border-radius: 0.5em 0 0 0.5em;
+        border: 2px solid $red-stage-200;
+        border-right: none;
+        z-index: 10;
+        color: $dark;
+        font-family: $josefin;
+
+        .input-name-lt {
+          background-color: inherit;
+          border-bottom: 2px solid $red-stage-400;
+          outline: none;
+          padding: 0.2em 0.2em;
+          text-transform: capitalize;
+
+          &::placeholder {
+            text-transform: lowercase;
+            padding: 0.5em;
+            opacity: 0.7;
+            color: $red-stage-400;
+          }
+          &:focus {
+            border-bottom: 2px solid $red-stage-200;
+            background: linear-gradient(to top, $red-stage-300, $light);
+            transition: all 400ms;
+          }
+        }
+        .input-email-lt {
+          background-color: inherit;
+          border-bottom: 2px solid $red-stage-400;
+          outline: none;
+          padding: 0.2em 0.2em;
+
+          &::placeholder {
+            padding: 0.5em;
+            opacity: 0.7;
+            color: $red-stage-400;
+          }
+          &:focus {
+            border-bottom: 2px solid $red-stage-200;
+            background: linear-gradient(to top, $red-stage-300, $light);
+            transition: all 400ms;
+          }
+        }
+        .text-area-lt {
+          resize: none;
+          background-color: inherit;
+          border-bottom: 2px solid $red-stage-400;
+          height: 6em;
+          width: 18em;
+          outline: none;
+          padding: 0.3em 0 0.3em 0.7em;
+
+          &::placeholder {
+            position: absolute;
+            bottom: 0.5em;
+            opacity: 0.7;
+            color: $red-stage-400;
+          }
+          &:focus {
+            border-bottom: 2px solid $light;
+            background: linear-gradient(to top, $red-stage-300, $light);
+            border-radius: 0.3em;
+            transition: all 400ms;
+          }
+        }
+        .send-btn-lt {
+          background-color: $red-stage-500;
+          border: 1px solid $red-stage-700;
+          border-radius: 3em;
+          padding: 0.5em;
+          width: 100%;
+          position: relative;
+          bottom: 1em;
+          color: $light;
+        }
+      }
+
+      //aside card form
+      .aside-form-lt {
+        background-color: #33beff;
+        padding: 3em 5em;
+        border-radius: 0 0.5em 0.5em 0;
+        color: $light;
+        text-shadow: 1px 2px 1px #13131356;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        border: 2px solid $red-stage-200;
+        border-left: none;
+        font-family: $roboto;
+
+        .bg-form-lt {
+          position: absolute;
+
+          > :first-child {
+            transform: translate(-1em, 6em);
+
+            > :first-child {
+              scale: 3;
+              box-shadow: 0px 0px 1px #fcff333b;
+              background: radial-gradient(circle, #fcff33e5, #fcff3317, transparent);
+              border-radius: 50%;
+              animation: sunShining 5s linear alternate-reverse infinite,
+              SunRise 500ms linear forwards;
+            }
+            > :last-child {
+              transform: translate(8em, 4em);
+              rotate: -70deg;
+            }
+          }
+          > :last-child {
+            scale: 6;
+            display: flex;
+            position: absolute;
+            justify-content: space-between;
+            transform: translate(-1.2em, -1.1em);
+            > :last-child {
+              transform: translate(1.4em, 0.2em);
+            }
+          }
+        }
+
+        > :nth-child(2) {
+          @extend %flex-col-center;
+          gap: 1em;
+
+          .avatar-image-lt {
+            height: 4em;
+            width: 4em;
+            object-fit: cover;
+            scale: 2;
+            border-radius: 50%;
+            border: 2px solid $red-stage-400;
+            padding: 0.06em;
+          }
+
+          h1 {
+            bottom: 1em;
+            font-size: 1.4em;
+            position: relative;
+          }
+        }
+        > :last-child {
+          text-align: center;
+          position: relative;
+          z-index: 10;
+          transform: translateY(-2.5em);
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: -1em;
+            background-color: $red-stage-400;
+            height: 0.2em;
+            width: 100%;
+          }
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -7em;
+            height: 5em;
+            width: 100%;
+            scale: 1.7;
+            transform: scaleX(1.5);
+            background: url('../assets/svg/hills-day.svg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+          }
+        }
+      }
     }
   }
 }

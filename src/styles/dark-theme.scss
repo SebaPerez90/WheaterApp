@@ -141,7 +141,6 @@ body {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////      header section    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
   .header-container-dt {
     background-color: $dark;
     display: grid;
@@ -1187,6 +1186,174 @@ body {
       bottom: 0.7em;
       transition: all 400ms;
       animation: none;
+    }
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      CONTACT ROUTE    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  .contact-main-dt {
+    height: 100vh;
+    @extend %flex-col-center;
+    margin-top: 3em;
+
+    .contact-section-dt {
+      display: flex;
+      overflow: hidden;
+
+      // form section container
+      .form-container-dt {
+        @extend %flex-col-center;
+        align-items: flex-start;
+        gap: 2em;
+        padding: 4em 4em 3em 4em;
+        background: $woodsmoke-500;
+        caret-color: $woodsmoke-400;
+        border-radius: 0.5em 0 0 0.5em;
+        border: 2px solid $woodsmoke-400;
+        border-right: none;
+        z-index: 10;
+        color: $light;
+        font-family: $josefin;
+
+        .input-name-dt {
+          background-color: inherit;
+          border-bottom: 2px solid $woodsmoke-700;
+          outline: none;
+          padding: 0.2em 0.2em;
+          text-transform: capitalize;
+
+          &::placeholder {
+            text-transform: lowercase;
+            padding: 0.5em;
+          }
+          &:focus {
+            border-bottom: 2px solid $woodsmoke-200;
+            background: linear-gradient(to top, $woodsmoke-600, $woodsmoke-500);
+            transition: all 400ms;
+          }
+        }
+        .input-email-dt {
+          background-color: inherit;
+          border-bottom: 2px solid $woodsmoke-700;
+          outline: none;
+          padding: 0.2em 0.2em;
+
+          &::placeholder {
+            padding: 0.5em;
+          }
+          &:focus {
+            border-bottom: 2px solid $woodsmoke-200;
+            background: linear-gradient(to top, $woodsmoke-600, $woodsmoke-500);
+            transition: all 400ms;
+          }
+        }
+        .text-area-dt {
+          resize: none;
+          background-color: inherit;
+          border-bottom: 2px solid $woodsmoke-700;
+          height: 6em;
+          width: 18em;
+          outline: none;
+          padding: 0.3em 0 0.3em 0.7em;
+
+          &::placeholder {
+            position: absolute;
+            bottom: 0.5em;
+          }
+          &:focus {
+            border-bottom: 2px solid $woodsmoke-500;
+            background: linear-gradient(to top, #66609792, $woodsmoke-600);
+            border-radius: 0.3em;
+            transition: all 400ms;
+          }
+        }
+        .send-btn-dt {
+          background-color: $woodsmoke-700;
+          border: 2px solid $woodsmoke-400;
+          border-radius: 3em;
+          padding: 0.5em;
+          width: 100%;
+          position: relative;
+          bottom: 1em;
+        }
+      }
+
+      //aside card form
+      .aside-form-dt {
+        background: $woodsmoke-900;
+        padding: 3em 5em;
+        border-radius: 0 0.5em 0.5em 0;
+        color: $woodsmoke-200;
+        text-shadow: 2px 2px 1px #13131356;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        border: 2px solid $woodsmoke-400;
+        border-left: none;
+        font-family: $roboto;
+
+        .bg-form-dt {
+          position: absolute;
+          transform: translate(12em, 10em);
+        }
+
+        > :nth-child(2) {
+          @extend %flex-col-center;
+          gap: 1em;
+
+          .avatar-image-dt {
+            height: 4em;
+            width: 4em;
+            object-fit: cover;
+            scale: 2;
+            border-radius: 50%;
+            border: 2px solid $woodsmoke-500;
+            padding: 0.06em;
+          }
+
+          h1 {
+            bottom: 1em;
+            font-size: 1.4em;
+            position: relative;
+          }
+        }
+        > :last-child {
+          text-align: center;
+          position: relative;
+          z-index: 10;
+          transform: translateY(-2.5em);
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: -1em;
+            background-color: $woodsmoke-400;
+            height: 0.2em;
+            width: 100%;
+          }
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -7em;
+            height: 5em;
+            width: 100%;
+            scale: 1.7;
+            transform: scaleX(1.5);
+            background: url('../assets/svg/hills-day.svg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.5;
+          }
+        }
+      }
     }
   }
 }
