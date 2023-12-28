@@ -223,11 +223,11 @@ body {
     }
 
     .header-menu-lt {
-      background-color: $valencia-200;
+      background-color: $light;
       position: absolute;
       transform: translateX(-40em);
-      border-right: 2px solid $red-stage-700;
-      border-bottom: 2px solid $red-stage-700;
+      border-right: 2px solid $red-stage-600;
+      border-bottom: 2px solid $red-stage-600;
       border-radius: 0 0 0.4em 0;
       height: 99%;
       padding: 3em 0 0 2em;
@@ -239,7 +239,6 @@ body {
       flex-direction: column;
       align-items: flex-start;
       text-transform: capitalize;
-      text-shadow: 2px 2px 1px #1313135d;
       font-weight: 700;
       transition-property: background-color;
       transition-duration: 1s;
@@ -293,10 +292,11 @@ body {
           border-bottom: 2px solid $red-stage-700;
           width: 0%;
           transition: all 500ms;
+          color: $red-stage-600;
 
           &:hover {
-            border-bottom: 2px solid $red-stage-700;
-            color: $red-stage-700;
+            border-bottom: 2px solid $valencia-200;
+            color: $valencia-200;
             text-shadow: none;
             width: 120%;
             transition: all 500ms;
@@ -308,24 +308,23 @@ body {
         .preference-container-lt {
           @extend %flex-row-center;
           justify-content: space-between;
-          border-bottom: 2px solid $red-stage-700;
+          border-bottom: 2px solid $red-stage-600;
           width: 140%;
-          transition: all 200ms;
 
           p {
-            color: $light;
+            color: $red-stage-600;
             padding-bottom: 0.5em;
             cursor: url('/src/assets/images/cloud-hover.png'), auto;
             z-index: 100;
 
             &:hover {
-              color: $red-stage-700;
+              color: $valencia-200;
               transition: all 500ms;
               text-shadow: none;
             }
           }
           span {
-            color: $red-stage-700;
+            color: $red-stage-600;
             scale: 2.2;
             bottom: 0.2em;
             position: relative;
@@ -335,12 +334,14 @@ body {
         .hidden-preference-options {
           padding: 0 0 0 1em;
           transform: translateY(-4em);
+          border-left: 1px solid $valencia-200;
           opacity: 0;
           pointer-events: none;
+          transition: all 200ms;
         }
         .preferences-lt {
           pointer-events: all;
-          border-left: 3px solid $red-stage-700;
+          border-left: 1px solid $valencia-200;
           transform: translateY(0em);
           height: 90%;
           transition: all 700ms;
@@ -357,17 +358,18 @@ body {
               gap: 1em;
 
               > :first-child {
-                border: 2px solid $red-stage-200;
+                border: 3px solid $red-stage-600;
                 border-radius: 50%;
-                box-shadow: 5px 5px 5px #13131376;
+                box-shadow: 2px 2px 8px #13131376;
+                transition: all 300ms;
 
                 &:hover {
                   transition: all 300ms;
-                  border: 2px solid $red-stage-700;
+                  border: 3px solid $valencia-200;
                 }
               }
               > :last-child {
-                border: 2px solid $red-stage-200;
+                border: 3px solid $red-stage-600;
                 border-radius: 50%;
                 padding: 1em;
                 color: $light;
@@ -375,13 +377,14 @@ body {
                 justify-content: center;
                 align-items: center;
                 background-color: $red-stage-500;
-                box-shadow: 5px 5px 5px #13131376;
+                box-shadow: 2px 2px 8px #13131376;
+                transition: all 300ms;
 
                 &:hover {
                   transition: all 300ms;
                   background-color: $valencia-200;
-                  border: 2px solid $red-stage-700;
-                  color: $red-stage-700;
+                  color: $red-stage-600;
+                  border: 3px solid $valencia-200;
                 }
               }
             }
@@ -1104,14 +1107,61 @@ body {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   .contact-main-lt {
-    height: 100vh;
+    height: 150vh;
     @extend %flex-col-center;
+    justify-content: space-around;
     background: linear-gradient(to left, $red-stage-300, $red-stage-800, transparent);
+
+    .subtitle-container-lt {
+      color: $light;
+      @extend %flex-col-center;
+      padding: 0 2em;
+      margin-top: 4em;
+
+      h1 {
+        font-size: 1.7em;
+        position: relative;
+        z-index: 20;
+        color: $red-stage-500;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: -1em;
+          bottom: -0.7em;
+          background-color: $red-stage-500;
+          background-color: $light;
+          height: 2.8em;
+          width: 105%;
+          border-radius: 0.5em;
+          z-index: -1;
+        }
+      }
+      p {
+        margin-top: 1.8em;
+        font-size: 1.1em;
+        font-family: $roboto;
+        position: relative;
+        text-shadow: 1px 1px 1px #00000078;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 10%;
+          bottom: -2em;
+          width: 80%;
+          border-bottom: 2px solid $red-stage-400;
+        }
+      }
+    }
 
     .contact-section-lt {
       display: flex;
       overflow: hidden;
       z-index: 60;
+      margin-top: 3em;
 
       // form section container
       .form-container-lt {
@@ -1127,6 +1177,8 @@ body {
         z-index: 10;
         color: $dark;
         font-family: $josefin;
+        transition-property: background-color;
+        transition-duration: 2s;
 
         .input-name-lt {
           background-color: inherit;
@@ -1212,6 +1264,8 @@ body {
         border: 2px solid $red-stage-200;
         border-left: none;
         font-family: $roboto;
+        transition-property: background-color;
+        transition-duration: 2s;
 
         .bg-form-lt {
           position: absolute;
@@ -1224,8 +1278,9 @@ body {
               box-shadow: 0px 0px 1px #fcff333b;
               background: radial-gradient(circle, #fcff33e5, #fcff3317, transparent);
               border-radius: 50%;
-              animation: sunShining 5s linear alternate-reverse infinite,
-              SunRise 500ms linear forwards;
+              animation:
+                sunShining 5s linear alternate-reverse infinite,
+                SunRise 500ms linear forwards;
             }
             > :last-child {
               transform: translate(8em, 4em);
@@ -1294,6 +1349,438 @@ body {
             background: url('../assets/svg/hills-day.svg') no-repeat center center;
             background-size: cover;
             z-index: -1;
+          }
+        }
+      }
+    }
+
+    .developed-lt {
+      p {
+        color: $light;
+        min-width: max-content;
+        text-shadow: 1px 1px 1px #00000078;
+      }
+    }
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      README ROUTE    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  .readme-main-lt {
+    color: $dark;
+    padding: 2em 6em 1em 6em;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to left, $red-stage-300, $red-stage-800, transparent);
+    gap: 1em;
+    font-family: $roboto;
+
+    .aaa {
+      padding: 2em 6em 1em 6em;
+      background-color: #efefef;
+      border-radius: 0.3em;
+
+      > h1 {
+        font-size: 1.7em;
+        text-align: center;
+        font-weight: bolder;
+      }
+      > p {
+        padding-bottom: 1em;
+        font-family: $roboto-italic;
+      }
+
+      .index-content-container-lt {
+        border: 1px solid #00000025;
+        padding: 1em;
+        z-index: 10;
+
+        p {
+          font-weight: bolder;
+          font-size: 1.2em;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+        ul {
+          margin: 1em 0 0 2em;
+
+          li {
+            list-style: disc;
+            margin-top: 0.5em;
+            font-size: 0.9em;
+            font-weight: lighter;
+
+            a {
+              cursor: url('/src/assets/images/cloud-hover.png'), auto !important;
+            }
+          }
+        }
+      }
+
+      #overview-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+
+        > h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+
+        .container-lt {
+          display: flex;
+          flex-direction: column;
+          gap: 3em;
+
+          > :first-child {
+            margin-top: 1em;
+            border-bottom: 4px solid #3c59fe;
+            h1 {
+              font-size: 2.5em;
+              text-align: center;
+              font-weight: bolder;
+              color: #3c59fe;
+            }
+            p {
+              font-family: $josefin;
+              margin: 1em 0;
+            }
+          }
+          .second-container-lt {
+            display: flex;
+            flex-direction: column;
+            gap: 3em;
+
+            h2 {
+              text-align: center;
+              font-size: 1.4em;
+            }
+
+            ul {
+              font-family: $roboto-italic;
+              padding: 1em;
+              display: flex;
+              flex-direction: column;
+              gap: 1.5em;
+              list-style: disc;
+
+              span {
+                font-size: 1.1em;
+                font-weight: bolder;
+              }
+            }
+          }
+
+          > :last-child {
+            font-family: $josefin;
+            text-align: center;
+            font-size: 1.2em;
+            text-wrap: pretty;
+          }
+        }
+      }
+
+      #design-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+
+        .structure-container-lt {
+          margin: 1em 0;
+          border: 1px solid #00000025;
+          border-radius: 0.5em;
+          width: max-content;
+          padding: 2em 6em 2em 3em;
+          font-size: 0.7em;
+          background-color: $light;
+          font-family: $roboto-mono;
+        }
+        span {
+          font-family: $roboto;
+          color: #549c5a;
+          margin-left: 1em;
+        }
+      }
+
+      #status-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+      }
+
+      #technologies-container-lt {
+        border-top: none;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        border: 1px solid #00000025;
+        border-top: none;
+
+        > :first-child {
+          h2 {
+            font-weight: bolder;
+            font-size: 1.2em;
+            border-bottom: 3px solid #00000025;
+            width: max-content;
+            padding-bottom: 0.2em;
+          }
+          p {
+            font-family: $roboto-italic;
+            margin-top: 0.5em;
+          }
+        }
+
+        ul {
+          margin: 0.5em 0;
+          border: 1px solid #00000025;
+          background-color: $light;
+          border-radius: 0.3em;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2em;
+          width: max-content;
+          align-self: center;
+
+          li {
+            border-top: 1px solid #00000025;
+            padding: 0.5em 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            span {
+              font-size: 1.2em;
+              color: #3c59fe;
+              font-weight: bolder;
+            }
+
+            > :nth-child(2) {
+              font-size: 0.85em;
+              font-family: $roboto-italic;
+            }
+            &:first-child {
+              border-top: none;
+            }
+          }
+        }
+      }
+
+      #instalation-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+        font-family: $josefin;
+
+        > h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+        .container-lt {
+          margin-top: 2em;
+
+          > :first-child {
+            margin-top: 2em;
+            .git-clone-lt {
+              margin: 0.5em 0;
+              display: flex;
+              gap: 1em;
+              background-color: $light;
+              border: 1px solid #00000025;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              > :nth-child(2) {
+                button {
+                  cursor: url('/src/assets/images/cloud-hover.png'), auto;
+                }
+              }
+              > p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+
+          > :nth-child(2) {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: $light;
+              border: 1px solid #00000025;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+          > :nth-child(3) {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: $light;
+              border: 1px solid #00000025;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+
+          > :last-child {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: $light;
+              border: 1px solid #00000025;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+
+      #features-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+      }
+
+      #contact-container-lt {
+        border: 1px solid #00000025;
+        border-top: none;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+          border-bottom: 3px solid #00000025;
+        }
+
+        > :nth-child(2) {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex-wrap: wrap;
+
+          > :first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            flex-grow: 2;
+
+            p {
+              font-size: 0.9em;
+              text-align: center;
+
+              strong {
+                font-size: 1.4em;
+                margin-left: 0.2em;
+              }
+            }
+            img {
+              border-radius: 50%;
+              height: 12em;
+              width: 12em;
+              object-fit: cover;
+              border: 2px solid $light;
+            }
+          }
+        }
+
+        .second-container-lt {
+          width: 60%;
+          @extend %flex-col-center;
+          border: 1px solid #00000025;
+          background-color: $light;
+          border-radius: 0.3em;
+          padding: 2em;
+
+          p {
+            text-align: center;
+            font-family: $roboto-italic;
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 10em;
+            margin-top: 1em;
+
+            > li {
+              list-style: disc;
+              margin-left: 0.5em;
+
+              a {
+                font-family: $roboto-italic;
+                font-size: 0.8em;
+                text-decoration: underline;
+                cursor: url('/src/assets/images/cloud-hover.png'), auto;
+
+                &:hover {
+                  color: #0000003b;
+                  transition: all 300ms;
+                }
+              }
+            }
           }
         }
       }

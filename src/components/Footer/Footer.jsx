@@ -48,7 +48,7 @@ export default function Footer() {
                 className='readme-btn'
                 to='/readme'
               >
-                README <HiExternalLink className='scale-125'/>
+                README <HiExternalLink className='scale-125' />
               </Link>
             </div>
           </swiper-slide>

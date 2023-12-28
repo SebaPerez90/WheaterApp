@@ -1194,13 +1194,56 @@ body {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   .contact-main-dt {
-    height: 100vh;
+    height: 145vh;
+    margin-top: 5em;
     @extend %flex-col-center;
-    margin-top: 3em;
+    justify-content: space-around;
+
+    .subtitle-container-dt {
+      color: $light;
+      @extend %flex-col-center;
+      padding: 0 2em;
+
+      h1 {
+        font-size: 1.7em;
+        position: relative;
+        z-index: 10;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: -1em;
+          bottom: -0.7em;
+          background-color: $woodsmoke-500;
+          height: 2.8em;
+          width: 105%;
+          border-radius: 0.5em;
+          z-index: -1;
+        }
+      }
+      p {
+        margin-top: 1.8em;
+        font-size: 1.1em;
+        font-family: $roboto;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 10%;
+          bottom: -2em;
+          width: 80%;
+          border-bottom: 2px solid $woodsmoke-400;
+        }
+      }
+    }
 
     .contact-section-dt {
       display: flex;
       overflow: hidden;
+      margin-top: 3em;
 
       // form section container
       .form-container-dt {
@@ -1216,6 +1259,8 @@ body {
         z-index: 10;
         color: $light;
         font-family: $josefin;
+        transition-property: background-color;
+        transition-duration: 2s;
 
         .input-name-dt {
           background-color: inherit;
@@ -1229,7 +1274,7 @@ body {
             padding: 0.5em;
           }
           &:focus {
-            border-bottom: 2px solid $woodsmoke-200;
+            border-bottom: 2px solid $woodsmoke-300;
             background: linear-gradient(to top, $woodsmoke-600, $woodsmoke-500);
             transition: all 400ms;
           }
@@ -1244,7 +1289,7 @@ body {
             padding: 0.5em;
           }
           &:focus {
-            border-bottom: 2px solid $woodsmoke-200;
+            border-bottom: 2px solid $woodsmoke-300;
             background: linear-gradient(to top, $woodsmoke-600, $woodsmoke-500);
             transition: all 400ms;
           }
@@ -1294,10 +1339,19 @@ body {
         border: 2px solid $woodsmoke-400;
         border-left: none;
         font-family: $roboto;
+        transition-property: background-color;
+        transition-duration: 2s;
 
         .bg-form-dt {
           position: absolute;
           transform: translate(12em, 10em);
+
+          .moon-svg {
+            position: absolute;
+            translate: -8em -4em;
+            scale: 0.8;
+            animation: MoonRise 600ms linear forwards;
+          }
         }
 
         > :nth-child(2) {
@@ -1310,7 +1364,7 @@ body {
             object-fit: cover;
             scale: 2;
             border-radius: 50%;
-            border: 2px solid $woodsmoke-500;
+            border: 2px solid $woodsmoke-400;
             padding: 0.06em;
           }
 
@@ -1351,6 +1405,430 @@ body {
             background-size: cover;
             z-index: -1;
             opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .developed-dt {
+      p {
+        color: $light;
+        min-width: max-content;
+      }
+    }
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////      README ROUTE    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  .readme-main-dt {
+    color: $light;
+    margin: 3em 4em 0 4em;
+    border: 1px solid #ffffff83;
+    padding: 2em 6em 1em 6em;
+    border-radius: 0.3em;
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: $roboto;
+    .aaa {
+      > h1 {
+        font-size: 1.7em;
+        text-align: center;
+        font-weight: bolder;
+      }
+      > p {
+        padding-bottom: 1em;
+        font-family: $roboto-italic;
+      }
+
+      .index-content-container-dt {
+        border: 1px solid #ffffff28;
+        padding: 1em;
+
+        p {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+        ul {
+          margin: 1em 0 0 2em;
+
+          li {
+            list-style: disc;
+            margin-top: 0.5em;
+            font-size: 0.9em;
+            font-weight: lighter;
+
+            a {
+              cursor: url('/src/assets/images/cloud-hover.png'), auto !important;
+            }
+          }
+        }
+      }
+
+      #overview-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+
+        > h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+
+        .container-dt {
+          display: flex;
+          flex-direction: column;
+          gap: 3em;
+
+          > :first-child {
+            margin-top: 1em;
+            border-bottom: 4px solid #3c59fe;
+            h1 {
+              font-size: 2.5em;
+              text-align: center;
+              font-weight: bolder;
+              color: #3c59fe;
+            }
+            p {
+              font-family: $josefin;
+              margin: 1em 0;
+            }
+          }
+          .second-container-dt {
+            display: flex;
+            flex-direction: column;
+            gap: 3em;
+
+            h2 {
+              text-align: center;
+              font-size: 1.4em;
+            }
+
+            ul {
+              font-family: $roboto-italic;
+              padding: 1em;
+              display: flex;
+              flex-direction: column;
+              gap: 1.5em;
+              list-style: disc;
+
+              span {
+                font-size: 1.1em;
+                font-weight: bolder;
+              }
+            }
+          }
+
+          > :last-child {
+            font-family: $josefin;
+            text-align: center;
+            font-size: 1.2em;
+            text-wrap: pretty;
+          }
+        }
+      }
+
+      #design-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+
+        .structure-container-dt {
+          margin: 1em 0;
+          border: 1px solid #ffffff28;
+          border-radius: 0.5em;
+          width: max-content;
+          padding: 2em 6em 2em 3em;
+          font-size: 0.7em;
+          background-color: #2b2937;
+          font-family: $roboto-mono;
+        }
+        span {
+          font-family: $roboto;
+          color: #549c5a;
+          margin-left: 1em;
+        }
+      }
+
+      #status-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+      }
+
+      #technologies-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        > :first-child {
+          h2 {
+            font-weight: bolder;
+            font-size: 1.2em;
+            border-bottom: 1px solid $light;
+            width: max-content;
+            padding-bottom: 0.2em;
+          }
+          p {
+            font-family: $roboto-italic;
+            margin-top: 0.5em;
+          }
+        }
+
+        ul {
+          margin: 0.5em 0;
+          border: 1px solid #ffffff28;
+          background-color: #2b2937;
+          border-radius: 0.3em;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2em;
+          width: max-content;
+          align-self: center;
+
+          li {
+            border-top: 1px solid #ffffff28;
+            padding: 0.5em 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            span {
+              font-size: 1.2em;
+              color: #3c59fe;
+              font-weight: bolder;
+            }
+
+            > :nth-child(2) {
+              font-size: 0.85em;
+              font-family: $roboto-italic;
+            }
+            &:first-child {
+              border-top: none;
+            }
+          }
+        }
+      }
+
+      #instalation-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+        font-family: $josefin;
+
+        > h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+        .container-dt {
+          margin-top: 2em;
+
+          > :first-child {
+            margin-top: 2em;
+            .git-clone-dt {
+              margin: 0.5em 0;
+              display: flex;
+              gap: 1em;
+              background-color: #2b2937;
+              border: 1px solid #ffffff28;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              > :nth-child(2) {
+                button {
+                  cursor: url('/src/assets/images/cloud-hover.png'), auto;
+                }
+              }
+              > p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+
+          > :nth-child(2) {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: #2b2937;
+              border: 1px solid #ffffff28;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+          > :nth-child(3) {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: #2b2937;
+              border: 1px solid #ffffff28;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+
+              p {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              }
+            }
+          }
+
+          > :last-child {
+            margin-top: 2em;
+            > :last-child {
+              margin: 0.5em 0;
+              display: flex;
+              background-color: #2b2937;
+              border: 1px solid #ffffff28;
+              border-radius: 0.4em;
+              width: max-content;
+              padding: 1.5em 1em;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+
+      #features-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+      }
+
+      #contact-container-dt {
+        border: 1px solid #ffffff28;
+        border-top: none;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        h2 {
+          font-weight: bolder;
+          font-size: 1.2em;
+          border-bottom: 1px solid $light;
+          width: max-content;
+          padding-bottom: 0.2em;
+        }
+
+        > :nth-child(2) {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex-wrap: wrap;
+
+          > :first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            flex-grow: 2;
+
+            p {
+              font-size: 0.9em;
+              text-align: center;
+
+              strong {
+                font-size: 1.4em;
+                margin-left: 0.2em;
+              }
+            }
+            img {
+              border-radius: 50%;
+              height: 12em;
+              width: 12em;
+              object-fit: cover;
+              border: 2px solid $light;
+            }
+          }
+        }
+
+        .second-container-dt {
+          width: 60%;
+          @extend %flex-col-center;
+          border: 1px solid #ffffff28;
+          background-color: #2b2937;
+          border-radius: 0.3em;
+          padding: 2em;
+
+          p {
+            text-align: center;
+            font-family: $roboto-italic;
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 10em;
+            margin-top: 1em;
+
+            > li {
+              list-style: disc;
+              margin-left: 0.5em;
+
+              a {
+                font-family: $roboto-italic;
+                font-size: 0.8em;
+                text-decoration: underline;
+                cursor: url('/src/assets/images/cloud-hover.png'), auto;
+
+                &:hover {
+                  color: #ffffff3e;
+                  transition: all 300ms;
+                }
+              }
+            }
           }
         }
       }
