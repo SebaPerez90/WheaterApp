@@ -12,6 +12,7 @@ import btn_dt from '../assets/images/btn-marked-dt.png';
 import btn_lt from '../assets/images/btn-marked-lt.png';
 import history_dt from '../assets/images/history-marked-dt.png';
 import history_lt from '../assets/images/history-marked-lt.png';
+import overview_app from '../assets/videos/overview-app.mp4';
 
 const Readme = () => {
   const { themeDark, languageEng } = useStore();
@@ -98,6 +99,88 @@ const Readme = () => {
                     ? 'This is an interactive application developed with React that allows you to explore the current weather and future forecasts in a simple and dynamic way.'
                     : 'Esta es una aplicación interactiva desarrollada con React que te permite explorar el clima actual y pronósticos futuros de manera sencilla y dinámica.'}
                 </p>
+              </div>
+              <div>
+                <p>{languageEng ? 'Features and Characteristics:' : 'Funcionalidades y Características:'}</p>
+                <ul>
+                  <li>
+                    {languageEng
+                      ? 'Stay informed about real-time weather with accurate data'
+                      : 'Estar informado del clima en tiempo real con datos precisos'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Get the most relevant data to organize your week'
+                      : 'Obtener los datos más relevantes para organizar tu semana'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Dynamic animated images of the current weather for better understanding'
+                      : 'Imágenes animadas del clima actual dinámicas para mayor comprensión'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Use the measurement unit according to your region (Fahrenheit or Celsius)'
+                      : 'Usar la unidad de medición acorde a tu región (Fahrenheit o Celsius)'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Customize the language to your preference (English or Spanish)'
+                      : 'Personalización del lenguaje a tu gusto (idioma inglés o idioma español)'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Customize the theme to your liking (light theme or dark theme)'
+                      : 'Personalización del tema a tu gusto (tema claro o tema oscuro)'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Keep a record of successful searches made, i.e., a search history'
+                      : 'Tener un registro de las búsquedas exitosas realizadas, es decir, un historial de búsquedas'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'FAQ section to clear doubts'
+                      : 'Sección de preguntas frecuentes para despejar dudas'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Readme section for more technical aspects'
+                      : 'Sección de README para aspectos más técnicos'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Contact section to share your user experience'
+                      : 'Sección de contacto para contarnos tu experiencia de usuario'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Contact social networks to collaborate or work together'
+                      : 'Redes sociales laborales de contacto para colaborar o trabajar juntos'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'Intuitive messages about usage errors and information'
+                      : 'Mensajes intuitivos sobre errores de uso e informativos'}
+                  </li>
+                  <li>
+                    {languageEng
+                      ? 'In case of a non-existing location or syntax error in the search, redirect to a 404 page with information about what happened'
+                      : 'En caso de no existir una ubicación o tener un error de sintaxis en la búsqueda, redirección a una página 404 con información sobre qué pasó'}
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <video controls>
+                  <source
+                    src={overview_app}
+                    type='video/mp4'
+                  />
+                  {languageEng
+                    ? 'Your browser does not support the video element.'
+                    : 'Tu navegador no soporta el elemento de video.'}
+                </video>
               </div>
               <p>
                 {languageEng

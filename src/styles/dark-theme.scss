@@ -633,7 +633,7 @@ body {
         color: $woodsmoke-600;
         box-shadow: 5px 5px 5px #13131336;
         transition: all 300ms;
-        z-index: 10;
+        z-index: 100;
         gap: 0.5em;
         scale: 0.8;
         font-weight: 700;
@@ -1832,7 +1832,45 @@ body {
             margin: 1em 0;
           }
         }
+
+        > :nth-child(3) {
+          margin-top: 1em;
+          border: 1px solid #ffffff28;
+          padding: 1em;
+          background-color: #2b2937;
+          border-radius: 0.3em;
+
+          p {
+            font-weight: bolder;
+            font-size: 1.2em;
+            width: max-content;
+          }
+          ul {
+            margin: 1em 0 0 2em;
+
+            li {
+              list-style: disc;
+              margin-top: 1em;
+              font-size: 0.9em;
+              font-weight: lighter;
+              text-wrap: pretty;
+            }
+          }
+        }
+
+        > :nth-child(4) {
+          @extend %flex-col-center;
+          padding-top: 2em;
+
+          video {
+            border: 1px solid #ffffff28;
+            flex-grow: 3;
+            border-radius: 0.3em;
+            padding: 0.1em;
+          }
+        }
         > :last-child {
+          margin-top: 2em;
           font-family: $josefin;
           text-align: center;
           font-size: 1.2em;
