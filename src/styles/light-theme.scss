@@ -1092,6 +1092,7 @@ body {
     color: $valencia-500;
     cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
+    transition: all 1s;
 
     &:hover {
       color: $red-stage-800;
@@ -1375,7 +1376,7 @@ body {
     gap: 1em;
     font-family: $roboto;
 
-    .aaa {
+    .wraper {
       padding: 2em 6em 1em 6em;
       background-color: #efefef;
       border-radius: 0.3em;
@@ -1514,7 +1515,7 @@ body {
         }
       }
 
-      #status-container-lt {
+      #usage-container-lt {
         border: 1px solid #00000025;
         border-top: none;
         padding: 1em;
@@ -1584,6 +1585,10 @@ body {
             }
             &:first-child {
               border-top: none;
+              padding-top: 1em;
+            }
+            &:last-child {
+              padding-bottom: 2em;
             }
           }
         }

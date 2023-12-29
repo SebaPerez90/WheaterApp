@@ -1179,6 +1179,7 @@ body {
     font-size: 1.3em;
     cursor: url('/src/assets/images/cloud-hover.png'), auto;
     animation: up-arrow 700ms ease-in-out alternate-reverse infinite;
+    transition: all 1s;
 
     &:hover {
       color: $woodsmoke-300;
@@ -1432,7 +1433,8 @@ body {
     flex-direction: column;
     gap: 1em;
     font-family: $roboto;
-    .aaa {
+
+    .wraper {
       > h1 {
         font-size: 1.7em;
         text-align: center;
@@ -1470,7 +1472,7 @@ body {
         }
       }
 
-      #overview-container-dt {
+      #features-container-dt {
         border: 1px solid #ffffff28;
         border-top: none;
         padding: 1em;
@@ -1489,17 +1491,36 @@ body {
           gap: 3em;
 
           > :first-child {
-            margin-top: 1em;
-            border-bottom: 4px solid #3c59fe;
+            @extend %flex-col-center;
+            width: max-content;
+            margin: 0 auto;
+            font-family: $roboto-italic;
+            padding: 2em;
+            border: 1px solid #ffffff28;
+            background-color: #2b2937;
+            border-radius: 0.5em;
+
             h1 {
-              font-size: 2.5em;
-              text-align: center;
-              font-weight: bolder;
-              color: #3c59fe;
+              scale: 2;
+              padding-bottom: 1em;
             }
-            p {
-              font-family: $josefin;
-              margin: 1em 0;
+
+            > :nth-child(2) {
+              @extend %flex-col-center;
+
+              p {
+                width: max-content;
+                padding-bottom: 0.3em;
+                border-bottom: 3px solid #ffffff28;
+              }
+              ul {
+                margin-top: 1em;
+                li {
+                  list-style: disc;
+                  margin-top: 1em;
+                  font-size: 0.9em;
+                }
+              }
             }
           }
           .second-container-dt {
@@ -1525,13 +1546,6 @@ body {
                 font-weight: bolder;
               }
             }
-          }
-
-          > :last-child {
-            font-family: $josefin;
-            text-align: center;
-            font-size: 1.2em;
-            text-wrap: pretty;
           }
         }
       }
@@ -1566,7 +1580,7 @@ body {
         }
       }
 
-      #status-container-dt {
+      #usage-container-dt {
         border: 1px solid #ffffff28;
         border-top: none;
         padding: 1em;
@@ -1577,6 +1591,58 @@ body {
           border-bottom: 1px solid $light;
           width: max-content;
           padding-bottom: 0.2em;
+        }
+
+        .usage-dt {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          > :first-child,
+          > :nth-child(2),
+          > :nth-child(3) {
+            @include overViewElement(#2b2937);
+            font-family: $josefin;
+            height: 13em;
+            margin-top: 1em;
+            width: 23em;
+
+            .history-img-reference {
+              scale: 1.2;
+            }
+            > :first-child {
+              position: absolute;
+              top: 1em;
+              z-index: 50;
+
+              &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                right: -13em;
+                bottom: -1em;
+                width: 3000%;
+                height: 250%;
+                background-color: #8580b05e;
+                z-index: -1;
+              }
+            }
+
+            > :nth-child(2) {
+              text-wrap: balance;
+              text-align: center;
+              transform: translateY(1.5em);
+            }
+            > :last-child {
+              padding: 0 3em;
+            }
+
+            img {
+              height: 2em;
+              transform: translateY(1.5em);
+            }
+          }
         }
       }
 
@@ -1635,6 +1701,10 @@ body {
             }
             &:first-child {
               border-top: none;
+              padding-top: 1em;
+            }
+            &:last-child {
+              padding-bottom: 2em;
             }
           }
         }
@@ -1653,11 +1723,15 @@ body {
           width: max-content;
           padding-bottom: 0.2em;
         }
+        > h3 {
+          margin-top: 0.5em;
+        }
         .container-dt {
           margin-top: 2em;
 
           > :first-child {
             margin-top: 2em;
+
             .git-clone-dt {
               margin: 0.5em 0;
               display: flex;
@@ -1731,7 +1805,7 @@ body {
         }
       }
 
-      #features-container-dt {
+      #overview-container-dt {
         border: 1px solid #ffffff28;
         border-top: none;
         padding: 1em;
@@ -1742,6 +1816,27 @@ body {
           border-bottom: 1px solid $light;
           width: max-content;
           padding-bottom: 0.2em;
+        }
+
+        > :nth-child(2) {
+          margin-top: 1em;
+          border-bottom: 4px solid #3c59fe;
+          h1 {
+            font-size: 2.5em;
+            text-align: center;
+            font-weight: bolder;
+            color: #3c59fe;
+          }
+          p {
+            font-family: $josefin;
+            margin: 1em 0;
+          }
+        }
+        > :last-child {
+          font-family: $josefin;
+          text-align: center;
+          font-size: 1.2em;
+          text-wrap: pretty;
         }
       }
 

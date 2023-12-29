@@ -6,6 +6,12 @@ import { Link } from 'wouter';
 import { FaCopy } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { FaArrowUpLong } from 'react-icons/fa6';
+import input_dt from '../assets/images/input-marked-dt.png';
+import input_lt from '../assets/images/input-marked-lt.png';
+import btn_dt from '../assets/images/btn-marked-dt.png';
+import btn_lt from '../assets/images/btn-marked-lt.png';
+import history_dt from '../assets/images/history-marked-dt.png';
+import history_lt from '../assets/images/history-marked-lt.png';
 
 const Readme = () => {
   const { themeDark, languageEng } = useStore();
@@ -34,7 +40,7 @@ const Readme = () => {
     <>
       <Header />
       <main className={themeDark ? 'readme-main-dt' : 'readme-main-lt'}>
-        <div className='aaa'>
+        <div className='wraper'>
           <h1>{languageEng ? 'README SECTION' : 'README SECCIÓN'}</h1>
           <p>
             {languageEng
@@ -51,13 +57,13 @@ const Readme = () => {
                   </a>
                 </li>
                 <li>
-                  <a href={themeDark ? '#design-container-dt' : '#design-container-lt'}>
-                    {languageEng ? 'Design / Structure' : 'Diseño / Estructura'}
+                  <a href={themeDark ? '#features-container-dt' : '#features-container-lt'}>
+                    {languageEng ? 'Features' : 'Funcionalidades'}
                   </a>
                 </li>
                 <li>
-                  <a href={themeDark ? '#status-container-dt' : '#status-container-lt'}>
-                    {languageEng ? 'Project status' : 'Estado del proyecto'}
+                  <a href={themeDark ? '#usage-container-dt' : '#usage-container-lt'}>
+                    {languageEng ? 'How to use' : 'Modo de uso'}
                   </a>
                 </li>
                 <li>
@@ -71,8 +77,8 @@ const Readme = () => {
                   </a>
                 </li>
                 <li>
-                  <a href={themeDark ? '#features-container-dt' : '#features-container-lt'}>
-                    {languageEng ? 'Features' : 'Funcionalidades'}
+                  <a href={themeDark ? '#design-container-dt' : '#design-container-lt'}>
+                    {languageEng ? 'Design / Structure' : 'Diseño / Estructura'}
                   </a>
                 </li>
                 <li>
@@ -85,14 +91,49 @@ const Readme = () => {
 
             <section id={themeDark ? 'overview-container-dt' : 'overview-container-lt'}>
               <h2>{languageEng ? 'Overview' : 'Descripción general'}</h2>
+              <div>
+                <h1>{languageEng ? 'Welcome to the Weather App!' : '¡Bienvenido a la Aplicación del Clima!'}</h1>
+                <p>
+                  {languageEng
+                    ? 'This is an interactive application developed with React that allows you to explore the current weather and future forecasts in a simple and dynamic way.'
+                    : 'Esta es una aplicación interactiva desarrollada con React que te permite explorar el clima actual y pronósticos futuros de manera sencilla y dinámica.'}
+                </p>
+              </div>
+              <p>
+                {languageEng
+                  ? 'Explore the weather in your area or anywhere in the world intuitively with the Weather App!'
+                  : '¡Explora el clima en tu zona o en cualquier lugar del mundo de manera intuitiva con la Aplicación del Clima!'}
+              </p>
+            </section>
+
+            <section id={themeDark ? 'features-container-dt' : 'features-container-lt'}>
+              <h2>{languageEng ? 'Features' : 'Funcionalidades'}</h2>
               <div className={themeDark ? 'container-dt' : 'container-lt'}>
                 <div>
-                  <h1>{languageEng ? 'Welcome to the Weather App!' : '¡Bienvenido a la Aplicación del Clima!'}</h1>
-                  <p>
-                    {languageEng
-                      ? 'This is an interactive application developed with React that allows you to explore the current weather and future forecasts in a simple and dynamic way.'
-                      : 'Esta es una aplicación interactiva desarrollada con React que te permite explorar el clima actual y pronósticos futuros de manera sencilla y dinámica.'}
-                  </p>
+                  <h1>💡</h1>
+                  <div>
+                    <p>
+                      {languageEng
+                        ? 'You can adjust the app according to your preferences '
+                        : 'Puedes ajustar la app segun tus preferencias '}
+                      <strong>:</strong>
+                    </p>
+                    <ul>
+                      <li>
+                        {languageEng
+                          ? 'Click on the hamburger menu at the top right.'
+                          : 'Haz click en el menu de barras en la parte superior derecha'}
+                      </li>
+                      <li>
+                        {languageEng ? 'Click on the "preferences" option' : 'Haz click en la opción "preferencias" '}
+                      </li>
+                      <li>
+                        {languageEng
+                          ? 'Set up the language, theme, and temperature unit.'
+                          : 'Configura el idioma, el tema y la unidad de temperatura.'}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div className={themeDark ? 'second-container-dt' : 'second-container-lt'}>
                   <div>
@@ -136,12 +177,115 @@ const Readme = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </section>
+
+            <section id={themeDark ? 'usage-container-dt' : 'usage-container-lt'}>
+              <h2>{languageEng ? 'How to use' : 'Modo de uso'}</h2>
+              <div className={themeDark ? 'usage-dt' : 'usage-lt'}>
+                <div>
+                  <p>step 1</p>
+                  <p>{languageEng ? 'Fill the input field' : 'Llenar el input'}</p>
+                  <img
+                    src={themeDark ? input_dt : input_lt}
+                    alt='input-img-reference'
+                  />
+                </div>
+                <div>
+                  <p>step 2</p>
+                  <p>{languageEng ? 'Click the search button.' : 'Haz click el boton de busqueda'}</p>
+                  <img
+                    src={themeDark ? btn_dt : btn_lt}
+                    alt='button-img-reference'
+                  />
+                </div>
+                <div>
+                  <h3>step 3</h3>
+                  <p>
+                    {languageEng
+                      ? 'Click on the icon on the left-hand side to view the search history.'
+                      : 'Haz click en el icono en la parte izquierda para ver el historial de busquedas.'}
+                  </p>
+                  <img
+                    className='history-img-reference'
+                    src={themeDark ? history_dt : history_lt}
+                    alt='history-img-reference'
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section id={themeDark ? 'technologies-container-dt' : 'technologies-container-lt'}>
+              <div>
+                <h2>{languageEng ? 'Technologies' : 'Tecnologías'}</h2>
                 <p>
                   {languageEng
-                    ? 'Explore the weather in your area or anywhere in the world intuitively with the Weather App!'
-                    : '¡Explora el clima en tu zona o en cualquier lugar del mundo de manera intuitiva con la Aplicación del Clima!'}
+                    ? 'For this project, the following technologies were used:'
+                    : 'Para este proyecto, se emplearon las siguientes tecnologías:'}
                 </p>
               </div>
+              <ul>
+                <li>
+                  <span>Node.js</span>
+                  <p>
+                    {languageEng
+                      ? 'Used as the package manager for the project'
+                      : 'Utilizado como gestor de paquetes del proyecto'}
+                  </p>
+                </li>
+                <li>
+                  <span>React.js</span>
+                  <p>
+                    {languageEng
+                      ? 'Used as the foundation of the project for the user interface'
+                      : 'Utilizado como base del proyecto para la interfaz de usuario'}
+                  </p>
+                </li>
+                <li>
+                  <span>React Icons</span>
+                  <p>
+                    {languageEng ? 'Used for icons within the project' : 'Utilizado para iconos dentro del proyecto'}
+                  </p>
+                </li>
+                <li>
+                  <span>Sass</span>
+                  <p>
+                    {languageEng
+                      ? 'Used for styling throughout the application'
+                      : 'Utilizado para estilar en general de la aplicación'}
+                  </p>
+                </li>
+                <li>
+                  <span>Tailwind</span>
+                  <p>
+                    {languageEng
+                      ? 'Used to style most of the weather cards in ./src/components/WeatherCards for its simplicity and easy implementation'
+                      : 'Utilizado para estilar en su mayor parte las cartas de climas ./src/components/WeatherCards por su simplicidad y facil implementación'}
+                  </p>
+                </li>
+                <li>
+                  <span>Zustand</span>
+                  <p>{languageEng ? 'Used as global state manager' : 'Utilizado como gestor de estado global'}</p>
+                </li>
+                <li>
+                  <span>Wouter</span>
+                  <p>
+                    {languageEng ? 'Used for application routing' : 'Utilizado para el enrutamiento de la aplicación'}
+                  </p>
+                </li>
+                <li>
+                  <span>Eslint / Prettier</span>
+                  <p>
+                    {languageEng
+                      ? 'Used to maintain code consistency and apply coding styles'
+                      : 'Utilizados para mantener la consistencia del código y aplicar estilos de codificación.'}
+                  </p>
+                </li>
+                <li>
+                  <span>{languageEng ? 'Resource/ API' : 'Recurso / API'}</span>
+                  <p>{languageEng ? 'https://home.openweathermap.org/' : 'https://home.openweathermap.org/'}</p>
+                </li>
+              </ul>
             </section>
 
             <section id={themeDark ? 'instalation-container-dt' : 'instalation-container-lt'}>
@@ -225,87 +369,6 @@ const Readme = () => {
                 <li>App.jsx</li>
                 <li>Main.jsx</li>
               </ul>
-            </section>
-
-            <section id={themeDark ? 'status-container-dt' : 'status-container-lt'}>
-              <h2>{languageEng ? 'Project status' : 'Estado del proyecto'}</h2>
-            </section>
-
-            <section id={themeDark ? 'technologies-container-dt' : 'technologies-container-lt'}>
-              <div>
-                <h2>{languageEng ? 'Technologies' : 'Tecnologías'}</h2>
-                <p>
-                  {languageEng
-                    ? 'For this project, the following technologies were used:'
-                    : 'Para este proyecto, se emplearon las siguientes tecnologías:'}
-                </p>
-              </div>
-              <ul>
-                <li>
-                  <span>Node.js</span>
-                  <p>
-                    {languageEng
-                      ? 'Used as the package manager for the project'
-                      : 'Utilizado como gestor de paquetes del proyecto'}
-                  </p>
-                </li>
-                <li>
-                  <span>React.js</span>
-                  <p>
-                    {languageEng
-                      ? 'Used as the foundation of the project for the user interface'
-                      : 'Utilizado como base del proyecto para la interfaz de usuario'}
-                  </p>
-                </li>
-                <li>
-                  <span>React Icons</span>
-                  <p>
-                    {languageEng ? 'Used for icons within the project' : 'Utilizado para iconos dentro del proyecto'}
-                  </p>
-                </li>
-                <li>
-                  <span>Sass</span>
-                  <p>
-                    {languageEng
-                      ? 'Used for styling throughout the application'
-                      : 'Utilizado para estilar en general de la aplicación'}
-                  </p>
-                </li>
-                <li>
-                  <span>Tailwind</span>
-                  <p>
-                    {languageEng
-                      ? 'Used to style most of the weather cards in ./src/components/WeatherCards for its simplicity and easy implementation'
-                      : 'Utilizado para estilar en su mayor parte las cartas de climas ./src/components/WeatherCards por su simplicidad y facil implementación'}
-                  </p>
-                </li>
-                <li>
-                  <span>Zustand</span>
-                  <p>{languageEng ? 'Used as global state manager' : 'Utilizado como gestor de estado global'}</p>
-                </li>
-                <li>
-                  <span>Wouter</span>
-                  <p>
-                    {languageEng ? 'Used for application routing' : 'Utilizado para el enrutamiento de la aplicación'}
-                  </p>
-                </li>
-                <li>
-                  <span>Eslint / Prettier</span>
-                  <p>
-                    {languageEng
-                      ? 'Used to maintain code consistency and apply coding styles'
-                      : 'Utilizados para mantener la consistencia del código y aplicar estilos de codificación.'}
-                  </p>
-                </li>
-                <li>
-                  <span>{languageEng ? 'Resource/ API' : 'Recurso / API'}</span>
-                  <p>{languageEng ? 'https://home.openweathermap.org/' : 'https://home.openweathermap.org/'}</p>
-                </li>
-              </ul>
-            </section>
-
-            <section id={themeDark ? 'features-container-dt' : 'features-container-lt'}>
-              <h2>{languageEng ? 'Features' : 'Funcionalidades'}</h2>
             </section>
 
             <section id={themeDark ? 'contact-container-dt' : 'contact-container-lt'}>
