@@ -1433,6 +1433,7 @@ body {
     flex-direction: column;
     gap: 1em;
     font-family: $roboto;
+    overflow: hidden;
 
     .wraper {
       > h1 {
@@ -1441,7 +1442,8 @@ body {
         font-weight: bolder;
       }
       > p {
-        padding-bottom: 1em;
+        padding: 2em 0;
+        font-size: 1.2em;
         font-family: $roboto-italic;
       }
 
@@ -1467,6 +1469,14 @@ body {
 
             a {
               cursor: url('/src/assets/images/cloud-hover.png'), auto !important;
+              transition: all 300ms;
+
+              &:hover {
+                font-weight: bolder;
+                color: #3c59fe;
+                transition: all 300ms;
+                font-weight: 900 !important;
+              }
             }
           }
         }
@@ -1602,45 +1612,103 @@ body {
           > :first-child,
           > :nth-child(2),
           > :nth-child(3) {
-            @include overViewElement(#2b2937);
-            font-family: $josefin;
-            height: 13em;
-            margin-top: 1em;
-            width: 23em;
+            @extend %flex-col-center;
+            border-bottom: 1px solid #ffffff28;
+            padding: 0 1em 1em 1em;
 
-            .history-img-reference {
-              scale: 1.2;
-            }
             > :first-child {
-              position: absolute;
-              top: 1em;
-              z-index: 50;
+              @include overViewElement(#2b2937);
+              border: 2px solid #ffffff28;
+              font-family: $josefin;
+              height: 13em;
+              margin-top: 1.1em;
+              width: 23em;
 
-              &::after {
-                content: '';
+              .history-img-reference {
+                scale: 1.2;
+              }
+
+              > :first-child {
                 position: absolute;
-                display: block;
-                right: -13em;
-                bottom: -1em;
-                width: 3000%;
-                height: 250%;
-                background-color: #8580b05e;
-                z-index: -1;
+                top: 1em;
+                z-index: 50;
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  display: block;
+                  right: -13em;
+                  bottom: -1em;
+                  width: 3000%;
+                  height: 250%;
+                  background-color: #8580b05e;
+                  z-index: -1;
+                }
+              }
+
+              > :nth-child(2) {
+                text-wrap: balance;
+                text-align: center;
+                transform: translateY(1.5em);
+              }
+              > :last-child {
+                padding: 0 3em;
+              }
+
+              img {
+                height: 2em;
+                transform: translateY(1.5em);
               }
             }
 
-            > :nth-child(2) {
-              text-wrap: balance;
-              text-align: center;
-              transform: translateY(1.5em);
+            > p {
+              line-height: 1em;
             }
-            > :last-child {
-              padding: 0 3em;
-            }
+          }
+        }
+
+        > :last-child {
+          display: flex;
+          flex-direction: column;
+          margin-top: 2em;
+
+          h1 {
+            background-color: #3c59fe;
+            width: max-content;
+            margin: 0 auto;
+            padding: 1.2em 2.5em;
+            border-radius: 0.3em;
+            font-size: 1.2em;
+          }
+
+          > :last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em;
 
             img {
-              height: 2em;
-              transform: translateY(1.5em);
+              object-fit: cover;
+              height: 20em;
+              width: 4em;
+              opacity: 0.7;
+              transition: all 1s;
+              border-radius: 0.5em;
+              margin: 0 0.2em;
+
+              &:hover {
+                @extend %flex-row-center;
+                width: 100%;
+                opacity: 1;
+                transition: all 600ms;
+                border: 3px solid #ffffff28;
+              }
+            }
+            > :first-child:hover {
+              margin-left: 50%;
+            }
+            > :last-child:hover {
+              margin-right: 50%;
             }
           }
         }
@@ -1862,6 +1930,37 @@ body {
           @extend %flex-col-center;
           padding-top: 2em;
 
+          p {
+            width: 100%;
+            font-size: 1.15em;
+            padding: 1em;
+            text-align: center;
+            background-color: #3c59fe;
+            border-radius: 0.3em 0.3em 0 0;
+            border: 1px solid #ffffff28;
+            border-bottom: none;
+          }
+          video {
+            border: 1px solid #ffffff28;
+            flex-grow: 3;
+            border-radius: 0.3em;
+            padding: 0.1em;
+          }
+        }
+        > :nth-child(5) {
+          @extend %flex-col-center;
+          padding-top: 2em;
+
+          p {
+            width: 100%;
+            font-size: 1.15em;
+            padding: 1em;
+            text-align: center;
+            background-color: #3c59fe;
+            border-radius: 0.3em 0.3em 0 0;
+            border: 1px solid #ffffff28;
+            border-bottom: none;
+          }
           video {
             border: 1px solid #ffffff28;
             flex-grow: 3;
@@ -1870,10 +1969,12 @@ body {
           }
         }
         > :last-child {
+          border-top: 4px solid #3c59fe;
+          padding-top: 1em;
           margin-top: 2em;
           font-family: $josefin;
           text-align: center;
-          font-size: 1.2em;
+          font-size: 1.3em;
           text-wrap: pretty;
         }
       }
@@ -1918,10 +2019,11 @@ body {
             }
             img {
               border-radius: 50%;
+              padding: 0.05em;
               height: 12em;
               width: 12em;
               object-fit: cover;
-              border: 2px solid $light;
+              border: 3px solid #3c59fe;
             }
           }
         }
@@ -1933,10 +2035,26 @@ body {
           background-color: #2b2937;
           border-radius: 0.3em;
           padding: 2em;
+          overflow: hidden;
 
           p {
             text-align: center;
             font-family: $roboto-italic;
+            top: -1em;
+            position: relative;
+            z-index: 10;
+
+            &::before {
+              content: '';
+              position: absolute;
+              width: 200%;
+              height: 100%;
+              padding: 3em 0;
+              left: -5em;
+              bottom: -1em;
+              background-color: #3c59fe;
+              z-index: -1;
+            }
           }
 
           ul {

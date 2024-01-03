@@ -13,6 +13,14 @@ import btn_lt from '../assets/images/btn-marked-lt.png';
 import history_dt from '../assets/images/history-marked-dt.png';
 import history_lt from '../assets/images/history-marked-lt.png';
 import overview_app from '../assets/videos/overview-app.mp4';
+import overview_weather_cards from '../assets/videos/weather-cards-presentation.mp4';
+import screen_1 from '../assets/images/screenshoot-1.png';
+import screen_2 from '../assets/images/screenshoot-2.png';
+import screen_3 from '../assets/images/screenshoot-3.png';
+import screen_4 from '../assets/images/screenshoot-4.png';
+import screen_5 from '../assets/images/screenshoot-5.png';
+import screen_6 from '../assets/images/screenshoot-6.png';
+import screen_7 from '../assets/images/screenshoot-7.png';
 
 const Readme = () => {
   const { themeDark, languageEng } = useStore();
@@ -172,9 +180,30 @@ const Readme = () => {
               </div>
 
               <div>
+                <p>
+                  {languageEng
+                    ? 'Overall presentation of some functionalities and features of the application.'
+                    : 'Presentacion general de algunas funcionalidades y caracteristicas de la aplicación.'}
+                </p>
                 <video controls>
                   <source
                     src={overview_app}
+                    type='video/mp4'
+                  />
+                  {languageEng
+                    ? 'Your browser does not support the video element.'
+                    : 'Tu navegador no soporta el elemento de video.'}
+                </video>
+              </div>
+              <div>
+                <p>
+                  {languageEng
+                    ? 'Here are the cards displaying potential weather conditions based on the search conducted.'
+                    : 'Estas son las tarjetas de las posibles condiciones climáticas , dependiendo de la busqueda que se realize.'}
+                </p>
+                <video controls>
+                  <source
+                    src={overview_weather_cards}
                     type='video/mp4'
                   />
                   {languageEng
@@ -266,33 +295,88 @@ const Readme = () => {
             <section id={themeDark ? 'usage-container-dt' : 'usage-container-lt'}>
               <h2>{languageEng ? 'How to use' : 'Modo de uso'}</h2>
               <div className={themeDark ? 'usage-dt' : 'usage-lt'}>
-                <div>
-                  <p>step 1</p>
-                  <p>{languageEng ? 'Fill the input field' : 'Llenar el input'}</p>
-                  <img
-                    src={themeDark ? input_dt : input_lt}
-                    alt='input-img-reference'
-                  />
-                </div>
-                <div>
-                  <p>step 2</p>
-                  <p>{languageEng ? 'Click the search button.' : 'Haz click el boton de busqueda'}</p>
-                  <img
-                    src={themeDark ? btn_dt : btn_lt}
-                    alt='button-img-reference'
-                  />
-                </div>
-                <div>
-                  <h3>step 3</h3>
+                <div className='wraper'>
+                  <div>
+                    <p>step 1</p>
+                    <p>{languageEng ? 'Fill the input field' : 'Llenar el input'}</p>
+                    <img
+                      src={themeDark ? input_dt : input_lt}
+                      alt='input-img-reference'
+                    />
+                  </div>
                   <p>
                     {languageEng
-                      ? 'Click on the icon on the left-hand side to view the search history.'
-                      : 'Haz click en el icono en la parte izquierda para ver el historial de busquedas.'}
+                      ? 'Make sure to enter the desired location correctly and semantically, as any syntax error might redirect you to the "not-found" page, indicating that the search does not exist. It is also important to avoid using accents and specify the country. Simply entering the city in the search is sufficient.'
+                      : 'Asegúrate de escribir la ubicación que desees correcta semánticamente , ya que si hay algún error de sintaxis podría redireccionarte a la pagina "not-found" que significa que la busqueda no existe. También es importante omitir el uso de acentos , como también especificar país. Con solo realizar la busqueda con la ciudad es suficiente.'}
                   </p>
+                </div>
+                <div className='wraper'>
+                  <div>
+                    <p>step 2</p>
+                    <p>{languageEng ? 'Click the search button.' : 'Haz click el boton de busqueda'}</p>
+                    <img
+                      src={themeDark ? btn_dt : btn_lt}
+                      alt='button-img-reference'
+                    />
+                  </div>
+                  <p>
+                    {languageEng
+                      ? 'Make sure that the text field is not empty, as otherwise you won´t be able to proceed. However, the application is intuitive and will display a message with further information. The same process must be followed after each successful search.'
+                      : 'Asegurate de que el campo de texto no se encuentre vacio ya que esa manera no podrás avanzar, de todas formas la aplicación es intuitiva y se te mostrara un mensaje con mas información al respecto. El mismo proceso se debe realizar despues de cada busqueda exitosa.'}
+                  </p>
+                </div>
+                <div className='wraper'>
+                  <div>
+                    <h3>step 3</h3>
+                    <p>
+                      {languageEng
+                        ? 'After each successful search, they are saved in the search history.'
+                        : 'Luego de cada busqueda exitosa , estas se guardan en el historial de busquedas.'}
+                    </p>
+                    <img
+                      className='history-img-reference'
+                      src={themeDark ? history_dt : history_lt}
+                      alt='history-img-reference'
+                    />
+                  </div>
+                  <p>
+                    {languageEng
+                      ? 'Before conducting a search, make sure to set up the application beforehand. To be more precise, configure the temperature measurement unit, as the stored data is saved in degrees depending on whether you prefer Fahrenheit or Celsius.'
+                      : 'Antes de realizar una busqueda , asegurate de configurar previamente la aplicación. Para ser mas preciso , la unidad de medición de temperatura , ya que los datos almacenados se guardan en los grados dependiendo si usted prefiere Fahrenheit or Celsius.'}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h1>{languageEng ? 'Screenshoots' : 'Capturas de Pantalla'}</h1>
+                <div>
                   <img
-                    className='history-img-reference'
-                    src={themeDark ? history_dt : history_lt}
-                    alt='history-img-reference'
+                    src={screen_1}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    className='rounded-lg'
+                    src={screen_2}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    src={screen_3}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    src={screen_4}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    src={screen_5}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    src={screen_6}
+                    alt='screen-shoot-feature'
+                  />
+                  <img
+                    src={screen_7}
+                    alt='screen-shoot-feature'
                   />
                 </div>
               </div>
