@@ -563,13 +563,13 @@ body {
       .search-history-lt {
         text-shadow: 1px 1px 1px #13131397;
         transform: translate(-20em, 3em) scale(0.5);
-        bottom: 5.5em;
         text-transform: capitalize;
         transition: all 300ms;
         padding: 3.5em 2em;
         display: flex;
         position: absolute;
         left: 0;
+        top: 13em;
         border-radius: 0.5em;
         border-top: 2px solid $red-stage-700;
         border-right: 2px solid $red-stage-700;
@@ -660,8 +660,8 @@ body {
       }
 
       .weather-info-section-lt {
-        background-color: $valencia-200;
-        text-shadow: 2px 1px 1px #13131331;
+        text-shadow: 2px 1px 1px #13131368;
+        background: $valencia-200;
         border-radius: 0 0 0.6em 0.6em;
         display: grid;
         grid-template-columns: repeat(3, 0.5fr);
@@ -716,6 +716,7 @@ body {
     p {
       text-align: center;
       width: max-content;
+      margin:  0 auto;
       font-family: $josefin;
       border-bottom: 2px solid $valencia-200;
       text-shadow: 1px 1px 1px #00000058;
@@ -730,8 +731,11 @@ body {
       .aside-grid-item-1 {
         @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
+        animation: overviewApp 500ms linear forwards;
+
         > :first-child {
           @include dark-theme.aside_date($valencia-400, $light, $light);
+          color: $light;
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -748,15 +752,20 @@ body {
         }
         > :last-child {
           position: absolute;
+          filter: drop-shadow(2px 2px 2px #13131336);
+          scale: 2;
+          transform: translate(0.5em, 1em);
         }
       }
 
       .aside-grid-item-2 {
         @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
+        animation: overviewApp 800ms linear forwards;
 
         > :first-child {
           @include dark-theme.aside_date($valencia-400, $light, $light);
+          color: $light;
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -773,14 +782,19 @@ body {
         }
         > :last-child {
           position: absolute;
+          filter: drop-shadow(2px 2px 2px #13131336);
+          scale: 2;
+          transform: translate(0.5em, 1em);
         }
       }
       .aside-grid-item-3 {
         @include dark-theme.aside_item($valencia-200);
         box-shadow: 5px 5px 5px #13131336;
+        animation: overviewApp 1.2s linear forwards;
 
         > :first-child {
           @include dark-theme.aside_date($valencia-400, $light, $light);
+          color: $light;
         }
         > :nth-child(2) {
           grid-row: 4;
@@ -797,6 +811,9 @@ body {
         }
         > :last-child {
           position: absolute;
+          filter: drop-shadow(2px 2px 2px #13131336);
+          scale: 2;
+          transform: translate(0.5em, 1em);
         }
       }
     }
@@ -1480,6 +1497,17 @@ body {
               font-size: 0.9em;
               font-weight: lighter;
               text-wrap: pretty;
+
+              .link {
+                color: #3c59fe;
+                transition: all 300ms;
+
+                &:hover {
+                  cursor: url('/src/assets/images/cloud-hover.png'), auto;
+                  font-weight: 900;
+                  transition: all 300ms;
+                }
+              }
             }
           }
         }

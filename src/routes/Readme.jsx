@@ -157,9 +157,8 @@ const Readme = () => {
                       : 'Sección de README para aspectos más técnicos'}
                   </li>
                   <li>
-                    {languageEng
-                      ? 'Contact section to share your user experience'
-                      : 'Sección de contacto para contarnos tu experiencia de usuario'}
+                    <Link to='/home' className='link'>{languageEng ? 'Contact section ' : 'Sección de contacto '}</Link>
+                    {languageEng ? 'to share your user experience' : 'para contarnos tu experiencia de usuario'}
                   </li>
                   <li>
                     {languageEng

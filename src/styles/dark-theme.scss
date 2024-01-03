@@ -72,7 +72,7 @@ $woodsmoke-950: #0b0a0f;
   background-color: $bg-color;
   border-radius: 0.5em;
   font-family: $roboto-italic;
-  text-shadow: 2px 1px 1px #13131331;
+  text-shadow: 2px 1px 1px #13131365;
 }
 
 @mixin aside_date($bg-color, $border-l, $border-r) {
@@ -131,8 +131,8 @@ body {
   cursor: url('/src/assets/images/cloud.png'), auto;
 
   ::-webkit-scrollbar {
-    background-color: #ffffff6e;
-    width: 7px;
+    background-color: #ffffff5f;
+    width: 8px;
   }
   ::-webkit-scrollbar-thumb {
     background-color: $light;
@@ -579,6 +579,7 @@ body {
         display: flex;
         position: absolute;
         left: 0;
+        top: 13em;
         border-radius: 0.5em;
         border: 2px solid $woodsmoke-400;
         background-color: $woodsmoke-500;
@@ -721,6 +722,7 @@ body {
 
       p {
         text-align: center;
+        margin: 0 auto;
         font-family: $josefin;
         border-bottom: 2px solid $woodsmoke-400;
       }

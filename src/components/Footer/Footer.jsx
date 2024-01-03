@@ -94,7 +94,7 @@ export default function Footer() {
           <li>
             <a
               className={themeDark ? 'list-item-dt email' : 'list-item-lt email'}
-              href='/form'
+              href='/contact'
               rel='noreferrer'
             >
               <SiMinutemailer />
