@@ -83,7 +83,7 @@ export default function Header() {
 
       <div className={themeDark ? 'header-title-container-dt' : 'header-title-container-lt'}>
         <div>
-          <h1>{languageEng ? 'Wheatter App' : 'Aplicacion del Clima'}</h1>
+          <h1>{languageEng ? 'Weather App' : 'Aplicacion del Clima'}</h1>
           {themeDark ? (
             <img
               src={moonIcon}
