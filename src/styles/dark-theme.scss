@@ -818,7 +818,7 @@ body {
     text-align: center;
     height: 100vh;
     font-family: $roboto;
-
+    
     > ::after {
       content: '';
       position: absolute;
@@ -864,11 +864,10 @@ body {
 
       .btn-message-container {
         position: relative;
-        top: 7em;
+        top: 5em;
 
         .not-found-redirect-btn {
           position: relative;
-          top: 0.5em;
           scale: 0.8;
           padding: 0.5em;
           border-radius: 0.4em;
@@ -1442,9 +1441,13 @@ body {
         font-size: 1.7em;
         text-align: center;
         font-weight: bolder;
+        color: #3c59fe;
+        border-bottom: 4px solid #3c59fe;
+        width: max-content;
+        margin: 0 auto;
       }
       > p {
-        padding: 2em 0;
+        padding: 1em 0 2em 0;
         font-size: 1.2em;
         font-family: $roboto-italic;
       }
@@ -1870,6 +1873,26 @@ body {
               width: max-content;
               padding: 1.5em 1em;
               font-size: 0.8em;
+            }
+          }
+        }
+        > :last-child {
+          margin-top: 2em;
+          > :last-child {
+            margin: 0.5em 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            background-color: #2b2937;
+            border: 1px solid #ffffff28;
+            border-radius: 0.4em;
+            width: max-content;
+            padding: 1.5em 1em;
+            font-size: 0.9em;
+
+            span {
+              color: #549c5a;
+              font-family: $roboto;
             }
           }
         }

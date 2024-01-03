@@ -157,7 +157,12 @@ const Readme = () => {
                       : 'Sección de README para aspectos más técnicos'}
                   </li>
                   <li>
-                    <Link to='/home' className='link'>{languageEng ? 'Contact section ' : 'Sección de contacto '}</Link>
+                    <Link
+                      to='/home'
+                      className='link'
+                    >
+                      {languageEng ? 'Contact section ' : 'Sección de contacto '}
+                    </Link>
                     {languageEng ? 'to share your user experience' : 'para contarnos tu experiencia de usuario'}
                   </li>
                   <li>
@@ -467,7 +472,7 @@ const Readme = () => {
                   <div className={themeDark ? 'git-clone-dt' : 'git-clone-lt'}>
                     <p>$ git clone</p>
                     <div className='flex gap-4'>
-                      <p ref={URLresourse}>https://github.com/SebaPerez90/WheaterApp.git</p>
+                      <p ref={URLresourse}>https://github.com/SebaPerez90/WeatherApp.git</p>
                       <button
                         ref={btnRef}
                         className='FaCopyIcon'
@@ -496,6 +501,29 @@ const Readme = () => {
                       : '# Inicia un servidor local para previsualizar el sitio..'}
                   </p>
                   <p>$ npm run dev</p>
+                </div>
+              </div>
+              <div>
+                <p>
+                  {languageEng
+                    ? '# Adjust the linter and formatter according to your development preferences '
+                    : '# Ajusta el linter y el formateador según tus preferencias de desarrollo '}
+                </p>
+                <div>
+                  <p>
+                    <strong>ESLint</strong> - <span>./eslintrc.cjs</span>
+                    <br></br>
+                    {languageEng
+                      ? ' uses as a linter to maintain consistency in the code.'
+                      : '  utiliza como linter para mantener consistencia en el código.'}
+                  </p>
+                  <p>
+                    <strong>Prettier</strong> - <span>./prettierrc</span>
+                    <br></br>
+                    {languageEng
+                      ? ' used as a formatter to ensure a consistent style in the source code.'
+                      : ' utilizado como formateador para asegurar un estilo uniforme en el código fuente. '}
+                  </p>
                 </div>
               </div>
             </section>

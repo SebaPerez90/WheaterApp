@@ -716,7 +716,7 @@ body {
     p {
       text-align: center;
       width: max-content;
-      margin:  0 auto;
+      margin: 0 auto;
       font-family: $josefin;
       border-bottom: 2px solid $valencia-200;
       text-shadow: 1px 1px 1px #00000058;
@@ -1403,9 +1403,14 @@ body {
         font-size: 1.7em;
         text-align: center;
         font-weight: bolder;
+        color: $valencia-300;
+        text-shadow: 1px 1px 1px #1313132a;
+        border-bottom: 4px solid $valencia-200;
+        width: max-content;
+        margin: 0 auto;
       }
       > p {
-        padding: 2em 0;
+        padding: 1em 0 2em 0;
         font-size: 1.2em;
         color: #686868;
         font-family: $roboto-italic;
@@ -1421,7 +1426,7 @@ body {
           font-size: 1.2em;
           width: max-content;
           padding-bottom: 0.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
         }
         ul {
           margin: 1em 0 0 2em;
@@ -1455,20 +1460,20 @@ body {
         h2 {
           font-weight: bolder;
           font-size: 1.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
           width: max-content;
           padding-bottom: 0.2em;
         }
 
         > :nth-child(2) {
           margin-top: 1em;
-          border-bottom: 4px solid #3c59fe85;
+          border-bottom: 4px solid $valencia-300;
 
           h1 {
             font-size: 2.5em;
             text-align: center;
             font-weight: bolder;
-            color: #3c59fe;
+            color: $valencia-300;
           }
           p {
             font-family: $josefin;
@@ -1521,7 +1526,8 @@ body {
             font-size: 1.15em;
             padding: 1em;
             text-align: center;
-            background-color: #3c59fed2;
+            background-color: $valencia-300;
+            text-shadow: 2px 2px 1px #1313132a;
             color: $light;
             border-radius: 0.3em 0.3em 0 0;
             border: 1px solid #ffffff28;
@@ -1541,7 +1547,8 @@ body {
             font-size: 1.15em;
             padding: 1em;
             text-align: center;
-            background-color: #3c59fed2;
+            background-color: $valencia-300;
+            text-shadow: 2px 2px 1px #1313132a;
             color: $light;
             border-radius: 0.3em 0.3em 0 0;
             border: 1px solid #ffffff28;
@@ -1553,7 +1560,7 @@ body {
           }
         }
         > :last-child {
-          border-top: 4px solid #3c59fe85;
+          border-top: 4px solid $valencia-300;
           padding-top: 1em;
           margin-top: 2em;
           color: #333333c5;
@@ -1574,7 +1581,7 @@ body {
           font-size: 1.2em;
           width: max-content;
           padding-bottom: 0.2em;
-          border-bottom: 3px solid #00000025;
+          border-bottom: 2px solid $valencia-200;
         }
 
         .structure-container-lt {
@@ -1603,7 +1610,7 @@ body {
         h2 {
           font-weight: bolder;
           font-size: 1.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
           width: max-content;
           padding-bottom: 0.2em;
         }
@@ -1619,7 +1626,7 @@ body {
           > :nth-child(3) {
             @extend %flex-col-center;
             border-radius: 0;
-            border-bottom: 2px solid #0000001e;
+            border-bottom: 2px solid $valencia-200;
             padding: 0 1em 1em 1em;
 
             > :first-child {
@@ -1685,7 +1692,7 @@ body {
             background-color: $valencia-200;
             color: $light;
             box-shadow: 5px 5px 7px #13131336;
-            text-shadow: 2px 2px 1px #1313135d;
+            text-shadow: 2px 2px 1px #1313132a;
             width: max-content;
             margin: 0 auto;
             padding: 1.2em 2.5em;
@@ -1737,7 +1744,7 @@ body {
           h2 {
             font-weight: bolder;
             font-size: 1.2em;
-            border-bottom: 2px solid #3c59fe85;
+            border-bottom: 2px solid $valencia-200;
             width: max-content;
             padding-bottom: 0.2em;
           }
@@ -1770,7 +1777,7 @@ body {
 
             span {
               font-size: 1.2em;
-              color: #3c59fe;
+              color: $valencia-300;
               font-weight: bolder;
             }
 
@@ -1798,7 +1805,7 @@ body {
         > h2 {
           font-weight: bolder;
           font-size: 1.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
           width: max-content;
           padding-bottom: 0.2em;
         }
@@ -1873,6 +1880,28 @@ body {
             }
           }
         }
+
+        > :last-child {
+          margin-top: 2em;
+          > :last-child {
+            margin: 0.5em 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            background-color: $light;
+            border: 1px solid #00000025;
+            border-radius: 0.4em;
+            width: max-content;
+            padding: 1.5em 1em;
+            font-size: 0.9em;
+
+            span {
+              color: #549c5a;
+              font-weight: bolder;
+              font-family: $roboto;
+            }
+          }
+        }
       }
 
       #features-container-lt {
@@ -1883,7 +1912,7 @@ body {
         > h2 {
           font-weight: bolder;
           font-size: 1.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
           width: max-content;
           padding-bottom: 0.2em;
         }
@@ -1969,7 +1998,7 @@ body {
           font-size: 1.2em;
           width: max-content;
           padding-bottom: 0.2em;
-          border-bottom: 2px solid #3c59fe85;
+          border-bottom: 2px solid $valencia-200;
         }
 
         > :nth-child(2) {
@@ -2000,7 +2029,7 @@ body {
               height: 12em;
               width: 12em;
               object-fit: cover;
-              border: 3px solid #3c59fe85;
+              border: 4px solid $valencia-300;
             }
           }
         }
@@ -2019,6 +2048,7 @@ body {
             font-family: $roboto-italic;
             color: $light;
             top: -1em;
+            text-shadow: 2px 2px 1px #1313132a;
             position: relative;
             z-index: 10;
 
@@ -2030,7 +2060,7 @@ body {
               padding: 3em 0;
               left: -5em;
               bottom: -1em;
-              background-color: #3c59fed1;
+              background-color: $valencia-300;
               z-index: -1;
             }
           }
